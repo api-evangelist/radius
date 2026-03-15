@@ -1,0 +1,14 @@
+name: Radius
+description: Application platform for cloud-native applications that enables developers
+  to define, deploy, and manage applications across multiple clouds and on-premises
+  environments using a unified model.
+url: https://radapp.io/
+tags:
+- Cloud Native
+- Application Platform
+- Multi Cloud
+- Infrastructure
+created: '2025'
+modified: '2025'
+apis: []
+common: []
