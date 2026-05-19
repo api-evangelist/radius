@@ -1,0 +1,229 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Applications.Dapr Resource Management APIs — ConfigurationStores
+  description: 'Applications.Dapr Resource Management APIs — ConfigurationStores. 5 operations. Lead operation: ConfigurationStores.
+    Self-contained Naftiko capability covering one Radius business surface.'
+  tags:
+  - Radius
+  - ConfigurationStores
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RADIUS_API_KEY: RADIUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: applications-dapr-configurationstores
+    baseUri: https://management.azure.com
+    description: Applications.Dapr Resource Management APIs — ConfigurationStores business capability. Self-contained, no
+      shared references.
+    resources:
+    - name: rootScope-providers-Applications.Dapr-configurationStores
+      path: /{rootScope}/providers/Applications.Dapr/configurationStores
+      operations:
+      - name: configurationstoreslistbyscope
+        method: GET
+        description: List DaprConfigurationStoreResource resources by Scope
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: rootScope-providers-Applications.Dapr-configurationStores-configurationStoreName
+      path: /{rootScope}/providers/Applications.Dapr/configurationStores/{configurationStoreName}
+      operations:
+      - name: configurationstoresget
+        method: GET
+        description: Get a DaprConfigurationStoreResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: configurationStoreName
+          in: path
+          type: string
+          description: Configuration Store name
+          required: true
+      - name: configurationstorescreateorupdate
+        method: PUT
+        description: Create a DaprConfigurationStoreResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: configurationStoreName
+          in: path
+          type: string
+          description: Configuration Store name
+          required: true
+        - name: resource
+          in: body
+          type: string
+          description: Resource create parameters.
+          required: true
+      - name: configurationstoresupdate
+        method: PATCH
+        description: Update a DaprConfigurationStoreResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: configurationStoreName
+          in: path
+          type: string
+          description: Configuration Store name
+          required: true
+        - name: properties
+          in: body
+          type: string
+          description: The resource properties to be updated.
+          required: true
+      - name: configurationstoresdelete
+        method: DELETE
+        description: Delete a DaprConfigurationStoreResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: configurationStoreName
+          in: path
+          type: string
+          description: Configuration Store name
+          required: true
+  exposes:
+  - type: rest
+    namespace: applications-dapr-configurationstores-rest
+    port: 8080
+    description: REST adapter for Applications.Dapr Resource Management APIs — ConfigurationStores. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/{rootscope}/providers/applications-dapr/configurationstores
+      name: rootscope-providers-applications-dapr-configurationstores
+      description: REST surface for rootScope-providers-Applications.Dapr-configurationStores.
+      operations:
+      - method: GET
+        name: configurationstoreslistbyscope
+        description: List DaprConfigurationStoreResource resources by Scope
+        call: applications-dapr-configurationstores.configurationstoreslistbyscope
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{rootscope}/providers/applications-dapr/configurationstores/{configurationstorename}
+      name: rootscope-providers-applications-dapr-configurationstores-configurationstorename
+      description: REST surface for rootScope-providers-Applications.Dapr-configurationStores-configurationStoreName.
+      operations:
+      - method: GET
+        name: configurationstoresget
+        description: Get a DaprConfigurationStoreResource
+        call: applications-dapr-configurationstores.configurationstoresget
+        with:
+          configurationStoreName: rest.configurationStoreName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: configurationstorescreateorupdate
+        description: Create a DaprConfigurationStoreResource
+        call: applications-dapr-configurationstores.configurationstorescreateorupdate
+        with:
+          configurationStoreName: rest.configurationStoreName
+          resource: rest.resource
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: configurationstoresupdate
+        description: Update a DaprConfigurationStoreResource
+        call: applications-dapr-configurationstores.configurationstoresupdate
+        with:
+          configurationStoreName: rest.configurationStoreName
+          properties: rest.properties
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: configurationstoresdelete
+        description: Delete a DaprConfigurationStoreResource
+        call: applications-dapr-configurationstores.configurationstoresdelete
+        with:
+          configurationStoreName: rest.configurationStoreName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: applications-dapr-configurationstores-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Applications.Dapr Resource Management APIs — ConfigurationStores. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: list-daprconfigurationstoreresource-resources-scope
+      description: List DaprConfigurationStoreResource resources by Scope
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: applications-dapr-configurationstores.configurationstoreslistbyscope
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-daprconfigurationstoreresource
+      description: Get a DaprConfigurationStoreResource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: applications-dapr-configurationstores.configurationstoresget
+      with:
+        configurationStoreName: tools.configurationStoreName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-daprconfigurationstoreresource
+      description: Create a DaprConfigurationStoreResource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: applications-dapr-configurationstores.configurationstorescreateorupdate
+      with:
+        configurationStoreName: tools.configurationStoreName
+        resource: tools.resource
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-daprconfigurationstoreresource
+      description: Update a DaprConfigurationStoreResource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: applications-dapr-configurationstores.configurationstoresupdate
+      with:
+        configurationStoreName: tools.configurationStoreName
+        properties: tools.properties
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-daprconfigurationstoreresource
+      description: Delete a DaprConfigurationStoreResource
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: applications-dapr-configurationstores.configurationstoresdelete
+      with:
+        configurationStoreName: tools.configurationStoreName
+      outputParameters:
+      - type: object
+        mapping: $.

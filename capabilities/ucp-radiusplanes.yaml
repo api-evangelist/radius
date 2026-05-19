@@ -1,0 +1,229 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Universal Control Plane Resource Management APIs — RadiusPlanes
+  description: 'Universal Control Plane Resource Management APIs — RadiusPlanes. 5 operations. Lead operation: RadiusPlanes.
+    Self-contained Naftiko capability covering one Radius business surface.'
+  tags:
+  - Radius
+  - RadiusPlanes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RADIUS_API_KEY: RADIUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ucp-radiusplanes
+    baseUri: https://management.azure.com
+    description: Universal Control Plane Resource Management APIs — RadiusPlanes business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: planes-radius
+      path: /planes/radius
+      operations:
+      - name: radiusplaneslist
+        method: GET
+        description: List Radius planes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: planes-radius-planeName
+      path: /planes/radius/{planeName}
+      operations:
+      - name: radiusplanesget
+        method: GET
+        description: Get a plane by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: planeName
+          in: path
+          type: string
+          description: The plane name.
+          required: true
+      - name: radiusplanescreateorupdate
+        method: PUT
+        description: Create or update a plane
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: planeName
+          in: path
+          type: string
+          description: The plane name.
+          required: true
+        - name: resource
+          in: body
+          type: string
+          description: Resource create parameters.
+          required: true
+      - name: radiusplanesupdate
+        method: PATCH
+        description: Update a plane
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: planeName
+          in: path
+          type: string
+          description: The plane name.
+          required: true
+        - name: properties
+          in: body
+          type: string
+          description: The resource properties to be updated.
+          required: true
+      - name: radiusplanesdelete
+        method: DELETE
+        description: Delete a plane
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: planeName
+          in: path
+          type: string
+          description: The plane name.
+          required: true
+  exposes:
+  - type: rest
+    namespace: ucp-radiusplanes-rest
+    port: 8080
+    description: REST adapter for Universal Control Plane Resource Management APIs — RadiusPlanes. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/planes/radius
+      name: planes-radius
+      description: REST surface for planes-radius.
+      operations:
+      - method: GET
+        name: radiusplaneslist
+        description: List Radius planes
+        call: ucp-radiusplanes.radiusplaneslist
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/planes/radius/{planename}
+      name: planes-radius-planename
+      description: REST surface for planes-radius-planeName.
+      operations:
+      - method: GET
+        name: radiusplanesget
+        description: Get a plane by name
+        call: ucp-radiusplanes.radiusplanesget
+        with:
+          planeName: rest.planeName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: radiusplanescreateorupdate
+        description: Create or update a plane
+        call: ucp-radiusplanes.radiusplanescreateorupdate
+        with:
+          planeName: rest.planeName
+          resource: rest.resource
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: radiusplanesupdate
+        description: Update a plane
+        call: ucp-radiusplanes.radiusplanesupdate
+        with:
+          planeName: rest.planeName
+          properties: rest.properties
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: radiusplanesdelete
+        description: Delete a plane
+        call: ucp-radiusplanes.radiusplanesdelete
+        with:
+          planeName: rest.planeName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ucp-radiusplanes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Universal Control Plane Resource Management APIs — RadiusPlanes. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: list-radius-planes
+      description: List Radius planes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucp-radiusplanes.radiusplaneslist
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-plane-name
+      description: Get a plane by name
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucp-radiusplanes.radiusplanesget
+      with:
+        planeName: tools.planeName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-update-plane
+      description: Create or update a plane
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ucp-radiusplanes.radiusplanescreateorupdate
+      with:
+        planeName: tools.planeName
+        resource: tools.resource
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-plane
+      description: Update a plane
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ucp-radiusplanes.radiusplanesupdate
+      with:
+        planeName: tools.planeName
+        properties: tools.properties
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-plane
+      description: Delete a plane
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ucp-radiusplanes.radiusplanesdelete
+      with:
+        planeName: tools.planeName
+      outputParameters:
+      - type: object
+        mapping: $.

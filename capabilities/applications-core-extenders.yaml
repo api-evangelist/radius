@@ -1,0 +1,277 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Applications.Core Management APIs — Extenders
+  description: 'Applications.Core Management APIs — Extenders. 6 operations. Lead operation: Extenders. Self-contained Naftiko
+    capability covering one Radius business surface.'
+  tags:
+  - Radius
+  - Extenders
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RADIUS_API_KEY: RADIUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: applications-core-extenders
+    baseUri: https://management.azure.com
+    description: Applications.Core Management APIs — Extenders business capability. Self-contained, no shared references.
+    resources:
+    - name: rootScope-providers-Applications.Core-extenders
+      path: /{rootScope}/providers/Applications.Core/extenders
+      operations:
+      - name: extenderslistbyscope
+        method: GET
+        description: List ExtenderResource resources by Scope
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: rootScope-providers-Applications.Core-extenders-extenderName
+      path: /{rootScope}/providers/Applications.Core/extenders/{extenderName}
+      operations:
+      - name: extendersget
+        method: GET
+        description: Get a ExtenderResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: extenderName
+          in: path
+          type: string
+          description: The name of the ExtenderResource portable resource
+          required: true
+      - name: extenderscreateorupdate
+        method: PUT
+        description: Create a ExtenderResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: extenderName
+          in: path
+          type: string
+          description: The name of the ExtenderResource portable resource
+          required: true
+        - name: resource
+          in: body
+          type: string
+          description: Resource create parameters.
+          required: true
+      - name: extendersupdate
+        method: PATCH
+        description: Update a ExtenderResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: extenderName
+          in: path
+          type: string
+          description: The name of the ExtenderResource portable resource
+          required: true
+        - name: properties
+          in: body
+          type: string
+          description: The resource properties to be updated.
+          required: true
+      - name: extendersdelete
+        method: DELETE
+        description: Delete a ExtenderResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: extenderName
+          in: path
+          type: string
+          description: The name of the ExtenderResource portable resource
+          required: true
+    - name: rootScope-providers-Applications.Core-extenders-extenderName-listSecrets
+      path: /{rootScope}/providers/Applications.Core/extenders/{extenderName}/listSecrets
+      operations:
+      - name: extenderslistsecrets
+        method: POST
+        description: Lists secrets values for the specified Extender resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: extenderName
+          in: path
+          type: string
+          description: The name of the ExtenderResource portable resource
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: The content of the action request
+          required: true
+  exposes:
+  - type: rest
+    namespace: applications-core-extenders-rest
+    port: 8080
+    description: REST adapter for Applications.Core Management APIs — Extenders. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/{rootscope}/providers/applications-core/extenders
+      name: rootscope-providers-applications-core-extenders
+      description: REST surface for rootScope-providers-Applications.Core-extenders.
+      operations:
+      - method: GET
+        name: extenderslistbyscope
+        description: List ExtenderResource resources by Scope
+        call: applications-core-extenders.extenderslistbyscope
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{rootscope}/providers/applications-core/extenders/{extendername}
+      name: rootscope-providers-applications-core-extenders-extendername
+      description: REST surface for rootScope-providers-Applications.Core-extenders-extenderName.
+      operations:
+      - method: GET
+        name: extendersget
+        description: Get a ExtenderResource
+        call: applications-core-extenders.extendersget
+        with:
+          extenderName: rest.extenderName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: extenderscreateorupdate
+        description: Create a ExtenderResource
+        call: applications-core-extenders.extenderscreateorupdate
+        with:
+          extenderName: rest.extenderName
+          resource: rest.resource
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: extendersupdate
+        description: Update a ExtenderResource
+        call: applications-core-extenders.extendersupdate
+        with:
+          extenderName: rest.extenderName
+          properties: rest.properties
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: extendersdelete
+        description: Delete a ExtenderResource
+        call: applications-core-extenders.extendersdelete
+        with:
+          extenderName: rest.extenderName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{rootscope}/providers/applications-core/extenders/{extendername}/listsecrets
+      name: rootscope-providers-applications-core-extenders-extendername-listsecrets
+      description: REST surface for rootScope-providers-Applications.Core-extenders-extenderName-listSecrets.
+      operations:
+      - method: POST
+        name: extenderslistsecrets
+        description: Lists secrets values for the specified Extender resource
+        call: applications-core-extenders.extenderslistsecrets
+        with:
+          extenderName: rest.extenderName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: applications-core-extenders-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Applications.Core Management APIs — Extenders. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-extenderresource-resources-scope
+      description: List ExtenderResource resources by Scope
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: applications-core-extenders.extenderslistbyscope
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-extenderresource
+      description: Get a ExtenderResource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: applications-core-extenders.extendersget
+      with:
+        extenderName: tools.extenderName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-extenderresource
+      description: Create a ExtenderResource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: applications-core-extenders.extenderscreateorupdate
+      with:
+        extenderName: tools.extenderName
+        resource: tools.resource
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-extenderresource
+      description: Update a ExtenderResource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: applications-core-extenders.extendersupdate
+      with:
+        extenderName: tools.extenderName
+        properties: tools.properties
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-extenderresource
+      description: Delete a ExtenderResource
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: applications-core-extenders.extendersdelete
+      with:
+        extenderName: tools.extenderName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-secrets-values-specified-extender
+      description: Lists secrets values for the specified Extender resource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: applications-core-extenders.extenderslistsecrets
+      with:
+        extenderName: tools.extenderName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

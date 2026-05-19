@@ -1,0 +1,229 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Universal Control Plane Resource Management APIs — AzurePlanes
+  description: 'Universal Control Plane Resource Management APIs — AzurePlanes. 5 operations. Lead operation: AzurePlanes.
+    Self-contained Naftiko capability covering one Radius business surface.'
+  tags:
+  - Radius
+  - AzurePlanes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RADIUS_API_KEY: RADIUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ucp-azureplanes
+    baseUri: https://management.azure.com
+    description: Universal Control Plane Resource Management APIs — AzurePlanes business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: planes-azure
+      path: /planes/azure
+      operations:
+      - name: azureplaneslist
+        method: GET
+        description: List azure planes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: planes-azure-planeName
+      path: /planes/azure/{planeName}
+      operations:
+      - name: azureplanesget
+        method: GET
+        description: Get a plane by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: planeName
+          in: path
+          type: string
+          description: The plane name.
+          required: true
+      - name: azureplanescreateorupdate
+        method: PUT
+        description: Create or update a plane
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: planeName
+          in: path
+          type: string
+          description: The plane name.
+          required: true
+        - name: resource
+          in: body
+          type: string
+          description: Resource create parameters.
+          required: true
+      - name: azureplanesupdate
+        method: PATCH
+        description: Update a plane
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: planeName
+          in: path
+          type: string
+          description: The plane name.
+          required: true
+        - name: properties
+          in: body
+          type: string
+          description: The resource properties to be updated.
+          required: true
+      - name: azureplanesdelete
+        method: DELETE
+        description: Delete a plane
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: planeName
+          in: path
+          type: string
+          description: The plane name.
+          required: true
+  exposes:
+  - type: rest
+    namespace: ucp-azureplanes-rest
+    port: 8080
+    description: REST adapter for Universal Control Plane Resource Management APIs — AzurePlanes. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/planes/azure
+      name: planes-azure
+      description: REST surface for planes-azure.
+      operations:
+      - method: GET
+        name: azureplaneslist
+        description: List azure planes
+        call: ucp-azureplanes.azureplaneslist
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/planes/azure/{planename}
+      name: planes-azure-planename
+      description: REST surface for planes-azure-planeName.
+      operations:
+      - method: GET
+        name: azureplanesget
+        description: Get a plane by name
+        call: ucp-azureplanes.azureplanesget
+        with:
+          planeName: rest.planeName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: azureplanescreateorupdate
+        description: Create or update a plane
+        call: ucp-azureplanes.azureplanescreateorupdate
+        with:
+          planeName: rest.planeName
+          resource: rest.resource
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: azureplanesupdate
+        description: Update a plane
+        call: ucp-azureplanes.azureplanesupdate
+        with:
+          planeName: rest.planeName
+          properties: rest.properties
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: azureplanesdelete
+        description: Delete a plane
+        call: ucp-azureplanes.azureplanesdelete
+        with:
+          planeName: rest.planeName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ucp-azureplanes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Universal Control Plane Resource Management APIs — AzurePlanes. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: list-azure-planes
+      description: List azure planes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucp-azureplanes.azureplaneslist
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-plane-name
+      description: Get a plane by name
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucp-azureplanes.azureplanesget
+      with:
+        planeName: tools.planeName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-update-plane
+      description: Create or update a plane
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ucp-azureplanes.azureplanescreateorupdate
+      with:
+        planeName: tools.planeName
+        resource: tools.resource
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-plane
+      description: Update a plane
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ucp-azureplanes.azureplanesupdate
+      with:
+        planeName: tools.planeName
+        properties: tools.properties
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-plane
+      description: Delete a plane
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ucp-azureplanes.azureplanesdelete
+      with:
+        planeName: tools.planeName
+      outputParameters:
+      - type: object
+        mapping: $.

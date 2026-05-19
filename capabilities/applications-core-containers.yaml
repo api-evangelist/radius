@@ -1,0 +1,228 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Applications.Core Management APIs — Containers
+  description: 'Applications.Core Management APIs — Containers. 5 operations. Lead operation: Containers. Self-contained Naftiko
+    capability covering one Radius business surface.'
+  tags:
+  - Radius
+  - Containers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RADIUS_API_KEY: RADIUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: applications-core-containers
+    baseUri: https://management.azure.com
+    description: Applications.Core Management APIs — Containers business capability. Self-contained, no shared references.
+    resources:
+    - name: rootScope-providers-Applications.Core-containers
+      path: /{rootScope}/providers/Applications.Core/containers
+      operations:
+      - name: containerslistbyscope
+        method: GET
+        description: List ContainerResource resources by Scope
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: rootScope-providers-Applications.Core-containers-containerName
+      path: /{rootScope}/providers/Applications.Core/containers/{containerName}
+      operations:
+      - name: containersget
+        method: GET
+        description: Get a ContainerResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: containerName
+          in: path
+          type: string
+          description: Container name
+          required: true
+      - name: containerscreateorupdate
+        method: PUT
+        description: Create a ContainerResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: containerName
+          in: path
+          type: string
+          description: Container name
+          required: true
+        - name: resource
+          in: body
+          type: string
+          description: Resource create parameters.
+          required: true
+      - name: containersupdate
+        method: PATCH
+        description: Update a ContainerResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: containerName
+          in: path
+          type: string
+          description: Container name
+          required: true
+        - name: properties
+          in: body
+          type: string
+          description: The resource properties to be updated.
+          required: true
+      - name: containersdelete
+        method: DELETE
+        description: Delete a ContainerResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: containerName
+          in: path
+          type: string
+          description: Container name
+          required: true
+  exposes:
+  - type: rest
+    namespace: applications-core-containers-rest
+    port: 8080
+    description: REST adapter for Applications.Core Management APIs — Containers. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/{rootscope}/providers/applications-core/containers
+      name: rootscope-providers-applications-core-containers
+      description: REST surface for rootScope-providers-Applications.Core-containers.
+      operations:
+      - method: GET
+        name: containerslistbyscope
+        description: List ContainerResource resources by Scope
+        call: applications-core-containers.containerslistbyscope
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{rootscope}/providers/applications-core/containers/{containername}
+      name: rootscope-providers-applications-core-containers-containername
+      description: REST surface for rootScope-providers-Applications.Core-containers-containerName.
+      operations:
+      - method: GET
+        name: containersget
+        description: Get a ContainerResource
+        call: applications-core-containers.containersget
+        with:
+          containerName: rest.containerName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: containerscreateorupdate
+        description: Create a ContainerResource
+        call: applications-core-containers.containerscreateorupdate
+        with:
+          containerName: rest.containerName
+          resource: rest.resource
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: containersupdate
+        description: Update a ContainerResource
+        call: applications-core-containers.containersupdate
+        with:
+          containerName: rest.containerName
+          properties: rest.properties
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: containersdelete
+        description: Delete a ContainerResource
+        call: applications-core-containers.containersdelete
+        with:
+          containerName: rest.containerName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: applications-core-containers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Applications.Core Management APIs — Containers. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-containerresource-resources-scope
+      description: List ContainerResource resources by Scope
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: applications-core-containers.containerslistbyscope
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-containerresource
+      description: Get a ContainerResource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: applications-core-containers.containersget
+      with:
+        containerName: tools.containerName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-containerresource
+      description: Create a ContainerResource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: applications-core-containers.containerscreateorupdate
+      with:
+        containerName: tools.containerName
+        resource: tools.resource
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-containerresource
+      description: Update a ContainerResource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: applications-core-containers.containersupdate
+      with:
+        containerName: tools.containerName
+        properties: tools.properties
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-containerresource
+      description: Delete a ContainerResource
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: applications-core-containers.containersdelete
+      with:
+        containerName: tools.containerName
+      outputParameters:
+      - type: object
+        mapping: $.

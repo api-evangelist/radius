@@ -1,0 +1,274 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Universal Control Plane Resource Management APIs — ApiVersions
+  description: 'Universal Control Plane Resource Management APIs — ApiVersions. 4 operations. Lead operation: ApiVersions.
+    Self-contained Naftiko capability covering one Radius business surface.'
+  tags:
+  - Radius
+  - ApiVersions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RADIUS_API_KEY: RADIUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ucp-apiversions
+    baseUri: https://management.azure.com
+    description: Universal Control Plane Resource Management APIs — ApiVersions business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: planes-radius-planeName-providers-System.Resources-resourceproviders-resourcePro
+      path: /planes/radius/{planeName}/providers/System.Resources/resourceproviders/{resourceProviderName}/resourcetypes/{resourceTypeName}/apiversions
+      operations:
+      - name: apiversionslist
+        method: GET
+        description: List API versions.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: planeName
+          in: path
+          type: string
+          description: The plane name.
+          required: true
+        - name: resourceProviderName
+          in: path
+          type: string
+          description: 'The resource provider name. This is also the resource provider namespace. Example: ''Applications.Datastores''.'
+          required: true
+        - name: resourceTypeName
+          in: path
+          type: string
+          description: The resource type name.
+          required: true
+    - name: planes-radius-planeName-providers-System.Resources-resourceproviders-resourcePro
+      path: /planes/radius/{planeName}/providers/System.Resources/resourceproviders/{resourceProviderName}/resourcetypes/{resourceTypeName}/apiversions/{apiVersionName}
+      operations:
+      - name: apiversionsget
+        method: GET
+        description: Get the specified API version.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: planeName
+          in: path
+          type: string
+          description: The plane name.
+          required: true
+        - name: resourceProviderName
+          in: path
+          type: string
+          description: 'The resource provider name. This is also the resource provider namespace. Example: ''Applications.Datastores''.'
+          required: true
+        - name: resourceTypeName
+          in: path
+          type: string
+          description: The resource type name.
+          required: true
+        - name: apiVersionName
+          in: path
+          type: string
+          description: The API version name.
+          required: true
+      - name: apiversionscreateorupdate
+        method: PUT
+        description: Create or update an API version.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: planeName
+          in: path
+          type: string
+          description: The plane name.
+          required: true
+        - name: resourceProviderName
+          in: path
+          type: string
+          description: 'The resource provider name. This is also the resource provider namespace. Example: ''Applications.Datastores''.'
+          required: true
+        - name: resourceTypeName
+          in: path
+          type: string
+          description: The resource type name.
+          required: true
+        - name: apiVersionName
+          in: path
+          type: string
+          description: The API version name.
+          required: true
+        - name: resource
+          in: body
+          type: string
+          description: Resource create parameters.
+          required: true
+      - name: apiversionsdelete
+        method: DELETE
+        description: Delete an API version.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: planeName
+          in: path
+          type: string
+          description: The plane name.
+          required: true
+        - name: resourceProviderName
+          in: path
+          type: string
+          description: 'The resource provider name. This is also the resource provider namespace. Example: ''Applications.Datastores''.'
+          required: true
+        - name: resourceTypeName
+          in: path
+          type: string
+          description: The resource type name.
+          required: true
+        - name: apiVersionName
+          in: path
+          type: string
+          description: The API version name.
+          required: true
+  exposes:
+  - type: rest
+    namespace: ucp-apiversions-rest
+    port: 8080
+    description: REST adapter for Universal Control Plane Resource Management APIs — ApiVersions. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/planes/radius/{planename}/providers/system-resources/resourceproviders/{resourceprovidername}/resourcetypes/{resourcetypename}/apiversions
+      name: planes-radius-planename-providers-system-resources-resourceproviders-resourcepro
+      description: REST surface for planes-radius-planeName-providers-System.Resources-resourceproviders-resourcePro.
+      operations:
+      - method: GET
+        name: apiversionslist
+        description: List API versions.
+        call: ucp-apiversions.apiversionslist
+        with:
+          planeName: rest.planeName
+          resourceProviderName: rest.resourceProviderName
+          resourceTypeName: rest.resourceTypeName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/planes/radius/{planename}/providers/system-resources/resourceproviders/{resourceprovidername}/resourcetypes/{resourcetypename}/apiversions/{apiversionname}
+      name: planes-radius-planename-providers-system-resources-resourceproviders-resourcepro
+      description: REST surface for planes-radius-planeName-providers-System.Resources-resourceproviders-resourcePro.
+      operations:
+      - method: GET
+        name: apiversionsget
+        description: Get the specified API version.
+        call: ucp-apiversions.apiversionsget
+        with:
+          planeName: rest.planeName
+          resourceProviderName: rest.resourceProviderName
+          resourceTypeName: rest.resourceTypeName
+          apiVersionName: rest.apiVersionName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: apiversionscreateorupdate
+        description: Create or update an API version.
+        call: ucp-apiversions.apiversionscreateorupdate
+        with:
+          planeName: rest.planeName
+          resourceProviderName: rest.resourceProviderName
+          resourceTypeName: rest.resourceTypeName
+          apiVersionName: rest.apiVersionName
+          resource: rest.resource
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: apiversionsdelete
+        description: Delete an API version.
+        call: ucp-apiversions.apiversionsdelete
+        with:
+          planeName: rest.planeName
+          resourceProviderName: rest.resourceProviderName
+          resourceTypeName: rest.resourceTypeName
+          apiVersionName: rest.apiVersionName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ucp-apiversions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Universal Control Plane Resource Management APIs — ApiVersions. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: list-api-versions
+      description: List API versions.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucp-apiversions.apiversionslist
+      with:
+        planeName: tools.planeName
+        resourceProviderName: tools.resourceProviderName
+        resourceTypeName: tools.resourceTypeName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-specified-api-version
+      description: Get the specified API version.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucp-apiversions.apiversionsget
+      with:
+        planeName: tools.planeName
+        resourceProviderName: tools.resourceProviderName
+        resourceTypeName: tools.resourceTypeName
+        apiVersionName: tools.apiVersionName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-update-api-version
+      description: Create or update an API version.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: ucp-apiversions.apiversionscreateorupdate
+      with:
+        planeName: tools.planeName
+        resourceProviderName: tools.resourceProviderName
+        resourceTypeName: tools.resourceTypeName
+        apiVersionName: tools.apiVersionName
+        resource: tools.resource
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-api-version
+      description: Delete an API version.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ucp-apiversions.apiversionsdelete
+      with:
+        planeName: tools.planeName
+        resourceProviderName: tools.resourceProviderName
+        resourceTypeName: tools.resourceTypeName
+        apiVersionName: tools.apiVersionName
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,277 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Applications.Core Management APIs — Environments
+  description: 'Applications.Core Management APIs — Environments. 6 operations. Lead operation: Environments. Self-contained
+    Naftiko capability covering one Radius business surface.'
+  tags:
+  - Radius
+  - Environments
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RADIUS_API_KEY: RADIUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: applications-core-environments
+    baseUri: https://management.azure.com
+    description: Applications.Core Management APIs — Environments business capability. Self-contained, no shared references.
+    resources:
+    - name: rootScope-providers-Applications.Core-environments
+      path: /{rootScope}/providers/Applications.Core/environments
+      operations:
+      - name: environmentslistbyscope
+        method: GET
+        description: List EnvironmentResource resources by Scope
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: rootScope-providers-Applications.Core-environments-environmentName
+      path: /{rootScope}/providers/Applications.Core/environments/{environmentName}
+      operations:
+      - name: environmentsget
+        method: GET
+        description: Get a EnvironmentResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentName
+          in: path
+          type: string
+          description: environment name
+          required: true
+      - name: environmentscreateorupdate
+        method: PUT
+        description: Create a EnvironmentResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentName
+          in: path
+          type: string
+          description: environment name
+          required: true
+        - name: resource
+          in: body
+          type: string
+          description: Resource create parameters.
+          required: true
+      - name: environmentsupdate
+        method: PATCH
+        description: Update a EnvironmentResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentName
+          in: path
+          type: string
+          description: environment name
+          required: true
+        - name: properties
+          in: body
+          type: string
+          description: The resource properties to be updated.
+          required: true
+      - name: environmentsdelete
+        method: DELETE
+        description: Delete a EnvironmentResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentName
+          in: path
+          type: string
+          description: environment name
+          required: true
+    - name: rootScope-providers-Applications.Core-environments-environmentName-getMetadata
+      path: /{rootScope}/providers/Applications.Core/environments/{environmentName}/getMetadata
+      operations:
+      - name: environmentsgetmetadata
+        method: POST
+        description: Gets recipe metadata including parameters and any constraints on the parameters.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentName
+          in: path
+          type: string
+          description: environment name
+          required: true
+        - name: body
+          in: body
+          type: string
+          description: The content of the action request
+          required: true
+  exposes:
+  - type: rest
+    namespace: applications-core-environments-rest
+    port: 8080
+    description: REST adapter for Applications.Core Management APIs — Environments. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/{rootscope}/providers/applications-core/environments
+      name: rootscope-providers-applications-core-environments
+      description: REST surface for rootScope-providers-Applications.Core-environments.
+      operations:
+      - method: GET
+        name: environmentslistbyscope
+        description: List EnvironmentResource resources by Scope
+        call: applications-core-environments.environmentslistbyscope
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{rootscope}/providers/applications-core/environments/{environmentname}
+      name: rootscope-providers-applications-core-environments-environmentname
+      description: REST surface for rootScope-providers-Applications.Core-environments-environmentName.
+      operations:
+      - method: GET
+        name: environmentsget
+        description: Get a EnvironmentResource
+        call: applications-core-environments.environmentsget
+        with:
+          environmentName: rest.environmentName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: environmentscreateorupdate
+        description: Create a EnvironmentResource
+        call: applications-core-environments.environmentscreateorupdate
+        with:
+          environmentName: rest.environmentName
+          resource: rest.resource
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: environmentsupdate
+        description: Update a EnvironmentResource
+        call: applications-core-environments.environmentsupdate
+        with:
+          environmentName: rest.environmentName
+          properties: rest.properties
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: environmentsdelete
+        description: Delete a EnvironmentResource
+        call: applications-core-environments.environmentsdelete
+        with:
+          environmentName: rest.environmentName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{rootscope}/providers/applications-core/environments/{environmentname}/getmetadata
+      name: rootscope-providers-applications-core-environments-environmentname-getmetadata
+      description: REST surface for rootScope-providers-Applications.Core-environments-environmentName-getMetadata.
+      operations:
+      - method: POST
+        name: environmentsgetmetadata
+        description: Gets recipe metadata including parameters and any constraints on the parameters.
+        call: applications-core-environments.environmentsgetmetadata
+        with:
+          environmentName: rest.environmentName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: applications-core-environments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Applications.Core Management APIs — Environments. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: list-environmentresource-resources-scope
+      description: List EnvironmentResource resources by Scope
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: applications-core-environments.environmentslistbyscope
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-environmentresource
+      description: Get a EnvironmentResource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: applications-core-environments.environmentsget
+      with:
+        environmentName: tools.environmentName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-environmentresource
+      description: Create a EnvironmentResource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: applications-core-environments.environmentscreateorupdate
+      with:
+        environmentName: tools.environmentName
+        resource: tools.resource
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-environmentresource
+      description: Update a EnvironmentResource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: applications-core-environments.environmentsupdate
+      with:
+        environmentName: tools.environmentName
+        properties: tools.properties
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-environmentresource
+      description: Delete a EnvironmentResource
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: applications-core-environments.environmentsdelete
+      with:
+        environmentName: tools.environmentName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gets-recipe-metadata-including-parameters
+      description: Gets recipe metadata including parameters and any constraints on the parameters.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: applications-core-environments.environmentsgetmetadata
+      with:
+        environmentName: tools.environmentName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

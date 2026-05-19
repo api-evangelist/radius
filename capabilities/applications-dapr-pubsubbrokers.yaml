@@ -1,0 +1,229 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Applications.Dapr Resource Management APIs — PubSubBrokers
+  description: 'Applications.Dapr Resource Management APIs — PubSubBrokers. 5 operations. Lead operation: PubSubBrokers. Self-contained
+    Naftiko capability covering one Radius business surface.'
+  tags:
+  - Radius
+  - PubSubBrokers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RADIUS_API_KEY: RADIUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: applications-dapr-pubsubbrokers
+    baseUri: https://management.azure.com
+    description: Applications.Dapr Resource Management APIs — PubSubBrokers business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: rootScope-providers-Applications.Dapr-pubSubBrokers
+      path: /{rootScope}/providers/Applications.Dapr/pubSubBrokers
+      operations:
+      - name: pubsubbrokerslistbyscope
+        method: GET
+        description: List DaprPubSubBrokerResource resources by Scope
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: rootScope-providers-Applications.Dapr-pubSubBrokers-pubSubBrokerName
+      path: /{rootScope}/providers/Applications.Dapr/pubSubBrokers/{pubSubBrokerName}
+      operations:
+      - name: pubsubbrokersget
+        method: GET
+        description: Get a DaprPubSubBrokerResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: pubSubBrokerName
+          in: path
+          type: string
+          description: PubSubBroker name
+          required: true
+      - name: pubsubbrokerscreateorupdate
+        method: PUT
+        description: Create a DaprPubSubBrokerResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: pubSubBrokerName
+          in: path
+          type: string
+          description: PubSubBroker name
+          required: true
+        - name: resource
+          in: body
+          type: string
+          description: Resource create parameters.
+          required: true
+      - name: pubsubbrokersupdate
+        method: PATCH
+        description: Update a DaprPubSubBrokerResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: pubSubBrokerName
+          in: path
+          type: string
+          description: PubSubBroker name
+          required: true
+        - name: properties
+          in: body
+          type: string
+          description: The resource properties to be updated.
+          required: true
+      - name: pubsubbrokersdelete
+        method: DELETE
+        description: Delete a DaprPubSubBrokerResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: pubSubBrokerName
+          in: path
+          type: string
+          description: PubSubBroker name
+          required: true
+  exposes:
+  - type: rest
+    namespace: applications-dapr-pubsubbrokers-rest
+    port: 8080
+    description: REST adapter for Applications.Dapr Resource Management APIs — PubSubBrokers. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/{rootscope}/providers/applications-dapr/pubsubbrokers
+      name: rootscope-providers-applications-dapr-pubsubbrokers
+      description: REST surface for rootScope-providers-Applications.Dapr-pubSubBrokers.
+      operations:
+      - method: GET
+        name: pubsubbrokerslistbyscope
+        description: List DaprPubSubBrokerResource resources by Scope
+        call: applications-dapr-pubsubbrokers.pubsubbrokerslistbyscope
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{rootscope}/providers/applications-dapr/pubsubbrokers/{pubsubbrokername}
+      name: rootscope-providers-applications-dapr-pubsubbrokers-pubsubbrokername
+      description: REST surface for rootScope-providers-Applications.Dapr-pubSubBrokers-pubSubBrokerName.
+      operations:
+      - method: GET
+        name: pubsubbrokersget
+        description: Get a DaprPubSubBrokerResource
+        call: applications-dapr-pubsubbrokers.pubsubbrokersget
+        with:
+          pubSubBrokerName: rest.pubSubBrokerName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: pubsubbrokerscreateorupdate
+        description: Create a DaprPubSubBrokerResource
+        call: applications-dapr-pubsubbrokers.pubsubbrokerscreateorupdate
+        with:
+          pubSubBrokerName: rest.pubSubBrokerName
+          resource: rest.resource
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: pubsubbrokersupdate
+        description: Update a DaprPubSubBrokerResource
+        call: applications-dapr-pubsubbrokers.pubsubbrokersupdate
+        with:
+          pubSubBrokerName: rest.pubSubBrokerName
+          properties: rest.properties
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: pubsubbrokersdelete
+        description: Delete a DaprPubSubBrokerResource
+        call: applications-dapr-pubsubbrokers.pubsubbrokersdelete
+        with:
+          pubSubBrokerName: rest.pubSubBrokerName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: applications-dapr-pubsubbrokers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Applications.Dapr Resource Management APIs — PubSubBrokers. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: list-daprpubsubbrokerresource-resources-scope
+      description: List DaprPubSubBrokerResource resources by Scope
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: applications-dapr-pubsubbrokers.pubsubbrokerslistbyscope
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-daprpubsubbrokerresource
+      description: Get a DaprPubSubBrokerResource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: applications-dapr-pubsubbrokers.pubsubbrokersget
+      with:
+        pubSubBrokerName: tools.pubSubBrokerName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-daprpubsubbrokerresource
+      description: Create a DaprPubSubBrokerResource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: applications-dapr-pubsubbrokers.pubsubbrokerscreateorupdate
+      with:
+        pubSubBrokerName: tools.pubSubBrokerName
+        resource: tools.resource
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-daprpubsubbrokerresource
+      description: Update a DaprPubSubBrokerResource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: applications-dapr-pubsubbrokers.pubsubbrokersupdate
+      with:
+        pubSubBrokerName: tools.pubSubBrokerName
+        properties: tools.properties
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-daprpubsubbrokerresource
+      description: Delete a DaprPubSubBrokerResource
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: applications-dapr-pubsubbrokers.pubsubbrokersdelete
+      with:
+        pubSubBrokerName: tools.pubSubBrokerName
+      outputParameters:
+      - type: object
+        mapping: $.

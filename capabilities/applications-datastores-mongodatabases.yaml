@@ -1,0 +1,278 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Applications.Datastores Resource Management APIs — MongoDatabases
+  description: 'Applications.Datastores Resource Management APIs — MongoDatabases. 6 operations. Lead operation: MongoDatabases.
+    Self-contained Naftiko capability covering one Radius business surface.'
+  tags:
+  - Radius
+  - MongoDatabases
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RADIUS_API_KEY: RADIUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: applications-datastores-mongodatabases
+    baseUri: https://management.azure.com
+    description: Applications.Datastores Resource Management APIs — MongoDatabases business capability. Self-contained, no
+      shared references.
+    resources:
+    - name: rootScope-providers-Applications.Datastores-mongoDatabases
+      path: /{rootScope}/providers/Applications.Datastores/mongoDatabases
+      operations:
+      - name: mongodatabaseslistbyscope
+        method: GET
+        description: List MongoDatabaseResource resources by Scope
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: rootScope-providers-Applications.Datastores-mongoDatabases-mongoDatabaseName
+      path: /{rootScope}/providers/Applications.Datastores/mongoDatabases/{mongoDatabaseName}
+      operations:
+      - name: mongodatabasesget
+        method: GET
+        description: Get a MongoDatabaseResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: mongoDatabaseName
+          in: path
+          type: string
+          description: The name of the MongoDatabase portable resource resource
+          required: true
+      - name: mongodatabasescreateorupdate
+        method: PUT
+        description: Create a MongoDatabaseResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: mongoDatabaseName
+          in: path
+          type: string
+          description: The name of the MongoDatabase portable resource resource
+          required: true
+        - name: resource
+          in: body
+          type: string
+          description: Resource create parameters.
+          required: true
+      - name: mongodatabasesupdate
+        method: PATCH
+        description: Update a MongoDatabaseResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: mongoDatabaseName
+          in: path
+          type: string
+          description: The name of the MongoDatabase portable resource resource
+          required: true
+        - name: properties
+          in: body
+          type: string
+          description: The resource properties to be updated.
+          required: true
+      - name: mongodatabasesdelete
+        method: DELETE
+        description: Delete a MongoDatabaseResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: mongoDatabaseName
+          in: path
+          type: string
+          description: The name of the MongoDatabase portable resource resource
+          required: true
+    - name: rootScope-providers-Applications.Datastores-mongoDatabases-mongoDatabaseName-lis
+      path: /{rootScope}/providers/Applications.Datastores/mongoDatabases/{mongoDatabaseName}/listSecrets
+      operations:
+      - name: mongodatabaseslistsecrets
+        method: POST
+        description: Lists secrets values for the specified MongoDatabases resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: mongoDatabaseName
+          in: path
+          type: string
+          description: The name of the MongoDatabase portable resource resource
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: The content of the action request
+          required: true
+  exposes:
+  - type: rest
+    namespace: applications-datastores-mongodatabases-rest
+    port: 8080
+    description: REST adapter for Applications.Datastores Resource Management APIs — MongoDatabases. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/{rootscope}/providers/applications-datastores/mongodatabases
+      name: rootscope-providers-applications-datastores-mongodatabases
+      description: REST surface for rootScope-providers-Applications.Datastores-mongoDatabases.
+      operations:
+      - method: GET
+        name: mongodatabaseslistbyscope
+        description: List MongoDatabaseResource resources by Scope
+        call: applications-datastores-mongodatabases.mongodatabaseslistbyscope
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{rootscope}/providers/applications-datastores/mongodatabases/{mongodatabasename}
+      name: rootscope-providers-applications-datastores-mongodatabases-mongodatabasename
+      description: REST surface for rootScope-providers-Applications.Datastores-mongoDatabases-mongoDatabaseName.
+      operations:
+      - method: GET
+        name: mongodatabasesget
+        description: Get a MongoDatabaseResource
+        call: applications-datastores-mongodatabases.mongodatabasesget
+        with:
+          mongoDatabaseName: rest.mongoDatabaseName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: mongodatabasescreateorupdate
+        description: Create a MongoDatabaseResource
+        call: applications-datastores-mongodatabases.mongodatabasescreateorupdate
+        with:
+          mongoDatabaseName: rest.mongoDatabaseName
+          resource: rest.resource
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: mongodatabasesupdate
+        description: Update a MongoDatabaseResource
+        call: applications-datastores-mongodatabases.mongodatabasesupdate
+        with:
+          mongoDatabaseName: rest.mongoDatabaseName
+          properties: rest.properties
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: mongodatabasesdelete
+        description: Delete a MongoDatabaseResource
+        call: applications-datastores-mongodatabases.mongodatabasesdelete
+        with:
+          mongoDatabaseName: rest.mongoDatabaseName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{rootscope}/providers/applications-datastores/mongodatabases/{mongodatabasename}/listsecrets
+      name: rootscope-providers-applications-datastores-mongodatabases-mongodatabasename-lis
+      description: REST surface for rootScope-providers-Applications.Datastores-mongoDatabases-mongoDatabaseName-lis.
+      operations:
+      - method: POST
+        name: mongodatabaseslistsecrets
+        description: Lists secrets values for the specified MongoDatabases resource
+        call: applications-datastores-mongodatabases.mongodatabaseslistsecrets
+        with:
+          mongoDatabaseName: rest.mongoDatabaseName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: applications-datastores-mongodatabases-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Applications.Datastores Resource Management APIs — MongoDatabases. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: list-mongodatabaseresource-resources-scope
+      description: List MongoDatabaseResource resources by Scope
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: applications-datastores-mongodatabases.mongodatabaseslistbyscope
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-mongodatabaseresource
+      description: Get a MongoDatabaseResource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: applications-datastores-mongodatabases.mongodatabasesget
+      with:
+        mongoDatabaseName: tools.mongoDatabaseName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-mongodatabaseresource
+      description: Create a MongoDatabaseResource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: applications-datastores-mongodatabases.mongodatabasescreateorupdate
+      with:
+        mongoDatabaseName: tools.mongoDatabaseName
+        resource: tools.resource
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-mongodatabaseresource
+      description: Update a MongoDatabaseResource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: applications-datastores-mongodatabases.mongodatabasesupdate
+      with:
+        mongoDatabaseName: tools.mongoDatabaseName
+        properties: tools.properties
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-mongodatabaseresource
+      description: Delete a MongoDatabaseResource
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: applications-datastores-mongodatabases.mongodatabasesdelete
+      with:
+        mongoDatabaseName: tools.mongoDatabaseName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-secrets-values-specified-mongodatabases
+      description: Lists secrets values for the specified MongoDatabases resource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: applications-datastores-mongodatabases.mongodatabaseslistsecrets
+      with:
+        mongoDatabaseName: tools.mongoDatabaseName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

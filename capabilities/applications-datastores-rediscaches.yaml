@@ -1,0 +1,278 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Applications.Datastores Resource Management APIs — RedisCaches
+  description: 'Applications.Datastores Resource Management APIs — RedisCaches. 6 operations. Lead operation: RedisCaches.
+    Self-contained Naftiko capability covering one Radius business surface.'
+  tags:
+  - Radius
+  - RedisCaches
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RADIUS_API_KEY: RADIUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: applications-datastores-rediscaches
+    baseUri: https://management.azure.com
+    description: Applications.Datastores Resource Management APIs — RedisCaches business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: rootScope-providers-Applications.Datastores-redisCaches
+      path: /{rootScope}/providers/Applications.Datastores/redisCaches
+      operations:
+      - name: rediscacheslistbyscope
+        method: GET
+        description: List RedisCacheResource resources by Scope
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: rootScope-providers-Applications.Datastores-redisCaches-redisCacheName
+      path: /{rootScope}/providers/Applications.Datastores/redisCaches/{redisCacheName}
+      operations:
+      - name: rediscachesget
+        method: GET
+        description: Get a RedisCacheResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: redisCacheName
+          in: path
+          type: string
+          description: The name of the RedisCache portable resource resource
+          required: true
+      - name: rediscachescreateorupdate
+        method: PUT
+        description: Create a RedisCacheResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: redisCacheName
+          in: path
+          type: string
+          description: The name of the RedisCache portable resource resource
+          required: true
+        - name: resource
+          in: body
+          type: string
+          description: Resource create parameters.
+          required: true
+      - name: rediscachesupdate
+        method: PATCH
+        description: Update a RedisCacheResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: redisCacheName
+          in: path
+          type: string
+          description: The name of the RedisCache portable resource resource
+          required: true
+        - name: properties
+          in: body
+          type: string
+          description: The resource properties to be updated.
+          required: true
+      - name: rediscachesdelete
+        method: DELETE
+        description: Delete a RedisCacheResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: redisCacheName
+          in: path
+          type: string
+          description: The name of the RedisCache portable resource resource
+          required: true
+    - name: rootScope-providers-Applications.Datastores-redisCaches-redisCacheName-listSecre
+      path: /{rootScope}/providers/Applications.Datastores/redisCaches/{redisCacheName}/listSecrets
+      operations:
+      - name: rediscacheslistsecrets
+        method: POST
+        description: Lists secrets values for the specified RedisCache resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: redisCacheName
+          in: path
+          type: string
+          description: The name of the RedisCache portable resource resource
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: The content of the action request
+          required: true
+  exposes:
+  - type: rest
+    namespace: applications-datastores-rediscaches-rest
+    port: 8080
+    description: REST adapter for Applications.Datastores Resource Management APIs — RedisCaches. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/{rootscope}/providers/applications-datastores/rediscaches
+      name: rootscope-providers-applications-datastores-rediscaches
+      description: REST surface for rootScope-providers-Applications.Datastores-redisCaches.
+      operations:
+      - method: GET
+        name: rediscacheslistbyscope
+        description: List RedisCacheResource resources by Scope
+        call: applications-datastores-rediscaches.rediscacheslistbyscope
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{rootscope}/providers/applications-datastores/rediscaches/{rediscachename}
+      name: rootscope-providers-applications-datastores-rediscaches-rediscachename
+      description: REST surface for rootScope-providers-Applications.Datastores-redisCaches-redisCacheName.
+      operations:
+      - method: GET
+        name: rediscachesget
+        description: Get a RedisCacheResource
+        call: applications-datastores-rediscaches.rediscachesget
+        with:
+          redisCacheName: rest.redisCacheName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: rediscachescreateorupdate
+        description: Create a RedisCacheResource
+        call: applications-datastores-rediscaches.rediscachescreateorupdate
+        with:
+          redisCacheName: rest.redisCacheName
+          resource: rest.resource
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: rediscachesupdate
+        description: Update a RedisCacheResource
+        call: applications-datastores-rediscaches.rediscachesupdate
+        with:
+          redisCacheName: rest.redisCacheName
+          properties: rest.properties
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: rediscachesdelete
+        description: Delete a RedisCacheResource
+        call: applications-datastores-rediscaches.rediscachesdelete
+        with:
+          redisCacheName: rest.redisCacheName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{rootscope}/providers/applications-datastores/rediscaches/{rediscachename}/listsecrets
+      name: rootscope-providers-applications-datastores-rediscaches-rediscachename-listsecre
+      description: REST surface for rootScope-providers-Applications.Datastores-redisCaches-redisCacheName-listSecre.
+      operations:
+      - method: POST
+        name: rediscacheslistsecrets
+        description: Lists secrets values for the specified RedisCache resource
+        call: applications-datastores-rediscaches.rediscacheslistsecrets
+        with:
+          redisCacheName: rest.redisCacheName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: applications-datastores-rediscaches-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Applications.Datastores Resource Management APIs — RedisCaches. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: list-rediscacheresource-resources-scope
+      description: List RedisCacheResource resources by Scope
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: applications-datastores-rediscaches.rediscacheslistbyscope
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-rediscacheresource
+      description: Get a RedisCacheResource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: applications-datastores-rediscaches.rediscachesget
+      with:
+        redisCacheName: tools.redisCacheName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-rediscacheresource
+      description: Create a RedisCacheResource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: applications-datastores-rediscaches.rediscachescreateorupdate
+      with:
+        redisCacheName: tools.redisCacheName
+        resource: tools.resource
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-rediscacheresource
+      description: Update a RedisCacheResource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: applications-datastores-rediscaches.rediscachesupdate
+      with:
+        redisCacheName: tools.redisCacheName
+        properties: tools.properties
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-rediscacheresource
+      description: Delete a RedisCacheResource
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: applications-datastores-rediscaches.rediscachesdelete
+      with:
+        redisCacheName: tools.redisCacheName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: lists-secrets-values-specified-rediscache
+      description: Lists secrets values for the specified RedisCache resource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: applications-datastores-rediscaches.rediscacheslistsecrets
+      with:
+        redisCacheName: tools.redisCacheName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

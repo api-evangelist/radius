@@ -1,0 +1,68 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Universal Control Plane Resource Management APIs — Planes
+  description: 'Universal Control Plane Resource Management APIs — Planes. 1 operations. Lead operation: Planes. Self-contained
+    Naftiko capability covering one Radius business surface.'
+  tags:
+  - Radius
+  - Planes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RADIUS_API_KEY: RADIUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ucp-planes
+    baseUri: https://management.azure.com
+    description: Universal Control Plane Resource Management APIs — Planes business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: planes
+      path: /planes
+      operations:
+      - name: planeslistplanes
+        method: GET
+        description: List all planes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: ucp-planes-rest
+    port: 8080
+    description: REST adapter for Universal Control Plane Resource Management APIs — Planes. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/planes
+      name: planes
+      description: REST surface for planes.
+      operations:
+      - method: GET
+        name: planeslistplanes
+        description: List all planes
+        call: ucp-planes.planeslistplanes
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ucp-planes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Universal Control Plane Resource Management APIs — Planes. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: list-all-planes
+      description: List all planes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ucp-planes.planeslistplanes
+      outputParameters:
+      - type: object
+        mapping: $.

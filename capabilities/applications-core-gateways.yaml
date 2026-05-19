@@ -1,0 +1,228 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Applications.Core Management APIs — Gateways
+  description: 'Applications.Core Management APIs — Gateways. 5 operations. Lead operation: Gateways. Self-contained Naftiko
+    capability covering one Radius business surface.'
+  tags:
+  - Radius
+  - Gateways
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RADIUS_API_KEY: RADIUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: applications-core-gateways
+    baseUri: https://management.azure.com
+    description: Applications.Core Management APIs — Gateways business capability. Self-contained, no shared references.
+    resources:
+    - name: rootScope-providers-Applications.Core-gateways
+      path: /{rootScope}/providers/Applications.Core/gateways
+      operations:
+      - name: gatewayslistbyscope
+        method: GET
+        description: List GatewayResource resources by Scope
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: rootScope-providers-Applications.Core-gateways-gatewayName
+      path: /{rootScope}/providers/Applications.Core/gateways/{gatewayName}
+      operations:
+      - name: gatewaysget
+        method: GET
+        description: Get a GatewayResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: gatewayName
+          in: path
+          type: string
+          description: Gateway name
+          required: true
+      - name: gatewayscreate
+        method: PUT
+        description: Create a GatewayResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: gatewayName
+          in: path
+          type: string
+          description: Gateway name
+          required: true
+        - name: resource
+          in: body
+          type: string
+          description: Resource create parameters.
+          required: true
+      - name: gatewayscreateorupdate
+        method: PATCH
+        description: Update a GatewayResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: gatewayName
+          in: path
+          type: string
+          description: Gateway name
+          required: true
+        - name: properties
+          in: body
+          type: string
+          description: The resource properties to be updated.
+          required: true
+      - name: gatewaysdelete
+        method: DELETE
+        description: Delete a GatewayResource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: gatewayName
+          in: path
+          type: string
+          description: Gateway name
+          required: true
+  exposes:
+  - type: rest
+    namespace: applications-core-gateways-rest
+    port: 8080
+    description: REST adapter for Applications.Core Management APIs — Gateways. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/{rootscope}/providers/applications-core/gateways
+      name: rootscope-providers-applications-core-gateways
+      description: REST surface for rootScope-providers-Applications.Core-gateways.
+      operations:
+      - method: GET
+        name: gatewayslistbyscope
+        description: List GatewayResource resources by Scope
+        call: applications-core-gateways.gatewayslistbyscope
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{rootscope}/providers/applications-core/gateways/{gatewayname}
+      name: rootscope-providers-applications-core-gateways-gatewayname
+      description: REST surface for rootScope-providers-Applications.Core-gateways-gatewayName.
+      operations:
+      - method: GET
+        name: gatewaysget
+        description: Get a GatewayResource
+        call: applications-core-gateways.gatewaysget
+        with:
+          gatewayName: rest.gatewayName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: gatewayscreate
+        description: Create a GatewayResource
+        call: applications-core-gateways.gatewayscreate
+        with:
+          gatewayName: rest.gatewayName
+          resource: rest.resource
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: gatewayscreateorupdate
+        description: Update a GatewayResource
+        call: applications-core-gateways.gatewayscreateorupdate
+        with:
+          gatewayName: rest.gatewayName
+          properties: rest.properties
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: gatewaysdelete
+        description: Delete a GatewayResource
+        call: applications-core-gateways.gatewaysdelete
+        with:
+          gatewayName: rest.gatewayName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: applications-core-gateways-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Applications.Core Management APIs — Gateways. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-gatewayresource-resources-scope
+      description: List GatewayResource resources by Scope
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: applications-core-gateways.gatewayslistbyscope
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-gatewayresource
+      description: Get a GatewayResource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: applications-core-gateways.gatewaysget
+      with:
+        gatewayName: tools.gatewayName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-gatewayresource
+      description: Create a GatewayResource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: applications-core-gateways.gatewayscreate
+      with:
+        gatewayName: tools.gatewayName
+        resource: tools.resource
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-gatewayresource
+      description: Update a GatewayResource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: applications-core-gateways.gatewayscreateorupdate
+      with:
+        gatewayName: tools.gatewayName
+        properties: tools.properties
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-gatewayresource
+      description: Delete a GatewayResource
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: applications-core-gateways.gatewaysdelete
+      with:
+        gatewayName: tools.gatewayName
+      outputParameters:
+      - type: object
+        mapping: $.
