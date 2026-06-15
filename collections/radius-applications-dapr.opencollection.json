@@ -1,0 +1,537 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applications.Dapr Resource Management APIs",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ConfigurationStores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ConfigurationStores_ListByScope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/configurationStores",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              }
+            ]
+          },
+          "docs": "List DaprConfigurationStoreResource resources by Scope"
+        },
+        {
+          "info": {
+            "name": "ConfigurationStores_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/configurationStores/:configurationStoreName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "configurationStoreName",
+                "value": "",
+                "type": "path",
+                "description": "Configuration Store name"
+              }
+            ]
+          },
+          "docs": "Get a DaprConfigurationStoreResource"
+        },
+        {
+          "info": {
+            "name": "ConfigurationStores_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/configurationStores/:configurationStoreName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "configurationStoreName",
+                "value": "",
+                "type": "path",
+                "description": "Configuration Store name"
+              }
+            ]
+          },
+          "docs": "Create a DaprConfigurationStoreResource"
+        },
+        {
+          "info": {
+            "name": "ConfigurationStores_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/configurationStores/:configurationStoreName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "configurationStoreName",
+                "value": "",
+                "type": "path",
+                "description": "Configuration Store name"
+              }
+            ]
+          },
+          "docs": "Update a DaprConfigurationStoreResource"
+        },
+        {
+          "info": {
+            "name": "ConfigurationStores_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/configurationStores/:configurationStoreName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "configurationStoreName",
+                "value": "",
+                "type": "path",
+                "description": "Configuration Store name"
+              }
+            ]
+          },
+          "docs": "Delete a DaprConfigurationStoreResource"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "PubSubBrokers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "PubSubBrokers_ListByScope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/pubSubBrokers",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              }
+            ]
+          },
+          "docs": "List DaprPubSubBrokerResource resources by Scope"
+        },
+        {
+          "info": {
+            "name": "PubSubBrokers_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/pubSubBrokers/:pubSubBrokerName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "pubSubBrokerName",
+                "value": "",
+                "type": "path",
+                "description": "PubSubBroker name"
+              }
+            ]
+          },
+          "docs": "Get a DaprPubSubBrokerResource"
+        },
+        {
+          "info": {
+            "name": "PubSubBrokers_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/pubSubBrokers/:pubSubBrokerName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "pubSubBrokerName",
+                "value": "",
+                "type": "path",
+                "description": "PubSubBroker name"
+              }
+            ]
+          },
+          "docs": "Create a DaprPubSubBrokerResource"
+        },
+        {
+          "info": {
+            "name": "PubSubBrokers_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/pubSubBrokers/:pubSubBrokerName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "pubSubBrokerName",
+                "value": "",
+                "type": "path",
+                "description": "PubSubBroker name"
+              }
+            ]
+          },
+          "docs": "Update a DaprPubSubBrokerResource"
+        },
+        {
+          "info": {
+            "name": "PubSubBrokers_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/pubSubBrokers/:pubSubBrokerName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "pubSubBrokerName",
+                "value": "",
+                "type": "path",
+                "description": "PubSubBroker name"
+              }
+            ]
+          },
+          "docs": "Delete a DaprPubSubBrokerResource"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SecretStores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SecretStores_ListByScope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/secretStores",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              }
+            ]
+          },
+          "docs": "List DaprSecretStoreResource resources by Scope"
+        },
+        {
+          "info": {
+            "name": "SecretStores_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/secretStores/:secretStoreName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "secretStoreName",
+                "value": "",
+                "type": "path",
+                "description": "SecretStore name"
+              }
+            ]
+          },
+          "docs": "Get a DaprSecretStoreResource"
+        },
+        {
+          "info": {
+            "name": "SecretStores_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/secretStores/:secretStoreName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "secretStoreName",
+                "value": "",
+                "type": "path",
+                "description": "SecretStore name"
+              }
+            ]
+          },
+          "docs": "Create a DaprSecretStoreResource"
+        },
+        {
+          "info": {
+            "name": "SecretStores_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/secretStores/:secretStoreName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "secretStoreName",
+                "value": "",
+                "type": "path",
+                "description": "SecretStore name"
+              }
+            ]
+          },
+          "docs": "Update a DaprSecretStoreResource"
+        },
+        {
+          "info": {
+            "name": "SecretStores_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/secretStores/:secretStoreName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "secretStoreName",
+                "value": "",
+                "type": "path",
+                "description": "SecretStore name"
+              }
+            ]
+          },
+          "docs": "Delete a DaprSecretStoreResource"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "StateStores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "StateStores_ListByScope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/stateStores",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              }
+            ]
+          },
+          "docs": "List DaprStateStoreResource resources by Scope"
+        },
+        {
+          "info": {
+            "name": "StateStores_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/stateStores/:stateStoreName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "stateStoreName",
+                "value": "",
+                "type": "path",
+                "description": "StateStore name"
+              }
+            ]
+          },
+          "docs": "Get a DaprStateStoreResource"
+        },
+        {
+          "info": {
+            "name": "StateStores_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/stateStores/:stateStoreName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "stateStoreName",
+                "value": "",
+                "type": "path",
+                "description": "StateStore name"
+              }
+            ]
+          },
+          "docs": "Create a DaprStateStoreResource"
+        },
+        {
+          "info": {
+            "name": "StateStores_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/stateStores/:stateStoreName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "stateStoreName",
+                "value": "",
+                "type": "path",
+                "description": "StateStore name"
+              }
+            ]
+          },
+          "docs": "Update a DaprStateStoreResource"
+        },
+        {
+          "info": {
+            "name": "StateStores_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/stateStores/:stateStoreName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "stateStoreName",
+                "value": "",
+                "type": "path",
+                "description": "StateStore name"
+              }
+            ]
+          },
+          "docs": "Delete a DaprStateStoreResource"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Operations_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/providers/Applications.Dapr/operations"
+          },
+          "docs": "List the operations for the provider"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

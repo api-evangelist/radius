@@ -1,0 +1,181 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applications.Messaging Resource Management APIs",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "RabbitMQQueues",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "RabbitMQQueues_ListByScope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Messaging/rabbitMQQueues",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              }
+            ]
+          },
+          "docs": "List RabbitMQQueueResource resources by Scope"
+        },
+        {
+          "info": {
+            "name": "RabbitMQQueues_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Messaging/rabbitMQQueues/:rabbitMQQueueName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "rabbitMQQueueName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the RabbitMQQueue portable resource resource"
+              }
+            ]
+          },
+          "docs": "Get a RabbitMQQueueResource"
+        },
+        {
+          "info": {
+            "name": "RabbitMQQueues_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Messaging/rabbitMQQueues/:rabbitMQQueueName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "rabbitMQQueueName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the RabbitMQQueue portable resource resource"
+              }
+            ]
+          },
+          "docs": "Create a RabbitMQQueueResource"
+        },
+        {
+          "info": {
+            "name": "RabbitMQQueues_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Messaging/rabbitMQQueues/:rabbitMQQueueName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "rabbitMQQueueName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the RabbitMQQueue portable resource resource"
+              }
+            ]
+          },
+          "docs": "Update a RabbitMQQueueResource"
+        },
+        {
+          "info": {
+            "name": "RabbitMQQueues_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Messaging/rabbitMQQueues/:rabbitMQQueueName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "rabbitMQQueueName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the RabbitMQQueue portable resource resource"
+              }
+            ]
+          },
+          "docs": "Delete a RabbitMQQueueResource"
+        },
+        {
+          "info": {
+            "name": "RabbitMQQueues_ListSecrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Messaging/rabbitMQQueues/:rabbitMQQueueName/listSecrets",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "rabbitMQQueueName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the RabbitMQQueue portable resource resource"
+              }
+            ]
+          },
+          "docs": "Lists secrets values for the specified RabbitMQQueue resource"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Operations_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/providers/Applications.Messaging/operations"
+          },
+          "docs": "List the operations for the provider"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

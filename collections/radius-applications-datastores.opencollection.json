@@ -1,0 +1,485 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applications.Datastores Resource Management APIs",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "MongoDatabases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MongoDatabases_ListByScope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/mongoDatabases",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              }
+            ]
+          },
+          "docs": "List MongoDatabaseResource resources by Scope"
+        },
+        {
+          "info": {
+            "name": "MongoDatabases_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/mongoDatabases/:mongoDatabaseName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "mongoDatabaseName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the MongoDatabase portable resource resource"
+              }
+            ]
+          },
+          "docs": "Get a MongoDatabaseResource"
+        },
+        {
+          "info": {
+            "name": "MongoDatabases_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/mongoDatabases/:mongoDatabaseName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "mongoDatabaseName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the MongoDatabase portable resource resource"
+              }
+            ]
+          },
+          "docs": "Create a MongoDatabaseResource"
+        },
+        {
+          "info": {
+            "name": "MongoDatabases_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/mongoDatabases/:mongoDatabaseName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "mongoDatabaseName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the MongoDatabase portable resource resource"
+              }
+            ]
+          },
+          "docs": "Update a MongoDatabaseResource"
+        },
+        {
+          "info": {
+            "name": "MongoDatabases_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/mongoDatabases/:mongoDatabaseName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "mongoDatabaseName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the MongoDatabase portable resource resource"
+              }
+            ]
+          },
+          "docs": "Delete a MongoDatabaseResource"
+        },
+        {
+          "info": {
+            "name": "MongoDatabases_ListSecrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/mongoDatabases/:mongoDatabaseName/listSecrets",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "mongoDatabaseName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the MongoDatabase portable resource resource"
+              }
+            ]
+          },
+          "docs": "Lists secrets values for the specified MongoDatabases resource"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "RedisCaches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "RedisCaches_ListByScope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/redisCaches",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              }
+            ]
+          },
+          "docs": "List RedisCacheResource resources by Scope"
+        },
+        {
+          "info": {
+            "name": "RedisCaches_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/redisCaches/:redisCacheName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "redisCacheName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the RedisCache portable resource resource"
+              }
+            ]
+          },
+          "docs": "Get a RedisCacheResource"
+        },
+        {
+          "info": {
+            "name": "RedisCaches_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/redisCaches/:redisCacheName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "redisCacheName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the RedisCache portable resource resource"
+              }
+            ]
+          },
+          "docs": "Create a RedisCacheResource"
+        },
+        {
+          "info": {
+            "name": "RedisCaches_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/redisCaches/:redisCacheName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "redisCacheName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the RedisCache portable resource resource"
+              }
+            ]
+          },
+          "docs": "Update a RedisCacheResource"
+        },
+        {
+          "info": {
+            "name": "RedisCaches_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/redisCaches/:redisCacheName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "redisCacheName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the RedisCache portable resource resource"
+              }
+            ]
+          },
+          "docs": "Delete a RedisCacheResource"
+        },
+        {
+          "info": {
+            "name": "RedisCaches_ListSecrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/redisCaches/:redisCacheName/listSecrets",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "redisCacheName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the RedisCache portable resource resource"
+              }
+            ]
+          },
+          "docs": "Lists secrets values for the specified RedisCache resource"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SqlDatabases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SqlDatabases_ListByScope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/sqlDatabases",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              }
+            ]
+          },
+          "docs": "List SqlDatabaseResource resources by Scope"
+        },
+        {
+          "info": {
+            "name": "SqlDatabases_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/sqlDatabases/:sqlDatabaseName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "sqlDatabaseName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the SqlDatabase portable resource resource"
+              }
+            ]
+          },
+          "docs": "Get a SqlDatabaseResource"
+        },
+        {
+          "info": {
+            "name": "SqlDatabases_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/sqlDatabases/:sqlDatabaseName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "sqlDatabaseName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the SqlDatabase portable resource resource"
+              }
+            ]
+          },
+          "docs": "Create a SqlDatabaseResource"
+        },
+        {
+          "info": {
+            "name": "SqlDatabases_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/sqlDatabases/:sqlDatabaseName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "sqlDatabaseName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the SqlDatabase portable resource resource"
+              }
+            ]
+          },
+          "docs": "Update a SqlDatabaseResource"
+        },
+        {
+          "info": {
+            "name": "SqlDatabases_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/sqlDatabases/:sqlDatabaseName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "sqlDatabaseName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the SqlDatabase portable resource resource"
+              }
+            ]
+          },
+          "docs": "Delete a SqlDatabaseResource"
+        },
+        {
+          "info": {
+            "name": "SqlDatabases_ListSecrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Datastores/sqlDatabases/:sqlDatabaseName/listSecrets",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "sqlDatabaseName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the SqlDatabase portable resource resource"
+              }
+            ]
+          },
+          "docs": "Lists secrets values for the specified SqlDatabase resource"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Operations_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/providers/Applications.Datastores/operations"
+          },
+          "docs": "List the operations for the provider"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

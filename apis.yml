@@ -1,166 +1,115 @@
 aid: radius
 name: Radius
-description: Application platform for cloud-native applications that enables developers to define, deploy, and manage applications
+description: >-
+  Application platform for cloud-native applications that enables developers to define, deploy, and manage applications
   across multiple clouds and on-premises environments using a unified model.
 type: Index
 url: https://raw.githubusercontent.com/api-evangelist/radius/refs/heads/main/apis.yml
 tags:
-- Application Platform
-- Cloud Native
-- Infrastructure
-- Multi Cloud
+  - Application Platform
+  - Cloud Native
+  - Infrastructure
+  - Multi Cloud
 created: '2025-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: radius:applications-core
-  name: Radius Applications.Core API
-  description: REST APIs for Applications.Core, providing management of applications, containers, environments, gateways,
-    secret stores, volumes, and extenders within the Radius platform.
-  humanURL: https://docs.radapp.io/reference/api/applications.core/
-  baseURL: https://management.azure.com
-  tags:
-  - Applications
-  - Containers
-  - Environments
-  - Gateways
-  - Secret Stores
-  - Volumes
-  properties:
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.core/
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/radius/refs/heads/main/openapi/radius-applications-core-openapi.json
-  - type: NaftikoCapability
-    url: capabilities/applications-core-applications.yaml
-  - type: NaftikoCapability
-    url: capabilities/applications-core-containers.yaml
-  - type: NaftikoCapability
-    url: capabilities/applications-core-environments.yaml
-  - type: NaftikoCapability
-    url: capabilities/applications-core-extenders.yaml
-  - type: NaftikoCapability
-    url: capabilities/applications-core-gateways.yaml
-  - type: NaftikoCapability
-    url: capabilities/applications-core-operations.yaml
-  - type: NaftikoCapability
-    url: capabilities/applications-core-secretstores.yaml
-  - type: NaftikoCapability
-    url: capabilities/applications-core-volumes.yaml
-- aid: radius:applications-dapr
-  name: Radius Applications.Dapr API
-  description: REST APIs for Applications.Dapr, providing management of Dapr-related building block resources for Radius applications.
-  humanURL: https://docs.radapp.io/reference/api/applications.dapr/
-  baseURL: https://management.azure.com
-  tags:
-  - Dapr
-  - Building Blocks
-  properties:
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.dapr/
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/radius/refs/heads/main/openapi/radius-applications-dapr-openapi.json
-  - type: NaftikoCapability
-    url: capabilities/applications-dapr-configurationstores.yaml
-  - type: NaftikoCapability
-    url: capabilities/applications-dapr-operations.yaml
-  - type: NaftikoCapability
-    url: capabilities/applications-dapr-pubsubbrokers.yaml
-  - type: NaftikoCapability
-    url: capabilities/applications-dapr-secretstores.yaml
-  - type: NaftikoCapability
-    url: capabilities/applications-dapr-statestores.yaml
-- aid: radius:applications-datastores
-  name: Radius Applications.Datastores API
-  description: REST APIs for Applications.Datastores, providing management of database resources such as Redis, MongoDB, and
-    SQL data stores within Radius.
-  humanURL: https://docs.radapp.io/reference/api/applications.datastores/
-  baseURL: https://management.azure.com
-  tags:
-  - Datastores
-  - Databases
-  - Redis
-  - MongoDB
-  - SQL
-  properties:
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.datastores/
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/radius/refs/heads/main/openapi/radius-applications-datastores-openapi.json
-  - type: NaftikoCapability
-    url: capabilities/applications-datastores-mongodatabases.yaml
-  - type: NaftikoCapability
-    url: capabilities/applications-datastores-operations.yaml
-  - type: NaftikoCapability
-    url: capabilities/applications-datastores-rediscaches.yaml
-  - type: NaftikoCapability
-    url: capabilities/applications-datastores-sqldatabases.yaml
-- aid: radius:applications-messaging
-  name: Radius Applications.Messaging API
-  description: REST APIs for Applications.Messaging, providing management of messaging service resources within the Radius
-    application platform.
-  humanURL: https://docs.radapp.io/reference/api/applications.messaging/
-  baseURL: https://management.azure.com
-  tags:
-  - Messaging
-  - Queues
-  properties:
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.messaging/
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/radius/refs/heads/main/openapi/radius-applications-messaging-openapi.json
-  - type: NaftikoCapability
-    url: capabilities/applications-messaging-operations.yaml
-  - type: NaftikoCapability
-    url: capabilities/applications-messaging-rabbitmqqueues.yaml
-- aid: radius:ucp
-  name: Radius Universal Control Plane (UCP) API
-  description: REST APIs for the Radius Universal Control Plane (UCP), the multi-cloud, multi-platform control plane that
-    powers Radius resource management across providers.
-  humanURL: https://docs.radapp.io/reference/api/ucp/
-  baseURL: https://management.azure.com
-  tags:
-  - Control Plane
-  - UCP
-  - Multi Cloud
-  properties:
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/ucp/
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/radius/refs/heads/main/openapi/radius-ucp-openapi.json
-  - type: NaftikoCapability
-    url: capabilities/ucp-apiversions.yaml
-  - type: NaftikoCapability
-    url: capabilities/ucp-awscredentials.yaml
-  - type: NaftikoCapability
-    url: capabilities/ucp-awsplanes.yaml
-  - type: NaftikoCapability
-    url: capabilities/ucp-azurecredentials.yaml
-  - type: NaftikoCapability
-    url: capabilities/ucp-azureplanes.yaml
-  - type: NaftikoCapability
-    url: capabilities/ucp-locations.yaml
-  - type: NaftikoCapability
-    url: capabilities/ucp-planes.yaml
-  - type: NaftikoCapability
-    url: capabilities/ucp-radiusplanes.yaml
-  - type: NaftikoCapability
-    url: capabilities/ucp-resourcegroups.yaml
-  - type: NaftikoCapability
-    url: capabilities/ucp-resourceproviders.yaml
-  - type: NaftikoCapability
-    url: capabilities/ucp-resourcetypes.yaml
-  - type: NaftikoCapability
-    url: capabilities/ucp-resources.yaml
+  - aid: radius:applications-core
+    name: Radius Applications.Core API
+    description: >-
+      REST APIs for Applications.Core, providing management of applications, containers, environments, gateways, secret
+      stores, volumes, and extenders within the Radius platform.
+    humanURL: https://docs.radapp.io/reference/api/applications.core/
+    baseURL: https://management.azure.com
+    tags:
+      - Applications
+      - Containers
+      - Environments
+      - Gateways
+      - Secret Stores
+      - Volumes
+    properties:
+      - type: Documentation
+        url: https://docs.radapp.io/reference/api/applications.core/
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/radius/refs/heads/main/openapi/radius-applications-core-openapi.json
+  - aid: radius:applications-dapr
+    name: Radius Applications.Dapr API
+    description: >-
+      REST APIs for Applications.Dapr, providing management of Dapr-related building block resources for Radius
+      applications.
+    humanURL: https://docs.radapp.io/reference/api/applications.dapr/
+    baseURL: https://management.azure.com
+    tags:
+      - Dapr
+      - Building Blocks
+    properties:
+      - type: Documentation
+        url: https://docs.radapp.io/reference/api/applications.dapr/
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/radius/refs/heads/main/openapi/radius-applications-dapr-openapi.json
+  - aid: radius:applications-datastores
+    name: Radius Applications.Datastores API
+    description: >-
+      REST APIs for Applications.Datastores, providing management of database resources such as Redis, MongoDB, and SQL
+      data stores within Radius.
+    humanURL: https://docs.radapp.io/reference/api/applications.datastores/
+    baseURL: https://management.azure.com
+    tags:
+      - Datastores
+      - Databases
+      - Redis
+      - MongoDB
+      - SQL
+    properties:
+      - type: Documentation
+        url: https://docs.radapp.io/reference/api/applications.datastores/
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/radius/refs/heads/main/openapi/radius-applications-datastores-openapi.json
+  - aid: radius:applications-messaging
+    name: Radius Applications.Messaging API
+    description: >-
+      REST APIs for Applications.Messaging, providing management of messaging service resources within the Radius
+      application platform.
+    humanURL: https://docs.radapp.io/reference/api/applications.messaging/
+    baseURL: https://management.azure.com
+    tags:
+      - Messaging
+      - Queues
+    properties:
+      - type: Documentation
+        url: https://docs.radapp.io/reference/api/applications.messaging/
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/radius/refs/heads/main/openapi/radius-applications-messaging-openapi.json
+  - aid: radius:ucp
+    name: Radius Universal Control Plane (UCP) API
+    description: >-
+      REST APIs for the Radius Universal Control Plane (UCP), the multi-cloud, multi-platform control plane that powers
+      Radius resource management across providers.
+    humanURL: https://docs.radapp.io/reference/api/ucp/
+    baseURL: https://management.azure.com
+    tags:
+      - Control Plane
+      - UCP
+      - Multi Cloud
+    properties:
+      - type: Documentation
+        url: https://docs.radapp.io/reference/api/ucp/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/radius/refs/heads/main/openapi/radius-ucp-openapi.json
 common:
-- type: Documentation
-  url: https://docs.radapp.io/
-- type: GettingStarted
-  url: https://docs.radapp.io/getting-started/
-- type: SourceCode
-  url: https://github.com/radius-project/radius
-- type: SignUp
-  url: https://docs.radapp.io/installation/
+  - type: Documentation
+    url: https://docs.radapp.io/
+  - type: GettingStarted
+    url: https://docs.radapp.io/getting-started/
+  - type: SourceCode
+    url: https://github.com/radius-project/radius
+  - type: SignUp
+    url: https://docs.radapp.io/installation/
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com

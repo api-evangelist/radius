@@ -1,0 +1,1276 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Universal Control Plane Resource Management APIs",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Planes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Planes_ListPlanes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes"
+          },
+          "docs": "List all planes"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AwsPlanes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AwsPlanes_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/aws"
+          },
+          "docs": "List AWS planes"
+        },
+        {
+          "info": {
+            "name": "AwsPlanes_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/aws/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Get a plane by name"
+        },
+        {
+          "info": {
+            "name": "AwsPlanes_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/planes/aws/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Create or update a plane"
+        },
+        {
+          "info": {
+            "name": "AwsPlanes_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/planes/aws/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Update a plane"
+        },
+        {
+          "info": {
+            "name": "AwsPlanes_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/planes/aws/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Delete a plane"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AwsCredentials",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AwsCredentials_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/aws/:planeName/providers/System.AWS/credentials",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The name of AWS plane"
+              }
+            ]
+          },
+          "docs": "List AWS credentials"
+        },
+        {
+          "info": {
+            "name": "AwsCredentials_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/aws/:planeName/providers/System.AWS/credentials/:credentialName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The name of AWS plane"
+              },
+              {
+                "name": "credentialName",
+                "value": "",
+                "type": "path",
+                "description": "The AWS credential name."
+              }
+            ]
+          },
+          "docs": "Get an AWS credential"
+        },
+        {
+          "info": {
+            "name": "AwsCredentials_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/planes/aws/:planeName/providers/System.AWS/credentials/:credentialName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The name of AWS plane"
+              },
+              {
+                "name": "credentialName",
+                "value": "",
+                "type": "path",
+                "description": "The AWS credential name."
+              }
+            ]
+          },
+          "docs": "Create or update an AWS credential"
+        },
+        {
+          "info": {
+            "name": "AwsCredentials_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/planes/aws/:planeName/providers/System.AWS/credentials/:credentialName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The name of AWS plane"
+              },
+              {
+                "name": "credentialName",
+                "value": "",
+                "type": "path",
+                "description": "The AWS credential name."
+              }
+            ]
+          },
+          "docs": "Update an AWS credential"
+        },
+        {
+          "info": {
+            "name": "AwsCredentials_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/planes/aws/:planeName/providers/System.AWS/credentials/:credentialName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The name of AWS plane"
+              },
+              {
+                "name": "credentialName",
+                "value": "",
+                "type": "path",
+                "description": "The AWS credential name."
+              }
+            ]
+          },
+          "docs": "Delete an AWS credential"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AzurePlanes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AzurePlanes_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/azure"
+          },
+          "docs": "List azure planes"
+        },
+        {
+          "info": {
+            "name": "AzurePlanes_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/azure/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Get a plane by name"
+        },
+        {
+          "info": {
+            "name": "AzurePlanes_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/planes/azure/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Create or update a plane"
+        },
+        {
+          "info": {
+            "name": "AzurePlanes_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/planes/azure/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Update a plane"
+        },
+        {
+          "info": {
+            "name": "AzurePlanes_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/planes/azure/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Delete a plane"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AzureCredentials",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AzureCredentials_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/azure/:planeName/providers/System.Azure/credentials",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the plane"
+              }
+            ]
+          },
+          "docs": "List Azure credentials"
+        },
+        {
+          "info": {
+            "name": "AzureCredentials_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/azure/:planeName/providers/System.Azure/credentials/:credentialName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the plane"
+              },
+              {
+                "name": "credentialName",
+                "value": "",
+                "type": "path",
+                "description": "The Azure credential name."
+              }
+            ]
+          },
+          "docs": "Get an Azure credential"
+        },
+        {
+          "info": {
+            "name": "AzureCredentials_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/planes/azure/:planeName/providers/System.Azure/credentials/:credentialName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the plane"
+              },
+              {
+                "name": "credentialName",
+                "value": "",
+                "type": "path",
+                "description": "The Azure credential name."
+              }
+            ]
+          },
+          "docs": "Create or update an Azure credential"
+        },
+        {
+          "info": {
+            "name": "AzureCredentials_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/planes/azure/:planeName/providers/System.Azure/credentials/:credentialName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the plane"
+              },
+              {
+                "name": "credentialName",
+                "value": "",
+                "type": "path",
+                "description": "The Azure credential name."
+              }
+            ]
+          },
+          "docs": "Update an Azure credential"
+        },
+        {
+          "info": {
+            "name": "AzureCredentials_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/planes/azure/:planeName/providers/System.Azure/credentials/:credentialName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the plane"
+              },
+              {
+                "name": "credentialName",
+                "value": "",
+                "type": "path",
+                "description": "The Azure credential name."
+              }
+            ]
+          },
+          "docs": "Delete an Azure credential"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "RadiusPlanes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "RadiusPlanes_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius"
+          },
+          "docs": "List Radius planes"
+        },
+        {
+          "info": {
+            "name": "RadiusPlanes_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Get a plane by name"
+        },
+        {
+          "info": {
+            "name": "RadiusPlanes_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/planes/radius/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Create or update a plane"
+        },
+        {
+          "info": {
+            "name": "RadiusPlanes_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/planes/radius/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Update a plane"
+        },
+        {
+          "info": {
+            "name": "RadiusPlanes_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/planes/radius/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Delete a plane"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ResourceProviders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ResourceProviders_ListProviderSummaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "List resource provider summaries. The resource provider summary aggregates the most commonly used information including locations, api versions and resource types."
+        },
+        {
+          "info": {
+            "name": "ResourceProviders_GetProviderSummary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/:resourceProviderName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              }
+            ]
+          },
+          "docs": "Get the specified resource provider summary. The resource provider summary aggregates the most commonly used information including locations, api versions and resource types."
+        },
+        {
+          "info": {
+            "name": "ResourceProviders_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "List resource providers."
+        },
+        {
+          "info": {
+            "name": "ResourceProviders_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              }
+            ]
+          },
+          "docs": "Get the specified resource provider."
+        },
+        {
+          "info": {
+            "name": "ResourceProviders_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              }
+            ]
+          },
+          "docs": "Create or update a resource provider"
+        },
+        {
+          "info": {
+            "name": "ResourceProviders_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              }
+            ]
+          },
+          "docs": "Delete a resource provider"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Locations_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/locations",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              }
+            ]
+          },
+          "docs": "List available locations for the specified resource provider."
+        },
+        {
+          "info": {
+            "name": "Locations_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/locations/:locationName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              },
+              {
+                "name": "locationName",
+                "value": "",
+                "type": "path",
+                "description": "The location name."
+              }
+            ]
+          },
+          "docs": "Get the specified location. The location resource represents a logical location where the resource provider operates."
+        },
+        {
+          "info": {
+            "name": "Locations_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/locations/:locationName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              },
+              {
+                "name": "locationName",
+                "value": "",
+                "type": "path",
+                "description": "The location name."
+              }
+            ]
+          },
+          "docs": "Create or update a location. The location resource represents a logical location where the resource provider operates."
+        },
+        {
+          "info": {
+            "name": "Locations_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/locations/:locationName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              },
+              {
+                "name": "locationName",
+                "value": "",
+                "type": "path",
+                "description": "The location name."
+              }
+            ]
+          },
+          "docs": "Delete a location. The location resource represents a logical location where the resource provider operates."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ResourceTypes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ResourceTypes_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/resourcetypes",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              }
+            ]
+          },
+          "docs": "List resource types."
+        },
+        {
+          "info": {
+            "name": "ResourceTypes_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/resourcetypes/:resourceTypeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              },
+              {
+                "name": "resourceTypeName",
+                "value": "",
+                "type": "path",
+                "description": "The resource type name."
+              }
+            ]
+          },
+          "docs": "Get the specified resource type."
+        },
+        {
+          "info": {
+            "name": "ResourceTypes_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/resourcetypes/:resourceTypeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              },
+              {
+                "name": "resourceTypeName",
+                "value": "",
+                "type": "path",
+                "description": "The resource type name."
+              }
+            ]
+          },
+          "docs": "Create or update a resource type"
+        },
+        {
+          "info": {
+            "name": "ResourceTypes_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/resourcetypes/:resourceTypeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              },
+              {
+                "name": "resourceTypeName",
+                "value": "",
+                "type": "path",
+                "description": "The resource type name."
+              }
+            ]
+          },
+          "docs": "Delete a resource type"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ApiVersions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ApiVersions_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/resourcetypes/:resourceTypeName/apiversions",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              },
+              {
+                "name": "resourceTypeName",
+                "value": "",
+                "type": "path",
+                "description": "The resource type name."
+              }
+            ]
+          },
+          "docs": "List API versions."
+        },
+        {
+          "info": {
+            "name": "ApiVersions_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/resourcetypes/:resourceTypeName/apiversions/:apiVersionName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              },
+              {
+                "name": "resourceTypeName",
+                "value": "",
+                "type": "path",
+                "description": "The resource type name."
+              },
+              {
+                "name": "apiVersionName",
+                "value": "",
+                "type": "path",
+                "description": "The API version name."
+              }
+            ]
+          },
+          "docs": "Get the specified API version."
+        },
+        {
+          "info": {
+            "name": "ApiVersions_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/resourcetypes/:resourceTypeName/apiversions/:apiVersionName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              },
+              {
+                "name": "resourceTypeName",
+                "value": "",
+                "type": "path",
+                "description": "The resource type name."
+              },
+              {
+                "name": "apiVersionName",
+                "value": "",
+                "type": "path",
+                "description": "The API version name."
+              }
+            ]
+          },
+          "docs": "Create or update an API version."
+        },
+        {
+          "info": {
+            "name": "ApiVersions_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/resourcetypes/:resourceTypeName/apiversions/:apiVersionName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              },
+              {
+                "name": "resourceTypeName",
+                "value": "",
+                "type": "path",
+                "description": "The resource type name."
+              },
+              {
+                "name": "apiVersionName",
+                "value": "",
+                "type": "path",
+                "description": "The API version name."
+              }
+            ]
+          },
+          "docs": "Delete an API version."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ResourceGroups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ResourceGroups_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/resourcegroups",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "List resource groups"
+        },
+        {
+          "info": {
+            "name": "ResourceGroups_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/resourcegroups/:resourceGroupName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of resource group"
+              }
+            ]
+          },
+          "docs": "Get a resource group"
+        },
+        {
+          "info": {
+            "name": "ResourceGroups_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/planes/radius/:planeName/resourcegroups/:resourceGroupName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of resource group"
+              }
+            ]
+          },
+          "docs": "Create or update a resource group"
+        },
+        {
+          "info": {
+            "name": "ResourceGroups_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/planes/radius/:planeName/resourcegroups/:resourceGroupName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of resource group"
+              }
+            ]
+          },
+          "docs": "Update a resource group"
+        },
+        {
+          "info": {
+            "name": "ResourceGroups_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/planes/radius/:planeName/resourcegroups/:resourceGroupName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of resource group"
+              }
+            ]
+          },
+          "docs": "Delete a resource group"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Resources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Resources_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/resourcegroups/:resourceGroupName/resources",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of resource group"
+              }
+            ]
+          },
+          "docs": "List resources in a resource group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
