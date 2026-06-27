@@ -108,7 +108,7 @@ common:
     url: https://docs.radapp.io/getting-started/
   - type: SourceCode
     url: https://github.com/radius-project/radius
-  - type: SignUp
+  - type: Signup
     url: https://docs.radapp.io/installation/
 maintainers:
   - FN: Kin Lane
