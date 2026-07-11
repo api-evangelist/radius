@@ -1,0 +1,24 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/radius-applications-core-openapi.json, openapi/radius-applications-dapr-openapi.json,
+  openapi/radius-applications-datastores-openapi.json, openapi/radius-applications-messaging-openapi.json,
+  openapi/radius-ucp-openapi.json
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - implicit
+schemes:
+- name: azure_auth
+  type: oauth2
+  flows:
+  - flow: implicit
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+    scopes: 1
+  description: Azure Active Directory OAuth2 Flow.
+  sources:
+  - openapi/radius-applications-core-openapi.json
+  - openapi/radius-applications-dapr-openapi.json
+  - openapi/radius-applications-datastores-openapi.json
+  - openapi/radius-applications-messaging-openapi.json
+  - openapi/radius-ucp-openapi.json
