@@ -1,0 +1,527 @@
+swagger: '2.0'
+info:
+  title: Applications.Core Management APIs ApiVersions Gateways API
+  version: 2023-10-01-preview
+  description: REST APIs for Applications.Core
+  x-typespec-generated:
+  - emitter: '@azure-tools/typespec-autorest'
+host: management.azure.com
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- azure_auth:
+  - user_impersonation
+tags:
+- name: Gateways
+paths:
+  /{rootScope}/providers/Applications.Core/gateways:
+    get:
+      operationId: Gateways_ListByScope
+      tags:
+      - Gateways
+      description: List GatewayResource resources by Scope
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - $ref: '#/parameters/RootScopeParameter'
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/GatewayResourceListResult'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        List gateway resources:
+          $ref: ./examples/Gateways_List.json
+        List gateway resources by rootScope:
+          $ref: ./examples/Gateways_ListByScope.json
+      x-ms-pageable:
+        nextLinkName: nextLink
+  /{rootScope}/providers/Applications.Core/gateways/{gatewayName}:
+    get:
+      operationId: Gateways_Get
+      tags:
+      - Gateways
+      description: Get a GatewayResource
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - $ref: '#/parameters/RootScopeParameter'
+      - name: gatewayName
+        in: path
+        description: Gateway name
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/GatewayResource'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Get an gateway resource:
+          $ref: ./examples/Gateways_Get.json
+    put:
+      operationId: Gateways_Create
+      tags:
+      - Gateways
+      description: Create a GatewayResource
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - $ref: '#/parameters/RootScopeParameter'
+      - name: gatewayName
+        in: path
+        description: Gateway name
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resource
+        in: body
+        description: Resource create parameters.
+        required: true
+        schema:
+          $ref: '#/definitions/GatewayResource'
+      responses:
+        '200':
+          description: Resource 'GatewayResource' update operation succeeded
+          schema:
+            $ref: '#/definitions/GatewayResource'
+        '201':
+          description: Resource 'GatewayResource' create operation succeeded
+          schema:
+            $ref: '#/definitions/GatewayResource'
+          headers:
+            Azure-AsyncOperation:
+              type: string
+              description: A link to the status monitor
+            Retry-After:
+              type: integer
+              format: int32
+              description: The Retry-After header can indicate how long the client should wait before polling the operation status.
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-long-running-operation-options:
+        final-state-via: azure-async-operation
+      x-ms-long-running-operation: true
+    patch:
+      operationId: Gateways_CreateOrUpdate
+      tags:
+      - Gateways
+      description: Update a GatewayResource
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - $ref: '#/parameters/RootScopeParameter'
+      - name: gatewayName
+        in: path
+        description: Gateway name
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: properties
+        in: body
+        description: The resource properties to be updated.
+        required: true
+        schema:
+          $ref: '#/definitions/GatewayResourceUpdate'
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/GatewayResource'
+        '202':
+          description: Resource update request accepted.
+          headers:
+            Location:
+              type: string
+              description: The Location header contains the URL where the status of the long running operation can be checked.
+            Retry-After:
+              type: integer
+              format: int32
+              description: The Retry-After header can indicate how long the client should wait before polling the operation status.
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Create or update a gateway resource:
+          $ref: ./examples/Gateways_CreateOrUpdate.json
+      x-ms-long-running-operation-options:
+        final-state-via: location
+      x-ms-long-running-operation: true
+    delete:
+      operationId: Gateways_Delete
+      tags:
+      - Gateways
+      description: Delete a GatewayResource
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - $ref: '#/parameters/RootScopeParameter'
+      - name: gatewayName
+        in: path
+        description: Gateway name
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      responses:
+        '202':
+          description: Resource deletion accepted.
+          headers:
+            Location:
+              type: string
+              description: The Location header contains the URL where the status of the long running operation can be checked.
+            Retry-After:
+              type: integer
+              format: int32
+              description: The Retry-After header can indicate how long the client should wait before polling the operation status.
+        '204':
+          description: Resource does not exist.
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Delete an gateway resource:
+          $ref: ./examples/Gateways_Delete.json
+      x-ms-long-running-operation-options:
+        final-state-via: location
+      x-ms-long-running-operation: true
+definitions:
+  GatewayResourceUpdate:
+    type: object
+    description: Concrete tracked resource types can be created by aliasing this type using a specific property type.
+    allOf:
+    - $ref: '#/definitions/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
+  GatewayTls:
+    type: object
+    description: TLS configuration definition for Gateway resource.
+    properties:
+      sslPassthrough:
+        type: boolean
+        description: If true, gateway lets the https traffic sslPassthrough to the backend servers for decryption.
+      minimumProtocolVersion:
+        type: string
+        description: TLS minimum protocol version (defaults to 1.2).
+        default: '1.2'
+        enum:
+        - '1.2'
+        - '1.3'
+        x-ms-enum:
+          name: TlsMinVersion
+          modelAsString: false
+          values:
+          - name: tls12
+            value: '1.2'
+            description: TLS Version 1.2
+          - name: tls13
+            value: '1.3'
+            description: TLS Version 1.3
+      certificateFrom:
+        type: string
+        description: The resource id for the secret containing the TLS certificate and key for the gateway.
+  Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
+    type: object
+    title: Tracked Resource
+    description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+    properties:
+      tags:
+        type: object
+        description: Resource tags.
+        additionalProperties:
+          type: string
+    allOf:
+    - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
+  GatewayHostname:
+    type: object
+    description: 'Declare hostname information for the Gateway. Leaving the hostname empty auto-assigns one: mygateway.myapp.PUBLICHOSTNAMEORIP.nip.io.'
+    properties:
+      prefix:
+        type: string
+        description: 'Specify a prefix for the hostname: myhostname.myapp.PUBLICHOSTNAMEORIP.nip.io. Mutually exclusive with ''fullyQualifiedHostname'' and will be overridden if both are defined.'
+      fullyQualifiedHostname:
+        type: string
+        description: 'Specify a fully-qualified domain name: myapp.mydomain.com. Mutually exclusive with ''prefix'' and will take priority if both are defined.'
+  GatewayProperties:
+    type: object
+    description: Gateway properties
+    properties:
+      environment:
+        type: string
+        description: Fully qualified resource ID for the environment that the application is linked to
+      application:
+        type: string
+        description: Fully qualified resource ID for the application
+      provisioningState:
+        $ref: '#/definitions/ProvisioningState'
+        description: The status of the asynchronous operation.
+        readOnly: true
+      status:
+        $ref: '#/definitions/ResourceStatus'
+        description: Status of a resource.
+        readOnly: true
+      internal:
+        type: boolean
+        description: Sets Gateway to not be exposed externally (no public IP address associated). Defaults to false (exposed to internet).
+      hostname:
+        $ref: '#/definitions/GatewayHostname'
+        description: 'Declare hostname information for the Gateway. Leaving the hostname empty auto-assigns one: mygateway.myapp.PUBLICHOSTNAMEORIP.nip.io.'
+      routes:
+        type: array
+        description: Routes attached to this Gateway
+        items:
+          $ref: '#/definitions/GatewayRoute'
+        x-ms-identifiers: []
+      tls:
+        $ref: '#/definitions/GatewayTls'
+        description: TLS configuration for the Gateway.
+      url:
+        type: string
+        description: URL of the gateway resource. Readonly
+        readOnly: true
+    required:
+    - application
+    - routes
+  ResourceStatus:
+    type: object
+    description: Status of a resource.
+    properties:
+      compute:
+        $ref: '#/definitions/EnvironmentCompute'
+        description: The compute resource associated with the resource.
+      recipe:
+        $ref: '#/definitions/RecipeStatus'
+        description: The recipe data at the time of deployment
+        readOnly: true
+      outputResources:
+        type: array
+        description: Properties of an output resource
+        items:
+          $ref: '#/definitions/OutputResource'
+        x-ms-identifiers: []
+  ProvisioningState:
+    type: string
+    description: Provisioning state of the resource at the time the operation was called
+    enum:
+    - Creating
+    - Updating
+    - Deleting
+    - Accepted
+    - Provisioning
+    - Succeeded
+    - Failed
+    - Canceled
+    x-ms-enum:
+      name: ProvisioningState
+      modelAsString: false
+      values:
+      - name: Creating
+        value: Creating
+        description: The resource is being created
+      - name: Updating
+        value: Updating
+        description: The resource is being updated
+      - name: Deleting
+        value: Deleting
+        description: The resource is being deleted
+      - name: Accepted
+        value: Accepted
+        description: The resource create request has been accepted
+      - name: Provisioning
+        value: Provisioning
+        description: The resource is being provisioned
+      - name: Succeeded
+        value: Succeeded
+        description: The resource has been successfully provisioned
+      - name: Failed
+        value: Failed
+        description: The resource provisioning has failed
+      - name: Canceled
+        value: Canceled
+        description: The resource provisioning has been canceled
+    readOnly: true
+  GatewayResource:
+    type: object
+    description: Concrete tracked resource types can be created by aliasing this type using a specific property type.
+    properties:
+      properties:
+        $ref: '#/definitions/GatewayProperties'
+        description: The resource-specific properties for this resource.
+        x-ms-client-flatten: true
+        x-ms-mutability:
+        - read
+        - create
+    required:
+    - properties
+    allOf:
+    - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+  IdentitySettings:
+    type: object
+    description: IdentitySettings is the external identity setting.
+    properties:
+      kind:
+        $ref: '#/definitions/IdentitySettingKind'
+        description: kind of identity setting
+      oidcIssuer:
+        type: string
+        description: The URI for your compute platform's OIDC issuer
+      resource:
+        type: string
+        description: The resource ID of the provisioned identity
+      managedIdentity:
+        type: array
+        description: The list of user assigned managed identities
+        items:
+          type: string
+    required:
+    - kind
+  RecipeStatus:
+    type: object
+    description: Recipe status at deployment time for a resource.
+    properties:
+      templateKind:
+        type: string
+        description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
+      templatePath:
+        type: string
+        description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
+      templateVersion:
+        type: string
+        description: TemplateVersion is the version number of the template.
+    required:
+    - templateKind
+    - templatePath
+  GatewayRoute:
+    type: object
+    description: Route attached to Gateway
+    properties:
+      path:
+        type: string
+        description: The path to match the incoming request path on. Ex - /myservice.
+      destination:
+        type: string
+        description: The URL or id of the service to route to. Ex - 'http://myservice'.
+      replacePrefix:
+        type: string
+        description: 'Optionally update the prefix when sending the request to the service. Ex - replacePrefix: ''/'' and path: ''/myservice'' will transform ''/myservice/myroute'' to ''/myroute'''
+      enableWebsockets:
+        type: boolean
+        description: Enables websocket support for the route. Defaults to false.
+      timeoutPolicy:
+        $ref: '#/definitions/GatewayRouteTimeoutPolicy'
+        description: The timeout policy for the route.
+  OutputResource:
+    type: object
+    description: Properties of an output resource.
+    properties:
+      localId:
+        type: string
+        description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
+      id:
+        type: string
+        description: The UCP resource ID of the underlying resource.
+      radiusManaged:
+        type: boolean
+        description: Determines whether Radius manages the lifecycle of the underlying resource.
+  EnvironmentCompute:
+    type: object
+    description: Represents backing compute resource
+    properties:
+      kind:
+        type: string
+        description: Discriminator property for EnvironmentCompute.
+      resourceId:
+        type: string
+        description: The resource id of the compute resource for application environment.
+      identity:
+        $ref: '#/definitions/IdentitySettings'
+        description: Configuration for supported external identity providers
+    discriminator: kind
+    required:
+    - kind
+  IdentitySettingKind:
+    type: string
+    description: IdentitySettingKind is the kind of supported external identity setting
+    enum:
+    - undefined
+    - azure.com.workload
+    - userAssigned
+    - systemAssigned
+    - systemAssignedUserAssigned
+    x-ms-enum:
+      name: IdentitySettingKind
+      modelAsString: false
+      values:
+      - name: undefined
+        value: undefined
+        description: undefined identity
+      - name: azure.com.workload
+        value: azure.com.workload
+        description: azure ad workload identity
+      - name: userAssigned
+        value: userAssigned
+        description: User assigned managed identity
+      - name: systemAssigned
+        value: systemAssigned
+        description: System assigned managed identity
+      - name: systemAssignedUserAssigned
+        value: systemAssignedUserAssigned
+        description: System assigned and user assigned managed identity
+  GatewayResourceListResult:
+    type: object
+    description: The response of a GatewayResource list operation.
+    properties:
+      value:
+        type: array
+        description: The GatewayResource items on this page
+        items:
+          $ref: '#/definitions/GatewayResource'
+      nextLink:
+        type: string
+        format: uri
+        description: The link to the next page of items
+    required:
+    - value
+  GatewayRouteTimeoutPolicy:
+    type: object
+    description: Gateway route timeout policy
+    properties:
+      request:
+        type: string
+        description: The request timeout in duration for the route. Defaults to 15 seconds.
+        pattern: ^(\d+(\.\d+)?(ns|us|µs|ms|s|m|h))+$
+      backendRequest:
+        type: string
+        description: The backend request timeout in duration for the route. Cannot be greater than the request timeout.
+        pattern: ^(\d+(\.\d+)?(ns|us|µs|ms|s|m|h))+$
+parameters:
+  RootScopeParameter:
+    name: rootScope
+    in: path
+    description: The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}
+    required: true
+    type: string
+    minLength: 1
+    x-ms-parameter-location: client
+    x-ms-skip-url-encoding: true
+securityDefinitions:
+  azure_auth:
+    type: oauth2
+    description: Azure Active Directory OAuth2 Flow.
+    flow: implicit
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+    scopes:
+      user_impersonation: impersonate your user account

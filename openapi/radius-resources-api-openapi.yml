@@ -1,0 +1,107 @@
+swagger: '2.0'
+info:
+  title: Applications.Core Management APIs ApiVersions Resources API
+  version: 2023-10-01-preview
+  description: REST APIs for Applications.Core
+  x-typespec-generated:
+  - emitter: '@azure-tools/typespec-autorest'
+host: management.azure.com
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- azure_auth:
+  - user_impersonation
+tags:
+- name: Resources
+paths:
+  /planes/radius/{planeName}/resourcegroups/{resourceGroupName}/resources:
+    get:
+      operationId: Resources_List
+      tags:
+      - Resources
+      description: List resources in a resource group
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resourceGroupName
+        in: path
+        description: The name of resource group
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/GenericResourceListResult'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        List resources in a resource group.:
+          $ref: ./examples/Resources_List.json
+      x-ms-pageable:
+        nextLinkName: nextLink
+definitions:
+  GenericResourceListResult:
+    type: object
+    description: The response of a GenericResource list operation.
+    properties:
+      value:
+        type: array
+        description: The GenericResource items on this page
+        items:
+          $ref: '#/definitions/GenericResource'
+      nextLink:
+        type: string
+        format: uri
+        description: The link to the next page of items
+    required:
+    - value
+  ResourceNameString:
+    type: string
+    description: The resource name
+    maxLength: 63
+    pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+  GenericResource:
+    type: object
+    description: Represents resource data.
+    properties:
+      name:
+        $ref: '#/definitions/ResourceNameString'
+        description: The name of resource
+        readOnly: true
+    required:
+    - name
+    allOf:
+    - type: object
+      description: Concrete proxy resource types can be created by aliasing this type using a specific property type.
+      properties:
+        properties:
+          $ref: '#/definitions/ResourceProperties'
+          description: The resource-specific properties for this resource.
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ProxyResource
+  ResourceProperties:
+    type: object
+    description: The resource properties
+securityDefinitions:
+  azure_auth:
+    type: oauth2
+    description: Azure Active Directory OAuth2 Flow.
+    flow: implicit
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+    scopes:
+      user_impersonation: impersonate your user account

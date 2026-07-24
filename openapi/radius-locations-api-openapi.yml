@@ -1,0 +1,310 @@
+swagger: '2.0'
+info:
+  title: Applications.Core Management APIs ApiVersions Locations API
+  version: 2023-10-01-preview
+  description: REST APIs for Applications.Core
+  x-typespec-generated:
+  - emitter: '@azure-tools/typespec-autorest'
+host: management.azure.com
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- azure_auth:
+  - user_impersonation
+tags:
+- name: Locations
+paths:
+  /planes/radius/{planeName}/providers/System.Resources/resourceproviders/{resourceProviderName}/locations:
+    get:
+      operationId: Locations_List
+      tags:
+      - Locations
+      description: List available locations for the specified resource provider.
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resourceProviderName
+        in: path
+        description: 'The resource provider name. This is also the resource provider namespace. Example: ''Applications.Datastores''.'
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))\.([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))?$
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/LocationResourceListResult'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        List locations supported by a resource provider.:
+          $ref: ./examples/Locations_List.json
+      x-ms-pageable:
+        nextLinkName: nextLink
+  /planes/radius/{planeName}/providers/System.Resources/resourceproviders/{resourceProviderName}/locations/{locationName}:
+    get:
+      operationId: Locations_Get
+      tags:
+      - Locations
+      description: Get the specified location. The location resource represents a logical location where the resource provider operates.
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resourceProviderName
+        in: path
+        description: 'The resource provider name. This is also the resource provider namespace. Example: ''Applications.Datastores''.'
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))\.([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))?$
+      - name: locationName
+        in: path
+        description: The location name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z][A-Za-z0-9]*$
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/LocationResource'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Gets a location supported by a resource provider.:
+          $ref: ./examples/Locations_Get.json
+    put:
+      operationId: Locations_CreateOrUpdate
+      tags:
+      - Locations
+      description: Create or update a location. The location resource represents a logical location where the resource provider operates.
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resourceProviderName
+        in: path
+        description: 'The resource provider name. This is also the resource provider namespace. Example: ''Applications.Datastores''.'
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))\.([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))?$
+      - name: locationName
+        in: path
+        description: The location name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z][A-Za-z0-9]*$
+      - name: resource
+        in: body
+        description: Resource create parameters.
+        required: true
+        schema:
+          $ref: '#/definitions/LocationResource'
+      responses:
+        '200':
+          description: Resource 'LocationResource' update operation succeeded
+          schema:
+            $ref: '#/definitions/LocationResource'
+        '201':
+          description: Resource 'LocationResource' create operation succeeded
+          schema:
+            $ref: '#/definitions/LocationResource'
+          headers:
+            Retry-After:
+              type: integer
+              format: int32
+              description: The Retry-After header can indicate how long the client should wait before polling the operation status.
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Create or update a location supported by a resource provider.:
+          $ref: ./examples/Locations_CreateOrUpdate.json
+      x-ms-long-running-operation-options:
+        final-state-via: azure-async-operation
+      x-ms-long-running-operation: true
+    delete:
+      operationId: Locations_Delete
+      tags:
+      - Locations
+      description: Delete a location. The location resource represents a logical location where the resource provider operates.
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resourceProviderName
+        in: path
+        description: 'The resource provider name. This is also the resource provider namespace. Example: ''Applications.Datastores''.'
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))\.([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))?$
+      - name: locationName
+        in: path
+        description: The location name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z][A-Za-z0-9]*$
+      responses:
+        '200':
+          description: Resource deleted successfully.
+        '202':
+          description: Resource deletion accepted.
+          headers:
+            Location:
+              type: string
+              description: The Location header contains the URL where the status of the long running operation can be checked.
+            Retry-After:
+              type: integer
+              format: int32
+              description: The Retry-After header can indicate how long the client should wait before polling the operation status.
+        '204':
+          description: Resource does not exist.
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Delete a location supported by a resource provider.:
+          $ref: ./examples/Locations_Delete.json
+      x-ms-long-running-operation-options:
+        final-state-via: location
+      x-ms-long-running-operation: true
+definitions:
+  LocationResourceTypeApiVersion:
+    type: object
+    description: The configuration for an API version of an resource type.
+  LocationResourceType:
+    type: object
+    description: The configuration for a resource type in a specific location.
+    properties:
+      apiVersions:
+        type: object
+        description: The configuration for API versions of a resource type supported by the location.
+        additionalProperties:
+          $ref: '#/definitions/LocationResourceTypeApiVersion'
+  ProvisioningState:
+    type: string
+    description: Provisioning state of the resource at the time the operation was called
+    enum:
+    - Creating
+    - Updating
+    - Deleting
+    - Accepted
+    - Provisioning
+    - Succeeded
+    - Failed
+    - Canceled
+    x-ms-enum:
+      name: ProvisioningState
+      modelAsString: false
+      values:
+      - name: Creating
+        value: Creating
+        description: The resource is being created
+      - name: Updating
+        value: Updating
+        description: The resource is being updated
+      - name: Deleting
+        value: Deleting
+        description: The resource is being deleted
+      - name: Accepted
+        value: Accepted
+        description: The resource create request has been accepted
+      - name: Provisioning
+        value: Provisioning
+        description: The resource is being provisioned
+      - name: Succeeded
+        value: Succeeded
+        description: The resource has been successfully provisioned
+      - name: Failed
+        value: Failed
+        description: The resource provisioning has failed
+      - name: Canceled
+        value: Canceled
+        description: The resource provisioning has been canceled
+    readOnly: true
+  LocationResourceListResult:
+    type: object
+    description: The response of a LocationResource list operation.
+    properties:
+      value:
+        type: array
+        description: The LocationResource items on this page
+        items:
+          $ref: '#/definitions/LocationResource'
+      nextLink:
+        type: string
+        format: uri
+        description: The link to the next page of items
+    required:
+    - value
+  LocationProperties:
+    type: object
+    description: The properties of a location.
+    properties:
+      provisioningState:
+        $ref: '#/definitions/ProvisioningState'
+        description: The status of the asynchronous operation.
+        readOnly: true
+      address:
+        type: string
+        description: Address of a resource provider implementation.
+      resourceTypes:
+        type: object
+        description: Configuration for resource types supported by the location.
+        additionalProperties:
+          $ref: '#/definitions/LocationResourceType'
+  LocationResource:
+    type: object
+    description: The resource type for defining a location of the containing resource provider. The location resource represents a logical location where the resource provider operates.
+    properties:
+      properties:
+        $ref: '#/definitions/LocationProperties'
+        description: The resource-specific properties for this resource.
+    allOf:
+    - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ProxyResource
+securityDefinitions:
+  azure_auth:
+    type: oauth2
+    description: Azure Active Directory OAuth2 Flow.
+    flow: implicit
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+    scopes:
+      user_impersonation: impersonate your user account

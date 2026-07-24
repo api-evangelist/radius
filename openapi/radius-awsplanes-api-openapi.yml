@@ -1,0 +1,279 @@
+swagger: '2.0'
+info:
+  title: Applications.Core Management APIs ApiVersions AwsPlanes API
+  version: 2023-10-01-preview
+  description: REST APIs for Applications.Core
+  x-typespec-generated:
+  - emitter: '@azure-tools/typespec-autorest'
+host: management.azure.com
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- azure_auth:
+  - user_impersonation
+tags:
+- name: AwsPlanes
+paths:
+  /planes/aws:
+    get:
+      operationId: AwsPlanes_List
+      tags:
+      - AwsPlanes
+      description: List AWS planes
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/AwsPlaneResourceListResult'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-pageable:
+        nextLinkName: nextLink
+  /planes/aws/{planeName}:
+    get:
+      operationId: AwsPlanes_Get
+      tags:
+      - AwsPlanes
+      description: Get a plane by name
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/AwsPlaneResource'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+    put:
+      operationId: AwsPlanes_CreateOrUpdate
+      tags:
+      - AwsPlanes
+      description: Create or update a plane
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resource
+        in: body
+        description: Resource create parameters.
+        required: true
+        schema:
+          $ref: '#/definitions/AwsPlaneResource'
+      responses:
+        '200':
+          description: Resource 'AwsPlaneResource' update operation succeeded
+          schema:
+            $ref: '#/definitions/AwsPlaneResource'
+        '201':
+          description: Resource 'AwsPlaneResource' create operation succeeded
+          schema:
+            $ref: '#/definitions/AwsPlaneResource'
+          headers:
+            Retry-After:
+              type: integer
+              format: int32
+              description: The Retry-After header can indicate how long the client should wait before polling the operation status.
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-long-running-operation-options:
+        final-state-via: azure-async-operation
+      x-ms-long-running-operation: true
+    patch:
+      operationId: AwsPlanes_Update
+      tags:
+      - AwsPlanes
+      description: Update a plane
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: properties
+        in: body
+        description: The resource properties to be updated.
+        required: true
+        schema:
+          $ref: '#/definitions/AwsPlaneResourceTagsUpdate'
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/AwsPlaneResource'
+        '202':
+          description: Resource update request accepted.
+          headers:
+            Location:
+              type: string
+              description: The Location header contains the URL where the status of the long running operation can be checked.
+            Retry-After:
+              type: integer
+              format: int32
+              description: The Retry-After header can indicate how long the client should wait before polling the operation status.
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-long-running-operation-options:
+        final-state-via: location
+      x-ms-long-running-operation: true
+    delete:
+      operationId: AwsPlanes_Delete
+      tags:
+      - AwsPlanes
+      description: Delete a plane
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      responses:
+        '200':
+          description: Resource deleted successfully.
+        '202':
+          description: Resource deletion accepted.
+          headers:
+            Location:
+              type: string
+              description: The Location header contains the URL where the status of the long running operation can be checked.
+            Retry-After:
+              type: integer
+              format: int32
+              description: The Retry-After header can indicate how long the client should wait before polling the operation status.
+        '204':
+          description: Resource does not exist.
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-long-running-operation-options:
+        final-state-via: location
+      x-ms-long-running-operation: true
+definitions:
+  AwsPlaneResourceListResult:
+    type: object
+    description: The response of a AwsPlaneResource list operation.
+    properties:
+      value:
+        type: array
+        description: The AwsPlaneResource items on this page
+        items:
+          $ref: '#/definitions/AwsPlaneResource'
+      nextLink:
+        type: string
+        format: uri
+        description: The link to the next page of items
+    required:
+    - value
+  ProvisioningState:
+    type: string
+    description: Provisioning state of the resource at the time the operation was called
+    enum:
+    - Creating
+    - Updating
+    - Deleting
+    - Accepted
+    - Provisioning
+    - Succeeded
+    - Failed
+    - Canceled
+    x-ms-enum:
+      name: ProvisioningState
+      modelAsString: false
+      values:
+      - name: Creating
+        value: Creating
+        description: The resource is being created
+      - name: Updating
+        value: Updating
+        description: The resource is being updated
+      - name: Deleting
+        value: Deleting
+        description: The resource is being deleted
+      - name: Accepted
+        value: Accepted
+        description: The resource create request has been accepted
+      - name: Provisioning
+        value: Provisioning
+        description: The resource is being provisioned
+      - name: Succeeded
+        value: Succeeded
+        description: The resource has been successfully provisioned
+      - name: Failed
+        value: Failed
+        description: The resource provisioning has failed
+      - name: Canceled
+        value: Canceled
+        description: The resource provisioning has been canceled
+    readOnly: true
+  AwsPlaneResourceProperties:
+    type: object
+    description: The Plane properties.
+    properties:
+      provisioningState:
+        $ref: '#/definitions/ProvisioningState'
+        description: The status of the asynchronous operation.
+        readOnly: true
+  AwsPlaneResource:
+    type: object
+    description: The AWS plane resource
+    properties:
+      properties:
+        $ref: '#/definitions/AwsPlaneResourceProperties'
+        description: The resource-specific properties for this resource.
+        x-ms-client-flatten: true
+        x-ms-mutability:
+        - read
+        - create
+    required:
+    - properties
+    allOf:
+    - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+  AwsPlaneResourceTagsUpdate:
+    type: object
+    description: The type used for updating tags in AwsPlaneResource resources.
+    properties:
+      tags:
+        type: object
+        description: Resource tags.
+        additionalProperties:
+          type: string
+securityDefinitions:
+  azure_auth:
+    type: oauth2
+    description: Azure Active Directory OAuth2 Flow.
+    flow: implicit
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+    scopes:
+      user_impersonation: impersonate your user account

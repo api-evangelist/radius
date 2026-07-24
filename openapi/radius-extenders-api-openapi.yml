@@ -1,0 +1,522 @@
+swagger: '2.0'
+info:
+  title: Applications.Core Management APIs ApiVersions Extenders API
+  version: 2023-10-01-preview
+  description: REST APIs for Applications.Core
+  x-typespec-generated:
+  - emitter: '@azure-tools/typespec-autorest'
+host: management.azure.com
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- azure_auth:
+  - user_impersonation
+tags:
+- name: Extenders
+paths:
+  /{rootScope}/providers/Applications.Core/extenders:
+    get:
+      operationId: Extenders_ListByScope
+      tags:
+      - Extenders
+      description: List ExtenderResource resources by Scope
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - $ref: '#/parameters/RootScopeParameter'
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/ExtenderResourceListResult'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        List extender resources by resource group:
+          $ref: ./examples/Extenders_List.json
+        List extender resources by rootScope:
+          $ref: ./examples/Extenders_ListByRootScope.json
+      x-ms-pageable:
+        nextLinkName: nextLink
+  /{rootScope}/providers/Applications.Core/extenders/{extenderName}:
+    get:
+      operationId: Extenders_Get
+      tags:
+      - Extenders
+      description: Get a ExtenderResource
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - $ref: '#/parameters/RootScopeParameter'
+      - name: extenderName
+        in: path
+        description: The name of the ExtenderResource portable resource
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/ExtenderResource'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Get an extender resource:
+          $ref: ./examples/Extenders_Get.json
+    put:
+      operationId: Extenders_CreateOrUpdate
+      tags:
+      - Extenders
+      description: Create a ExtenderResource
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - $ref: '#/parameters/RootScopeParameter'
+      - name: extenderName
+        in: path
+        description: The name of the ExtenderResource portable resource
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resource
+        in: body
+        description: Resource create parameters.
+        required: true
+        schema:
+          $ref: '#/definitions/ExtenderResource'
+      responses:
+        '200':
+          description: Resource 'ExtenderResource' update operation succeeded
+          schema:
+            $ref: '#/definitions/ExtenderResource'
+        '201':
+          description: Resource 'ExtenderResource' create operation succeeded
+          schema:
+            $ref: '#/definitions/ExtenderResource'
+          headers:
+            Azure-AsyncOperation:
+              type: string
+              description: A link to the status monitor
+            Retry-After:
+              type: integer
+              format: int32
+              description: The Retry-After header can indicate how long the client should wait before polling the operation status.
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Create or Update an extender resource:
+          $ref: ./examples/Extenders_CreateOrUpdate.json
+        Create or Update an extender resource with recipe:
+          $ref: ./examples/Extenders_CreateOrUpdateWithRecipe.json
+      x-ms-long-running-operation-options:
+        final-state-via: azure-async-operation
+      x-ms-long-running-operation: true
+    patch:
+      operationId: Extenders_Update
+      tags:
+      - Extenders
+      description: Update a ExtenderResource
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - $ref: '#/parameters/RootScopeParameter'
+      - name: extenderName
+        in: path
+        description: The name of the ExtenderResource portable resource
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: properties
+        in: body
+        description: The resource properties to be updated.
+        required: true
+        schema:
+          $ref: '#/definitions/ExtenderResourceUpdate'
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/ExtenderResource'
+        '202':
+          description: Resource update request accepted.
+          headers:
+            Location:
+              type: string
+              description: The Location header contains the URL where the status of the long running operation can be checked.
+            Retry-After:
+              type: integer
+              format: int32
+              description: The Retry-After header can indicate how long the client should wait before polling the operation status.
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Update an extender resource:
+          $ref: ./examples/Extenders_Update.json
+      x-ms-long-running-operation-options:
+        final-state-via: location
+      x-ms-long-running-operation: true
+    delete:
+      operationId: Extenders_Delete
+      tags:
+      - Extenders
+      description: Delete a ExtenderResource
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - $ref: '#/parameters/RootScopeParameter'
+      - name: extenderName
+        in: path
+        description: The name of the ExtenderResource portable resource
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      responses:
+        '202':
+          description: Resource deletion accepted.
+          headers:
+            Location:
+              type: string
+              description: The Location header contains the URL where the status of the long running operation can be checked.
+            Retry-After:
+              type: integer
+              format: int32
+              description: The Retry-After header can indicate how long the client should wait before polling the operation status.
+        '204':
+          description: Resource does not exist.
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Delete an extender resource:
+          $ref: ./examples/Extenders_Delete.json
+      x-ms-long-running-operation-options:
+        final-state-via: location
+      x-ms-long-running-operation: true
+  /{rootScope}/providers/Applications.Core/extenders/{extenderName}/listSecrets:
+    post:
+      operationId: Extenders_ListSecrets
+      tags:
+      - Extenders
+      description: Lists secrets values for the specified Extender resource
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - $ref: '#/parameters/RootScopeParameter'
+      - name: extenderName
+        in: path
+        description: The name of the ExtenderResource portable resource
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: body
+        in: body
+        description: The content of the action request
+        required: true
+        schema:
+          type: object
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/ExtenderListSecretResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        List the secrets from extender resources:
+          $ref: ./examples/Extenders_ListSecrets.json
+definitions:
+  ExtenderProperties:
+    type: object
+    description: ExtenderResource portable resource properties
+    properties:
+      environment:
+        type: string
+        description: Fully qualified resource ID for the environment that the portable resource is linked to
+      application:
+        type: string
+        description: Fully qualified resource ID for the application that the portable resource is consumed by (if applicable)
+      provisioningState:
+        $ref: '#/definitions/ProvisioningState'
+        description: The status of the asynchronous operation.
+        readOnly: true
+      status:
+        $ref: '#/definitions/ResourceStatus'
+        description: Status of a resource.
+        readOnly: true
+      secrets:
+        type: object
+        description: The secrets for referenced resource
+      recipe:
+        $ref: '#/definitions/Recipe'
+        description: The recipe used to automatically deploy underlying infrastructure for the extender portable resource
+      resourceProvisioning:
+        $ref: '#/definitions/ResourceProvisioning'
+        description: Specifies how the underlying service/resource is provisioned and managed.
+    required:
+    - environment
+    allOf:
+    - type: object
+      additionalProperties: {}
+  ResourceProvisioning:
+    type: string
+    description: Specifies how the underlying service/resource is provisioned and managed. Available values are 'recipe', where Radius manages the lifecycle of the resource through a Recipe, and 'manual', where a user manages the resource and provides the values.
+    enum:
+    - recipe
+    - manual
+    x-ms-enum:
+      name: ResourceProvisioning
+      modelAsString: false
+      values:
+      - name: recipe
+        value: recipe
+        description: The resource lifecycle will be managed by Radius
+      - name: manual
+        value: manual
+        description: The resource lifecycle will be managed by the user
+  ExtenderResourceListResult:
+    type: object
+    description: The response of a ExtenderResource list operation.
+    properties:
+      value:
+        type: array
+        description: The ExtenderResource items on this page
+        items:
+          $ref: '#/definitions/ExtenderResource'
+      nextLink:
+        type: string
+        format: uri
+        description: The link to the next page of items
+    required:
+    - value
+  Recipe:
+    type: object
+    description: The recipe used to automatically deploy underlying infrastructure for a portable resource
+    properties:
+      name:
+        type: string
+        description: The name of the recipe within the environment to use
+      parameters:
+        type: object
+        description: Key/value parameters to pass into the recipe at deployment
+    required:
+    - name
+  Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
+    type: object
+    title: Tracked Resource
+    description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+    properties:
+      tags:
+        type: object
+        description: Resource tags.
+        additionalProperties:
+          type: string
+    allOf:
+    - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
+  ExtenderResourceUpdate:
+    type: object
+    description: ExtenderResource portable resource
+    allOf:
+    - $ref: '#/definitions/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
+  ResourceStatus:
+    type: object
+    description: Status of a resource.
+    properties:
+      compute:
+        $ref: '#/definitions/EnvironmentCompute'
+        description: The compute resource associated with the resource.
+      recipe:
+        $ref: '#/definitions/RecipeStatus'
+        description: The recipe data at the time of deployment
+        readOnly: true
+      outputResources:
+        type: array
+        description: Properties of an output resource
+        items:
+          $ref: '#/definitions/OutputResource'
+        x-ms-identifiers: []
+  ProvisioningState:
+    type: string
+    description: Provisioning state of the resource at the time the operation was called
+    enum:
+    - Creating
+    - Updating
+    - Deleting
+    - Accepted
+    - Provisioning
+    - Succeeded
+    - Failed
+    - Canceled
+    x-ms-enum:
+      name: ProvisioningState
+      modelAsString: false
+      values:
+      - name: Creating
+        value: Creating
+        description: The resource is being created
+      - name: Updating
+        value: Updating
+        description: The resource is being updated
+      - name: Deleting
+        value: Deleting
+        description: The resource is being deleted
+      - name: Accepted
+        value: Accepted
+        description: The resource create request has been accepted
+      - name: Provisioning
+        value: Provisioning
+        description: The resource is being provisioned
+      - name: Succeeded
+        value: Succeeded
+        description: The resource has been successfully provisioned
+      - name: Failed
+        value: Failed
+        description: The resource provisioning has failed
+      - name: Canceled
+        value: Canceled
+        description: The resource provisioning has been canceled
+    readOnly: true
+  IdentitySettings:
+    type: object
+    description: IdentitySettings is the external identity setting.
+    properties:
+      kind:
+        $ref: '#/definitions/IdentitySettingKind'
+        description: kind of identity setting
+      oidcIssuer:
+        type: string
+        description: The URI for your compute platform's OIDC issuer
+      resource:
+        type: string
+        description: The resource ID of the provisioned identity
+      managedIdentity:
+        type: array
+        description: The list of user assigned managed identities
+        items:
+          type: string
+    required:
+    - kind
+  RecipeStatus:
+    type: object
+    description: Recipe status at deployment time for a resource.
+    properties:
+      templateKind:
+        type: string
+        description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
+      templatePath:
+        type: string
+        description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
+      templateVersion:
+        type: string
+        description: TemplateVersion is the version number of the template.
+    required:
+    - templateKind
+    - templatePath
+  ExtenderListSecretResponse:
+    type: object
+    description: Response for list secrets API call
+    additionalProperties: {}
+  OutputResource:
+    type: object
+    description: Properties of an output resource.
+    properties:
+      localId:
+        type: string
+        description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
+      id:
+        type: string
+        description: The UCP resource ID of the underlying resource.
+      radiusManaged:
+        type: boolean
+        description: Determines whether Radius manages the lifecycle of the underlying resource.
+  EnvironmentCompute:
+    type: object
+    description: Represents backing compute resource
+    properties:
+      kind:
+        type: string
+        description: Discriminator property for EnvironmentCompute.
+      resourceId:
+        type: string
+        description: The resource id of the compute resource for application environment.
+      identity:
+        $ref: '#/definitions/IdentitySettings'
+        description: Configuration for supported external identity providers
+    discriminator: kind
+    required:
+    - kind
+  IdentitySettingKind:
+    type: string
+    description: IdentitySettingKind is the kind of supported external identity setting
+    enum:
+    - undefined
+    - azure.com.workload
+    - userAssigned
+    - systemAssigned
+    - systemAssignedUserAssigned
+    x-ms-enum:
+      name: IdentitySettingKind
+      modelAsString: false
+      values:
+      - name: undefined
+        value: undefined
+        description: undefined identity
+      - name: azure.com.workload
+        value: azure.com.workload
+        description: azure ad workload identity
+      - name: userAssigned
+        value: userAssigned
+        description: User assigned managed identity
+      - name: systemAssigned
+        value: systemAssigned
+        description: System assigned managed identity
+      - name: systemAssignedUserAssigned
+        value: systemAssignedUserAssigned
+        description: System assigned and user assigned managed identity
+  ExtenderResource:
+    type: object
+    description: ExtenderResource portable resource
+    properties:
+      properties:
+        $ref: '#/definitions/ExtenderProperties'
+        description: The resource-specific properties for this resource.
+        x-ms-client-flatten: true
+        x-ms-mutability:
+        - read
+        - create
+    required:
+    - properties
+    allOf:
+    - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+parameters:
+  RootScopeParameter:
+    name: rootScope
+    in: path
+    description: The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}
+    required: true
+    type: string
+    minLength: 1
+    x-ms-parameter-location: client
+    x-ms-skip-url-encoding: true
+securityDefinitions:
+  azure_auth:
+    type: oauth2
+    description: Azure Active Directory OAuth2 Flow.
+    flow: implicit
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+    scopes:
+      user_impersonation: impersonate your user account

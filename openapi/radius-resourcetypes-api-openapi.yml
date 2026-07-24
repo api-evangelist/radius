@@ -1,0 +1,311 @@
+swagger: '2.0'
+info:
+  title: Applications.Core Management APIs ApiVersions ResourceTypes API
+  version: 2023-10-01-preview
+  description: REST APIs for Applications.Core
+  x-typespec-generated:
+  - emitter: '@azure-tools/typespec-autorest'
+host: management.azure.com
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- azure_auth:
+  - user_impersonation
+tags:
+- name: ResourceTypes
+paths:
+  /planes/radius/{planeName}/providers/System.Resources/resourceproviders/{resourceProviderName}/resourcetypes:
+    get:
+      operationId: ResourceTypes_List
+      tags:
+      - ResourceTypes
+      description: List resource types.
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resourceProviderName
+        in: path
+        description: 'The resource provider name. This is also the resource provider namespace. Example: ''Applications.Datastores''.'
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))\.([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))?$
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/ResourceTypeResourceListResult'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        List resource types defined by a resource provider.:
+          $ref: ./examples/ResourceTypes_List.json
+      x-ms-pageable:
+        nextLinkName: nextLink
+  ? /planes/radius/{planeName}/providers/System.Resources/resourceproviders/{resourceProviderName}/resourcetypes/{resourceTypeName}
+  : get:
+      operationId: ResourceTypes_Get
+      tags:
+      - ResourceTypes
+      description: Get the specified resource type.
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resourceProviderName
+        in: path
+        description: 'The resource provider name. This is also the resource provider namespace. Example: ''Applications.Datastores''.'
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))\.([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))?$
+      - name: resourceTypeName
+        in: path
+        description: The resource type name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))$
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/ResourceTypeResource'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Gets a resource type defined by a resource provider.:
+          $ref: ./examples/ResourceTypes_Get.json
+    put:
+      operationId: ResourceTypes_CreateOrUpdate
+      tags:
+      - ResourceTypes
+      description: Create or update a resource type
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resourceProviderName
+        in: path
+        description: 'The resource provider name. This is also the resource provider namespace. Example: ''Applications.Datastores''.'
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))\.([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))?$
+      - name: resourceTypeName
+        in: path
+        description: The resource type name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))$
+      - name: resource
+        in: body
+        description: Resource create parameters.
+        required: true
+        schema:
+          $ref: '#/definitions/ResourceTypeResource'
+      responses:
+        '200':
+          description: Resource 'ResourceTypeResource' update operation succeeded
+          schema:
+            $ref: '#/definitions/ResourceTypeResource'
+        '201':
+          description: Resource 'ResourceTypeResource' create operation succeeded
+          schema:
+            $ref: '#/definitions/ResourceTypeResource'
+          headers:
+            Retry-After:
+              type: integer
+              format: int32
+              description: The Retry-After header can indicate how long the client should wait before polling the operation status.
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Create or update a resource type defined by a resource provider.:
+          $ref: ./examples/ResourceTypes_CreateOrUpdate.json
+      x-ms-long-running-operation-options:
+        final-state-via: azure-async-operation
+      x-ms-long-running-operation: true
+    delete:
+      operationId: ResourceTypes_Delete
+      tags:
+      - ResourceTypes
+      description: Delete a resource type
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resourceProviderName
+        in: path
+        description: 'The resource provider name. This is also the resource provider namespace. Example: ''Applications.Datastores''.'
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))\.([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))?$
+      - name: resourceTypeName
+        in: path
+        description: The resource type name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))$
+      responses:
+        '200':
+          description: Resource deleted successfully.
+        '202':
+          description: Resource deletion accepted.
+          headers:
+            Location:
+              type: string
+              description: The Location header contains the URL where the status of the long running operation can be checked.
+            Retry-After:
+              type: integer
+              format: int32
+              description: The Retry-After header can indicate how long the client should wait before polling the operation status.
+        '204':
+          description: Resource does not exist.
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Delete a resource type defined by a resource provider.:
+          $ref: ./examples/ResourceTypes_Delete.json
+      x-ms-long-running-operation-options:
+        final-state-via: location
+      x-ms-long-running-operation: true
+definitions:
+  ResourceTypeResourceListResult:
+    type: object
+    description: The response of a ResourceTypeResource list operation.
+    properties:
+      value:
+        type: array
+        description: The ResourceTypeResource items on this page
+        items:
+          $ref: '#/definitions/ResourceTypeResource'
+      nextLink:
+        type: string
+        format: uri
+        description: The link to the next page of items
+    required:
+    - value
+  ResourceTypeProperties:
+    type: object
+    description: The properties of a resource type.
+    properties:
+      provisioningState:
+        $ref: '#/definitions/ProvisioningState'
+        description: The status of the asynchronous operation.
+        readOnly: true
+      capabilities:
+        type: array
+        description: The resource type capabilities.
+        items:
+          $ref: '#/definitions/Capability'
+      defaultApiVersion:
+        $ref: '#/definitions/ApiVersionNameString'
+        description: The default api version for the resource type.
+      description:
+        type: string
+        description: Description of the resource type.
+  ApiVersionNameString:
+    type: string
+    description: 'The resource type API version. Example: ''2023-10-01-preview''.'
+    maxLength: 63
+    pattern: ^\d{4}-\d{2}-\d{2}(-preview)?$
+  ProvisioningState:
+    type: string
+    description: Provisioning state of the resource at the time the operation was called
+    enum:
+    - Creating
+    - Updating
+    - Deleting
+    - Accepted
+    - Provisioning
+    - Succeeded
+    - Failed
+    - Canceled
+    x-ms-enum:
+      name: ProvisioningState
+      modelAsString: false
+      values:
+      - name: Creating
+        value: Creating
+        description: The resource is being created
+      - name: Updating
+        value: Updating
+        description: The resource is being updated
+      - name: Deleting
+        value: Deleting
+        description: The resource is being deleted
+      - name: Accepted
+        value: Accepted
+        description: The resource create request has been accepted
+      - name: Provisioning
+        value: Provisioning
+        description: The resource is being provisioned
+      - name: Succeeded
+        value: Succeeded
+        description: The resource has been successfully provisioned
+      - name: Failed
+        value: Failed
+        description: The resource provisioning has failed
+      - name: Canceled
+        value: Canceled
+        description: The resource provisioning has been canceled
+    readOnly: true
+  Capability:
+    type: string
+    description: A capability defines the behaviors and features that a resource type supports.
+    maxLength: 63
+    pattern: ^[A-Za-z][A-Za-z0-9]*$
+  ResourceTypeResource:
+    type: object
+    description: The resource type for defining a resource type supported by the containing resource provider.
+    properties:
+      properties:
+        $ref: '#/definitions/ResourceTypeProperties'
+        description: The resource-specific properties for this resource.
+    allOf:
+    - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ProxyResource
+securityDefinitions:
+  azure_auth:
+    type: oauth2
+    description: Azure Active Directory OAuth2 Flow.
+    flow: implicit
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+    scopes:
+      user_impersonation: impersonate your user account

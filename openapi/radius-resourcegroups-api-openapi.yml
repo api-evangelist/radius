@@ -1,0 +1,289 @@
+swagger: '2.0'
+info:
+  title: Applications.Core Management APIs ApiVersions ResourceGroups API
+  version: 2023-10-01-preview
+  description: REST APIs for Applications.Core
+  x-typespec-generated:
+  - emitter: '@azure-tools/typespec-autorest'
+host: management.azure.com
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- azure_auth:
+  - user_impersonation
+tags:
+- name: ResourceGroups
+paths:
+  /planes/radius/{planeName}/resourcegroups:
+    get:
+      operationId: ResourceGroups_List
+      tags:
+      - ResourceGroups
+      description: List resource groups
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/ResourceGroupResourceListResult'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        List resource groups:
+          $ref: ./examples/ResourceGroups_List.json
+      x-ms-pageable:
+        nextLinkName: nextLink
+  /planes/radius/{planeName}/resourcegroups/{resourceGroupName}:
+    get:
+      operationId: ResourceGroups_Get
+      tags:
+      - ResourceGroups
+      description: Get a resource group
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resourceGroupName
+        in: path
+        description: The name of resource group
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/ResourceGroupResource'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Get a resource group:
+          $ref: ./examples/ResourceGroups_Get.json
+    put:
+      operationId: ResourceGroups_CreateOrUpdate
+      tags:
+      - ResourceGroups
+      description: Create or update a resource group
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resourceGroupName
+        in: path
+        description: The name of resource group
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resource
+        in: body
+        description: Resource create parameters.
+        required: true
+        schema:
+          $ref: '#/definitions/ResourceGroupResource'
+      responses:
+        '200':
+          description: Resource 'ResourceGroupResource' update operation succeeded
+          schema:
+            $ref: '#/definitions/ResourceGroupResource'
+        '201':
+          description: Resource 'ResourceGroupResource' create operation succeeded
+          schema:
+            $ref: '#/definitions/ResourceGroupResource'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Create or update a resource group:
+          $ref: ./examples/ResourceGroups_CreateOrUpdate.json
+    patch:
+      operationId: ResourceGroups_Update
+      tags:
+      - ResourceGroups
+      description: Update a resource group
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resourceGroupName
+        in: path
+        description: The name of resource group
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: properties
+        in: body
+        description: The resource properties to be updated.
+        required: true
+        schema:
+          $ref: '#/definitions/ResourceGroupResourceTagsUpdate'
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/ResourceGroupResource'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Update a resource group:
+          $ref: ./examples/ResourceGroups_Update.json
+    delete:
+      operationId: ResourceGroups_Delete
+      tags:
+      - ResourceGroups
+      description: Delete a resource group
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resourceGroupName
+        in: path
+        description: The name of resource group
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      responses:
+        '200':
+          description: Resource deleted successfully.
+        '204':
+          description: Resource does not exist.
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Delete a resource group:
+          $ref: ./examples/ResourceGroups_Delete.json
+definitions:
+  ResourceGroupResourceTagsUpdate:
+    type: object
+    description: The type used for updating tags in ResourceGroupResource resources.
+    properties:
+      tags:
+        type: object
+        description: Resource tags.
+        additionalProperties:
+          type: string
+  ResourceGroupResource:
+    type: object
+    description: The resource group resource
+    properties:
+      properties:
+        $ref: '#/definitions/ResourceGroupProperties'
+        description: The resource-specific properties for this resource.
+    allOf:
+    - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+  ResourceGroupProperties:
+    type: object
+    description: The resource group resource properties
+    properties:
+      provisioningState:
+        $ref: '#/definitions/ProvisioningState'
+        description: The status of the asynchronous operation.
+        readOnly: true
+  ProvisioningState:
+    type: string
+    description: Provisioning state of the resource at the time the operation was called
+    enum:
+    - Creating
+    - Updating
+    - Deleting
+    - Accepted
+    - Provisioning
+    - Succeeded
+    - Failed
+    - Canceled
+    x-ms-enum:
+      name: ProvisioningState
+      modelAsString: false
+      values:
+      - name: Creating
+        value: Creating
+        description: The resource is being created
+      - name: Updating
+        value: Updating
+        description: The resource is being updated
+      - name: Deleting
+        value: Deleting
+        description: The resource is being deleted
+      - name: Accepted
+        value: Accepted
+        description: The resource create request has been accepted
+      - name: Provisioning
+        value: Provisioning
+        description: The resource is being provisioned
+      - name: Succeeded
+        value: Succeeded
+        description: The resource has been successfully provisioned
+      - name: Failed
+        value: Failed
+        description: The resource provisioning has failed
+      - name: Canceled
+        value: Canceled
+        description: The resource provisioning has been canceled
+    readOnly: true
+  ResourceGroupResourceListResult:
+    type: object
+    description: The response of a ResourceGroupResource list operation.
+    properties:
+      value:
+        type: array
+        description: The ResourceGroupResource items on this page
+        items:
+          $ref: '#/definitions/ResourceGroupResource'
+      nextLink:
+        type: string
+        format: uri
+        description: The link to the next page of items
+    required:
+    - value
+securityDefinitions:
+  azure_auth:
+    type: oauth2
+    description: Azure Active Directory OAuth2 Flow.
+    flow: implicit
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+    scopes:
+      user_impersonation: impersonate your user account

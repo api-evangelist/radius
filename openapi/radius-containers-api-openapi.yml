@@ -1,0 +1,777 @@
+swagger: '2.0'
+info:
+  title: Applications.Core Management APIs ApiVersions Containers API
+  version: 2023-10-01-preview
+  description: REST APIs for Applications.Core
+  x-typespec-generated:
+  - emitter: '@azure-tools/typespec-autorest'
+host: management.azure.com
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- azure_auth:
+  - user_impersonation
+tags:
+- name: Containers
+paths:
+  /{rootScope}/providers/Applications.Core/containers:
+    get:
+      operationId: Containers_ListByScope
+      tags:
+      - Containers
+      description: List ContainerResource resources by Scope
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - $ref: '#/parameters/RootScopeParameter'
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/ContainerResourceListResult'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        List containers at resource group:
+          $ref: ./examples/Containers_List.json
+        List containers at root scope:
+          $ref: ./examples/Containers_ListByScope.json
+      x-ms-pageable:
+        nextLinkName: nextLink
+  /{rootScope}/providers/Applications.Core/containers/{containerName}:
+    get:
+      operationId: Containers_Get
+      tags:
+      - Containers
+      description: Get a ContainerResource
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - $ref: '#/parameters/RootScopeParameter'
+      - name: containerName
+        in: path
+        description: Container name
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/ContainerResource'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Get an container resource:
+          $ref: ./examples/Containers_Get.json
+    put:
+      operationId: Containers_CreateOrUpdate
+      tags:
+      - Containers
+      description: Create a ContainerResource
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - $ref: '#/parameters/RootScopeParameter'
+      - name: containerName
+        in: path
+        description: Container name
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resource
+        in: body
+        description: Resource create parameters.
+        required: true
+        schema:
+          $ref: '#/definitions/ContainerResource'
+      responses:
+        '200':
+          description: Resource 'ContainerResource' update operation succeeded
+          schema:
+            $ref: '#/definitions/ContainerResource'
+        '201':
+          description: Resource 'ContainerResource' create operation succeeded
+          schema:
+            $ref: '#/definitions/ContainerResource'
+          headers:
+            Azure-AsyncOperation:
+              type: string
+              description: A link to the status monitor
+            Retry-After:
+              type: integer
+              format: int32
+              description: The Retry-After header can indicate how long the client should wait before polling the operation status.
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Create or update an container resource:
+          $ref: ./examples/Containers_CreateOrUpdate.json
+        Create or update an container resource with base manifest:
+          $ref: ./examples/Containers_CreateOrUpdate_BaseManifest.json
+      x-ms-long-running-operation-options:
+        final-state-via: azure-async-operation
+      x-ms-long-running-operation: true
+    patch:
+      operationId: Containers_Update
+      tags:
+      - Containers
+      description: Update a ContainerResource
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - $ref: '#/parameters/RootScopeParameter'
+      - name: containerName
+        in: path
+        description: Container name
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: properties
+        in: body
+        description: The resource properties to be updated.
+        required: true
+        schema:
+          $ref: '#/definitions/ContainerResourceUpdate'
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          schema:
+            $ref: '#/definitions/ContainerResource'
+        '202':
+          description: Resource update request accepted.
+          headers:
+            Location:
+              type: string
+              description: The Location header contains the URL where the status of the long running operation can be checked.
+            Retry-After:
+              type: integer
+              format: int32
+              description: The Retry-After header can indicate how long the client should wait before polling the operation status.
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-long-running-operation-options:
+        final-state-via: location
+      x-ms-long-running-operation: true
+    delete:
+      operationId: Containers_Delete
+      tags:
+      - Containers
+      description: Delete a ContainerResource
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - $ref: '#/parameters/RootScopeParameter'
+      - name: containerName
+        in: path
+        description: Container name
+        required: true
+        type: string
+        maxLength: 63
+        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      responses:
+        '202':
+          description: Resource deletion accepted.
+          headers:
+            Location:
+              type: string
+              description: The Location header contains the URL where the status of the long running operation can be checked.
+            Retry-After:
+              type: integer
+              format: int32
+              description: The Retry-After header can indicate how long the client should wait before polling the operation status.
+        '204':
+          description: Resource does not exist.
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Delete an container resource:
+          $ref: ./examples/Containers_Delete.json
+      x-ms-long-running-operation-options:
+        final-state-via: location
+      x-ms-long-running-operation: true
+definitions:
+  SecretReference:
+    type: object
+    description: This secret is used within a recipe. Secrets are encrypted, often have fine-grained access control, auditing and are recommended to be used to hold sensitive data.
+    properties:
+      source:
+        type: string
+        description: The ID of an Applications.Core/SecretStore resource containing sensitive data required for recipe execution.
+      key:
+        type: string
+        description: The key for the secret in the secret store.
+    required:
+    - source
+    - key
+  Volume:
+    type: object
+    description: Specifies a volume for a container
+    properties:
+      kind:
+        type: string
+        description: Discriminator property for Volume.
+      mountPath:
+        type: string
+        description: The path where the volume is mounted
+    discriminator: kind
+    required:
+    - kind
+  IamProperties:
+    type: object
+    description: IAM properties
+    properties:
+      kind:
+        $ref: '#/definitions/IAMKind'
+        description: The kind of IAM provider to configure
+      roles:
+        type: array
+        description: RBAC permissions to be assigned on the source resource
+        items:
+          type: string
+    required:
+    - kind
+  KubernetesPodSpec:
+    type: object
+    description: A strategic merge patch that will be applied to the PodSpec object when this container is being deployed.
+    additionalProperties: {}
+  RecipeStatus:
+    type: object
+    description: Recipe status at deployment time for a resource.
+    properties:
+      templateKind:
+        type: string
+        description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
+      templatePath:
+        type: string
+        description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
+      templateVersion:
+        type: string
+        description: TemplateVersion is the version number of the template.
+    required:
+    - templateKind
+    - templatePath
+  EnvironmentVariableReference:
+    type: object
+    description: The reference to the variable
+    properties:
+      secretRef:
+        $ref: '#/definitions/SecretReference'
+        description: The secret reference
+    required:
+    - secretRef
+  OutputResource:
+    type: object
+    description: Properties of an output resource.
+    properties:
+      localId:
+        type: string
+        description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
+      id:
+        type: string
+        description: The UCP resource ID of the underlying resource.
+      radiusManaged:
+        type: boolean
+        description: Determines whether Radius manages the lifecycle of the underlying resource.
+  EnvironmentCompute:
+    type: object
+    description: Represents backing compute resource
+    properties:
+      kind:
+        type: string
+        description: Discriminator property for EnvironmentCompute.
+      resourceId:
+        type: string
+        description: The resource id of the compute resource for application environment.
+      identity:
+        $ref: '#/definitions/IdentitySettings'
+        description: Configuration for supported external identity providers
+    discriminator: kind
+    required:
+    - kind
+  IdentitySettingKind:
+    type: string
+    description: IdentitySettingKind is the kind of supported external identity setting
+    enum:
+    - undefined
+    - azure.com.workload
+    - userAssigned
+    - systemAssigned
+    - systemAssignedUserAssigned
+    x-ms-enum:
+      name: IdentitySettingKind
+      modelAsString: false
+      values:
+      - name: undefined
+        value: undefined
+        description: undefined identity
+      - name: azure.com.workload
+        value: azure.com.workload
+        description: azure ad workload identity
+      - name: userAssigned
+        value: userAssigned
+        description: User assigned managed identity
+      - name: systemAssigned
+        value: systemAssigned
+        description: System assigned managed identity
+      - name: systemAssignedUserAssigned
+        value: systemAssignedUserAssigned
+        description: System assigned and user assigned managed identity
+  IAMKind:
+    type: string
+    description: The kind of IAM provider to configure
+    enum:
+    - azure
+    - string
+    x-ms-enum:
+      name: IAMKind
+      modelAsString: false
+      values:
+      - name: azure
+        value: azure
+        description: Azure Active Directory
+      - name: string
+        value: string
+  ContainerResourceListResult:
+    type: object
+    description: The response of a ContainerResource list operation.
+    properties:
+      value:
+        type: array
+        description: The ContainerResource items on this page
+        items:
+          $ref: '#/definitions/ContainerResource'
+      nextLink:
+        type: string
+        format: uri
+        description: The link to the next page of items
+    required:
+    - value
+  ResourceStatus:
+    type: object
+    description: Status of a resource.
+    properties:
+      compute:
+        $ref: '#/definitions/EnvironmentCompute'
+        description: The compute resource associated with the resource.
+      recipe:
+        $ref: '#/definitions/RecipeStatus'
+        description: The recipe data at the time of deployment
+        readOnly: true
+      outputResources:
+        type: array
+        description: Properties of an output resource
+        items:
+          $ref: '#/definitions/OutputResource'
+        x-ms-identifiers: []
+  ContainerProperties:
+    type: object
+    description: Container properties
+    properties:
+      environment:
+        type: string
+        description: Fully qualified resource ID for the environment that the application is linked to
+      application:
+        type: string
+        description: Fully qualified resource ID for the application
+      provisioningState:
+        $ref: '#/definitions/ProvisioningState'
+        description: The status of the asynchronous operation.
+        readOnly: true
+      status:
+        $ref: '#/definitions/ResourceStatus'
+        description: Status of a resource.
+        readOnly: true
+      container:
+        $ref: '#/definitions/Container'
+        description: Definition of a container.
+      connections:
+        type: object
+        description: Specifies a connection to another resource.
+        additionalProperties:
+          $ref: '#/definitions/ConnectionProperties'
+      identity:
+        $ref: '#/definitions/IdentitySettings'
+        description: Configuration for supported external identity providers
+      extensions:
+        type: array
+        description: Extensions spec of the resource
+        items:
+          $ref: '#/definitions/Extension'
+        x-ms-identifiers: []
+      resourceProvisioning:
+        $ref: '#/definitions/ContainerResourceProvisioning'
+        description: Specifies how the underlying container resource is provisioned and managed.
+      resources:
+        type: array
+        description: A collection of references to resources associated with the container
+        items:
+          $ref: '#/definitions/ResourceReference'
+      restartPolicy:
+        $ref: '#/definitions/RestartPolicy'
+        description: The restart policy for the underlying container
+      runtimes:
+        $ref: '#/definitions/RuntimesProperties'
+        description: Specifies Runtime-specific functionality
+    required:
+    - application
+    - container
+  ImagePullPolicy:
+    type: string
+    description: The image pull policy for the container
+    enum:
+    - Always
+    - IfNotPresent
+    - Never
+    x-ms-enum:
+      name: ImagePullPolicy
+      modelAsString: false
+      values:
+      - name: Always
+        value: Always
+        description: Always
+      - name: IfNotPresent
+        value: IfNotPresent
+        description: IfNotPresent
+      - name: Never
+        value: Never
+        description: Never
+  PortProtocol:
+    type: string
+    description: The protocol in use by the port
+    enum:
+    - TCP
+    - UDP
+    x-ms-enum:
+      name: PortProtocol
+      modelAsString: false
+      values:
+      - name: TCP
+        value: TCP
+        description: TCP protocol
+      - name: UDP
+        value: UDP
+        description: UDP protocol
+  RestartPolicy:
+    type: string
+    description: Restart policy for the container
+    enum:
+    - Always
+    - OnFailure
+    - Never
+    x-ms-enum:
+      name: RestartPolicy
+      modelAsString: false
+      values:
+      - name: Always
+        value: Always
+        description: Always
+      - name: OnFailure
+        value: OnFailure
+        description: OnFailure
+      - name: Never
+        value: Never
+        description: Never
+  ACIRuntimeProperties:
+    type: object
+    description: The runtime configuration properties for Kubernetes
+    properties:
+      gatewayID:
+        type: string
+        description: The ID of the gateway that is providing L7 traffic for the container
+  ContainerResourceProvisioning:
+    type: string
+    description: Specifies how the underlying service/resource is provisioned and managed. Available values are 'internal', where Radius manages the lifecycle of the resource internally, and 'manual', where a user manages the resource.
+    enum:
+    - internal
+    - manual
+    x-ms-enum:
+      name: ContainerResourceProvisioning
+      modelAsString: false
+      values:
+      - name: internal
+        value: internal
+        description: The resource lifecycle will be managed internally by Radius
+      - name: manual
+        value: manual
+        description: The resource lifecycle will be managed by the user
+  ContainerResource:
+    type: object
+    description: Concrete tracked resource types can be created by aliasing this type using a specific property type.
+    properties:
+      properties:
+        $ref: '#/definitions/ContainerProperties'
+        description: The resource-specific properties for this resource.
+        x-ms-client-flatten: true
+        x-ms-mutability:
+        - read
+        - create
+    required:
+    - properties
+    allOf:
+    - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+  Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
+    type: object
+    title: Tracked Resource
+    description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+    properties:
+      tags:
+        type: object
+        description: Resource tags.
+        additionalProperties:
+          type: string
+    allOf:
+    - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
+  EnvironmentVariable:
+    type: object
+    description: Environment variables type
+    properties:
+      value:
+        type: string
+        description: The value of the environment variable
+      valueFrom:
+        $ref: '#/definitions/EnvironmentVariableReference'
+        description: The reference to the variable
+  Container:
+    type: object
+    description: Definition of a container
+    properties:
+      image:
+        type: string
+        description: The registry and image to download and run in your container
+      imagePullPolicy:
+        $ref: '#/definitions/ImagePullPolicy'
+        description: The pull policy for the container image
+      env:
+        type: object
+        description: environment
+        additionalProperties:
+          $ref: '#/definitions/EnvironmentVariable'
+      ports:
+        type: object
+        description: container ports
+        additionalProperties:
+          $ref: '#/definitions/ContainerPortProperties'
+      readinessProbe:
+        $ref: '#/definitions/HealthProbeProperties'
+        description: readiness probe properties
+      livenessProbe:
+        $ref: '#/definitions/HealthProbeProperties'
+        description: liveness probe properties
+      volumes:
+        type: object
+        description: container volumes
+        additionalProperties:
+          $ref: '#/definitions/Volume'
+      command:
+        type: array
+        description: Entrypoint array. Overrides the container image's ENTRYPOINT
+        items:
+          type: string
+      args:
+        type: array
+        description: Arguments to the entrypoint. Overrides the container image's CMD
+        items:
+          type: string
+      workingDir:
+        type: string
+        description: Working directory for the container
+    required:
+    - image
+  KubernetesRuntimeProperties:
+    type: object
+    description: The runtime configuration properties for Kubernetes
+    properties:
+      base:
+        type: string
+        description: The serialized YAML manifest which represents the base Kubernetes resources to deploy, such as Deployment, Service, ServiceAccount, Secrets, and ConfigMaps.
+      pod:
+        $ref: '#/definitions/KubernetesPodSpec'
+        description: A strategic merge patch that will be applied to the PodSpec object when this container is being deployed.
+  RuntimesProperties:
+    type: object
+    description: The properties for runtime configuration
+    properties:
+      kubernetes:
+        $ref: '#/definitions/KubernetesRuntimeProperties'
+        description: The runtime configuration properties for Kubernetes
+      aci:
+        $ref: '#/definitions/ACIRuntimeProperties'
+        description: The runtime configuration properties for ACI
+  HealthProbeProperties:
+    type: object
+    description: Properties for readiness/liveness probe
+    properties:
+      kind:
+        type: string
+        description: Discriminator property for HealthProbeProperties.
+      initialDelaySeconds:
+        type: number
+        format: float
+        description: Initial delay in seconds before probing for readiness/liveness
+      failureThreshold:
+        type: number
+        format: float
+        description: Threshold number of times the probe fails after which a failure would be reported
+      periodSeconds:
+        type: number
+        format: float
+        description: Interval for the readiness/liveness probe in seconds
+      timeoutSeconds:
+        type: number
+        format: float
+        description: Number of seconds after which the readiness/liveness probe times out. Defaults to 5 seconds
+        default: 5
+    discriminator: kind
+    required:
+    - kind
+  ResourceReference:
+    type: object
+    description: Describes a reference to an existing resource
+    properties:
+      id:
+        type: string
+        description: Resource id of an existing resource
+    required:
+    - id
+  ContainerResourceUpdate:
+    type: object
+    description: Concrete tracked resource types can be created by aliasing this type using a specific property type.
+    allOf:
+    - $ref: '#/definitions/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
+  ProvisioningState:
+    type: string
+    description: Provisioning state of the resource at the time the operation was called
+    enum:
+    - Creating
+    - Updating
+    - Deleting
+    - Accepted
+    - Provisioning
+    - Succeeded
+    - Failed
+    - Canceled
+    x-ms-enum:
+      name: ProvisioningState
+      modelAsString: false
+      values:
+      - name: Creating
+        value: Creating
+        description: The resource is being created
+      - name: Updating
+        value: Updating
+        description: The resource is being updated
+      - name: Deleting
+        value: Deleting
+        description: The resource is being deleted
+      - name: Accepted
+        value: Accepted
+        description: The resource create request has been accepted
+      - name: Provisioning
+        value: Provisioning
+        description: The resource is being provisioned
+      - name: Succeeded
+        value: Succeeded
+        description: The resource has been successfully provisioned
+      - name: Failed
+        value: Failed
+        description: The resource provisioning has failed
+      - name: Canceled
+        value: Canceled
+        description: The resource provisioning has been canceled
+    readOnly: true
+  IdentitySettings:
+    type: object
+    description: IdentitySettings is the external identity setting.
+    properties:
+      kind:
+        $ref: '#/definitions/IdentitySettingKind'
+        description: kind of identity setting
+      oidcIssuer:
+        type: string
+        description: The URI for your compute platform's OIDC issuer
+      resource:
+        type: string
+        description: The resource ID of the provisioned identity
+      managedIdentity:
+        type: array
+        description: The list of user assigned managed identities
+        items:
+          type: string
+    required:
+    - kind
+  ContainerPortProperties:
+    type: object
+    description: Specifies a listening port for the container
+    properties:
+      containerPort:
+        type: integer
+        format: int32
+        description: The listening port number
+      protocol:
+        $ref: '#/definitions/PortProtocol'
+        description: Protocol in use by the port
+      scheme:
+        type: string
+        description: Specifies the URL scheme of the communication protocol. Consumers can use the scheme to construct a URL. The value defaults to 'http' or 'https' depending on the port value
+      port:
+        type: integer
+        format: int32
+        description: Specifies the port that will be exposed by this container. Must be set when value different from containerPort is desired
+    required:
+    - containerPort
+  Extension:
+    type: object
+    description: Extension of a environment/application resource.
+    properties:
+      kind:
+        type: string
+        description: Discriminator property for Extension.
+    discriminator: kind
+    required:
+    - kind
+  ConnectionProperties:
+    type: object
+    description: Connection Properties
+    properties:
+      source:
+        type: string
+        description: The source of the connection
+      disableDefaultEnvVars:
+        type: boolean
+        description: default environment variable override
+      iam:
+        $ref: '#/definitions/IamProperties'
+        description: iam properties
+    required:
+    - source
+parameters:
+  RootScopeParameter:
+    name: rootScope
+    in: path
+    description: The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}
+    required: true
+    type: string
+    minLength: 1
+    x-ms-parameter-location: client
+    x-ms-skip-url-encoding: true
+securityDefinitions:
+  azure_auth:
+    type: oauth2
+    description: Azure Active Directory OAuth2 Flow.
+    flow: implicit
+    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+    scopes:
+      user_impersonation: impersonate your user account
