@@ -1,4 +1,18 @@
 aid: radius
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/radius.png
 name: Radius
 description: >-
   Application platform for cloud-native applications that enables developers to define, deploy, and manage applications
@@ -14,93 +28,546 @@ created: '2025-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: radius:applications-core
-    name: Radius Applications.Core API
-    description: >-
-      REST APIs for Applications.Core, providing management of applications, containers, environments, gateways, secret
-      stores, volumes, and extenders within the Radius platform.
-    humanURL: https://docs.radapp.io/reference/api/applications.core/
-    baseURL: https://management.azure.com
-    tags:
-      - Applications
-      - Containers
-      - Environments
-      - Gateways
-      - Secret Stores
-      - Volumes
-    properties:
-      - type: Documentation
-        url: https://docs.radapp.io/reference/api/applications.core/
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/radius/refs/heads/main/openapi/radius-applications-core-openapi.json
-  - aid: radius:applications-dapr
-    name: Radius Applications.Dapr API
-    description: >-
-      REST APIs for Applications.Dapr, providing management of Dapr-related building block resources for Radius
-      applications.
-    humanURL: https://docs.radapp.io/reference/api/applications.dapr/
-    baseURL: https://management.azure.com
-    tags:
-      - Dapr
-      - Building Blocks
-    properties:
-      - type: Documentation
-        url: https://docs.radapp.io/reference/api/applications.dapr/
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/radius/refs/heads/main/openapi/radius-applications-dapr-openapi.json
-  - aid: radius:applications-datastores
-    name: Radius Applications.Datastores API
-    description: >-
-      REST APIs for Applications.Datastores, providing management of database resources such as Redis, MongoDB, and SQL
-      data stores within Radius.
-    humanURL: https://docs.radapp.io/reference/api/applications.datastores/
-    baseURL: https://management.azure.com
-    tags:
-      - Datastores
-      - Databases
-      - Redis
-      - MongoDB
-      - SQL
-    properties:
-      - type: Documentation
-        url: https://docs.radapp.io/reference/api/applications.datastores/
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/radius/refs/heads/main/openapi/radius-applications-datastores-openapi.json
-  - aid: radius:applications-messaging
-    name: Radius Applications.Messaging API
-    description: >-
-      REST APIs for Applications.Messaging, providing management of messaging service resources within the Radius
-      application platform.
-    humanURL: https://docs.radapp.io/reference/api/applications.messaging/
-    baseURL: https://management.azure.com
-    tags:
-      - Messaging
-      - Queues
-    properties:
-      - type: Documentation
-        url: https://docs.radapp.io/reference/api/applications.messaging/
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/radius/refs/heads/main/openapi/radius-applications-messaging-openapi.json
-  - aid: radius:ucp
-    name: Radius Universal Control Plane (UCP) API
-    description: >-
-      REST APIs for the Radius Universal Control Plane (UCP), the multi-cloud, multi-platform control plane that powers
-      Radius resource management across providers.
-    humanURL: https://docs.radapp.io/reference/api/ucp/
-    baseURL: https://management.azure.com
-    tags:
-      - Control Plane
-      - UCP
-      - Multi Cloud
-    properties:
-      - type: Documentation
-        url: https://docs.radapp.io/reference/api/ucp/
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/radius/refs/heads/main/openapi/radius-ucp-openapi.json
+- aid: radius:radius-apiversions-api
+  name: Radius ApiVersions API
+  description: The ApiVersions API from Radius — 2 operation(s) for apiversions.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - ApiVersions
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-apiversions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-applications-api
+  name: Radius Applications API
+  description: The Applications API from Radius — 3 operation(s) for applications.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - Applications
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-applications-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-awscredentials-api
+  name: Radius AwsCredentials API
+  description: The AwsCredentials API from Radius — 2 operation(s) for awscredentials.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - AwsCredentials
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-awscredentials-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-awsplanes-api
+  name: Radius AwsPlanes API
+  description: The AwsPlanes API from Radius — 2 operation(s) for awsplanes.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - AwsPlanes
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-awsplanes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-azurecredentials-api
+  name: Radius AzureCredentials API
+  description: The AzureCredentials API from Radius — 2 operation(s) for azurecredentials.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - AzureCredentials
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-azurecredentials-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-azureplanes-api
+  name: Radius AzurePlanes API
+  description: The AzurePlanes API from Radius — 2 operation(s) for azureplanes.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - AzurePlanes
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-azureplanes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-configurationstores-api
+  name: Radius ConfigurationStores API
+  description: The ConfigurationStores API from Radius — 2 operation(s) for configurationstores.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - ConfigurationStores
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-configurationstores-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-containers-api
+  name: Radius Containers API
+  description: The Containers API from Radius — 2 operation(s) for containers.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - Containers
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-containers-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-environments-api
+  name: Radius Environments API
+  description: The Environments API from Radius — 3 operation(s) for environments.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - Environments
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-environments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-extenders-api
+  name: Radius Extenders API
+  description: The Extenders API from Radius — 3 operation(s) for extenders.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - Extenders
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-extenders-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-gateways-api
+  name: Radius Gateways API
+  description: The Gateways API from Radius — 2 operation(s) for gateways.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - Gateways
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-gateways-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-locations-api
+  name: Radius Locations API
+  description: The Locations API from Radius — 2 operation(s) for locations.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-locations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-mongodatabases-api
+  name: Radius MongoDatabases API
+  description: The MongoDatabases API from Radius — 3 operation(s) for mongodatabases.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - MongoDatabases
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-mongodatabases-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-operations-api
+  name: Radius Operations API
+  description: The Operations API from Radius — 4 operation(s) for operations.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-operations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-planes-api
+  name: Radius Planes API
+  description: The Planes API from Radius — 1 operation(s) for planes.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - Planes
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-planes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-pubsubbrokers-api
+  name: Radius PubSubBrokers API
+  description: The PubSubBrokers API from Radius — 2 operation(s) for pubsubbrokers.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - PubSubBrokers
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-pubsubbrokers-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-rabbitmqqueues-api
+  name: Radius RabbitMQQueues API
+  description: The RabbitMQQueues API from Radius — 3 operation(s) for rabbitmqqueues.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - RabbitMQQueues
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-rabbitmqqueues-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-radiusplanes-api
+  name: Radius RadiusPlanes API
+  description: The RadiusPlanes API from Radius — 2 operation(s) for radiusplanes.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - RadiusPlanes
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-radiusplanes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-rediscaches-api
+  name: Radius RedisCaches API
+  description: The RedisCaches API from Radius — 3 operation(s) for rediscaches.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - RedisCaches
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-rediscaches-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-resourcegroups-api
+  name: Radius ResourceGroups API
+  description: The ResourceGroups API from Radius — 2 operation(s) for resourcegroups.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - ResourceGroups
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-resourcegroups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-resourceproviders-api
+  name: Radius ResourceProviders API
+  description: The ResourceProviders API from Radius — 4 operation(s) for resourceproviders.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - ResourceProviders
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-resourceproviders-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-resources-api
+  name: Radius Resources API
+  description: The Resources API from Radius — 1 operation(s) for resources.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - Resources
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-resources-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-resourcetypes-api
+  name: Radius ResourceTypes API
+  description: The ResourceTypes API from Radius — 2 operation(s) for resourcetypes.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - ResourceTypes
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-resourcetypes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-secretstores-api
+  name: Radius SecretStores API
+  description: The SecretStores API from Radius — 5 operation(s) for secretstores.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - SecretStores
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-secretstores-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-sqldatabases-api
+  name: Radius SqlDatabases API
+  description: The SqlDatabases API from Radius — 3 operation(s) for sqldatabases.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - SqlDatabases
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-sqldatabases-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-statestores-api
+  name: Radius StateStores API
+  description: The StateStores API from Radius — 2 operation(s) for statestores.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - StateStores
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-statestores-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-volumes-api
+  name: Radius Volumes API
+  description: The Volumes API from Radius — 2 operation(s) for volumes.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - Volumes
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-volumes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
 common:
   - type: AgenticAccess
     url: agentic-access/radius-agentic-access.yml
