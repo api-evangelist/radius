@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applications.Core Management APIs ApiVersions AzurePlanes API",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AzurePlanes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AzurePlanes_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/azure"
+          },
+          "docs": "List azure planes"
+        },
+        {
+          "info": {
+            "name": "AzurePlanes_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/azure/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Get a plane by name"
+        },
+        {
+          "info": {
+            "name": "AzurePlanes_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/planes/azure/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Create or update a plane"
+        },
+        {
+          "info": {
+            "name": "AzurePlanes_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/planes/azure/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Update a plane"
+        },
+        {
+          "info": {
+            "name": "AzurePlanes_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/planes/azure/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Delete a plane"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

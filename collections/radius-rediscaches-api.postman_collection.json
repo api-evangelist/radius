@@ -1,0 +1,1409 @@
+{
+  "item": [
+    {
+      "id": "6425ff95-bc16-45bc-aaa7-0c2fea395c17",
+      "name": "RedisCaches",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8749c01c-9fb2-4c1e-b43a-4fba7c7cea34",
+          "name": "Redis Caches List By Scope",
+          "request": {
+            "name": "Redis Caches List By Scope",
+            "description": {
+              "content": "List RedisCacheResource resources by Scope",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Datastores",
+                "redisCaches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0c1e3737-8713-48b6-bbf7-41ea4cd9884d",
+              "name": "Azure operation completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Datastores",
+                    "redisCaches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"properties\": {\n        \"environment\": \"string\",\n        \"application\": \"string\",\n        \"provisioningState\": \"Deleting\",\n        \"status\": {\n          \"compute\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"recipe\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"outputResources\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"secrets\": {\n          \"connectionString\": \"string\",\n          \"password\": \"string\",\n          \"url\": \"string\"\n        },\n        \"host\": \"string\",\n        \"port\": 1387,\n        \"username\": \"string\",\n        \"tls\": true,\n        \"resources\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"recipe\": {\n          \"name\": \"string\",\n          \"parameters\": {}\n        },\n        \"resourceProvisioning\": \"manual\"\n      }\n    },\n    {\n      \"properties\": {\n        \"environment\": \"string\",\n        \"application\": \"string\",\n        \"provisioningState\": \"Provisioning\",\n        \"status\": {\n          \"compute\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"recipe\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"outputResources\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"secrets\": {\n          \"connectionString\": \"string\",\n          \"password\": \"string\",\n          \"url\": \"string\"\n        },\n        \"host\": \"string\",\n        \"port\": 7248,\n        \"username\": \"string\",\n        \"tls\": false,\n        \"resources\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"recipe\": {\n          \"name\": \"string\",\n          \"parameters\": {}\n        },\n        \"resourceProvisioning\": \"recipe\"\n      }\n    }\n  ],\n  \"nextLink\": \"http://zfAvmUsCUMDEmaNesrAywM.jtpcSPfI6xY,PdyOPx8vJT7s9vDNF7lm,mnxDnmC01+hywtzlpQ3x2xane.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96e3af03-8481-4db9-9435-ab49d135a8e4",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Datastores",
+                    "redisCaches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f8fe4e7-4603-4edd-9542-7146a1aea211",
+          "name": "Redis Caches Get",
+          "request": {
+            "name": "Redis Caches Get",
+            "description": {
+              "content": "Get a RedisCacheResource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Datastores",
+                "redisCaches",
+                ":redisCacheName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "redisCacheName",
+                  "description": "(Required) The name of the RedisCache portable resource resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b2eb8e2a-1bd1-447a-9b4b-7481db53f00a",
+              "name": "Azure operation completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Datastores",
+                    "redisCaches",
+                    ":redisCacheName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "redisCacheName",
+                      "description": "(Required) The name of the RedisCache portable resource resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"environment\": \"string\",\n    \"application\": \"string\",\n    \"provisioningState\": \"Accepted\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"string\",\n        \"resourceId\": \"string\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"string\",\n        \"templatePath\": \"string\",\n        \"templateVersion\": \"string\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"string\",\n          \"id\": \"string\",\n          \"radiusManaged\": false\n        },\n        {\n          \"localId\": \"string\",\n          \"id\": \"string\",\n          \"radiusManaged\": false\n        }\n      ]\n    },\n    \"secrets\": {\n      \"connectionString\": \"string\",\n      \"password\": \"string\",\n      \"url\": \"string\"\n    },\n    \"host\": \"string\",\n    \"port\": 7089,\n    \"username\": \"string\",\n    \"tls\": true,\n    \"resources\": [\n      {\n        \"id\": \"string\"\n      },\n      {\n        \"id\": \"string\"\n      }\n    ],\n    \"recipe\": {\n      \"name\": \"string\",\n      \"parameters\": {}\n    },\n    \"resourceProvisioning\": \"manual\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bdab8d5-e6ef-4b25-a337-1e14ed44182d",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Datastores",
+                    "redisCaches",
+                    ":redisCacheName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "redisCacheName",
+                      "description": "(Required) The name of the RedisCache portable resource resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f43e18b2-335c-4667-ac6a-6cbceb8abe6a",
+          "name": "Redis Caches Create Or Update",
+          "request": {
+            "name": "Redis Caches Create Or Update",
+            "description": {
+              "content": "Create a RedisCacheResource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Datastores",
+                "redisCaches",
+                ":redisCacheName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "redisCacheName",
+                  "description": "(Required) The name of the RedisCache portable resource resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"properties\": {\n    \"environment\": \"<string>\",\n    \"application\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"secrets\": {\n      \"connectionString\": \"<string>\",\n      \"password\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"host\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\",\n    \"tls\": \"<boolean>\",\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"recipe\": {\n      \"name\": \"<string>\",\n      \"parameters\": \"<object>\"\n    },\n    \"resourceProvisioning\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f4e8c73a-4612-4dc8-9a5b-7e815aaab851",
+              "name": "Resource 'RedisCacheResource' update operation succeeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Datastores",
+                    "redisCaches",
+                    ":redisCacheName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "redisCacheName",
+                      "description": "(Required) The name of the RedisCache portable resource resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"environment\": \"<string>\",\n    \"application\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"secrets\": {\n      \"connectionString\": \"<string>\",\n      \"password\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"host\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\",\n    \"tls\": \"<boolean>\",\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"recipe\": {\n      \"name\": \"<string>\",\n      \"parameters\": \"<object>\"\n    },\n    \"resourceProvisioning\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"environment\": \"<string>\",\n    \"application\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"secrets\": {\n      \"connectionString\": \"<string>\",\n      \"password\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"host\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\",\n    \"tls\": \"<boolean>\",\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"recipe\": {\n      \"name\": \"<string>\",\n      \"parameters\": \"<object>\"\n    },\n    \"resourceProvisioning\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45fa3b2a-84a0-48b1-ae40-faa6e91eaa1e",
+              "name": "Resource 'RedisCacheResource' create operation succeeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Datastores",
+                    "redisCaches",
+                    ":redisCacheName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "redisCacheName",
+                      "description": "(Required) The name of the RedisCache portable resource resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"environment\": \"<string>\",\n    \"application\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"secrets\": {\n      \"connectionString\": \"<string>\",\n      \"password\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"host\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\",\n    \"tls\": \"<boolean>\",\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"recipe\": {\n      \"name\": \"<string>\",\n      \"parameters\": \"<object>\"\n    },\n    \"resourceProvisioning\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A link to the status monitor",
+                  "key": "Azure-AsyncOperation",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  "key": "Retry-After",
+                  "value": "5703"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"environment\": \"<string>\",\n    \"application\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"secrets\": {\n      \"connectionString\": \"<string>\",\n      \"password\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"host\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\",\n    \"tls\": \"<boolean>\",\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"recipe\": {\n      \"name\": \"<string>\",\n      \"parameters\": \"<object>\"\n    },\n    \"resourceProvisioning\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "471b5374-046d-48f0-b0b3-800646f5c0b9",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Datastores",
+                    "redisCaches",
+                    ":redisCacheName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "redisCacheName",
+                      "description": "(Required) The name of the RedisCache portable resource resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"environment\": \"<string>\",\n    \"application\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"secrets\": {\n      \"connectionString\": \"<string>\",\n      \"password\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"host\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\",\n    \"tls\": \"<boolean>\",\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"recipe\": {\n      \"name\": \"<string>\",\n      \"parameters\": \"<object>\"\n    },\n    \"resourceProvisioning\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1dd8617b-dd8b-4ebf-9b07-dd9b31c7e938",
+          "name": "Redis Caches Update",
+          "request": {
+            "name": "Redis Caches Update",
+            "description": {
+              "content": "Update a RedisCacheResource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Datastores",
+                "redisCaches",
+                ":redisCacheName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "redisCacheName",
+                  "description": "(Required) The name of the RedisCache portable resource resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f4ec91f5-04fe-4400-9356-d2724df9f00f",
+              "name": "Azure operation completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Datastores",
+                    "redisCaches",
+                    ":redisCacheName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "redisCacheName",
+                      "description": "(Required) The name of the RedisCache portable resource resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"environment\": \"<string>\",\n    \"application\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"secrets\": {\n      \"connectionString\": \"<string>\",\n      \"password\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    \"host\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\",\n    \"tls\": \"<boolean>\",\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"recipe\": {\n      \"name\": \"<string>\",\n      \"parameters\": \"<object>\"\n    },\n    \"resourceProvisioning\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b653dd10-c8f4-45a0-bc41-6151e0ed35e3",
+              "name": "Resource update request accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Datastores",
+                    "redisCaches",
+                    ":redisCacheName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "redisCacheName",
+                      "description": "(Required) The name of the RedisCache portable resource resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The Location header contains the URL where the status of the long running operation can be checked.",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  "key": "Retry-After",
+                  "value": "5703"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f1aa9f1c-1f13-488d-abac-6eae1e152f05",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Datastores",
+                    "redisCaches",
+                    ":redisCacheName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "redisCacheName",
+                      "description": "(Required) The name of the RedisCache portable resource resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0e74785-2b2f-433a-a29c-4a41b4a862ce",
+          "name": "Redis Caches Delete",
+          "request": {
+            "name": "Redis Caches Delete",
+            "description": {
+              "content": "Delete a RedisCacheResource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Datastores",
+                "redisCaches",
+                ":redisCacheName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "redisCacheName",
+                  "description": "(Required) The name of the RedisCache portable resource resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0ad95808-ea3d-425d-b905-05b9005cf5b1",
+              "name": "Resource deletion accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Datastores",
+                    "redisCaches",
+                    ":redisCacheName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "redisCacheName",
+                      "description": "(Required) The name of the RedisCache portable resource resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The Location header contains the URL where the status of the long running operation can be checked.",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  "key": "Retry-After",
+                  "value": "5703"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "65f10a98-7fb5-49ee-bf4a-131672744467",
+              "name": "Resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Datastores",
+                    "redisCaches",
+                    ":redisCacheName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "redisCacheName",
+                      "description": "(Required) The name of the RedisCache portable resource resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "026a9850-0e12-4559-aea7-973ca1c167fe",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Datastores",
+                    "redisCaches",
+                    ":redisCacheName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "redisCacheName",
+                      "description": "(Required) The name of the RedisCache portable resource resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c9f1234-21a8-4558-a47c-3164f21f9017",
+          "name": "Redis Caches List Secrets",
+          "request": {
+            "name": "Redis Caches List Secrets",
+            "description": {
+              "content": "Lists secrets values for the specified RedisCache resource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Datastores",
+                "redisCaches",
+                ":redisCacheName",
+                "listSecrets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "redisCacheName",
+                  "description": "(Required) The name of the RedisCache portable resource resource"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "217d177f-7e32-47ea-90cf-e5498c97087c",
+              "name": "Azure operation completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Datastores",
+                    "redisCaches",
+                    ":redisCacheName",
+                    "listSecrets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "redisCacheName",
+                      "description": "(Required) The name of the RedisCache portable resource resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connectionString\": \"string\",\n  \"password\": \"string\",\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4fc7c6c-72d6-462c-8cc5-2842e099b33f",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Datastores",
+                    "redisCaches",
+                    ":redisCacheName",
+                    "listSecrets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "redisCacheName",
+                      "description": "(Required) The name of the RedisCache portable resource resource"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "user_impersonation"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "implicit"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d3c6d4d8-1947-484b-b712-cb056a2948db",
+    "name": "Applications.Core Management APIs ApiVersions RedisCaches API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST APIs for Applications.Core",
+      "type": "text/plain"
+    }
+  }
+}

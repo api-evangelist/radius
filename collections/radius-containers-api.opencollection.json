@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applications.Core Management APIs ApiVersions Containers API",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Containers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Containers_ListByScope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Core/containers",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              }
+            ]
+          },
+          "docs": "List ContainerResource resources by Scope"
+        },
+        {
+          "info": {
+            "name": "Containers_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Core/containers/:containerName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "containerName",
+                "value": "",
+                "type": "path",
+                "description": "Container name"
+              }
+            ]
+          },
+          "docs": "Get a ContainerResource"
+        },
+        {
+          "info": {
+            "name": "Containers_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Core/containers/:containerName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "containerName",
+                "value": "",
+                "type": "path",
+                "description": "Container name"
+              }
+            ]
+          },
+          "docs": "Create a ContainerResource"
+        },
+        {
+          "info": {
+            "name": "Containers_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Core/containers/:containerName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "containerName",
+                "value": "",
+                "type": "path",
+                "description": "Container name"
+              }
+            ]
+          },
+          "docs": "Update a ContainerResource"
+        },
+        {
+          "info": {
+            "name": "Containers_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Core/containers/:containerName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "containerName",
+                "value": "",
+                "type": "path",
+                "description": "Container name"
+              }
+            ]
+          },
+          "docs": "Delete a ContainerResource"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

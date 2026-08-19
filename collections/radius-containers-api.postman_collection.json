@@ -1,0 +1,1199 @@
+{
+  "item": [
+    {
+      "id": "bb9e6d35-bb70-4346-813d-0a74bce13e03",
+      "name": "Containers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e69bde41-cd71-44b3-bb5a-23635bf42362",
+          "name": "Containers List By Scope",
+          "request": {
+            "name": "Containers List By Scope",
+            "description": {
+              "content": "List ContainerResource resources by Scope",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Core",
+                "containers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9f6120d1-954c-41d3-9674-72d0d2338510",
+              "name": "Azure operation completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "containers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"properties\": {\n        \"application\": \"string\",\n        \"container\": {\n          \"image\": \"string\",\n          \"imagePullPolicy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"env\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_3\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ports\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"readinessProbe\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"livenessProbe\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"volumes\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"command\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"args\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"workingDir\": \"string\"\n        },\n        \"environment\": \"string\",\n        \"provisioningState\": \"Creating\",\n        \"status\": {\n          \"compute\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"recipe\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"outputResources\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"connections\": {\n          \"key_0\": {\n            \"source\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"disableDefaultEnvVars\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"iam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": \"string\",\n          \"resource\": \"string\",\n          \"managedIdentity\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"extensions\": [\n          {\n            \"kind\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"kind\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"resourceProvisioning\": \"manual\",\n        \"resources\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"restartPolicy\": \"OnFailure\",\n        \"runtimes\": {\n          \"kubernetes\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"aci\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    {\n      \"properties\": {\n        \"application\": \"string\",\n        \"container\": {\n          \"image\": \"string\",\n          \"imagePullPolicy\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"env\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ports\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_3\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"readinessProbe\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"livenessProbe\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"volumes\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"command\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"args\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"workingDir\": \"string\"\n        },\n        \"environment\": \"string\",\n        \"provisioningState\": \"Creating\",\n        \"status\": {\n          \"compute\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"recipe\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"outputResources\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"connections\": {\n          \"key_0\": {\n            \"source\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"disableDefaultEnvVars\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"iam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_1\": {\n            \"source\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"disableDefaultEnvVars\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"iam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_2\": {\n            \"source\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"disableDefaultEnvVars\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"iam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": \"string\",\n          \"resource\": \"string\",\n          \"managedIdentity\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"extensions\": [\n          {\n            \"kind\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"kind\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"resourceProvisioning\": \"internal\",\n        \"resources\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"restartPolicy\": \"OnFailure\",\n        \"runtimes\": {\n          \"kubernetes\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"aci\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    }\n  ],\n  \"nextLink\": \"http://GWBQTMVHBhESrkPUSOWoruERlVjmezrWB.srkh1P,u\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "274cba37-8d2b-444a-a5f4-d1a06807f012",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "containers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a0b0248-c227-4b3f-bf82-d6e46c488b20",
+          "name": "Containers Get",
+          "request": {
+            "name": "Containers Get",
+            "description": {
+              "content": "Get a ContainerResource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Core",
+                "containers",
+                ":containerName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "containerName",
+                  "description": "(Required) Container name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37a5e80c-a7a6-49c3-b530-d34e5e3fec83",
+              "name": "Azure operation completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "containers",
+                    ":containerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "containerName",
+                      "description": "(Required) Container name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"application\": \"string\",\n    \"container\": {\n      \"image\": \"string\",\n      \"imagePullPolicy\": \"IfNotPresent\",\n      \"env\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"valueFrom\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"valueFrom\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"ports\": {\n        \"key_0\": {\n          \"containerPort\": 8264,\n          \"protocol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"scheme\": \"string\",\n          \"port\": 2394\n        }\n      },\n      \"readinessProbe\": {\n        \"kind\": \"string\",\n        \"initialDelaySeconds\": 9304.7736075899,\n        \"failureThreshold\": 9525.534279267615,\n        \"periodSeconds\": 2214.9477737625257,\n        \"timeoutSeconds\": 5\n      },\n      \"livenessProbe\": {\n        \"kind\": \"string\",\n        \"initialDelaySeconds\": 3642.0460016757374,\n        \"failureThreshold\": 2479.0354600962205,\n        \"periodSeconds\": 7939.316007995662,\n        \"timeoutSeconds\": 5\n      },\n      \"volumes\": {\n        \"key_0\": {\n          \"kind\": \"string\",\n          \"mountPath\": \"string\"\n        },\n        \"key_1\": {\n          \"kind\": \"string\",\n          \"mountPath\": \"string\"\n        },\n        \"key_2\": {\n          \"kind\": \"string\",\n          \"mountPath\": \"string\"\n        }\n      },\n      \"command\": [\n        \"string\",\n        \"string\"\n      ],\n      \"args\": [\n        \"string\",\n        \"string\"\n      ],\n      \"workingDir\": \"string\"\n    },\n    \"environment\": \"string\",\n    \"provisioningState\": \"Provisioning\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"string\",\n        \"resourceId\": \"string\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"string\",\n        \"templatePath\": \"string\",\n        \"templateVersion\": \"string\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"string\",\n          \"id\": \"string\",\n          \"radiusManaged\": false\n        },\n        {\n          \"localId\": \"string\",\n          \"id\": \"string\",\n          \"radiusManaged\": true\n        }\n      ]\n    },\n    \"connections\": {\n      \"key_0\": {\n        \"source\": \"string\",\n        \"disableDefaultEnvVars\": true,\n        \"iam\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"roles\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"key_1\": {\n        \"source\": \"string\",\n        \"disableDefaultEnvVars\": true,\n        \"iam\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"roles\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"key_2\": {\n        \"source\": \"string\",\n        \"disableDefaultEnvVars\": true,\n        \"iam\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"roles\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"identity\": {\n      \"kind\": \"azure.com.workload\",\n      \"oidcIssuer\": \"string\",\n      \"resource\": \"string\",\n      \"managedIdentity\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"extensions\": [\n      {\n        \"kind\": \"string\"\n      },\n      {\n        \"kind\": \"string\"\n      }\n    ],\n    \"resourceProvisioning\": \"manual\",\n    \"resources\": [\n      {\n        \"id\": \"string\"\n      },\n      {\n        \"id\": \"string\"\n      }\n    ],\n    \"restartPolicy\": \"OnFailure\",\n    \"runtimes\": {\n      \"kubernetes\": {\n        \"base\": \"string\",\n        \"pod\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"aci\": {\n        \"gatewayID\": \"string\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2a897df-1a5b-4b37-8cc0-7c2623bd7ef8",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "containers",
+                    ":containerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "containerName",
+                      "description": "(Required) Container name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf67ac1b-aacc-4eef-835d-16cf44e7a452",
+          "name": "Containers Create Or Update",
+          "request": {
+            "name": "Containers Create Or Update",
+            "description": {
+              "content": "Create a ContainerResource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Core",
+                "containers",
+                ":containerName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "containerName",
+                  "description": "(Required) Container name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"properties\": {\n    \"application\": \"<string>\",\n    \"container\": {\n      \"image\": \"<string>\",\n      \"imagePullPolicy\": \"<string>\",\n      \"env\": {\n        \"key_0\": {\n          \"value\": \"<string>\",\n          \"valueFrom\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_1\": {\n          \"value\": \"<string>\",\n          \"valueFrom\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"ports\": {\n        \"key_0\": {\n          \"containerPort\": \"<integer>\",\n          \"protocol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"scheme\": \"<string>\",\n          \"port\": \"<integer>\"\n        }\n      },\n      \"readinessProbe\": {\n        \"kind\": \"<string>\",\n        \"initialDelaySeconds\": \"<float>\",\n        \"failureThreshold\": \"<float>\",\n        \"periodSeconds\": \"<float>\",\n        \"timeoutSeconds\": 5\n      },\n      \"livenessProbe\": {\n        \"kind\": \"<string>\",\n        \"initialDelaySeconds\": \"<float>\",\n        \"failureThreshold\": \"<float>\",\n        \"periodSeconds\": \"<float>\",\n        \"timeoutSeconds\": 5\n      },\n      \"volumes\": {\n        \"key_0\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        },\n        \"key_1\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        }\n      },\n      \"command\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"args\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"workingDir\": \"<string>\"\n    },\n    \"environment\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"connections\": {\n      \"key_0\": {\n        \"source\": \"<string>\",\n        \"disableDefaultEnvVars\": \"<boolean>\",\n        \"iam\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"roles\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"identity\": {\n      \"kind\": \"<string>\",\n      \"oidcIssuer\": \"<string>\",\n      \"resource\": \"<string>\",\n      \"managedIdentity\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"extensions\": [\n      {\n        \"kind\": \"<string>\"\n      },\n      {\n        \"kind\": \"<string>\"\n      }\n    ],\n    \"resourceProvisioning\": \"<string>\",\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"restartPolicy\": \"<string>\",\n    \"runtimes\": {\n      \"kubernetes\": {\n        \"base\": \"<string>\",\n        \"pod\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"aci\": {\n        \"gatewayID\": \"<string>\"\n      }\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3febaab0-668e-4eed-8497-ae8771b72c76",
+              "name": "Resource 'ContainerResource' update operation succeeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "containers",
+                    ":containerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "containerName",
+                      "description": "(Required) Container name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"application\": \"<string>\",\n    \"container\": {\n      \"image\": \"<string>\",\n      \"imagePullPolicy\": \"<string>\",\n      \"env\": {\n        \"key_0\": {\n          \"value\": \"<string>\",\n          \"valueFrom\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_1\": {\n          \"value\": \"<string>\",\n          \"valueFrom\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"ports\": {\n        \"key_0\": {\n          \"containerPort\": \"<integer>\",\n          \"protocol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"scheme\": \"<string>\",\n          \"port\": \"<integer>\"\n        },\n        \"key_1\": {\n          \"containerPort\": \"<integer>\",\n          \"protocol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"scheme\": \"<string>\",\n          \"port\": \"<integer>\"\n        }\n      },\n      \"readinessProbe\": {\n        \"kind\": \"<string>\",\n        \"initialDelaySeconds\": \"<float>\",\n        \"failureThreshold\": \"<float>\",\n        \"periodSeconds\": \"<float>\",\n        \"timeoutSeconds\": 5\n      },\n      \"livenessProbe\": {\n        \"kind\": \"<string>\",\n        \"initialDelaySeconds\": \"<float>\",\n        \"failureThreshold\": \"<float>\",\n        \"periodSeconds\": \"<float>\",\n        \"timeoutSeconds\": 5\n      },\n      \"volumes\": {\n        \"key_0\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        },\n        \"key_1\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        },\n        \"key_2\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        }\n      },\n      \"command\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"args\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"workingDir\": \"<string>\"\n    },\n    \"environment\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"connections\": {\n      \"key_0\": {\n        \"source\": \"<string>\",\n        \"disableDefaultEnvVars\": \"<boolean>\",\n        \"iam\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"roles\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"identity\": {\n      \"kind\": \"<string>\",\n      \"oidcIssuer\": \"<string>\",\n      \"resource\": \"<string>\",\n      \"managedIdentity\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"extensions\": [\n      {\n        \"kind\": \"<string>\"\n      },\n      {\n        \"kind\": \"<string>\"\n      }\n    ],\n    \"resourceProvisioning\": \"<string>\",\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"restartPolicy\": \"<string>\",\n    \"runtimes\": {\n      \"kubernetes\": {\n        \"base\": \"<string>\",\n        \"pod\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"aci\": {\n        \"gatewayID\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"application\": \"<string>\",\n    \"container\": {\n      \"image\": \"<string>\",\n      \"imagePullPolicy\": \"<string>\",\n      \"env\": {\n        \"key_0\": {\n          \"value\": \"<string>\",\n          \"valueFrom\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_1\": {\n          \"value\": \"<string>\",\n          \"valueFrom\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"ports\": {\n        \"key_0\": {\n          \"containerPort\": \"<integer>\",\n          \"protocol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"scheme\": \"<string>\",\n          \"port\": \"<integer>\"\n        },\n        \"key_1\": {\n          \"containerPort\": \"<integer>\",\n          \"protocol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"scheme\": \"<string>\",\n          \"port\": \"<integer>\"\n        }\n      },\n      \"readinessProbe\": {\n        \"kind\": \"<string>\",\n        \"initialDelaySeconds\": \"<float>\",\n        \"failureThreshold\": \"<float>\",\n        \"periodSeconds\": \"<float>\",\n        \"timeoutSeconds\": 5\n      },\n      \"livenessProbe\": {\n        \"kind\": \"<string>\",\n        \"initialDelaySeconds\": \"<float>\",\n        \"failureThreshold\": \"<float>\",\n        \"periodSeconds\": \"<float>\",\n        \"timeoutSeconds\": 5\n      },\n      \"volumes\": {\n        \"key_0\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        },\n        \"key_1\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        },\n        \"key_2\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        }\n      },\n      \"command\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"args\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"workingDir\": \"<string>\"\n    },\n    \"environment\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"connections\": {\n      \"key_0\": {\n        \"source\": \"<string>\",\n        \"disableDefaultEnvVars\": \"<boolean>\",\n        \"iam\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"roles\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"identity\": {\n      \"kind\": \"<string>\",\n      \"oidcIssuer\": \"<string>\",\n      \"resource\": \"<string>\",\n      \"managedIdentity\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"extensions\": [\n      {\n        \"kind\": \"<string>\"\n      },\n      {\n        \"kind\": \"<string>\"\n      }\n    ],\n    \"resourceProvisioning\": \"<string>\",\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"restartPolicy\": \"<string>\",\n    \"runtimes\": {\n      \"kubernetes\": {\n        \"base\": \"<string>\",\n        \"pod\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"aci\": {\n        \"gatewayID\": \"<string>\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1da82d23-9de0-4967-a349-2b72a61407dd",
+              "name": "Resource 'ContainerResource' create operation succeeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "containers",
+                    ":containerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "containerName",
+                      "description": "(Required) Container name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"application\": \"<string>\",\n    \"container\": {\n      \"image\": \"<string>\",\n      \"imagePullPolicy\": \"<string>\",\n      \"env\": {\n        \"key_0\": {\n          \"value\": \"<string>\",\n          \"valueFrom\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_1\": {\n          \"value\": \"<string>\",\n          \"valueFrom\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"ports\": {\n        \"key_0\": {\n          \"containerPort\": \"<integer>\",\n          \"protocol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"scheme\": \"<string>\",\n          \"port\": \"<integer>\"\n        },\n        \"key_1\": {\n          \"containerPort\": \"<integer>\",\n          \"protocol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"scheme\": \"<string>\",\n          \"port\": \"<integer>\"\n        }\n      },\n      \"readinessProbe\": {\n        \"kind\": \"<string>\",\n        \"initialDelaySeconds\": \"<float>\",\n        \"failureThreshold\": \"<float>\",\n        \"periodSeconds\": \"<float>\",\n        \"timeoutSeconds\": 5\n      },\n      \"livenessProbe\": {\n        \"kind\": \"<string>\",\n        \"initialDelaySeconds\": \"<float>\",\n        \"failureThreshold\": \"<float>\",\n        \"periodSeconds\": \"<float>\",\n        \"timeoutSeconds\": 5\n      },\n      \"volumes\": {\n        \"key_0\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        },\n        \"key_1\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        },\n        \"key_2\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        }\n      },\n      \"command\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"args\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"workingDir\": \"<string>\"\n    },\n    \"environment\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"connections\": {\n      \"key_0\": {\n        \"source\": \"<string>\",\n        \"disableDefaultEnvVars\": \"<boolean>\",\n        \"iam\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"roles\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"identity\": {\n      \"kind\": \"<string>\",\n      \"oidcIssuer\": \"<string>\",\n      \"resource\": \"<string>\",\n      \"managedIdentity\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"extensions\": [\n      {\n        \"kind\": \"<string>\"\n      },\n      {\n        \"kind\": \"<string>\"\n      }\n    ],\n    \"resourceProvisioning\": \"<string>\",\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"restartPolicy\": \"<string>\",\n    \"runtimes\": {\n      \"kubernetes\": {\n        \"base\": \"<string>\",\n        \"pod\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"aci\": {\n        \"gatewayID\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A link to the status monitor",
+                  "key": "Azure-AsyncOperation",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  "key": "Retry-After",
+                  "value": "633"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"application\": \"<string>\",\n    \"container\": {\n      \"image\": \"<string>\",\n      \"imagePullPolicy\": \"<string>\",\n      \"env\": {\n        \"key_0\": {\n          \"value\": \"<string>\",\n          \"valueFrom\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_1\": {\n          \"value\": \"<string>\",\n          \"valueFrom\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"ports\": {\n        \"key_0\": {\n          \"containerPort\": \"<integer>\",\n          \"protocol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"scheme\": \"<string>\",\n          \"port\": \"<integer>\"\n        },\n        \"key_1\": {\n          \"containerPort\": \"<integer>\",\n          \"protocol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"scheme\": \"<string>\",\n          \"port\": \"<integer>\"\n        }\n      },\n      \"readinessProbe\": {\n        \"kind\": \"<string>\",\n        \"initialDelaySeconds\": \"<float>\",\n        \"failureThreshold\": \"<float>\",\n        \"periodSeconds\": \"<float>\",\n        \"timeoutSeconds\": 5\n      },\n      \"livenessProbe\": {\n        \"kind\": \"<string>\",\n        \"initialDelaySeconds\": \"<float>\",\n        \"failureThreshold\": \"<float>\",\n        \"periodSeconds\": \"<float>\",\n        \"timeoutSeconds\": 5\n      },\n      \"volumes\": {\n        \"key_0\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        },\n        \"key_1\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        },\n        \"key_2\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        }\n      },\n      \"command\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"args\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"workingDir\": \"<string>\"\n    },\n    \"environment\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"connections\": {\n      \"key_0\": {\n        \"source\": \"<string>\",\n        \"disableDefaultEnvVars\": \"<boolean>\",\n        \"iam\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"roles\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"identity\": {\n      \"kind\": \"<string>\",\n      \"oidcIssuer\": \"<string>\",\n      \"resource\": \"<string>\",\n      \"managedIdentity\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"extensions\": [\n      {\n        \"kind\": \"<string>\"\n      },\n      {\n        \"kind\": \"<string>\"\n      }\n    ],\n    \"resourceProvisioning\": \"<string>\",\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"restartPolicy\": \"<string>\",\n    \"runtimes\": {\n      \"kubernetes\": {\n        \"base\": \"<string>\",\n        \"pod\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"aci\": {\n        \"gatewayID\": \"<string>\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cdaf1873-efea-45bb-bddb-b3d0890a5583",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "containers",
+                    ":containerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "containerName",
+                      "description": "(Required) Container name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"application\": \"<string>\",\n    \"container\": {\n      \"image\": \"<string>\",\n      \"imagePullPolicy\": \"<string>\",\n      \"env\": {\n        \"key_0\": {\n          \"value\": \"<string>\",\n          \"valueFrom\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_1\": {\n          \"value\": \"<string>\",\n          \"valueFrom\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"ports\": {\n        \"key_0\": {\n          \"containerPort\": \"<integer>\",\n          \"protocol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"scheme\": \"<string>\",\n          \"port\": \"<integer>\"\n        },\n        \"key_1\": {\n          \"containerPort\": \"<integer>\",\n          \"protocol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"scheme\": \"<string>\",\n          \"port\": \"<integer>\"\n        }\n      },\n      \"readinessProbe\": {\n        \"kind\": \"<string>\",\n        \"initialDelaySeconds\": \"<float>\",\n        \"failureThreshold\": \"<float>\",\n        \"periodSeconds\": \"<float>\",\n        \"timeoutSeconds\": 5\n      },\n      \"livenessProbe\": {\n        \"kind\": \"<string>\",\n        \"initialDelaySeconds\": \"<float>\",\n        \"failureThreshold\": \"<float>\",\n        \"periodSeconds\": \"<float>\",\n        \"timeoutSeconds\": 5\n      },\n      \"volumes\": {\n        \"key_0\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        },\n        \"key_1\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        },\n        \"key_2\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        }\n      },\n      \"command\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"args\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"workingDir\": \"<string>\"\n    },\n    \"environment\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"connections\": {\n      \"key_0\": {\n        \"source\": \"<string>\",\n        \"disableDefaultEnvVars\": \"<boolean>\",\n        \"iam\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"roles\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"identity\": {\n      \"kind\": \"<string>\",\n      \"oidcIssuer\": \"<string>\",\n      \"resource\": \"<string>\",\n      \"managedIdentity\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"extensions\": [\n      {\n        \"kind\": \"<string>\"\n      },\n      {\n        \"kind\": \"<string>\"\n      }\n    ],\n    \"resourceProvisioning\": \"<string>\",\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"restartPolicy\": \"<string>\",\n    \"runtimes\": {\n      \"kubernetes\": {\n        \"base\": \"<string>\",\n        \"pod\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"aci\": {\n        \"gatewayID\": \"<string>\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1173d06f-a7bf-4d6b-88b9-1d16e3e9f6d1",
+          "name": "Containers Update",
+          "request": {
+            "name": "Containers Update",
+            "description": {
+              "content": "Update a ContainerResource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Core",
+                "containers",
+                ":containerName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "containerName",
+                  "description": "(Required) Container name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "96ce7572-0c6f-4b1b-94df-58954a7f5fba",
+              "name": "Azure operation completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "containers",
+                    ":containerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "containerName",
+                      "description": "(Required) Container name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"application\": \"<string>\",\n    \"container\": {\n      \"image\": \"<string>\",\n      \"imagePullPolicy\": \"<string>\",\n      \"env\": {\n        \"key_0\": {\n          \"value\": \"<string>\",\n          \"valueFrom\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_1\": {\n          \"value\": \"<string>\",\n          \"valueFrom\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"ports\": {\n        \"key_0\": {\n          \"containerPort\": \"<integer>\",\n          \"protocol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"scheme\": \"<string>\",\n          \"port\": \"<integer>\"\n        },\n        \"key_1\": {\n          \"containerPort\": \"<integer>\",\n          \"protocol\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"scheme\": \"<string>\",\n          \"port\": \"<integer>\"\n        }\n      },\n      \"readinessProbe\": {\n        \"kind\": \"<string>\",\n        \"initialDelaySeconds\": \"<float>\",\n        \"failureThreshold\": \"<float>\",\n        \"periodSeconds\": \"<float>\",\n        \"timeoutSeconds\": 5\n      },\n      \"livenessProbe\": {\n        \"kind\": \"<string>\",\n        \"initialDelaySeconds\": \"<float>\",\n        \"failureThreshold\": \"<float>\",\n        \"periodSeconds\": \"<float>\",\n        \"timeoutSeconds\": 5\n      },\n      \"volumes\": {\n        \"key_0\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        },\n        \"key_1\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        },\n        \"key_2\": {\n          \"kind\": \"<string>\",\n          \"mountPath\": \"<string>\"\n        }\n      },\n      \"command\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"args\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"workingDir\": \"<string>\"\n    },\n    \"environment\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"connections\": {\n      \"key_0\": {\n        \"source\": \"<string>\",\n        \"disableDefaultEnvVars\": \"<boolean>\",\n        \"iam\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"roles\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    \"identity\": {\n      \"kind\": \"<string>\",\n      \"oidcIssuer\": \"<string>\",\n      \"resource\": \"<string>\",\n      \"managedIdentity\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"extensions\": [\n      {\n        \"kind\": \"<string>\"\n      },\n      {\n        \"kind\": \"<string>\"\n      }\n    ],\n    \"resourceProvisioning\": \"<string>\",\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"restartPolicy\": \"<string>\",\n    \"runtimes\": {\n      \"kubernetes\": {\n        \"base\": \"<string>\",\n        \"pod\": {\n          \"key_0\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_1\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"key_2\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"aci\": {\n        \"gatewayID\": \"<string>\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aecce163-755d-455f-a671-3f0966a27ef2",
+              "name": "Resource update request accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "containers",
+                    ":containerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "containerName",
+                      "description": "(Required) Container name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The Location header contains the URL where the status of the long running operation can be checked.",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  "key": "Retry-After",
+                  "value": "633"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "caa1fed6-d0fd-42dc-8701-81c7d4d1e2f1",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "containers",
+                    ":containerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "containerName",
+                      "description": "(Required) Container name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5e091dd-f5db-41b3-a555-d532e3b76b65",
+          "name": "Containers Delete",
+          "request": {
+            "name": "Containers Delete",
+            "description": {
+              "content": "Delete a ContainerResource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Core",
+                "containers",
+                ":containerName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "containerName",
+                  "description": "(Required) Container name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd9c65da-4bba-4c82-81c6-61fd12674ce8",
+              "name": "Resource deletion accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "containers",
+                    ":containerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "containerName",
+                      "description": "(Required) Container name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The Location header contains the URL where the status of the long running operation can be checked.",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  "key": "Retry-After",
+                  "value": "633"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9cb9496a-f521-4ebd-ae23-c53a836512fd",
+              "name": "Resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "containers",
+                    ":containerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "containerName",
+                      "description": "(Required) Container name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ee314039-66b1-45ee-aeee-1bb15eb9e7ad",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "containers",
+                    ":containerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "containerName",
+                      "description": "(Required) Container name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "user_impersonation"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "implicit"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d26d90bd-e48a-40c1-86a9-6567dd79bbb8",
+    "name": "Applications.Core Management APIs ApiVersions Containers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST APIs for Applications.Core",
+      "type": "text/plain"
+    }
+  }
+}

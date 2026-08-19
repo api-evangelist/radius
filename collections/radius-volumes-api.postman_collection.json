@@ -1,0 +1,1199 @@
+{
+  "item": [
+    {
+      "id": "de82b049-7768-4921-97bd-9e28195cd8c1",
+      "name": "Volumes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "be710bad-9bb7-4a10-9eac-53e83c5fa534",
+          "name": "Volumes List By Scope",
+          "request": {
+            "name": "Volumes List By Scope",
+            "description": {
+              "content": "List VolumeResource resources by Scope",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Core",
+                "volumes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7b6c1de7-688a-4f62-9da9-111e101026e2",
+              "name": "Azure operation completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "volumes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"properties\": {\n        \"kind\": \"string\",\n        \"application\": \"string\",\n        \"environment\": \"string\",\n        \"provisioningState\": \"Provisioning\",\n        \"status\": {\n          \"compute\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"recipe\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"outputResources\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"properties\": {\n        \"kind\": \"string\",\n        \"application\": \"string\",\n        \"environment\": \"string\",\n        \"provisioningState\": \"Succeeded\",\n        \"status\": {\n          \"compute\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"recipe\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"outputResources\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    }\n  ],\n  \"nextLink\": \"http://QWgrwVtXNTlUuWoWrIwjpJiUnqVCDglIV.nbskcTYCnf-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89e3fe2f-47db-4c68-8018-cffbdd82cd50",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "volumes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "585b79c4-5e38-4c35-846c-004f5584246c",
+          "name": "Volumes Get",
+          "request": {
+            "name": "Volumes Get",
+            "description": {
+              "content": "Get a VolumeResource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Core",
+                "volumes",
+                ":volumeName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "volumeName",
+                  "description": "(Required) Volume name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec6f4833-3daa-4b57-a3a7-162d415f1225",
+              "name": "Azure operation completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "volumes",
+                    ":volumeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volumeName",
+                      "description": "(Required) Volume name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"kind\": \"string\",\n    \"application\": \"string\",\n    \"environment\": \"string\",\n    \"provisioningState\": \"Updating\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"string\",\n        \"resourceId\": \"string\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"string\",\n        \"templatePath\": \"string\",\n        \"templateVersion\": \"string\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"string\",\n          \"id\": \"string\",\n          \"radiusManaged\": true\n        },\n        {\n          \"localId\": \"string\",\n          \"id\": \"string\",\n          \"radiusManaged\": false\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba437e3e-2c3a-4310-b273-a7cb7b08b476",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "volumes",
+                    ":volumeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volumeName",
+                      "description": "(Required) Volume name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d442c829-c524-4334-a4e8-ec17c8af8e78",
+          "name": "Volumes Create Or Update",
+          "request": {
+            "name": "Volumes Create Or Update",
+            "description": {
+              "content": "Create a VolumeResource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Core",
+                "volumes",
+                ":volumeName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "volumeName",
+                  "description": "(Required) Volume name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"properties\": {\n    \"kind\": \"<string>\",\n    \"application\": \"<string>\",\n    \"environment\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "17699912-6c39-48e6-ab29-f43307edd1ac",
+              "name": "Resource 'VolumeResource' update operation succeeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "volumes",
+                    ":volumeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volumeName",
+                      "description": "(Required) Volume name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"kind\": \"<string>\",\n    \"application\": \"<string>\",\n    \"environment\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"kind\": \"<string>\",\n    \"application\": \"<string>\",\n    \"environment\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f80d92cc-d0a0-44f2-9fba-d853c415c27a",
+              "name": "Resource 'VolumeResource' create operation succeeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "volumes",
+                    ":volumeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volumeName",
+                      "description": "(Required) Volume name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"kind\": \"<string>\",\n    \"application\": \"<string>\",\n    \"environment\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A link to the status monitor",
+                  "key": "Azure-AsyncOperation",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  "key": "Retry-After",
+                  "value": "5074"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"kind\": \"<string>\",\n    \"application\": \"<string>\",\n    \"environment\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2a24101-5679-4561-a676-e12346de7bf1",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "volumes",
+                    ":volumeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volumeName",
+                      "description": "(Required) Volume name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"kind\": \"<string>\",\n    \"application\": \"<string>\",\n    \"environment\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9bf050d6-5091-43fc-82cd-044e85316001",
+          "name": "Volumes Update",
+          "request": {
+            "name": "Volumes Update",
+            "description": {
+              "content": "Update a VolumeResource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Core",
+                "volumes",
+                ":volumeName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "volumeName",
+                  "description": "(Required) Volume name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2425d567-4120-4904-87f8-b345eb2fbf53",
+              "name": "Azure operation completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "volumes",
+                    ":volumeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volumeName",
+                      "description": "(Required) Volume name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"kind\": \"<string>\",\n    \"application\": \"<string>\",\n    \"environment\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "babf7b43-2a65-4374-aa7c-0d786964c9b9",
+              "name": "Resource update request accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "volumes",
+                    ":volumeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volumeName",
+                      "description": "(Required) Volume name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The Location header contains the URL where the status of the long running operation can be checked.",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  "key": "Retry-After",
+                  "value": "5074"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "65872371-0f5b-4880-a0a2-c2937405cb33",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "volumes",
+                    ":volumeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volumeName",
+                      "description": "(Required) Volume name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "222bb828-0724-43c0-8305-80e0d1678dba",
+          "name": "Volumes Delete",
+          "request": {
+            "name": "Volumes Delete",
+            "description": {
+              "content": "Delete a VolumeResource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Core",
+                "volumes",
+                ":volumeName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "volumeName",
+                  "description": "(Required) Volume name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6441b465-9d57-4831-bdf8-0e7ad26406fa",
+              "name": "Resource deletion accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "volumes",
+                    ":volumeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volumeName",
+                      "description": "(Required) Volume name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The Location header contains the URL where the status of the long running operation can be checked.",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  "key": "Retry-After",
+                  "value": "5074"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bb24464b-d9f2-444b-b104-3a64f708279e",
+              "name": "Resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "volumes",
+                    ":volumeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volumeName",
+                      "description": "(Required) Volume name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "962d91d8-20de-49cc-9742-087922c78884",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Core",
+                    "volumes",
+                    ":volumeName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "volumeName",
+                      "description": "(Required) Volume name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "user_impersonation"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "implicit"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8831f492-d5e0-41df-bff4-28e7380a825c",
+    "name": "Applications.Core Management APIs ApiVersions Volumes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST APIs for Applications.Core",
+      "type": "text/plain"
+    }
+  }
+}

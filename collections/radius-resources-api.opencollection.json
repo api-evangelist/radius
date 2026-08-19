@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applications.Core Management APIs ApiVersions Resources API",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Resources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Resources_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/resourcegroups/:resourceGroupName/resources",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of resource group"
+              }
+            ]
+          },
+          "docs": "List resources in a resource group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

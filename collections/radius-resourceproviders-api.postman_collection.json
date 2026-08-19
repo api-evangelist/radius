@@ -1,0 +1,1328 @@
+{
+  "item": [
+    {
+      "id": "913be868-e509-4f9a-9267-11d5a971a955",
+      "name": "ResourceProviders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c0315063-59c8-4de4-b80b-29a806743bf8",
+          "name": "Resource Providers List Provider Summaries",
+          "request": {
+            "name": "Resource Providers List Provider Summaries",
+            "description": {
+              "content": "List resource provider summaries. The resource provider summary aggregates the most commonly used information including locations, api versions and resource types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "planes",
+                "radius",
+                ":planeName",
+                "providers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planeName",
+                  "description": "(Required) The plane name."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a668365-c5a8-407b-959c-bf5d3c0c6beb",
+              "name": "The request has succeeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "planes",
+                    "radius",
+                    ":planeName",
+                    "providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planeName",
+                      "description": "(Required) The plane name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"name\": \"x1X2t1QZ.\",\n      \"locations\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"resourceTypes\": {\n        \"key_0\": {\n          \"apiVersions\": {\n            \"key_0\": {\n              \"schema\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"key_1\": {\n              \"schema\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"capabilities\": [\n            \"fk\",\n            \"XSm\"\n          ],\n          \"defaultApiVersion\": \"string\",\n          \"description\": \"string\"\n        },\n        \"key_1\": {\n          \"apiVersions\": {\n            \"key_0\": {\n              \"schema\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"key_1\": {\n              \"schema\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"capabilities\": [\n            \"ibGR9gN7Sci\",\n            \"BW24QA4KEH\"\n          ],\n          \"defaultApiVersion\": \"string\",\n          \"description\": \"string\"\n        }\n      }\n    },\n    {\n      \"name\": \"wVXkDiS9.egXYMBzo\",\n      \"locations\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"resourceTypes\": {\n        \"key_0\": {\n          \"apiVersions\": {\n            \"key_0\": {\n              \"schema\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"key_1\": {\n              \"schema\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"capabilities\": [\n            \"GUli9Xss3g\",\n            \"qJ0oda\"\n          ],\n          \"defaultApiVersion\": \"string\",\n          \"description\": \"string\"\n        },\n        \"key_1\": {\n          \"apiVersions\": {\n            \"key_0\": {\n              \"schema\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"capabilities\": [\n            \"APCu\",\n            \"fu\"\n          ],\n          \"defaultApiVersion\": \"string\",\n          \"description\": \"string\"\n        },\n        \"key_2\": {\n          \"apiVersions\": {\n            \"key_0\": {\n              \"schema\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"key_1\": {\n              \"schema\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"capabilities\": [\n            \"TCVnodcYtY\",\n            \"wdLqUfBP\"\n          ],\n          \"defaultApiVersion\": \"string\",\n          \"description\": \"string\"\n        }\n      }\n    }\n  ],\n  \"nextLink\": \"http://HTnYRNmeQJ.ybQuQTBb3GoX\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae4ceaa6-09ec-4be1-bb75-ef47ee30cd73",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "planes",
+                    "radius",
+                    ":planeName",
+                    "providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planeName",
+                      "description": "(Required) The plane name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee0f1dec-4ec2-45ac-aaa6-a56ac4fc0c32",
+          "name": "Resource Providers Get Provider Summary",
+          "request": {
+            "name": "Resource Providers Get Provider Summary",
+            "description": {
+              "content": "Get the specified resource provider summary. The resource provider summary aggregates the most commonly used information including locations, api versions and resource types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "planes",
+                "radius",
+                ":planeName",
+                "providers",
+                ":resourceProviderName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planeName",
+                  "description": "(Required) The plane name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceProviderName",
+                  "description": "(Required) The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "732551c3-c3bc-4d93-9245-c69d3ac9b7e5",
+              "name": "Azure operation completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "planes",
+                    "radius",
+                    ":planeName",
+                    "providers",
+                    ":resourceProviderName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planeName",
+                      "description": "(Required) The plane name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceProviderName",
+                      "description": "(Required) The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"DOwye.WwMgxR\",\n  \"locations\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"resourceTypes\": {\n    \"key_0\": {\n      \"apiVersions\": {\n        \"key_0\": {\n          \"schema\": {\n            \"key_0\": {},\n            \"key_1\": {},\n            \"key_2\": {}\n          }\n        },\n        \"key_1\": {\n          \"schema\": {\n            \"key_0\": {},\n            \"key_1\": {},\n            \"key_2\": {}\n          }\n        }\n      },\n      \"capabilities\": [\n        \"ZT0eqjsujLT\",\n        \"ZqDdKBe\"\n      ],\n      \"defaultApiVersion\": \"string\",\n      \"description\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86500eab-9ea4-4248-877f-db5cfeea01af",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "planes",
+                    "radius",
+                    ":planeName",
+                    "providers",
+                    ":resourceProviderName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planeName",
+                      "description": "(Required) The plane name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceProviderName",
+                      "description": "(Required) The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a93afcb-2c97-40f1-a247-578d5a15ea50",
+          "name": "Resource Providers List",
+          "request": {
+            "name": "Resource Providers List",
+            "description": {
+              "content": "List resource providers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "planes",
+                "radius",
+                ":planeName",
+                "providers",
+                "System.Resources",
+                "resourceproviders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planeName",
+                  "description": "(Required) The plane name."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1614314-4708-4846-8d43-8652621ef7ca",
+              "name": "Azure operation completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "planes",
+                    "radius",
+                    ":planeName",
+                    "providers",
+                    "System.Resources",
+                    "resourceproviders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planeName",
+                      "description": "(Required) The plane name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"properties\": {\n        \"provisioningState\": \"Provisioning\"\n      }\n    },\n    {\n      \"properties\": {\n        \"provisioningState\": \"Provisioning\"\n      }\n    }\n  ],\n  \"nextLink\": \"http://JtOWnCUpQtjrvWi.mtpopiCwI8MqgqEAkeIanHlftbc4nWKrGfufF5icEl+jPaCWmDADGt-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6265a924-3ead-4492-b2e6-ef666d6e2eea",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "planes",
+                    "radius",
+                    ":planeName",
+                    "providers",
+                    "System.Resources",
+                    "resourceproviders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planeName",
+                      "description": "(Required) The plane name."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97228ced-3ae6-4408-afca-06e6f7d830ed",
+          "name": "Resource Providers Get",
+          "request": {
+            "name": "Resource Providers Get",
+            "description": {
+              "content": "Get the specified resource provider.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "planes",
+                "radius",
+                ":planeName",
+                "providers",
+                "System.Resources",
+                "resourceproviders",
+                ":resourceProviderName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planeName",
+                  "description": "(Required) The plane name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceProviderName",
+                  "description": "(Required) The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1f50cdcb-571e-4dcf-ae95-7d43863da778",
+              "name": "Azure operation completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "planes",
+                    "radius",
+                    ":planeName",
+                    "providers",
+                    "System.Resources",
+                    "resourceproviders",
+                    ":resourceProviderName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planeName",
+                      "description": "(Required) The plane name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceProviderName",
+                      "description": "(Required) The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"provisioningState\": \"Accepted\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dfa764eb-b0f1-4a98-a19a-f7a59b8f4a1b",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "planes",
+                    "radius",
+                    ":planeName",
+                    "providers",
+                    "System.Resources",
+                    "resourceproviders",
+                    ":resourceProviderName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planeName",
+                      "description": "(Required) The plane name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceProviderName",
+                      "description": "(Required) The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6bf8edfd-c3d9-4e0e-b2ca-515be27b3c24",
+          "name": "Resource Providers Create Or Update",
+          "request": {
+            "name": "Resource Providers Create Or Update",
+            "description": {
+              "content": "Create or update a resource provider",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "planes",
+                "radius",
+                ":planeName",
+                "providers",
+                "System.Resources",
+                "resourceproviders",
+                ":resourceProviderName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planeName",
+                  "description": "(Required) The plane name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceProviderName",
+                  "description": "(Required) The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"properties\": {\n    \"provisioningState\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2b9b3e98-08c7-4743-81e9-1ace2964726e",
+              "name": "Resource 'ResourceProviderResource' update operation succeeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "planes",
+                    "radius",
+                    ":planeName",
+                    "providers",
+                    "System.Resources",
+                    "resourceproviders",
+                    ":resourceProviderName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planeName",
+                      "description": "(Required) The plane name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceProviderName",
+                      "description": "(Required) The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"provisioningState\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"provisioningState\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a46655c-fb5b-4a93-b52f-5bbdc16487f9",
+              "name": "Resource 'ResourceProviderResource' create operation succeeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "planes",
+                    "radius",
+                    ":planeName",
+                    "providers",
+                    "System.Resources",
+                    "resourceproviders",
+                    ":resourceProviderName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planeName",
+                      "description": "(Required) The plane name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceProviderName",
+                      "description": "(Required) The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"provisioningState\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  "key": "Retry-After",
+                  "value": "4344"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"provisioningState\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed17b8ce-0fa3-4b77-ab20-08efcb6de1a1",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "planes",
+                    "radius",
+                    ":planeName",
+                    "providers",
+                    "System.Resources",
+                    "resourceproviders",
+                    ":resourceProviderName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planeName",
+                      "description": "(Required) The plane name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceProviderName",
+                      "description": "(Required) The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"provisioningState\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c5062a6-db08-4578-a207-993f7bd8321a",
+          "name": "Resource Providers Delete",
+          "request": {
+            "name": "Resource Providers Delete",
+            "description": {
+              "content": "Delete a resource provider",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "planes",
+                "radius",
+                ":planeName",
+                "providers",
+                "System.Resources",
+                "resourceproviders",
+                ":resourceProviderName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "planeName",
+                  "description": "(Required) The plane name."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceProviderName",
+                  "description": "(Required) The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e154baa4-a277-4489-97f4-d6c27272bdbe",
+              "name": "Resource deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "planes",
+                    "radius",
+                    ":planeName",
+                    "providers",
+                    "System.Resources",
+                    "resourceproviders",
+                    ":resourceProviderName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planeName",
+                      "description": "(Required) The plane name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceProviderName",
+                      "description": "(Required) The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "25c4069a-9512-42c1-b190-ec1d3840b7fd",
+              "name": "Resource deletion accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "planes",
+                    "radius",
+                    ":planeName",
+                    "providers",
+                    "System.Resources",
+                    "resourceproviders",
+                    ":resourceProviderName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planeName",
+                      "description": "(Required) The plane name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceProviderName",
+                      "description": "(Required) The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The Location header contains the URL where the status of the long running operation can be checked.",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  "key": "Retry-After",
+                  "value": "4344"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "209a83f9-b4a3-43fe-8b6f-779df05549ef",
+              "name": "Resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "planes",
+                    "radius",
+                    ":planeName",
+                    "providers",
+                    "System.Resources",
+                    "resourceproviders",
+                    ":resourceProviderName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planeName",
+                      "description": "(Required) The plane name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceProviderName",
+                      "description": "(Required) The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "997ad41f-c581-4192-8bc0-c4a25436b83c",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "planes",
+                    "radius",
+                    ":planeName",
+                    "providers",
+                    "System.Resources",
+                    "resourceproviders",
+                    ":resourceProviderName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "planeName",
+                      "description": "(Required) The plane name."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceProviderName",
+                      "description": "(Required) The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "user_impersonation"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "implicit"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6b458582-d78c-4d11-b3bb-6640894eff77",
+    "name": "Applications.Core Management APIs ApiVersions ResourceProviders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST APIs for Applications.Core",
+      "type": "text/plain"
+    }
+  }
+}

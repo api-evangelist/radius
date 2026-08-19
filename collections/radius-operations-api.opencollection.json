@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applications.Core Management APIs ApiVersions Operations API",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Operations_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/providers/Applications.Core/operations"
+          },
+          "docs": "List the operations for the provider"
+        },
+        {
+          "info": {
+            "name": "Operations_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/providers/Applications.Dapr/operations"
+          },
+          "docs": "List the operations for the provider"
+        },
+        {
+          "info": {
+            "name": "Operations_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/providers/Applications.Datastores/operations"
+          },
+          "docs": "List the operations for the provider"
+        },
+        {
+          "info": {
+            "name": "Operations_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/providers/Applications.Messaging/operations"
+          },
+          "docs": "List the operations for the provider"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

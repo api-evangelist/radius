@@ -1,0 +1,1199 @@
+{
+  "item": [
+    {
+      "id": "ce30b52e-9ad5-460d-9635-a4159d2a145e",
+      "name": "PubSubBrokers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1d0cf422-0669-43d4-ac8d-2a57260425c1",
+          "name": "Pub Sub Brokers List By Scope",
+          "request": {
+            "name": "Pub Sub Brokers List By Scope",
+            "description": {
+              "content": "List DaprPubSubBrokerResource resources by Scope",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Dapr",
+                "pubSubBrokers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d7e8ab0-2ea6-4773-af27-9fea78a88296",
+              "name": "Azure operation completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Dapr",
+                    "pubSubBrokers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"properties\": {\n        \"environment\": \"string\",\n        \"application\": \"string\",\n        \"provisioningState\": \"Failed\",\n        \"status\": {\n          \"compute\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"recipe\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"outputResources\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"componentName\": \"string\",\n        \"metadata\": {\n          \"key_0\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secretKeyRef\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_1\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secretKeyRef\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"type\": \"string\",\n        \"version\": \"string\",\n        \"auth\": {\n          \"secretStore\": \"string\"\n        },\n        \"resources\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"recipe\": {\n          \"name\": \"string\",\n          \"parameters\": {}\n        },\n        \"resourceProvisioning\": \"manual\"\n      }\n    },\n    {\n      \"properties\": {\n        \"environment\": \"string\",\n        \"application\": \"string\",\n        \"provisioningState\": \"Accepted\",\n        \"status\": {\n          \"compute\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"recipe\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"outputResources\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"componentName\": \"string\",\n        \"metadata\": {\n          \"key_0\": {\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secretKeyRef\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"type\": \"string\",\n        \"version\": \"string\",\n        \"auth\": {\n          \"secretStore\": \"string\"\n        },\n        \"resources\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"recipe\": {\n          \"name\": \"string\",\n          \"parameters\": {}\n        },\n        \"resourceProvisioning\": \"recipe\"\n      }\n    }\n  ],\n  \"nextLink\": \"http://ZaqNPAyADLGtkxLsHfmsYpF.amhNR6wDMfxdERxdxK.neileK\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ae35d55-dd76-4d9b-8cce-9650557ed102",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Dapr",
+                    "pubSubBrokers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4fbde4fb-81ce-4820-9e33-62f8b7670eaa",
+          "name": "Pub Sub Brokers Get",
+          "request": {
+            "name": "Pub Sub Brokers Get",
+            "description": {
+              "content": "Get a DaprPubSubBrokerResource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Dapr",
+                "pubSubBrokers",
+                ":pubSubBrokerName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pubSubBrokerName",
+                  "description": "(Required) PubSubBroker name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c0a6663-511a-4aca-b93e-c73dd0674377",
+              "name": "Azure operation completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Dapr",
+                    "pubSubBrokers",
+                    ":pubSubBrokerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pubSubBrokerName",
+                      "description": "(Required) PubSubBroker name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"environment\": \"string\",\n    \"application\": \"string\",\n    \"provisioningState\": \"Updating\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"string\",\n        \"resourceId\": \"string\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"string\",\n        \"templatePath\": \"string\",\n        \"templateVersion\": \"string\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"string\",\n          \"id\": \"string\",\n          \"radiusManaged\": true\n        },\n        {\n          \"localId\": \"string\",\n          \"id\": \"string\",\n          \"radiusManaged\": true\n        }\n      ]\n    },\n    \"componentName\": \"string\",\n    \"metadata\": {\n      \"key_0\": {\n        \"value\": \"string\",\n        \"secretKeyRef\": {\n          \"name\": \"string\",\n          \"key\": \"string\"\n        }\n      }\n    },\n    \"type\": \"string\",\n    \"version\": \"string\",\n    \"auth\": {\n      \"secretStore\": \"string\"\n    },\n    \"resources\": [\n      {\n        \"id\": \"string\"\n      },\n      {\n        \"id\": \"string\"\n      }\n    ],\n    \"recipe\": {\n      \"name\": \"string\",\n      \"parameters\": {}\n    },\n    \"resourceProvisioning\": \"recipe\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c3d984d-fa23-45cf-9bae-86e07cebad25",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Dapr",
+                    "pubSubBrokers",
+                    ":pubSubBrokerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pubSubBrokerName",
+                      "description": "(Required) PubSubBroker name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7ae22b4-6bb7-4343-a0b8-db3df280da7e",
+          "name": "Pub Sub Brokers Create Or Update",
+          "request": {
+            "name": "Pub Sub Brokers Create Or Update",
+            "description": {
+              "content": "Create a DaprPubSubBrokerResource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Dapr",
+                "pubSubBrokers",
+                ":pubSubBrokerName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pubSubBrokerName",
+                  "description": "(Required) PubSubBroker name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"properties\": {\n    \"environment\": \"<string>\",\n    \"application\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"metadata\": {\n      \"key_0\": {\n        \"value\": \"<string>\",\n        \"secretKeyRef\": {\n          \"name\": \"<string>\",\n          \"key\": \"<string>\"\n        }\n      }\n    },\n    \"type\": \"<string>\",\n    \"version\": \"<string>\",\n    \"auth\": {\n      \"secretStore\": \"<string>\"\n    },\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"recipe\": {\n      \"name\": \"<string>\",\n      \"parameters\": \"<object>\"\n    },\n    \"resourceProvisioning\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "80ccb58c-3ec2-410c-94fe-83272c4db67b",
+              "name": "Resource 'DaprPubSubBrokerResource' update operation succeeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Dapr",
+                    "pubSubBrokers",
+                    ":pubSubBrokerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pubSubBrokerName",
+                      "description": "(Required) PubSubBroker name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"environment\": \"<string>\",\n    \"application\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"metadata\": {\n      \"key_0\": {\n        \"value\": \"<string>\",\n        \"secretKeyRef\": {\n          \"name\": \"<string>\",\n          \"key\": \"<string>\"\n        }\n      }\n    },\n    \"type\": \"<string>\",\n    \"version\": \"<string>\",\n    \"auth\": {\n      \"secretStore\": \"<string>\"\n    },\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"recipe\": {\n      \"name\": \"<string>\",\n      \"parameters\": \"<object>\"\n    },\n    \"resourceProvisioning\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"environment\": \"<string>\",\n    \"application\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"componentName\": \"string\",\n    \"metadata\": {\n      \"key_0\": {\n        \"value\": \"<string>\",\n        \"secretKeyRef\": {\n          \"name\": \"<string>\",\n          \"key\": \"<string>\"\n        }\n      },\n      \"key_1\": {\n        \"value\": \"<string>\",\n        \"secretKeyRef\": {\n          \"name\": \"<string>\",\n          \"key\": \"<string>\"\n        }\n      }\n    },\n    \"type\": \"<string>\",\n    \"version\": \"<string>\",\n    \"auth\": {\n      \"secretStore\": \"<string>\"\n    },\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"recipe\": {\n      \"name\": \"<string>\",\n      \"parameters\": \"<object>\"\n    },\n    \"resourceProvisioning\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99b415ef-b0dc-4535-ba75-bd4c9d554b17",
+              "name": "Resource 'DaprPubSubBrokerResource' create operation succeeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Dapr",
+                    "pubSubBrokers",
+                    ":pubSubBrokerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pubSubBrokerName",
+                      "description": "(Required) PubSubBroker name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"environment\": \"<string>\",\n    \"application\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"metadata\": {\n      \"key_0\": {\n        \"value\": \"<string>\",\n        \"secretKeyRef\": {\n          \"name\": \"<string>\",\n          \"key\": \"<string>\"\n        }\n      }\n    },\n    \"type\": \"<string>\",\n    \"version\": \"<string>\",\n    \"auth\": {\n      \"secretStore\": \"<string>\"\n    },\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"recipe\": {\n      \"name\": \"<string>\",\n      \"parameters\": \"<object>\"\n    },\n    \"resourceProvisioning\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "A link to the status monitor",
+                  "key": "Azure-AsyncOperation",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  "key": "Retry-After",
+                  "value": "9158"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"environment\": \"<string>\",\n    \"application\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"componentName\": \"string\",\n    \"metadata\": {\n      \"key_0\": {\n        \"value\": \"<string>\",\n        \"secretKeyRef\": {\n          \"name\": \"<string>\",\n          \"key\": \"<string>\"\n        }\n      },\n      \"key_1\": {\n        \"value\": \"<string>\",\n        \"secretKeyRef\": {\n          \"name\": \"<string>\",\n          \"key\": \"<string>\"\n        }\n      }\n    },\n    \"type\": \"<string>\",\n    \"version\": \"<string>\",\n    \"auth\": {\n      \"secretStore\": \"<string>\"\n    },\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"recipe\": {\n      \"name\": \"<string>\",\n      \"parameters\": \"<object>\"\n    },\n    \"resourceProvisioning\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39b4d0b5-d3f3-431c-99aa-344efe466e1f",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Dapr",
+                    "pubSubBrokers",
+                    ":pubSubBrokerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pubSubBrokerName",
+                      "description": "(Required) PubSubBroker name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"properties\": {\n    \"environment\": \"<string>\",\n    \"application\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"metadata\": {\n      \"key_0\": {\n        \"value\": \"<string>\",\n        \"secretKeyRef\": {\n          \"name\": \"<string>\",\n          \"key\": \"<string>\"\n        }\n      }\n    },\n    \"type\": \"<string>\",\n    \"version\": \"<string>\",\n    \"auth\": {\n      \"secretStore\": \"<string>\"\n    },\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"recipe\": {\n      \"name\": \"<string>\",\n      \"parameters\": \"<object>\"\n    },\n    \"resourceProvisioning\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f88fcc7e-5bcb-4037-acf4-de50c5a451b3",
+          "name": "Pub Sub Brokers Update",
+          "request": {
+            "name": "Pub Sub Brokers Update",
+            "description": {
+              "content": "Update a DaprPubSubBrokerResource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Dapr",
+                "pubSubBrokers",
+                ":pubSubBrokerName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pubSubBrokerName",
+                  "description": "(Required) PubSubBroker name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "faf59911-2f4c-4ec8-9f12-181888361fb1",
+              "name": "Azure operation completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Dapr",
+                    "pubSubBrokers",
+                    ":pubSubBrokerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pubSubBrokerName",
+                      "description": "(Required) PubSubBroker name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"properties\": {\n    \"environment\": \"<string>\",\n    \"application\": \"<string>\",\n    \"provisioningState\": \"<string>\",\n    \"status\": {\n      \"compute\": {\n        \"kind\": \"<string>\",\n        \"resourceId\": \"<string>\",\n        \"identity\": {\n          \"kind\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"oidcIssuer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"resource\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"managedIdentity\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"recipe\": {\n        \"templateKind\": \"<string>\",\n        \"templatePath\": \"<string>\",\n        \"templateVersion\": \"<string>\"\n      },\n      \"outputResources\": [\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        },\n        {\n          \"localId\": \"<string>\",\n          \"id\": \"<string>\",\n          \"radiusManaged\": \"<boolean>\"\n        }\n      ]\n    },\n    \"componentName\": \"string\",\n    \"metadata\": {\n      \"key_0\": {\n        \"value\": \"<string>\",\n        \"secretKeyRef\": {\n          \"name\": \"<string>\",\n          \"key\": \"<string>\"\n        }\n      },\n      \"key_1\": {\n        \"value\": \"<string>\",\n        \"secretKeyRef\": {\n          \"name\": \"<string>\",\n          \"key\": \"<string>\"\n        }\n      }\n    },\n    \"type\": \"<string>\",\n    \"version\": \"<string>\",\n    \"auth\": {\n      \"secretStore\": \"<string>\"\n    },\n    \"resources\": [\n      {\n        \"id\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\"\n      }\n    ],\n    \"recipe\": {\n      \"name\": \"<string>\",\n      \"parameters\": \"<object>\"\n    },\n    \"resourceProvisioning\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8aee9e20-9031-44d1-a82e-0a59fbbcc326",
+              "name": "Resource update request accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Dapr",
+                    "pubSubBrokers",
+                    ":pubSubBrokerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pubSubBrokerName",
+                      "description": "(Required) PubSubBroker name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The Location header contains the URL where the status of the long running operation can be checked.",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  "key": "Retry-After",
+                  "value": "9158"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "51b12df2-a5e2-4bdc-8bb6-a83a93a1cc44",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Dapr",
+                    "pubSubBrokers",
+                    ":pubSubBrokerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pubSubBrokerName",
+                      "description": "(Required) PubSubBroker name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9f7142e-86ae-40d7-89f5-4eb514bb87bd",
+          "name": "Pub Sub Brokers Delete",
+          "request": {
+            "name": "Pub Sub Brokers Delete",
+            "description": {
+              "content": "Delete a DaprPubSubBrokerResource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":rootScope",
+                "providers",
+                "Applications.Dapr",
+                "pubSubBrokers",
+                ":pubSubBrokerName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "rootScope",
+                  "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pubSubBrokerName",
+                  "description": "(Required) PubSubBroker name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3625b2e2-f713-443d-9f7c-97001c482238",
+              "name": "Resource deletion accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Dapr",
+                    "pubSubBrokers",
+                    ":pubSubBrokerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pubSubBrokerName",
+                      "description": "(Required) PubSubBroker name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "The Location header contains the URL where the status of the long running operation can be checked.",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The Retry-After header can indicate how long the client should wait before polling the operation status.",
+                  "key": "Retry-After",
+                  "value": "9158"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c3cb060f-f118-4c6e-b4b4-4b76b10f79bc",
+              "name": "Resource does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Dapr",
+                    "pubSubBrokers",
+                    ":pubSubBrokerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pubSubBrokerName",
+                      "description": "(Required) PubSubBroker name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3d0a5f85-d64d-4e97-bcb0-5aae06d51f58",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":rootScope",
+                    "providers",
+                    "Applications.Dapr",
+                    "pubSubBrokers",
+                    ":pubSubBrokerName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "rootScope",
+                      "description": "(Required) The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pubSubBrokerName",
+                      "description": "(Required) PubSubBroker name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://management.azure.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "user_impersonation"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://login.microsoftonline.com/common/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "implicit"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8d2346af-6ef5-4ab4-8761-7970ea59907a",
+    "name": "Applications.Core Management APIs ApiVersions PubSubBrokers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST APIs for Applications.Core",
+      "type": "text/plain"
+    }
+  }
+}

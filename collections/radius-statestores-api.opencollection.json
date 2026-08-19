@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applications.Core Management APIs ApiVersions StateStores API",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "StateStores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "StateStores_ListByScope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/stateStores",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              }
+            ]
+          },
+          "docs": "List DaprStateStoreResource resources by Scope"
+        },
+        {
+          "info": {
+            "name": "StateStores_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/stateStores/:stateStoreName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "stateStoreName",
+                "value": "",
+                "type": "path",
+                "description": "StateStore name"
+              }
+            ]
+          },
+          "docs": "Get a DaprStateStoreResource"
+        },
+        {
+          "info": {
+            "name": "StateStores_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/stateStores/:stateStoreName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "stateStoreName",
+                "value": "",
+                "type": "path",
+                "description": "StateStore name"
+              }
+            ]
+          },
+          "docs": "Create a DaprStateStoreResource"
+        },
+        {
+          "info": {
+            "name": "StateStores_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/stateStores/:stateStoreName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "stateStoreName",
+                "value": "",
+                "type": "path",
+                "description": "StateStore name"
+              }
+            ]
+          },
+          "docs": "Update a DaprStateStoreResource"
+        },
+        {
+          "info": {
+            "name": "StateStores_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Dapr/stateStores/:stateStoreName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "stateStoreName",
+                "value": "",
+                "type": "path",
+                "description": "StateStore name"
+              }
+            ]
+          },
+          "docs": "Delete a DaprStateStoreResource"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

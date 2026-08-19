@@ -1,0 +1,156 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applications.Core Management APIs ApiVersions ResourceProviders API",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ResourceProviders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ResourceProviders_ListProviderSummaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "List resource provider summaries. The resource provider summary aggregates the most commonly used information including locations, api versions and resource types."
+        },
+        {
+          "info": {
+            "name": "ResourceProviders_GetProviderSummary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/:resourceProviderName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              }
+            ]
+          },
+          "docs": "Get the specified resource provider summary. The resource provider summary aggregates the most commonly used information including locations, api versions and resource types."
+        },
+        {
+          "info": {
+            "name": "ResourceProviders_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "List resource providers."
+        },
+        {
+          "info": {
+            "name": "ResourceProviders_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              }
+            ]
+          },
+          "docs": "Get the specified resource provider."
+        },
+        {
+          "info": {
+            "name": "ResourceProviders_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              }
+            ]
+          },
+          "docs": "Create or update a resource provider"
+        },
+        {
+          "info": {
+            "name": "ResourceProviders_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              }
+            ]
+          },
+          "docs": "Delete a resource provider"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applications.Core Management APIs ApiVersions Extenders API",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Extenders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Extenders_ListByScope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Core/extenders",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              }
+            ]
+          },
+          "docs": "List ExtenderResource resources by Scope"
+        },
+        {
+          "info": {
+            "name": "Extenders_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Core/extenders/:extenderName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "extenderName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the ExtenderResource portable resource"
+              }
+            ]
+          },
+          "docs": "Get a ExtenderResource"
+        },
+        {
+          "info": {
+            "name": "Extenders_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Core/extenders/:extenderName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "extenderName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the ExtenderResource portable resource"
+              }
+            ]
+          },
+          "docs": "Create a ExtenderResource"
+        },
+        {
+          "info": {
+            "name": "Extenders_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Core/extenders/:extenderName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "extenderName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the ExtenderResource portable resource"
+              }
+            ]
+          },
+          "docs": "Update a ExtenderResource"
+        },
+        {
+          "info": {
+            "name": "Extenders_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Core/extenders/:extenderName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "extenderName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the ExtenderResource portable resource"
+              }
+            ]
+          },
+          "docs": "Delete a ExtenderResource"
+        },
+        {
+          "info": {
+            "name": "Extenders_ListSecrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Core/extenders/:extenderName/listSecrets",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "extenderName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the ExtenderResource portable resource"
+              }
+            ]
+          },
+          "docs": "Lists secrets values for the specified Extender resource"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

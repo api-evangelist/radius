@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applications.Core Management APIs ApiVersions Locations API",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Locations_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/locations",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              }
+            ]
+          },
+          "docs": "List available locations for the specified resource provider."
+        },
+        {
+          "info": {
+            "name": "Locations_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/locations/:locationName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              },
+              {
+                "name": "locationName",
+                "value": "",
+                "type": "path",
+                "description": "The location name."
+              }
+            ]
+          },
+          "docs": "Get the specified location. The location resource represents a logical location where the resource provider operates."
+        },
+        {
+          "info": {
+            "name": "Locations_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/locations/:locationName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              },
+              {
+                "name": "locationName",
+                "value": "",
+                "type": "path",
+                "description": "The location name."
+              }
+            ]
+          },
+          "docs": "Create or update a location. The location resource represents a logical location where the resource provider operates."
+        },
+        {
+          "info": {
+            "name": "Locations_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/locations/:locationName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              },
+              {
+                "name": "locationName",
+                "value": "",
+                "type": "path",
+                "description": "The location name."
+              }
+            ]
+          },
+          "docs": "Delete a location. The location resource represents a logical location where the resource provider operates."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

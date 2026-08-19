@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applications.Core Management APIs ApiVersions AwsPlanes API",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AwsPlanes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AwsPlanes_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/aws"
+          },
+          "docs": "List AWS planes"
+        },
+        {
+          "info": {
+            "name": "AwsPlanes_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/aws/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Get a plane by name"
+        },
+        {
+          "info": {
+            "name": "AwsPlanes_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/planes/aws/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Create or update a plane"
+        },
+        {
+          "info": {
+            "name": "AwsPlanes_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/planes/aws/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Update a plane"
+        },
+        {
+          "info": {
+            "name": "AwsPlanes_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/planes/aws/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Delete a plane"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applications.Core Management APIs ApiVersions RadiusPlanes API",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "RadiusPlanes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "RadiusPlanes_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius"
+          },
+          "docs": "List Radius planes"
+        },
+        {
+          "info": {
+            "name": "RadiusPlanes_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Get a plane by name"
+        },
+        {
+          "info": {
+            "name": "RadiusPlanes_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/planes/radius/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Create or update a plane"
+        },
+        {
+          "info": {
+            "name": "RadiusPlanes_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/planes/radius/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Update a plane"
+        },
+        {
+          "info": {
+            "name": "RadiusPlanes_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/planes/radius/:planeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "Delete a plane"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

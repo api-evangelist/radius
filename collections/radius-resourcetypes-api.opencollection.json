@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applications.Core Management APIs ApiVersions ResourceTypes API",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ResourceTypes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ResourceTypes_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/resourcetypes",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              }
+            ]
+          },
+          "docs": "List resource types."
+        },
+        {
+          "info": {
+            "name": "ResourceTypes_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/resourcetypes/:resourceTypeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              },
+              {
+                "name": "resourceTypeName",
+                "value": "",
+                "type": "path",
+                "description": "The resource type name."
+              }
+            ]
+          },
+          "docs": "Get the specified resource type."
+        },
+        {
+          "info": {
+            "name": "ResourceTypes_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/resourcetypes/:resourceTypeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              },
+              {
+                "name": "resourceTypeName",
+                "value": "",
+                "type": "path",
+                "description": "The resource type name."
+              }
+            ]
+          },
+          "docs": "Create or update a resource type"
+        },
+        {
+          "info": {
+            "name": "ResourceTypes_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/planes/radius/:planeName/providers/System.Resources/resourceproviders/:resourceProviderName/resourcetypes/:resourceTypeName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceProviderName",
+                "value": "",
+                "type": "path",
+                "description": "The resource provider name. This is also the resource provider namespace. Example: 'Applications.Datastores'."
+              },
+              {
+                "name": "resourceTypeName",
+                "value": "",
+                "type": "path",
+                "description": "The resource type name."
+              }
+            ]
+          },
+          "docs": "Delete a resource type"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

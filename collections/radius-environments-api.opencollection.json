@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applications.Core Management APIs ApiVersions Environments API",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Environments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Environments_ListByScope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Core/environments",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              }
+            ]
+          },
+          "docs": "List EnvironmentResource resources by Scope"
+        },
+        {
+          "info": {
+            "name": "Environments_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Core/environments/:environmentName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "environment name"
+              }
+            ]
+          },
+          "docs": "Get a EnvironmentResource"
+        },
+        {
+          "info": {
+            "name": "Environments_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Core/environments/:environmentName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "environment name"
+              }
+            ]
+          },
+          "docs": "Create a EnvironmentResource"
+        },
+        {
+          "info": {
+            "name": "Environments_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Core/environments/:environmentName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "environment name"
+              }
+            ]
+          },
+          "docs": "Update a EnvironmentResource"
+        },
+        {
+          "info": {
+            "name": "Environments_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Core/environments/:environmentName",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "environment name"
+              }
+            ]
+          },
+          "docs": "Delete a EnvironmentResource"
+        },
+        {
+          "info": {
+            "name": "Environments_GetMetadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/:rootScope/providers/Applications.Core/environments/:environmentName/getMetadata",
+            "params": [
+              {
+                "name": "rootScope",
+                "value": "",
+                "type": "path",
+                "description": "The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}"
+              },
+              {
+                "name": "environmentName",
+                "value": "",
+                "type": "path",
+                "description": "environment name"
+              }
+            ]
+          },
+          "docs": "Gets recipe metadata including parameters and any constraints on the parameters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

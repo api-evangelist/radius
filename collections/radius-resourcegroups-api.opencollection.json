@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applications.Core Management APIs ApiVersions ResourceGroups API",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ResourceGroups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ResourceGroups_List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/resourcegroups",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              }
+            ]
+          },
+          "docs": "List resource groups"
+        },
+        {
+          "info": {
+            "name": "ResourceGroups_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes/radius/:planeName/resourcegroups/:resourceGroupName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of resource group"
+              }
+            ]
+          },
+          "docs": "Get a resource group"
+        },
+        {
+          "info": {
+            "name": "ResourceGroups_CreateOrUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/planes/radius/:planeName/resourcegroups/:resourceGroupName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of resource group"
+              }
+            ]
+          },
+          "docs": "Create or update a resource group"
+        },
+        {
+          "info": {
+            "name": "ResourceGroups_Update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/planes/radius/:planeName/resourcegroups/:resourceGroupName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of resource group"
+              }
+            ]
+          },
+          "docs": "Update a resource group"
+        },
+        {
+          "info": {
+            "name": "ResourceGroups_Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/planes/radius/:planeName/resourcegroups/:resourceGroupName",
+            "params": [
+              {
+                "name": "planeName",
+                "value": "",
+                "type": "path",
+                "description": "The plane name."
+              },
+              {
+                "name": "resourceGroupName",
+                "value": "",
+                "type": "path",
+                "description": "The name of resource group"
+              }
+            ]
+          },
+          "docs": "Delete a resource group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

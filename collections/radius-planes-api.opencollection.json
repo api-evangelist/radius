@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Applications.Core Management APIs ApiVersions Planes API",
+    "version": "2023-10-01-preview"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Planes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Planes_ListPlanes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/planes"
+          },
+          "docs": "List all planes"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
