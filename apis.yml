@@ -21,6 +21,11 @@ type: Index
 url: https://raw.githubusercontent.com/api-evangelist/radius/refs/heads/main/apis.yml
 tags:
   - Application Platform
+  - Cloud-Native
+  - Infrastructure
+  - Multi-Cloud
+tags_raw:
+  - Application Platform
   - Cloud Native
   - Infrastructure
   - Multi Cloud
@@ -34,6 +39,8 @@ apis:
   humanURL: https://docs.radapp.io/reference/api/applications.core/
   baseURL: https://management.azure.com
   tags:
+  - API Versions
+  tags_raw:
   - ApiVersions
   properties:
   - type: OpenAPI
@@ -54,6 +61,8 @@ apis:
   humanURL: https://docs.radapp.io/reference/api/applications.core/
   baseURL: https://management.azure.com
   tags:
+  - Application
+  tags_raw:
   - Applications
   properties:
   - type: OpenAPI
@@ -293,7 +302,8 @@ apis:
   description: The Operations API from Radius — 4 operation(s) for operations.
   humanURL: https://docs.radapp.io/reference/api/applications.core/
   baseURL: https://management.azure.com
-  tags:
+  tags: []
+  tags_raw:
   - Operations
   properties:
   - type: OpenAPI
@@ -414,6 +424,8 @@ apis:
   humanURL: https://docs.radapp.io/reference/api/applications.core/
   baseURL: https://management.azure.com
   tags:
+  - Resource Groups
+  tags_raw:
   - ResourceGroups
   properties:
   - type: OpenAPI
@@ -474,6 +486,8 @@ apis:
   humanURL: https://docs.radapp.io/reference/api/applications.core/
   baseURL: https://management.azure.com
   tags:
+  - Resource Types
+  tags_raw:
   - ResourceTypes
   properties:
   - type: OpenAPI
