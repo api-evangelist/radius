@@ -37,7 +37,7 @@ tags:
   - Application Platform
   - Cloud-Native
   - Infrastructure
-  - Multi Cloud
+  - Multi-Cloud
 tags_raw:
   - Application Platform
   - Cloud Native
@@ -53,7 +53,7 @@ apis:
   humanURL: https://docs.radapp.io/reference/api/applications.core/
   baseURL: https://management.azure.com
   tags:
-  - ApiVersions
+  - API Versions
   tags_raw:
   - ApiVersions
   properties:
@@ -438,7 +438,7 @@ apis:
   humanURL: https://docs.radapp.io/reference/api/applications.core/
   baseURL: https://management.azure.com
   tags:
-  - ResourceGroups
+  - Resource Groups
   tags_raw:
   - ResourceGroups
   properties:
@@ -500,7 +500,7 @@ apis:
   humanURL: https://docs.radapp.io/reference/api/applications.core/
   baseURL: https://management.azure.com
   tags:
-  - ResourceTypes
+  - Resource Types
   tags_raw:
   - ResourceTypes
   properties:
