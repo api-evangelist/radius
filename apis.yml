@@ -597,6 +597,8 @@ apis:
   - type: Documentation
     url: https://docs.radapp.io/reference/api/ucp/
 common:
+  - type: Website
+    url: https://radapp.io/
   - type: CapabilityMap
     url: capabilities/radius-capability-edges.yml
     name: Radius Business Capability Map
