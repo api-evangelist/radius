@@ -47,28 +47,6 @@ created: '2025-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.23'
 apis:
-- aid: radius:radius-apiversions-api
-  name: Radius ApiVersions API
-  description: The ApiVersions API from Radius — 2 operation(s) for apiversions.
-  humanURL: https://docs.radapp.io/reference/api/applications.core/
-  baseURL: https://management.azure.com
-  tags:
-  - API Versions
-  tags_raw:
-  - ApiVersions
-  properties:
-  - type: OpenAPI
-    url: openapi/radius-apiversions-api-openapi.yml
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.core/
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.dapr/
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.datastores/
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.messaging/
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/ucp/
 - aid: radius:radius-applications-api
   name: Radius Applications API
   description: The Applications API from Radius — 3 operation(s) for applications.
@@ -432,28 +410,6 @@ apis:
     url: https://docs.radapp.io/reference/api/applications.messaging/
   - type: Documentation
     url: https://docs.radapp.io/reference/api/ucp/
-- aid: radius:radius-resourcegroups-api
-  name: Radius ResourceGroups API
-  description: The ResourceGroups API from Radius — 2 operation(s) for resourcegroups.
-  humanURL: https://docs.radapp.io/reference/api/applications.core/
-  baseURL: https://management.azure.com
-  tags:
-  - Resource Groups
-  tags_raw:
-  - ResourceGroups
-  properties:
-  - type: OpenAPI
-    url: openapi/radius-resourcegroups-api-openapi.yml
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.core/
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.dapr/
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.datastores/
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.messaging/
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/ucp/
 - aid: radius:radius-resourceproviders-api
   name: Radius ResourceProviders API
   description: The ResourceProviders API from Radius — 4 operation(s) for resourceproviders.
@@ -494,28 +450,6 @@ apis:
     url: https://docs.radapp.io/reference/api/applications.messaging/
   - type: Documentation
     url: https://docs.radapp.io/reference/api/ucp/
-- aid: radius:radius-resourcetypes-api
-  name: Radius ResourceTypes API
-  description: The ResourceTypes API from Radius — 2 operation(s) for resourcetypes.
-  humanURL: https://docs.radapp.io/reference/api/applications.core/
-  baseURL: https://management.azure.com
-  tags:
-  - Resource Types
-  tags_raw:
-  - ResourceTypes
-  properties:
-  - type: OpenAPI
-    url: openapi/radius-resourcetypes-api-openapi.yml
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.core/
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.dapr/
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.datastores/
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.messaging/
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/ucp/
 - aid: radius:radius-secretstores-api
   name: Radius SecretStores API
   description: The SecretStores API from Radius — 5 operation(s) for secretstores.
@@ -526,26 +460,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/radius-secretstores-api-openapi.yml
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.core/
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.dapr/
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.datastores/
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/applications.messaging/
-  - type: Documentation
-    url: https://docs.radapp.io/reference/api/ucp/
-- aid: radius:radius-sqldatabases-api
-  name: Radius SqlDatabases API
-  description: The SqlDatabases API from Radius — 3 operation(s) for sqldatabases.
-  humanURL: https://docs.radapp.io/reference/api/applications.core/
-  baseURL: https://management.azure.com
-  tags:
-  - SqlDatabases
-  properties:
-  - type: OpenAPI
-    url: openapi/radius-sqldatabases-api-openapi.yml
   - type: Documentation
     url: https://docs.radapp.io/reference/api/applications.core/
   - type: Documentation
@@ -586,6 +500,86 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/radius-volumes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-api-versions-api
+  name: Radius API Versions API
+  description: The API Versions API from Radius — 2 operation(s) for api versions.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - API Versions
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-api-versions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-resource-groups-api
+  name: Radius Resource Groups API
+  description: The Resource Groups API from Radius — 2 operation(s) for resource groups.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - Resource Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-resource-groups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-resource-types-api
+  name: Radius Resource Types API
+  description: The Resource Types API from Radius — 2 operation(s) for resource types.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - Resource Types
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-resource-types-api-openapi.yml
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.core/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.dapr/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.datastores/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/applications.messaging/
+  - type: Documentation
+    url: https://docs.radapp.io/reference/api/ucp/
+- aid: radius:radius-sql-databases-api
+  name: Radius Sql Databases API
+  description: The Sql Databases API from Radius — 3 operation(s) for sql databases.
+  humanURL: https://docs.radapp.io/reference/api/applications.core/
+  baseURL: https://management.azure.com
+  tags:
+  - Sql Databases
+  properties:
+  - type: OpenAPI
+    url: openapi/radius-sql-databases-api-openapi.yml
   - type: Documentation
     url: https://docs.radapp.io/reference/api/applications.core/
   - type: Documentation
