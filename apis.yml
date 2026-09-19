@@ -195,6 +195,8 @@ apis:
   humanURL: https://docs.radapp.io/reference/api/applications.core/
   baseURL: https://management.azure.com
   tags:
+  - Environment
+  tags_raw:
   - Environments
   properties:
   - type: OpenAPI
@@ -255,6 +257,8 @@ apis:
   humanURL: https://docs.radapp.io/reference/api/applications.core/
   baseURL: https://management.azure.com
   tags:
+  - Location
+  tags_raw:
   - Locations
   properties:
   - type: OpenAPI
@@ -576,6 +580,8 @@ apis:
   humanURL: https://docs.radapp.io/reference/api/applications.core/
   baseURL: https://management.azure.com
   tags:
+  - SqlDatabases
+  tags_raw:
   - Sql Databases
   properties:
   - type: OpenAPI
