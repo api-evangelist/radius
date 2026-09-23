@@ -1,17 +1,12 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: Applications.Core Management APIs ApiVersions Environments API
+  title: Applications.Core Management Environments API
   version: 2023-10-01-preview
   description: REST APIs for Applications.Core
   x-typespec-generated:
   - emitter: '@azure-tools/typespec-autorest'
-host: management.azure.com
-schemes:
-- https
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: https://management.azure.com
 security:
 - azure_auth:
   - user_impersonation
@@ -26,16 +21,20 @@ paths:
       description: List EnvironmentResource resources by Scope
       parameters:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
-      - $ref: '#/parameters/RootScopeParameter'
+      - $ref: '#/components/parameters/RootScopeParameter'
       responses:
         '200':
           description: Azure operation completed successfully.
-          schema:
-            $ref: '#/definitions/EnvironmentResourceListResult'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentResourceListResult'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+          content:
+            application/json:
+              schema:
+                $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
       x-ms-examples:
         Get environments by resource group:
           $ref: ./examples/Environments_List.json
@@ -43,6 +42,8 @@ paths:
           $ref: ./examples/Environments_ListByScope.json
       x-ms-pageable:
         nextLinkName: nextLink
+      summary: Environments list by scope
+      x-summary-source: derived
   /{rootScope}/providers/Applications.Core/environments/{environmentName}:
     get:
       operationId: Environments_Get
@@ -51,26 +52,33 @@ paths:
       description: Get a EnvironmentResource
       parameters:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
-      - $ref: '#/parameters/RootScopeParameter'
+      - $ref: '#/components/parameters/RootScopeParameter'
       - name: environmentName
         in: path
         description: environment name
         required: true
-        type: string
-        maxLength: 63
-        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+        schema:
+          type: string
+          maxLength: 63
+          pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
       responses:
         '200':
           description: Azure operation completed successfully.
-          schema:
-            $ref: '#/definitions/EnvironmentResource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentResource'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+          content:
+            application/json:
+              schema:
+                $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
       x-ms-examples:
         Get an environment resource:
           $ref: ./examples/Environments_GetEnv0.json
+      summary: Environments get
+      x-summary-source: derived
     put:
       operationId: Environments_CreateOrUpdate
       tags:
@@ -78,36 +86,46 @@ paths:
       description: Create a EnvironmentResource
       parameters:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
-      - $ref: '#/parameters/RootScopeParameter'
+      - $ref: '#/components/parameters/RootScopeParameter'
       - name: environmentName
         in: path
         description: environment name
         required: true
-        type: string
-        maxLength: 63
-        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
-      - name: resource
-        in: body
-        description: Resource create parameters.
-        required: true
         schema:
-          $ref: '#/definitions/EnvironmentResource'
+          type: string
+          maxLength: 63
+          pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
       responses:
         '200':
           description: Resource 'EnvironmentResource' update operation succeeded
-          schema:
-            $ref: '#/definitions/EnvironmentResource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentResource'
         '201':
           description: Resource 'EnvironmentResource' create operation succeeded
-          schema:
-            $ref: '#/definitions/EnvironmentResource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentResource'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+          content:
+            application/json:
+              schema:
+                $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
       x-ms-examples:
         Create or Update an environment resource:
           $ref: ./examples/Environments_CreateOrUpdate.json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvironmentResource'
+        description: Resource create parameters.
+        required: true
+      summary: Environments create or update
+      x-summary-source: derived
     patch:
       operationId: Environments_Update
       tags:
@@ -115,32 +133,40 @@ paths:
       description: Update a EnvironmentResource
       parameters:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
-      - $ref: '#/parameters/RootScopeParameter'
+      - $ref: '#/components/parameters/RootScopeParameter'
       - name: environmentName
         in: path
         description: environment name
         required: true
-        type: string
-        maxLength: 63
-        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
-      - name: properties
-        in: body
-        description: The resource properties to be updated.
-        required: true
         schema:
-          $ref: '#/definitions/EnvironmentResourceUpdate'
+          type: string
+          maxLength: 63
+          pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
       responses:
         '200':
           description: Azure operation completed successfully.
-          schema:
-            $ref: '#/definitions/EnvironmentResource'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentResource'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+          content:
+            application/json:
+              schema:
+                $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
       x-ms-examples:
         Update an environment resource:
           $ref: ./examples/Environments_PatchEnv0.json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvironmentResourceUpdate'
+        description: The resource properties to be updated.
+        required: true
+      summary: Environments update
+      x-summary-source: derived
     delete:
       operationId: Environments_Delete
       tags:
@@ -148,14 +174,15 @@ paths:
       description: Delete a EnvironmentResource
       parameters:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
-      - $ref: '#/parameters/RootScopeParameter'
+      - $ref: '#/components/parameters/RootScopeParameter'
       - name: environmentName
         in: path
         description: environment name
         required: true
-        type: string
-        maxLength: 63
-        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+        schema:
+          type: string
+          maxLength: 63
+          pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
       responses:
         '200':
           description: Resource deleted successfully.
@@ -163,11 +190,15 @@ paths:
           description: Resource does not exist.
         default:
           description: An unexpected error response.
-          schema:
-            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+          content:
+            application/json:
+              schema:
+                $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
       x-ms-examples:
         Delete an environment resource:
           $ref: ./examples/Environments_DeleteEnv0.json
+      summary: Environments delete
+      x-summary-source: derived
   /{rootScope}/providers/Applications.Core/environments/{environmentName}/getMetadata:
     post:
       operationId: Environments_GetMetadata
@@ -176,427 +207,441 @@ paths:
       description: Gets recipe metadata including parameters and any constraints on the parameters.
       parameters:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
-      - $ref: '#/parameters/RootScopeParameter'
+      - $ref: '#/components/parameters/RootScopeParameter'
       - name: environmentName
         in: path
         description: environment name
         required: true
-        type: string
-        maxLength: 63
-        pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
-      - name: body
-        in: body
-        description: The content of the action request
-        required: true
         schema:
-          $ref: '#/definitions/RecipeGetMetadata'
+          type: string
+          maxLength: 63
+          pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
       responses:
         '200':
           description: Azure operation completed successfully.
-          schema:
-            $ref: '#/definitions/RecipeGetMetadataResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecipeGetMetadataResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+          content:
+            application/json:
+              schema:
+                $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
       x-ms-examples:
         Get recipe metadata from environment:
           $ref: ./examples/Environments_GetRecipeMetadata.json
-definitions:
-  EnvironmentProperties:
-    type: object
-    description: Environment properties
-    properties:
-      provisioningState:
-        $ref: '#/definitions/ProvisioningState'
-        description: The status of the asynchronous operation.
-        readOnly: true
-      compute:
-        $ref: '#/definitions/EnvironmentCompute'
-        description: The compute resource used by application environment.
-      providers:
-        $ref: '#/definitions/Providers'
-        description: Cloud providers configuration for the environment.
-      simulated:
-        type: boolean
-        description: Simulated environment.
-      recipes:
-        type: object
-        description: Specifies Recipes linked to the Environment.
-        additionalProperties:
-          additionalProperties:
-            $ref: '#/definitions/RecipeProperties'
-          type: object
-      recipeConfig:
-        $ref: '#/definitions/RecipeConfigProperties'
-        description: Configuration for Recipes. Defines how each type of Recipe should be configured and run.
-      extensions:
-        type: array
-        description: The environment extension.
-        items:
-          $ref: '#/definitions/Extension'
-        x-ms-identifiers: []
-    required:
-    - compute
-  EnvironmentResourceListResult:
-    type: object
-    description: The response of a EnvironmentResource list operation.
-    properties:
-      value:
-        type: array
-        description: The EnvironmentResource items on this page
-        items:
-          $ref: '#/definitions/EnvironmentResource'
-      nextLink:
-        type: string
-        format: uri
-        description: The link to the next page of items
-    required:
-    - value
-  SecretReference:
-    type: object
-    description: This secret is used within a recipe. Secrets are encrypted, often have fine-grained access control, auditing and are recommended to be used to hold sensitive data.
-    properties:
-      source:
-        type: string
-        description: The ID of an Applications.Core/SecretStore resource containing sensitive data required for recipe execution.
-      key:
-        type: string
-        description: The key for the secret in the secret store.
-    required:
-    - source
-    - key
-  ProvidersAws:
-    type: object
-    description: The AWS cloud provider definition.
-    properties:
-      scope:
-        type: string
-        description: 'Target scope for AWS resources to be deployed into.  For example: ''/planes/aws/aws/accounts/000000000000/regions/us-west-2''.'
-    required:
-    - scope
-  EnvironmentResource:
-    type: object
-    description: The environment resource
-    properties:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipeGetMetadata'
+        description: The content of the action request
+        required: true
+      summary: Environments get metadata
+      x-summary-source: derived
+components:
+  schemas:
+    RecipeGetMetadataResponse:
+      type: object
+      description: The properties of a Recipe linked to an Environment.
       properties:
-        $ref: '#/definitions/EnvironmentProperties'
-        description: The resource-specific properties for this resource.
-        x-ms-client-flatten: true
-        x-ms-mutability:
-        - read
-        - create
-    required:
-    - properties
-    allOf:
-    - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
-  EnvironmentCompute:
-    type: object
-    description: Represents backing compute resource
-    properties:
-      kind:
-        type: string
-        description: Discriminator property for EnvironmentCompute.
-      resourceId:
-        type: string
-        description: The resource id of the compute resource for application environment.
-      identity:
-        $ref: '#/definitions/IdentitySettings'
-        description: Configuration for supported external identity providers
-    discriminator: kind
-    required:
-    - kind
-  IdentitySettingKind:
-    type: string
-    description: IdentitySettingKind is the kind of supported external identity setting
-    enum:
-    - undefined
-    - azure.com.workload
-    - userAssigned
-    - systemAssigned
-    - systemAssignedUserAssigned
-    x-ms-enum:
-      name: IdentitySettingKind
-      modelAsString: false
-      values:
-      - name: undefined
-        value: undefined
-        description: undefined identity
-      - name: azure.com.workload
-        value: azure.com.workload
-        description: azure ad workload identity
-      - name: userAssigned
-        value: userAssigned
-        description: User assigned managed identity
-      - name: systemAssigned
-        value: systemAssigned
-        description: System assigned managed identity
-      - name: systemAssignedUserAssigned
-        value: systemAssignedUserAssigned
-        description: System assigned and user assigned managed identity
-  RecipeProperties:
-    type: object
-    description: 'Format of the template provided by the recipe. Allowed values: bicep, terraform.'
-    properties:
-      templateKind:
-        type: string
-        description: Discriminator property for RecipeProperties.
-      templatePath:
-        type: string
-        description: Path to the template provided by the recipe. Currently only link to Azure Container Registry is supported.
-      parameters:
-        type: object
-        description: Key/value parameters to pass to the recipe template at deployment.
-    discriminator: templateKind
-    required:
-    - templateKind
-    - templatePath
-  ProvidersAzure:
-    type: object
-    description: The Azure cloud provider definition.
-    properties:
-      scope:
-        type: string
-        description: 'Target scope for Azure resources to be deployed into.  For example: ''/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testGroup''.'
-    required:
-    - scope
-  GitAuthConfig:
-    type: object
-    description: Authentication information used to access private Terraform modules from Git repository sources.
-    properties:
-      pat:
-        type: object
-        description: Personal Access Token (PAT) configuration used to authenticate to Git platforms.
-        additionalProperties:
-          $ref: '#/definitions/SecretConfig'
-  RegistrySecretConfig:
-    type: object
-    description: Registry Secret Configuration used to authenticate to private bicep registries.
-    properties:
-      secret:
-        type: string
-        description: The ID of an Applications.Core/SecretStore resource containing credential information used to authenticate private container registry.The keys in the secretstore depends on the type.
-  TerraformConfigProperties:
-    type: object
-    description: Configuration for Terraform Recipes. Controls how Terraform plans and applies templates as part of Recipe deployment.
-    properties:
-      authentication:
-        $ref: '#/definitions/AuthConfig'
-        description: 'Authentication information used to access private Terraform module sources. Supported module sources: Git.'
-      providers:
-        type: object
-        description: 'Configuration for Terraform Recipe Providers. Controls how Terraform interacts with cloud providers, SaaS providers, and other APIs. For more information, please see: https://developer.hashicorp.com/terraform/language/providers/configuration.'
-        additionalProperties:
-          items:
-            $ref: '#/definitions/ProviderConfigProperties'
+        templateKind:
+          type: string
+          description: 'The format of the template provided by the recipe. Allowed values: bicep, terraform.'
+        templatePath:
+          type: string
+          description: The path to the template provided by the recipe. Currently only link to Azure Container Registry is supported.
+        templateVersion:
+          type: string
+          description: The version of the template to deploy. For Terraform recipes using a module registry this is required, but must be omitted for other module sources.
+        parameters:
+          type: object
+          description: The key/value parameters to pass to the recipe template at deployment.
+        plainHttp:
+          type: boolean
+          description: Connect to the Bicep registry using HTTP (not-HTTPS). This should be used when the registry is known not to support HTTPS, for example in a locally-hosted registry. Defaults to false (use HTTPS/TLS).
+      required:
+      - templateKind
+      - templatePath
+      - parameters
+    RecipeGetMetadata:
+      type: object
+      description: Represents the request body of the getmetadata action.
+      properties:
+        resourceType:
+          type: string
+          description: 'Type of the resource this recipe can be consumed by. For example: ''Applications.Datastores/mongoDatabases''.'
+        name:
+          type: string
+          description: The name of the recipe registered to the environment.
+      required:
+      - resourceType
+      - name
+    EnvironmentProperties:
+      type: object
+      description: Environment properties
+      properties:
+        provisioningState:
+          $ref: '#/components/schemas/ProvisioningState'
+          description: The status of the asynchronous operation.
+          readOnly: true
+        compute:
+          $ref: '#/components/schemas/EnvironmentCompute'
+          description: The compute resource used by application environment.
+        providers:
+          $ref: '#/components/schemas/Providers'
+          description: Cloud providers configuration for the environment.
+        simulated:
+          type: boolean
+          description: Simulated environment.
+        recipes:
+          type: object
+          description: Specifies Recipes linked to the Environment.
+          additionalProperties:
+            additionalProperties:
+              $ref: '#/components/schemas/RecipeProperties'
+            type: object
+        recipeConfig:
+          $ref: '#/components/schemas/RecipeConfigProperties'
+          description: Configuration for Recipes. Defines how each type of Recipe should be configured and run.
+        extensions:
           type: array
-  SecretConfig:
-    type: object
-    description: Personal Access Token (PAT) configuration used to authenticate to Git platforms.
-    properties:
-      secret:
-        type: string
-        description: The ID of an Applications.Core/SecretStore resource containing the Git platform personal access token (PAT). The secret store must have a secret named 'pat', containing the PAT value. A secret named 'username' is optional, containing the username associated with the pat. By default no username is specified.
-  ProviderConfigProperties:
-    type: object
-    description: This configuration holds the necessary information to authenticate and interact with a provider for the recipe execution.
-    properties:
-      secrets:
-        type: object
-        description: Sensitive data in provider configuration can be stored as secrets. The secrets are stored in Applications.Core/SecretStores resource.
-        additionalProperties:
-          $ref: '#/definitions/SecretReference'
-    allOf:
-    - type: object
-      additionalProperties: {}
-  Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
-    type: object
-    title: Tracked Resource
-    description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-    properties:
-      tags:
-        type: object
-        description: Resource tags.
-        additionalProperties:
+          description: The environment extension.
+          items:
+            $ref: '#/components/schemas/Extension'
+          x-ms-identifiers: []
+      required:
+      - compute
+    EnvironmentCompute:
+      type: object
+      description: Represents backing compute resource
+      properties:
+        kind:
           type: string
-    allOf:
-    - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
-  RecipeConfigProperties:
-    type: object
-    description: Configuration for Recipes. Defines how each type of Recipe should be configured and run.
-    properties:
-      terraform:
-        $ref: '#/definitions/TerraformConfigProperties'
-        description: Configuration for Terraform Recipes. Controls how Terraform plans and applies templates as part of Recipe deployment.
-      bicep:
-        $ref: '#/definitions/BicepConfigProperties'
-        description: Configuration for Bicep Recipes. Controls how Bicep plans and applies templates as part of Recipe deployment.
-      env:
-        $ref: '#/definitions/EnvironmentVariables'
-        description: Environment variables injected during recipe execution for the recipes in the environment, currently supported for Terraform recipes.
-      envSecrets:
-        type: object
-        description: Environment variables containing sensitive information can be stored as secrets. The secrets are stored in Applications.Core/SecretStores resource.
-        additionalProperties:
-          $ref: '#/definitions/SecretReference'
-  BicepConfigProperties:
-    type: object
-    description: Configuration for Bicep Recipes. Controls how Bicep plans and applies templates as part of Recipe deployment.
-    properties:
-      authentication:
-        type: object
-        description: Authentication information used to access private bicep registries, which is a map of registry hostname to secret config that contains credential information.
-        additionalProperties:
-          $ref: '#/definitions/RegistrySecretConfig'
-  RecipeGetMetadataResponse:
-    type: object
-    description: The properties of a Recipe linked to an Environment.
-    properties:
-      templateKind:
-        type: string
-        description: 'The format of the template provided by the recipe. Allowed values: bicep, terraform.'
-      templatePath:
-        type: string
-        description: The path to the template provided by the recipe. Currently only link to Azure Container Registry is supported.
-      templateVersion:
-        type: string
-        description: The version of the template to deploy. For Terraform recipes using a module registry this is required, but must be omitted for other module sources.
-      parameters:
-        type: object
-        description: The key/value parameters to pass to the recipe template at deployment.
-      plainHttp:
-        type: boolean
-        description: Connect to the Bicep registry using HTTP (not-HTTPS). This should be used when the registry is known not to support HTTPS, for example in a locally-hosted registry. Defaults to false (use HTTPS/TLS).
-    required:
-    - templateKind
-    - templatePath
-    - parameters
-  AuthConfig:
-    type: object
-    description: 'Authentication information used to access private Terraform module sources. Supported module sources: Git.'
-    properties:
-      git:
-        $ref: '#/definitions/GitAuthConfig'
-        description: Authentication information used to access private Terraform modules from Git repository sources.
-  EnvironmentResourceUpdate:
-    type: object
-    description: The environment resource
-    allOf:
-    - $ref: '#/definitions/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
-  RecipeGetMetadata:
-    type: object
-    description: Represents the request body of the getmetadata action.
-    properties:
-      resourceType:
-        type: string
-        description: 'Type of the resource this recipe can be consumed by. For example: ''Applications.Datastores/mongoDatabases''.'
-      name:
-        type: string
-        description: The name of the recipe registered to the environment.
-    required:
-    - resourceType
-    - name
-  ProvisioningState:
-    type: string
-    description: Provisioning state of the resource at the time the operation was called
-    enum:
-    - Creating
-    - Updating
-    - Deleting
-    - Accepted
-    - Provisioning
-    - Succeeded
-    - Failed
-    - Canceled
-    x-ms-enum:
-      name: ProvisioningState
-      modelAsString: false
-      values:
-      - name: Creating
-        value: Creating
-        description: The resource is being created
-      - name: Updating
-        value: Updating
-        description: The resource is being updated
-      - name: Deleting
-        value: Deleting
-        description: The resource is being deleted
-      - name: Accepted
-        value: Accepted
-        description: The resource create request has been accepted
-      - name: Provisioning
-        value: Provisioning
-        description: The resource is being provisioned
-      - name: Succeeded
-        value: Succeeded
-        description: The resource has been successfully provisioned
-      - name: Failed
-        value: Failed
-        description: The resource provisioning has failed
-      - name: Canceled
-        value: Canceled
-        description: The resource provisioning has been canceled
-    readOnly: true
-  IdentitySettings:
-    type: object
-    description: IdentitySettings is the external identity setting.
-    properties:
-      kind:
-        $ref: '#/definitions/IdentitySettingKind'
-        description: kind of identity setting
-      oidcIssuer:
-        type: string
-        description: The URI for your compute platform's OIDC issuer
-      resource:
-        type: string
-        description: The resource ID of the provisioned identity
-      managedIdentity:
-        type: array
-        description: The list of user assigned managed identities
-        items:
+          description: Discriminator property for EnvironmentCompute.
+        resourceId:
           type: string
-    required:
-    - kind
-  EnvironmentVariables:
-    type: object
-    description: The environment variables injected during Terraform Recipe execution for the recipes in the environment.
-    additionalProperties:
+          description: The resource id of the compute resource for application environment.
+        identity:
+          $ref: '#/components/schemas/IdentitySettings'
+          description: Configuration for supported external identity providers
+      discriminator:
+        propertyName: kind
+      required:
+      - kind
+    SecretConfig:
+      type: object
+      description: Personal Access Token (PAT) configuration used to authenticate to Git platforms.
+      properties:
+        secret:
+          type: string
+          description: The ID of an Applications.Core/SecretStore resource containing the Git platform personal access token (PAT). The secret store must have a secret named 'pat', containing the PAT value. A secret named 'username' is optional, containing the username associated with the pat. By default no username is specified.
+    RecipeConfigProperties:
+      type: object
+      description: Configuration for Recipes. Defines how each type of Recipe should be configured and run.
+      properties:
+        terraform:
+          $ref: '#/components/schemas/TerraformConfigProperties'
+          description: Configuration for Terraform Recipes. Controls how Terraform plans and applies templates as part of Recipe deployment.
+        bicep:
+          $ref: '#/components/schemas/BicepConfigProperties'
+          description: Configuration for Bicep Recipes. Controls how Bicep plans and applies templates as part of Recipe deployment.
+        env:
+          $ref: '#/components/schemas/EnvironmentVariables'
+          description: Environment variables injected during recipe execution for the recipes in the environment, currently supported for Terraform recipes.
+        envSecrets:
+          type: object
+          description: Environment variables containing sensitive information can be stored as secrets. The secrets are stored in Applications.Core/SecretStores resource.
+          additionalProperties:
+            $ref: '#/components/schemas/SecretReference'
+    IdentitySettings:
+      type: object
+      description: IdentitySettings is the external identity setting.
+      properties:
+        kind:
+          $ref: '#/components/schemas/IdentitySettingKind'
+          description: kind of identity setting
+        oidcIssuer:
+          type: string
+          description: The URI for your compute platform's OIDC issuer
+        resource:
+          type: string
+          description: The resource ID of the provisioned identity
+        managedIdentity:
+          type: array
+          description: The list of user assigned managed identities
+          items:
+            type: string
+      required:
+      - kind
+    EnvironmentVariables:
+      type: object
+      description: The environment variables injected during Terraform Recipe execution for the recipes in the environment.
+      additionalProperties:
+        type: string
+    RegistrySecretConfig:
+      type: object
+      description: Registry Secret Configuration used to authenticate to private bicep registries.
+      properties:
+        secret:
+          type: string
+          description: The ID of an Applications.Core/SecretStore resource containing credential information used to authenticate private container registry.The keys in the secretstore depends on the type.
+    BicepConfigProperties:
+      type: object
+      description: Configuration for Bicep Recipes. Controls how Bicep plans and applies templates as part of Recipe deployment.
+      properties:
+        authentication:
+          type: object
+          description: Authentication information used to access private bicep registries, which is a map of registry hostname to secret config that contains credential information.
+          additionalProperties:
+            $ref: '#/components/schemas/RegistrySecretConfig'
+    IdentitySettingKind:
       type: string
-  Providers:
-    type: object
-    description: The Cloud providers configuration.
-    properties:
-      azure:
-        $ref: '#/definitions/ProvidersAzure'
-        description: The Azure cloud provider configuration.
-      aws:
-        $ref: '#/definitions/ProvidersAws'
-        description: The AWS cloud provider configuration.
-  Extension:
-    type: object
-    description: Extension of a environment/application resource.
-    properties:
-      kind:
+      description: IdentitySettingKind is the kind of supported external identity setting
+      enum:
+      - undefined
+      - azure.com.workload
+      - userAssigned
+      - systemAssigned
+      - systemAssignedUserAssigned
+      x-ms-enum:
+        name: IdentitySettingKind
+        modelAsString: false
+        values:
+        - name: undefined
+          value: undefined
+          description: undefined identity
+        - name: azure.com.workload
+          value: azure.com.workload
+          description: azure ad workload identity
+        - name: userAssigned
+          value: userAssigned
+          description: User assigned managed identity
+        - name: systemAssigned
+          value: systemAssigned
+          description: System assigned managed identity
+        - name: systemAssignedUserAssigned
+          value: systemAssignedUserAssigned
+          description: System assigned and user assigned managed identity
+    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
+      type: object
+      title: Tracked Resource
+      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+      properties:
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
+            type: string
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
+    GitAuthConfig:
+      type: object
+      description: Authentication information used to access private Terraform modules from Git repository sources.
+      properties:
+        pat:
+          type: object
+          description: Personal Access Token (PAT) configuration used to authenticate to Git platforms.
+          additionalProperties:
+            $ref: '#/components/schemas/SecretConfig'
+    EnvironmentResourceListResult:
+      type: object
+      description: The response of a EnvironmentResource list operation.
+      properties:
+        value:
+          type: array
+          description: The EnvironmentResource items on this page
+          items:
+            $ref: '#/components/schemas/EnvironmentResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
+    RecipeProperties:
+      type: object
+      description: 'Format of the template provided by the recipe. Allowed values: bicep, terraform.'
+      properties:
+        templateKind:
+          type: string
+          description: Discriminator property for RecipeProperties.
+        templatePath:
+          type: string
+          description: Path to the template provided by the recipe. Currently only link to Azure Container Registry is supported.
+        parameters:
+          type: object
+          description: Key/value parameters to pass to the recipe template at deployment.
+      discriminator:
+        propertyName: templateKind
+      required:
+      - templateKind
+      - templatePath
+    ProviderConfigProperties:
+      type: object
+      description: This configuration holds the necessary information to authenticate and interact with a provider for the recipe execution.
+      properties:
+        secrets:
+          type: object
+          description: Sensitive data in provider configuration can be stored as secrets. The secrets are stored in Applications.Core/SecretStores resource.
+          additionalProperties:
+            $ref: '#/components/schemas/SecretReference'
+      allOf:
+      - type: object
+        additionalProperties: {}
+    ProvisioningState:
+      type: string
+      description: Provisioning state of the resource at the time the operation was called
+      enum:
+      - Creating
+      - Updating
+      - Deleting
+      - Accepted
+      - Provisioning
+      - Succeeded
+      - Failed
+      - Canceled
+      x-ms-enum:
+        name: ProvisioningState
+        modelAsString: false
+        values:
+        - name: Creating
+          value: Creating
+          description: The resource is being created
+        - name: Updating
+          value: Updating
+          description: The resource is being updated
+        - name: Deleting
+          value: Deleting
+          description: The resource is being deleted
+        - name: Accepted
+          value: Accepted
+          description: The resource create request has been accepted
+        - name: Provisioning
+          value: Provisioning
+          description: The resource is being provisioned
+        - name: Succeeded
+          value: Succeeded
+          description: The resource has been successfully provisioned
+        - name: Failed
+          value: Failed
+          description: The resource provisioning has failed
+        - name: Canceled
+          value: Canceled
+          description: The resource provisioning has been canceled
+      readOnly: true
+    Extension:
+      type: object
+      description: Extension of a environment/application resource.
+      properties:
+        kind:
+          type: string
+          description: Discriminator property for Extension.
+      discriminator:
+        propertyName: kind
+      required:
+      - kind
+    EnvironmentResourceUpdate:
+      type: object
+      description: The environment resource
+      allOf:
+      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
+    TerraformConfigProperties:
+      type: object
+      description: Configuration for Terraform Recipes. Controls how Terraform plans and applies templates as part of Recipe deployment.
+      properties:
+        authentication:
+          $ref: '#/components/schemas/AuthConfig'
+          description: 'Authentication information used to access private Terraform module sources. Supported module sources: Git.'
+        providers:
+          type: object
+          description: 'Configuration for Terraform Recipe Providers. Controls how Terraform interacts with cloud providers, SaaS providers, and other APIs. For more information, please see: https://developer.hashicorp.com/terraform/language/providers/configuration.'
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/ProviderConfigProperties'
+            type: array
+    SecretReference:
+      type: object
+      description: This secret is used within a recipe. Secrets are encrypted, often have fine-grained access control, auditing and are recommended to be used to hold sensitive data.
+      properties:
+        source:
+          type: string
+          description: The ID of an Applications.Core/SecretStore resource containing sensitive data required for recipe execution.
+        key:
+          type: string
+          description: The key for the secret in the secret store.
+      required:
+      - source
+      - key
+    EnvironmentResource:
+      type: object
+      description: The environment resource
+      properties:
+        properties:
+          $ref: '#/components/schemas/EnvironmentProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+    ProvidersAws:
+      type: object
+      description: The AWS cloud provider definition.
+      properties:
+        scope:
+          type: string
+          description: 'Target scope for AWS resources to be deployed into.  For example: ''/planes/aws/aws/accounts/000000000000/regions/us-west-2''.'
+      required:
+      - scope
+    Providers:
+      type: object
+      description: The Cloud providers configuration.
+      properties:
+        azure:
+          $ref: '#/components/schemas/ProvidersAzure'
+          description: The Azure cloud provider configuration.
+        aws:
+          $ref: '#/components/schemas/ProvidersAws'
+          description: The AWS cloud provider configuration.
+    AuthConfig:
+      type: object
+      description: 'Authentication information used to access private Terraform module sources. Supported module sources: Git.'
+      properties:
+        git:
+          $ref: '#/components/schemas/GitAuthConfig'
+          description: Authentication information used to access private Terraform modules from Git repository sources.
+    ProvidersAzure:
+      type: object
+      description: The Azure cloud provider definition.
+      properties:
+        scope:
+          type: string
+          description: 'Target scope for Azure resources to be deployed into.  For example: ''/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testGroup''.'
+      required:
+      - scope
+  parameters:
+    RootScopeParameter:
+      name: rootScope
+      in: path
+      description: The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}
+      required: true
+      x-ms-parameter-location: client
+      x-ms-skip-url-encoding: true
+      schema:
         type: string
-        description: Discriminator property for Extension.
-    discriminator: kind
-    required:
-    - kind
-parameters:
-  RootScopeParameter:
-    name: rootScope
-    in: path
-    description: The scope in which the resource is present. UCP Scope is /planes/{planeType}/{planeName}/resourceGroup/{resourcegroupID} and Azure resource scope is /subscriptions/{subscriptionID}/resourceGroup/{resourcegroupID}
-    required: true
-    type: string
-    minLength: 1
-    x-ms-parameter-location: client
-    x-ms-skip-url-encoding: true
-securityDefinitions:
-  azure_auth:
-    type: oauth2
-    description: Azure Active Directory OAuth2 Flow.
-    flow: implicit
-    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
-    scopes:
-      user_impersonation: impersonate your user account
+        minLength: 1
+  securitySchemes:
+    azure_auth:
+      type: oauth2
+      flows:
+        implicit:
+          scopes:
+            user_impersonation: impersonate your user account
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+      description: Azure Active Directory OAuth2 Flow.

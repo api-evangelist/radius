@@ -1,17 +1,12 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: Applications.Core Management APIs ApiVersions Planes API
+  title: Universal Control Plane Resource Management Planes API
   version: 2023-10-01-preview
-  description: REST APIs for Applications.Core
+  description: REST APIs for Universal Control Plane
   x-typespec-generated:
   - emitter: '@azure-tools/typespec-autorest'
-host: management.azure.com
-schemes:
-- https
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: https://management.azure.com
 security:
 - azure_auth:
   - user_impersonation
@@ -29,102 +24,110 @@ paths:
       responses:
         '200':
           description: Azure operation completed successfully.
-          schema:
-            $ref: '#/definitions/GenericPlaneResourceListResult'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericPlaneResourceListResult'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+          content:
+            application/json:
+              schema:
+                $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
       x-ms-examples:
         List planes:
           $ref: ./examples/Planes_List.json
       x-ms-pageable:
         nextLinkName: nextLink
-definitions:
-  GenericPlaneResourceListResult:
-    type: object
-    description: The response of a GenericPlaneResource list operation.
-    properties:
-      value:
-        type: array
-        description: The GenericPlaneResource items on this page
-        items:
-          $ref: '#/definitions/GenericPlaneResource'
-      nextLink:
-        type: string
-        format: uri
-        description: The link to the next page of items
-    required:
-    - value
-  GenericPlaneResource:
-    type: object
-    description: The generic representation of a plane resource
-    properties:
+      summary: Planes list planes
+      x-summary-source: derived
+components:
+  schemas:
+    GenericPlaneResourceProperties:
+      type: object
+      description: The properties of the generic representation of a plane resource.
       properties:
-        $ref: '#/definitions/GenericPlaneResourceProperties'
-        description: The resource-specific properties for this resource.
-        x-ms-client-flatten: true
-        x-ms-mutability:
-        - read
-        - create
-    required:
-    - properties
-    allOf:
-    - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
-  GenericPlaneResourceProperties:
-    type: object
-    description: The properties of the generic representation of a plane resource.
-    properties:
-      provisioningState:
-        $ref: '#/definitions/ProvisioningState'
-        description: The status of the asynchronous operation.
-        readOnly: true
-  ProvisioningState:
-    type: string
-    description: Provisioning state of the resource at the time the operation was called
-    enum:
-    - Creating
-    - Updating
-    - Deleting
-    - Accepted
-    - Provisioning
-    - Succeeded
-    - Failed
-    - Canceled
-    x-ms-enum:
-      name: ProvisioningState
-      modelAsString: false
-      values:
-      - name: Creating
-        value: Creating
-        description: The resource is being created
-      - name: Updating
-        value: Updating
-        description: The resource is being updated
-      - name: Deleting
-        value: Deleting
-        description: The resource is being deleted
-      - name: Accepted
-        value: Accepted
-        description: The resource create request has been accepted
-      - name: Provisioning
-        value: Provisioning
-        description: The resource is being provisioned
-      - name: Succeeded
-        value: Succeeded
-        description: The resource has been successfully provisioned
-      - name: Failed
-        value: Failed
-        description: The resource provisioning has failed
-      - name: Canceled
-        value: Canceled
-        description: The resource provisioning has been canceled
-    readOnly: true
-securityDefinitions:
-  azure_auth:
-    type: oauth2
-    description: Azure Active Directory OAuth2 Flow.
-    flow: implicit
-    authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
-    scopes:
-      user_impersonation: impersonate your user account
+        provisioningState:
+          $ref: '#/components/schemas/ProvisioningState'
+          description: The status of the asynchronous operation.
+          readOnly: true
+    ProvisioningState:
+      type: string
+      description: Provisioning state of the resource at the time the operation was called
+      enum:
+      - Creating
+      - Updating
+      - Deleting
+      - Accepted
+      - Provisioning
+      - Succeeded
+      - Failed
+      - Canceled
+      x-ms-enum:
+        name: ProvisioningState
+        modelAsString: false
+        values:
+        - name: Creating
+          value: Creating
+          description: The resource is being created
+        - name: Updating
+          value: Updating
+          description: The resource is being updated
+        - name: Deleting
+          value: Deleting
+          description: The resource is being deleted
+        - name: Accepted
+          value: Accepted
+          description: The resource create request has been accepted
+        - name: Provisioning
+          value: Provisioning
+          description: The resource is being provisioned
+        - name: Succeeded
+          value: Succeeded
+          description: The resource has been successfully provisioned
+        - name: Failed
+          value: Failed
+          description: The resource provisioning has failed
+        - name: Canceled
+          value: Canceled
+          description: The resource provisioning has been canceled
+      readOnly: true
+    GenericPlaneResourceListResult:
+      type: object
+      description: The response of a GenericPlaneResource list operation.
+      properties:
+        value:
+          type: array
+          description: The GenericPlaneResource items on this page
+          items:
+            $ref: '#/components/schemas/GenericPlaneResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
+    GenericPlaneResource:
+      type: object
+      description: The generic representation of a plane resource
+      properties:
+        properties:
+          $ref: '#/components/schemas/GenericPlaneResourceProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+  securitySchemes:
+    azure_auth:
+      type: oauth2
+      flows:
+        implicit:
+          scopes:
+            user_impersonation: impersonate your user account
+          authorizationUrl: https://login.microsoftonline.com/common/oauth2/authorize
+      description: Azure Active Directory OAuth2 Flow.

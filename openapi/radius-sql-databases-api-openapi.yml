@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Applications.Core Management Volumes API
+  title: Applications.Datastores Resource Management Sql Databases…
   version: 2023-10-01-preview
-  description: REST APIs for Applications.Core
+  description: REST APIs for Applications.Datastores
   x-typespec-generated:
   - emitter: '@azure-tools/typespec-autorest'
 servers:
@@ -11,14 +11,14 @@ security:
 - azure_auth:
   - user_impersonation
 tags:
-- name: Volumes
+- name: Sql Databases
 paths:
-  /{rootScope}/providers/Applications.Core/volumes:
+  /{rootScope}/providers/Applications.Datastores/sqlDatabases:
     get:
-      operationId: Volumes_ListByScope
+      operationId: SqlDatabases_ListByScope
       tags:
-      - Volumes
-      description: List VolumeResource resources by Scope
+      - Sql Databases
+      description: List SqlDatabaseResource resources by Scope
       parameters:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
       - $ref: '#/components/parameters/RootScopeParameter'
@@ -28,7 +28,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VolumeResourceListResult'
+                $ref: '#/components/schemas/SqlDatabaseResourceListResult'
         default:
           description: An unexpected error response.
           content:
@@ -36,26 +36,26 @@ paths:
               schema:
                 $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
       x-ms-examples:
-        List volumes by resource group:
-          $ref: ./examples/Volumes_List.json
-        List volumes by rootScope:
-          $ref: ./examples/Volumes_ListByScope.json
+        List SqlDatabases resources by resource group:
+          $ref: ./examples/SQLDatabases_List.json
+        List SqlDatabases resources by rootScope:
+          $ref: ./examples/SQLDatabases_ListByRootScope.json
       x-ms-pageable:
         nextLinkName: nextLink
-      summary: Volumes list by scope
+      summary: Sql databases list by scope
       x-summary-source: derived
-  /{rootScope}/providers/Applications.Core/volumes/{volumeName}:
+  /{rootScope}/providers/Applications.Datastores/sqlDatabases/{sqlDatabaseName}:
     get:
-      operationId: Volumes_Get
+      operationId: SqlDatabases_Get
       tags:
-      - Volumes
-      description: Get a VolumeResource
+      - Sql Databases
+      description: Get a SqlDatabaseResource
       parameters:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
       - $ref: '#/components/parameters/RootScopeParameter'
-      - name: volumeName
+      - name: sqlDatabaseName
         in: path
-        description: Volume name
+        description: The name of the SqlDatabase portable resource resource
         required: true
         schema:
           type: string
@@ -67,7 +67,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VolumeResource'
+                $ref: '#/components/schemas/SqlDatabaseResource'
         default:
           description: An unexpected error response.
           content:
@@ -75,21 +75,21 @@ paths:
               schema:
                 $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
       x-ms-examples:
-        Get a volume:
-          $ref: ./examples/Volumes_Get.json
-      summary: Volumes get
+        Get a SqlDatabase resource:
+          $ref: ./examples/SQLDatabases_Get.json
+      summary: Sql databases get
       x-summary-source: derived
     put:
-      operationId: Volumes_CreateOrUpdate
+      operationId: SqlDatabases_CreateOrUpdate
       tags:
-      - Volumes
-      description: Create a VolumeResource
+      - Sql Databases
+      description: Create a SqlDatabaseResource
       parameters:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
       - $ref: '#/components/parameters/RootScopeParameter'
-      - name: volumeName
+      - name: sqlDatabaseName
         in: path
-        description: Volume name
+        description: The name of the SqlDatabase portable resource resource
         required: true
         schema:
           type: string
@@ -97,13 +97,13 @@ paths:
           pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
       responses:
         '200':
-          description: Resource 'VolumeResource' update operation succeeded
+          description: Resource 'SqlDatabaseResource' update operation succeeded
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VolumeResource'
+                $ref: '#/components/schemas/SqlDatabaseResource'
         '201':
-          description: Resource 'VolumeResource' create operation succeeded
+          description: Resource 'SqlDatabaseResource' create operation succeeded
           headers:
             Azure-AsyncOperation:
               description: A link to the status monitor
@@ -117,7 +117,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VolumeResource'
+                $ref: '#/components/schemas/SqlDatabaseResource'
         default:
           description: An unexpected error response.
           content:
@@ -125,8 +125,8 @@ paths:
               schema:
                 $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
       x-ms-examples:
-        Create or update a volume:
-          $ref: ./examples/Volumes_CreateOrUpdate.json
+        Create or update a SqlDatabase resource:
+          $ref: ./examples/SQLDatabases_CreateOrUpdate.json
       x-ms-long-running-operation-options:
         final-state-via: azure-async-operation
       x-ms-long-running-operation: true
@@ -134,22 +134,22 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VolumeResource'
+              $ref: '#/components/schemas/SqlDatabaseResource'
         description: Resource create parameters.
         required: true
-      summary: Volumes create or update
+      summary: Sql databases create or update
       x-summary-source: derived
     patch:
-      operationId: Volumes_Update
+      operationId: SqlDatabases_Update
       tags:
-      - Volumes
-      description: Update a VolumeResource
+      - Sql Databases
+      description: Update a SqlDatabaseResource
       parameters:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
       - $ref: '#/components/parameters/RootScopeParameter'
-      - name: volumeName
+      - name: sqlDatabaseName
         in: path
-        description: Volume name
+        description: The name of the SqlDatabase portable resource resource
         required: true
         schema:
           type: string
@@ -161,7 +161,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VolumeResource'
+                $ref: '#/components/schemas/SqlDatabaseResource'
         '202':
           description: Resource update request accepted.
           headers:
@@ -181,8 +181,8 @@ paths:
               schema:
                 $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
       x-ms-examples:
-        Update a volume:
-          $ref: ./examples/Volumes_Update.json
+        Update a SqlDatabase resource:
+          $ref: ./examples/SQLDatabases_Update.json
       x-ms-long-running-operation-options:
         final-state-via: location
       x-ms-long-running-operation: true
@@ -190,22 +190,22 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/VolumeResourceUpdate'
+              $ref: '#/components/schemas/SqlDatabaseResourceUpdate'
         description: The resource properties to be updated.
         required: true
-      summary: Volumes update
+      summary: Sql databases update
       x-summary-source: derived
     delete:
-      operationId: Volumes_Delete
+      operationId: SqlDatabases_Delete
       tags:
-      - Volumes
-      description: Delete a VolumeResource
+      - Sql Databases
+      description: Delete a SqlDatabaseResource
       parameters:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
       - $ref: '#/components/parameters/RootScopeParameter'
-      - name: volumeName
+      - name: sqlDatabaseName
         in: path
-        description: Volume name
+        description: The name of the SqlDatabase portable resource resource
         required: true
         schema:
           type: string
@@ -233,12 +233,51 @@ paths:
               schema:
                 $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
       x-ms-examples:
-        Delete a volume:
-          $ref: ./examples/Volumes_Delete.json
+        Delete a SqlDatabase resource:
+          $ref: ./examples/SQLDatabases_Delete.json
       x-ms-long-running-operation-options:
         final-state-via: location
       x-ms-long-running-operation: true
-      summary: Volumes delete
+      summary: Sql databases delete
+      x-summary-source: derived
+  /{rootScope}/providers/Applications.Datastores/sqlDatabases/{sqlDatabaseName}/listSecrets:
+    post:
+      operationId: SqlDatabases_ListSecrets
+      tags:
+      - Sql Databases
+      description: Lists secrets values for the specified SqlDatabase resource
+      parameters:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - $ref: '#/components/parameters/RootScopeParameter'
+      - name: sqlDatabaseName
+        in: path
+        description: The name of the SqlDatabase portable resource resource
+        required: true
+        schema:
+          type: string
+          maxLength: 63
+          pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      responses:
+        '200':
+          description: Azure operation completed successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SqlDatabaseListSecretsResult'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+        description: The content of the action request
+        required: true
+      summary: Sql databases list secrets
       x-summary-source: derived
 components:
   schemas:
@@ -255,21 +294,18 @@ components:
         radiusManaged:
           type: boolean
           description: Determines whether Radius manages the lifecycle of the underlying resource.
-    VolumeResource:
+    Recipe:
       type: object
-      description: Radius Volume resource.
+      description: The recipe used to automatically deploy underlying infrastructure for a portable resource
       properties:
-        properties:
-          $ref: '#/components/schemas/VolumeProperties'
-          description: The resource-specific properties for this resource.
-          x-ms-client-flatten: true
-          x-ms-mutability:
-          - read
-          - create
+        name:
+          type: string
+          description: The name of the recipe within the environment to use
+        parameters:
+          type: object
+          description: Key/value parameters to pass into the recipe at deployment
       required:
-      - properties
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+      - name
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -339,11 +375,73 @@ components:
         - name: systemAssignedUserAssigned
           value: systemAssignedUserAssigned
           description: System assigned and user assigned managed identity
-    VolumeResourceUpdate:
+    SqlDatabaseResourceUpdate:
       type: object
-      description: Radius Volume resource.
+      description: SqlDatabase portable resource
       allOf:
       - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
+    SqlDatabaseResourceListResult:
+      type: object
+      description: The response of a SqlDatabaseResource list operation.
+      properties:
+        value:
+          type: array
+          description: The SqlDatabaseResource items on this page
+          items:
+            $ref: '#/components/schemas/SqlDatabaseResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
+    SqlDatabaseProperties:
+      type: object
+      description: SqlDatabase properties
+      properties:
+        environment:
+          type: string
+          description: Fully qualified resource ID for the environment that the portable resource is linked to
+        application:
+          type: string
+          description: Fully qualified resource ID for the application that the portable resource is consumed by (if applicable)
+        provisioningState:
+          $ref: '#/components/schemas/ProvisioningState'
+          description: The status of the asynchronous operation.
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/ResourceStatus'
+          description: Status of a resource.
+          readOnly: true
+        database:
+          type: string
+          description: The name of the Sql database.
+        server:
+          type: string
+          description: The fully qualified domain name of the Sql database.
+        port:
+          type: integer
+          format: int32
+          description: Port value of the target Sql database
+        username:
+          type: string
+          description: Username to use when connecting to the target Sql database
+        resources:
+          type: array
+          description: List of the resource IDs that support the SqlDatabase resource
+          items:
+            $ref: '#/components/schemas/ResourceReference'
+        secrets:
+          $ref: '#/components/schemas/SqlDatabaseSecrets'
+          description: Secret values provided for the resource
+        recipe:
+          $ref: '#/components/schemas/Recipe'
+          description: The recipe used to automatically deploy underlying infrastructure for the resource
+        resourceProvisioning:
+          $ref: '#/components/schemas/ResourceProvisioning'
+          description: Specifies how the underlying service/resource is provisioned and managed.
+      required:
+      - environment
     Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
       type: object
       title: Tracked Resource
@@ -356,21 +454,16 @@ components:
             type: string
       allOf:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
-    VolumeResourceListResult:
+    SqlDatabaseSecrets:
       type: object
-      description: The response of a VolumeResource list operation.
+      description: The secret values for the given SqlDatabase resource
       properties:
-        value:
-          type: array
-          description: The VolumeResource items on this page
-          items:
-            $ref: '#/components/schemas/VolumeResource'
-        nextLink:
+        password:
           type: string
-          format: uri
-          description: The link to the next page of items
-      required:
-      - value
+          description: Password to use when connecting to the target Sql database
+        connectionString:
+          type: string
+          description: Connection string used to connect to the target Sql database
     RecipeStatus:
       type: object
       description: Recipe status at deployment time for a resource.
@@ -387,6 +480,21 @@ components:
       required:
       - templateKind
       - templatePath
+    SqlDatabaseResource:
+      type: object
+      description: SqlDatabase portable resource
+      properties:
+        properties:
+          $ref: '#/components/schemas/SqlDatabaseProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
     EnvironmentCompute:
       type: object
       description: Represents backing compute resource
@@ -421,32 +529,25 @@ components:
           items:
             $ref: '#/components/schemas/OutputResource'
           x-ms-identifiers: []
-    VolumeProperties:
+    SqlDatabaseListSecretsResult:
       type: object
-      description: Volume properties
+      description: The secret values for the given SqlDatabase resource
       properties:
-        kind:
+        password:
           type: string
-          description: Discriminator property for VolumeProperties.
-        environment:
+          description: Password to use when connecting to the target Sql database
+        connectionString:
           type: string
-          description: Fully qualified resource ID for the environment that the application is linked to
-        application:
+          description: Connection string used to connect to the target Sql database
+    ResourceReference:
+      type: object
+      description: Describes a reference to an existing resource
+      properties:
+        id:
           type: string
-          description: Fully qualified resource ID for the application
-        provisioningState:
-          $ref: '#/components/schemas/ProvisioningState'
-          description: The status of the asynchronous operation.
-          readOnly: true
-        status:
-          $ref: '#/components/schemas/ResourceStatus'
-          description: Status of a resource.
-          readOnly: true
-      discriminator:
-        propertyName: kind
+          description: Resource id of an existing resource
       required:
-      - kind
-      - application
+      - id
     IdentitySettings:
       type: object
       description: IdentitySettings is the external identity setting.
@@ -467,6 +568,22 @@ components:
             type: string
       required:
       - kind
+    ResourceProvisioning:
+      type: string
+      description: Specifies how the underlying service/resource is provisioned and managed. Available values are 'recipe', where Radius manages the lifecycle of the resource through a Recipe, and 'manual', where a user manages the resource and provides the values.
+      enum:
+      - recipe
+      - manual
+      x-ms-enum:
+        name: ResourceProvisioning
+        modelAsString: false
+        values:
+        - name: recipe
+          value: recipe
+          description: The resource lifecycle will be managed by Radius
+        - name: manual
+          value: manual
+          description: The resource lifecycle will be managed by the user
   parameters:
     RootScopeParameter:
       name: rootScope

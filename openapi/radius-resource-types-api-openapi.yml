@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Universal Control Plane Resource Management Radius Planes…
+  title: Universal Control Plane Resource Management Resource Types…
   version: 2023-10-01-preview
   description: REST APIs for Universal Control Plane
   x-typespec-generated:
@@ -11,39 +11,58 @@ security:
 - azure_auth:
   - user_impersonation
 tags:
-- name: RadiusPlanes
+- name: Resource Types
 paths:
-  /planes/radius:
+  /planes/radius/{planeName}/providers/System.Resources/resourceproviders/{resourceProviderName}/resourcetypes:
     get:
-      operationId: RadiusPlanes_List
+      operationId: ResourceTypes_List
       tags:
-      - RadiusPlanes
-      description: List Radius planes
+      - Resource Types
+      description: List resource types.
       parameters:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
+      - name: planeName
+        in: path
+        description: The plane name.
+        required: true
+        schema:
+          type: string
+          maxLength: 63
+          pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resourceProviderName
+        in: path
+        description: 'The resource provider name. This is also the resource provider namespace. Example: ''Applications.Datastores''.'
+        required: true
+        schema:
+          type: string
+          maxLength: 63
+          pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))\.([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))?$
       responses:
         '200':
           description: Azure operation completed successfully.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RadiusPlaneResourceListResult'
+                $ref: '#/components/schemas/ResourceTypeResourceListResult'
         default:
           description: An unexpected error response.
           content:
             application/json:
               schema:
                 $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        List resource types defined by a resource provider.:
+          $ref: ./examples/ResourceTypes_List.json
       x-ms-pageable:
         nextLinkName: nextLink
-      summary: Radius planes list
+      summary: Resource types list
       x-summary-source: derived
-  /planes/radius/{planeName}:
-    get:
-      operationId: RadiusPlanes_Get
+  ? /planes/radius/{planeName}/providers/System.Resources/resourceproviders/{resourceProviderName}/resourcetypes/{resourceTypeName}
+  : get:
+      operationId: ResourceTypes_Get
       tags:
-      - RadiusPlanes
-      description: Get a plane by name
+      - Resource Types
+      description: Get the specified resource type.
       parameters:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
       - name: planeName
@@ -54,26 +73,45 @@ paths:
           type: string
           maxLength: 63
           pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resourceProviderName
+        in: path
+        description: 'The resource provider name. This is also the resource provider namespace. Example: ''Applications.Datastores''.'
+        required: true
+        schema:
+          type: string
+          maxLength: 63
+          pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))\.([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))?$
+      - name: resourceTypeName
+        in: path
+        description: The resource type name.
+        required: true
+        schema:
+          type: string
+          maxLength: 63
+          pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))$
       responses:
         '200':
           description: Azure operation completed successfully.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RadiusPlaneResource'
+                $ref: '#/components/schemas/ResourceTypeResource'
         default:
           description: An unexpected error response.
           content:
             application/json:
               schema:
                 $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
-      summary: Radius planes get
+      x-ms-examples:
+        Gets a resource type defined by a resource provider.:
+          $ref: ./examples/ResourceTypes_Get.json
+      summary: Resource types get
       x-summary-source: derived
     put:
-      operationId: RadiusPlanes_CreateOrUpdate
+      operationId: ResourceTypes_CreateOrUpdate
       tags:
-      - RadiusPlanes
-      description: Create or update a plane
+      - Resource Types
+      description: Create or update a resource type
       parameters:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
       - name: planeName
@@ -84,15 +122,31 @@ paths:
           type: string
           maxLength: 63
           pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resourceProviderName
+        in: path
+        description: 'The resource provider name. This is also the resource provider namespace. Example: ''Applications.Datastores''.'
+        required: true
+        schema:
+          type: string
+          maxLength: 63
+          pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))\.([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))?$
+      - name: resourceTypeName
+        in: path
+        description: The resource type name.
+        required: true
+        schema:
+          type: string
+          maxLength: 63
+          pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))$
       responses:
         '200':
-          description: Resource 'RadiusPlaneResource' update operation succeeded
+          description: Resource 'ResourceTypeResource' update operation succeeded
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RadiusPlaneResource'
+                $ref: '#/components/schemas/ResourceTypeResource'
         '201':
-          description: Resource 'RadiusPlaneResource' create operation succeeded
+          description: Resource 'ResourceTypeResource' create operation succeeded
           headers:
             Retry-After:
               description: The Retry-After header can indicate how long the client should wait before polling the operation status.
@@ -102,13 +156,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RadiusPlaneResource'
+                $ref: '#/components/schemas/ResourceTypeResource'
         default:
           description: An unexpected error response.
           content:
             application/json:
               schema:
                 $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Create or update a resource type defined by a resource provider.:
+          $ref: ./examples/ResourceTypes_CreateOrUpdate.json
       x-ms-long-running-operation-options:
         final-state-via: azure-async-operation
       x-ms-long-running-operation: true
@@ -116,68 +173,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RadiusPlaneResource'
+              $ref: '#/components/schemas/ResourceTypeResource'
         description: Resource create parameters.
         required: true
-      summary: Radius planes create or update
-      x-summary-source: derived
-    patch:
-      operationId: RadiusPlanes_Update
-      tags:
-      - RadiusPlanes
-      description: Update a plane
-      parameters:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
-      - name: planeName
-        in: path
-        description: The plane name.
-        required: true
-        schema:
-          type: string
-          maxLength: 63
-          pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
-      responses:
-        '200':
-          description: Azure operation completed successfully.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RadiusPlaneResource'
-        '202':
-          description: Resource update request accepted.
-          headers:
-            Location:
-              description: The Location header contains the URL where the status of the long running operation can be checked.
-              schema:
-                type: string
-            Retry-After:
-              description: The Retry-After header can indicate how long the client should wait before polling the operation status.
-              schema:
-                type: integer
-                format: int32
-        default:
-          description: An unexpected error response.
-          content:
-            application/json:
-              schema:
-                $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
-      x-ms-long-running-operation-options:
-        final-state-via: location
-      x-ms-long-running-operation: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RadiusPlaneResourceTagsUpdate'
-        description: The resource properties to be updated.
-        required: true
-      summary: Radius planes update
+      summary: Resource types create or update
       x-summary-source: derived
     delete:
-      operationId: RadiusPlanes_Delete
+      operationId: ResourceTypes_Delete
       tags:
-      - RadiusPlanes
-      description: Delete a plane
+      - Resource Types
+      description: Delete a resource type
       parameters:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter
       - name: planeName
@@ -188,6 +193,22 @@ paths:
           type: string
           maxLength: 63
           pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+      - name: resourceProviderName
+        in: path
+        description: 'The resource provider name. This is also the resource provider namespace. Example: ''Applications.Datastores''.'
+        required: true
+        schema:
+          type: string
+          maxLength: 63
+          pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))\.([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))?$
+      - name: resourceTypeName
+        in: path
+        description: The resource type name.
+        required: true
+        schema:
+          type: string
+          maxLength: 63
+          pattern: ^([A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9]))$
       responses:
         '200':
           description: Resource deleted successfully.
@@ -211,10 +232,13 @@ paths:
             application/json:
               schema:
                 $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse
+      x-ms-examples:
+        Delete a resource type defined by a resource provider.:
+          $ref: ./examples/ResourceTypes_Delete.json
       x-ms-long-running-operation-options:
         final-state-via: location
       x-ms-long-running-operation: true
-      summary: Radius planes delete
+      summary: Resource types delete
       x-summary-source: derived
 components:
   schemas:
@@ -259,60 +283,59 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
-    RadiusPlaneResourceListResult:
+    ResourceTypeProperties:
       type: object
-      description: The response of a RadiusPlaneResource list operation.
+      description: The properties of a resource type.
+      properties:
+        provisioningState:
+          $ref: '#/components/schemas/ProvisioningState'
+          description: The status of the asynchronous operation.
+          readOnly: true
+        capabilities:
+          type: array
+          description: The resource type capabilities.
+          items:
+            $ref: '#/components/schemas/Capability'
+        defaultApiVersion:
+          $ref: '#/components/schemas/ApiVersionNameString'
+          description: The default api version for the resource type.
+        description:
+          type: string
+          description: Description of the resource type.
+    ResourceTypeResource:
+      type: object
+      description: The resource type for defining a resource type supported by the containing resource provider.
+      properties:
+        properties:
+          $ref: '#/components/schemas/ResourceTypeProperties'
+          description: The resource-specific properties for this resource.
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ProxyResource
+    ResourceTypeResourceListResult:
+      type: object
+      description: The response of a ResourceTypeResource list operation.
       properties:
         value:
           type: array
-          description: The RadiusPlaneResource items on this page
+          description: The ResourceTypeResource items on this page
           items:
-            $ref: '#/components/schemas/RadiusPlaneResource'
+            $ref: '#/components/schemas/ResourceTypeResource'
         nextLink:
           type: string
           format: uri
           description: The link to the next page of items
       required:
       - value
-    RadiusPlaneResource:
-      type: object
-      description: The Radius plane resource.
-      properties:
-        properties:
-          $ref: '#/components/schemas/RadiusPlaneResourceProperties'
-          description: The resource-specific properties for this resource.
-          x-ms-client-flatten: true
-          x-ms-mutability:
-          - read
-          - create
-      required:
-      - properties
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
-    RadiusPlaneResourceTagsUpdate:
-      type: object
-      description: The type used for updating tags in RadiusPlaneResource resources.
-      properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
-            type: string
-    RadiusPlaneResourceProperties:
-      type: object
-      description: The Plane properties.
-      properties:
-        provisioningState:
-          $ref: '#/components/schemas/ProvisioningState'
-          description: The status of the asynchronous operation.
-          readOnly: true
-        resourceProviders:
-          type: object
-          description: Resource Providers for UCP Native Plane
-          additionalProperties:
-            type: string
-      required:
-      - resourceProviders
+    ApiVersionNameString:
+      type: string
+      description: 'The resource type API version. Example: ''2023-10-01-preview''.'
+      maxLength: 63
+      pattern: ^\d{4}-\d{2}-\d{2}(-preview)?$
+    Capability:
+      type: string
+      description: A capability defines the behaviors and features that a resource type supports.
+      maxLength: 63
+      pattern: ^[A-Za-z][A-Za-z0-9]*$
   securitySchemes:
     azure_auth:
       type: oauth2
