@@ -284,6 +284,23 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    EnvironmentCompute:
+      type: object
+      description: Represents backing compute resource
+      properties:
+        kind:
+          type: string
+          description: Discriminator property for EnvironmentCompute.
+        resourceId:
+          type: string
+          description: The resource id of the compute resource for application environment.
+        identity:
+          $ref: '#/components/schemas/IdentitySettings'
+          description: Configuration for supported external identity providers
+      discriminator:
+        propertyName: kind
+      required:
+      - kind
     OutputResource:
       type: object
       description: Properties of an output resource.
@@ -297,102 +314,32 @@ components:
         radiusManaged:
           type: boolean
           description: Determines whether Radius manages the lifecycle of the underlying resource.
-    Recipe:
+    RabbitMQListSecretsResult:
       type: object
-      description: The recipe used to automatically deploy underlying infrastructure for a portable resource
+      description: The secret values for the given RabbitMQQueue resource
       properties:
-        name:
+        password:
           type: string
-          description: The name of the recipe within the environment to use
-        parameters:
-          type: object
-          description: Key/value parameters to pass into the recipe at deployment
-      required:
-      - name
-    ProvisioningState:
-      type: string
-      description: Provisioning state of the resource at the time the operation was called
-      enum:
-      - Creating
-      - Updating
-      - Deleting
-      - Accepted
-      - Provisioning
-      - Succeeded
-      - Failed
-      - Canceled
-      x-ms-enum:
-        name: ProvisioningState
-        modelAsString: false
-        values:
-        - name: Creating
-          value: Creating
-          description: The resource is being created
-        - name: Updating
-          value: Updating
-          description: The resource is being updated
-        - name: Deleting
-          value: Deleting
-          description: The resource is being deleted
-        - name: Accepted
-          value: Accepted
-          description: The resource create request has been accepted
-        - name: Provisioning
-          value: Provisioning
-          description: The resource is being provisioned
-        - name: Succeeded
-          value: Succeeded
-          description: The resource has been successfully provisioned
-        - name: Failed
-          value: Failed
-          description: The resource provisioning has failed
-        - name: Canceled
-          value: Canceled
-          description: The resource provisioning has been canceled
-      readOnly: true
-    IdentitySettingKind:
-      type: string
-      description: IdentitySettingKind is the kind of supported external identity setting
-      enum:
-      - undefined
-      - azure.com.workload
-      - userAssigned
-      - systemAssigned
-      - systemAssignedUserAssigned
-      x-ms-enum:
-        name: IdentitySettingKind
-        modelAsString: false
-        values:
-        - name: undefined
-          value: undefined
-          description: undefined identity
-        - name: azure.com.workload
-          value: azure.com.workload
-          description: azure ad workload identity
-        - name: userAssigned
-          value: userAssigned
-          description: User assigned managed identity
-        - name: systemAssigned
-          value: systemAssigned
-          description: System assigned managed identity
-        - name: systemAssignedUserAssigned
-          value: systemAssignedUserAssigned
-          description: System assigned and user assigned managed identity
-    RabbitMQQueueResourceListResult:
+          description: The password used to connect to the RabbitMQ instance
+        uri:
+          type: string
+          description: The connection URI of the RabbitMQ instance. Generated automatically from host, port, SSL, username, password, and vhost. Can be overridden with a custom value
+    RecipeStatus:
       type: object
-      description: The response of a RabbitMQQueueResource list operation.
+      description: Recipe status at deployment time for a resource.
       properties:
-        value:
-          type: array
-          description: The RabbitMQQueueResource items on this page
-          items:
-            $ref: '#/components/schemas/RabbitMQQueueResource'
-        nextLink:
+        templateKind:
           type: string
-          format: uri
-          description: The link to the next page of items
+          description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
+        templatePath:
+          type: string
+          description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
+        templateVersion:
+          type: string
+          description: TemplateVersion is the version number of the template.
       required:
-      - value
+      - templateKind
+      - templatePath
     RabbitMQQueueProperties:
       type: object
       description: RabbitMQQueue portable resource properties
@@ -446,117 +393,6 @@ components:
           description: Specifies how the underlying service/resource is provisioned and managed.
       required:
       - environment
-    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
-      type: object
-      title: Tracked Resource
-      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-      properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
-            type: string
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
-    RabbitMQListSecretsResult:
-      type: object
-      description: The secret values for the given RabbitMQQueue resource
-      properties:
-        password:
-          type: string
-          description: The password used to connect to the RabbitMQ instance
-        uri:
-          type: string
-          description: The connection URI of the RabbitMQ instance. Generated automatically from host, port, SSL, username, password, and vhost. Can be overridden with a custom value
-    RecipeStatus:
-      type: object
-      description: Recipe status at deployment time for a resource.
-      properties:
-        templateKind:
-          type: string
-          description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
-        templatePath:
-          type: string
-          description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
-        templateVersion:
-          type: string
-          description: TemplateVersion is the version number of the template.
-      required:
-      - templateKind
-      - templatePath
-    RabbitMQQueueResourceUpdate:
-      type: object
-      description: RabbitMQQueue portable resource
-      allOf:
-      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
-    EnvironmentCompute:
-      type: object
-      description: Represents backing compute resource
-      properties:
-        kind:
-          type: string
-          description: Discriminator property for EnvironmentCompute.
-        resourceId:
-          type: string
-          description: The resource id of the compute resource for application environment.
-        identity:
-          $ref: '#/components/schemas/IdentitySettings'
-          description: Configuration for supported external identity providers
-      discriminator:
-        propertyName: kind
-      required:
-      - kind
-    RabbitMQQueueResource:
-      type: object
-      description: RabbitMQQueue portable resource
-      properties:
-        properties:
-          $ref: '#/components/schemas/RabbitMQQueueProperties'
-          description: The resource-specific properties for this resource.
-          x-ms-client-flatten: true
-          x-ms-mutability:
-          - read
-          - create
-      required:
-      - properties
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
-    ResourceStatus:
-      type: object
-      description: Status of a resource.
-      properties:
-        compute:
-          $ref: '#/components/schemas/EnvironmentCompute'
-          description: The compute resource associated with the resource.
-        recipe:
-          $ref: '#/components/schemas/RecipeStatus'
-          description: The recipe data at the time of deployment
-          readOnly: true
-        outputResources:
-          type: array
-          description: Properties of an output resource
-          items:
-            $ref: '#/components/schemas/OutputResource'
-          x-ms-identifiers: []
-    RabbitMQSecrets:
-      type: object
-      description: The connection secrets properties to the RabbitMQ instance
-      properties:
-        password:
-          type: string
-          description: The password used to connect to the RabbitMQ instance
-        uri:
-          type: string
-          description: The connection URI of the RabbitMQ instance. Generated automatically from host, port, SSL, username, password, and vhost. Can be overridden with a custom value
-    ResourceReference:
-      type: object
-      description: Describes a reference to an existing resource
-      properties:
-        id:
-          type: string
-          description: Resource id of an existing resource
-      required:
-      - id
     IdentitySettings:
       type: object
       description: IdentitySettings is the external identity setting.
@@ -577,6 +413,170 @@ components:
             type: string
       required:
       - kind
+    IdentitySettingKind:
+      type: string
+      description: IdentitySettingKind is the kind of supported external identity setting
+      enum:
+      - undefined
+      - azure.com.workload
+      - userAssigned
+      - systemAssigned
+      - systemAssignedUserAssigned
+      x-ms-enum:
+        name: IdentitySettingKind
+        modelAsString: false
+        values:
+        - name: undefined
+          value: undefined
+          description: undefined identity
+        - name: azure.com.workload
+          value: azure.com.workload
+          description: azure ad workload identity
+        - name: userAssigned
+          value: userAssigned
+          description: User assigned managed identity
+        - name: systemAssigned
+          value: systemAssigned
+          description: System assigned managed identity
+        - name: systemAssignedUserAssigned
+          value: systemAssignedUserAssigned
+          description: System assigned and user assigned managed identity
+    Recipe:
+      type: object
+      description: The recipe used to automatically deploy underlying infrastructure for a portable resource
+      properties:
+        name:
+          type: string
+          description: The name of the recipe within the environment to use
+        parameters:
+          type: object
+          description: Key/value parameters to pass into the recipe at deployment
+      required:
+      - name
+    ProvisioningState:
+      type: string
+      description: Provisioning state of the resource at the time the operation was called
+      enum:
+      - Creating
+      - Updating
+      - Deleting
+      - Accepted
+      - Provisioning
+      - Succeeded
+      - Failed
+      - Canceled
+      x-ms-enum:
+        name: ProvisioningState
+        modelAsString: false
+        values:
+        - name: Creating
+          value: Creating
+          description: The resource is being created
+        - name: Updating
+          value: Updating
+          description: The resource is being updated
+        - name: Deleting
+          value: Deleting
+          description: The resource is being deleted
+        - name: Accepted
+          value: Accepted
+          description: The resource create request has been accepted
+        - name: Provisioning
+          value: Provisioning
+          description: The resource is being provisioned
+        - name: Succeeded
+          value: Succeeded
+          description: The resource has been successfully provisioned
+        - name: Failed
+          value: Failed
+          description: The resource provisioning has failed
+        - name: Canceled
+          value: Canceled
+          description: The resource provisioning has been canceled
+      readOnly: true
+    RabbitMQSecrets:
+      type: object
+      description: The connection secrets properties to the RabbitMQ instance
+      properties:
+        password:
+          type: string
+          description: The password used to connect to the RabbitMQ instance
+        uri:
+          type: string
+          description: The connection URI of the RabbitMQ instance. Generated automatically from host, port, SSL, username, password, and vhost. Can be overridden with a custom value
+    ResourceReference:
+      type: object
+      description: Describes a reference to an existing resource
+      properties:
+        id:
+          type: string
+          description: Resource id of an existing resource
+      required:
+      - id
+    ResourceStatus:
+      type: object
+      description: Status of a resource.
+      properties:
+        compute:
+          $ref: '#/components/schemas/EnvironmentCompute'
+          description: The compute resource associated with the resource.
+        recipe:
+          $ref: '#/components/schemas/RecipeStatus'
+          description: The recipe data at the time of deployment
+          readOnly: true
+        outputResources:
+          type: array
+          description: Properties of an output resource
+          items:
+            $ref: '#/components/schemas/OutputResource'
+          x-ms-identifiers: []
+    RabbitMQQueueResource:
+      type: object
+      description: RabbitMQQueue portable resource
+      properties:
+        properties:
+          $ref: '#/components/schemas/RabbitMQQueueProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+    RabbitMQQueueResourceUpdate:
+      type: object
+      description: RabbitMQQueue portable resource
+      allOf:
+      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
+    RabbitMQQueueResourceListResult:
+      type: object
+      description: The response of a RabbitMQQueueResource list operation.
+      properties:
+        value:
+          type: array
+          description: The RabbitMQQueueResource items on this page
+          items:
+            $ref: '#/components/schemas/RabbitMQQueueResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
+    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
+      type: object
+      title: Tracked Resource
+      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+      properties:
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
+            type: string
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
     ResourceProvisioning:
       type: string
       description: Specifies how the underlying service/resource is provisioned and managed. Available values are 'recipe', where Radius manages the lifecycle of the resource through a Recipe, and 'manual', where a user manages the resource and provides the values.

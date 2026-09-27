@@ -242,6 +242,54 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    VolumeResourceUpdate:
+      type: object
+      description: Radius Volume resource.
+      allOf:
+      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
+    EnvironmentCompute:
+      type: object
+      description: Represents backing compute resource
+      properties:
+        kind:
+          type: string
+          description: Discriminator property for EnvironmentCompute.
+        resourceId:
+          type: string
+          description: The resource id of the compute resource for application environment.
+        identity:
+          $ref: '#/components/schemas/IdentitySettings'
+          description: Configuration for supported external identity providers
+      discriminator:
+        propertyName: kind
+      required:
+      - kind
+    VolumeProperties:
+      type: object
+      description: Volume properties
+      properties:
+        kind:
+          type: string
+          description: Discriminator property for VolumeProperties.
+        environment:
+          type: string
+          description: Fully qualified resource ID for the environment that the application is linked to
+        application:
+          type: string
+          description: Fully qualified resource ID for the application
+        provisioningState:
+          $ref: '#/components/schemas/ProvisioningState'
+          description: The status of the asynchronous operation.
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/ResourceStatus'
+          description: Status of a resource.
+          readOnly: true
+      discriminator:
+        propertyName: kind
+      required:
+      - kind
+      - application
     OutputResource:
       type: object
       description: Properties of an output resource.
@@ -255,6 +303,21 @@ components:
         radiusManaged:
           type: boolean
           description: Determines whether Radius manages the lifecycle of the underlying resource.
+    VolumeResourceListResult:
+      type: object
+      description: The response of a VolumeResource list operation.
+      properties:
+        value:
+          type: array
+          description: The VolumeResource items on this page
+          items:
+            $ref: '#/components/schemas/VolumeResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
     VolumeResource:
       type: object
       description: Radius Volume resource.
@@ -270,6 +333,71 @@ components:
       - properties
       allOf:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+    IdentitySettings:
+      type: object
+      description: IdentitySettings is the external identity setting.
+      properties:
+        kind:
+          $ref: '#/components/schemas/IdentitySettingKind'
+          description: kind of identity setting
+        oidcIssuer:
+          type: string
+          description: The URI for your compute platform's OIDC issuer
+        resource:
+          type: string
+          description: The resource ID of the provisioned identity
+        managedIdentity:
+          type: array
+          description: The list of user assigned managed identities
+          items:
+            type: string
+      required:
+      - kind
+    IdentitySettingKind:
+      type: string
+      description: IdentitySettingKind is the kind of supported external identity setting
+      enum:
+      - undefined
+      - azure.com.workload
+      - userAssigned
+      - systemAssigned
+      - systemAssignedUserAssigned
+      x-ms-enum:
+        name: IdentitySettingKind
+        modelAsString: false
+        values:
+        - name: undefined
+          value: undefined
+          description: undefined identity
+        - name: azure.com.workload
+          value: azure.com.workload
+          description: azure ad workload identity
+        - name: userAssigned
+          value: userAssigned
+          description: User assigned managed identity
+        - name: systemAssigned
+          value: systemAssigned
+          description: System assigned managed identity
+        - name: systemAssignedUserAssigned
+          value: systemAssignedUserAssigned
+          description: System assigned and user assigned managed identity
+    ResourceStatus:
+      type: object
+      description: Status of a resource.
+      properties:
+        compute:
+          $ref: '#/components/schemas/EnvironmentCompute'
+          description: The compute resource associated with the resource.
+        recipe:
+          $ref: '#/components/schemas/RecipeStatus'
+          description: The recipe data at the time of deployment
+          readOnly: true
+        outputResources:
+          type: array
+          description: Properties of an output resource
+          items:
+            $ref: '#/components/schemas/OutputResource'
+          x-ms-identifiers: []
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -311,66 +439,6 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
-    IdentitySettingKind:
-      type: string
-      description: IdentitySettingKind is the kind of supported external identity setting
-      enum:
-      - undefined
-      - azure.com.workload
-      - userAssigned
-      - systemAssigned
-      - systemAssignedUserAssigned
-      x-ms-enum:
-        name: IdentitySettingKind
-        modelAsString: false
-        values:
-        - name: undefined
-          value: undefined
-          description: undefined identity
-        - name: azure.com.workload
-          value: azure.com.workload
-          description: azure ad workload identity
-        - name: userAssigned
-          value: userAssigned
-          description: User assigned managed identity
-        - name: systemAssigned
-          value: systemAssigned
-          description: System assigned managed identity
-        - name: systemAssignedUserAssigned
-          value: systemAssignedUserAssigned
-          description: System assigned and user assigned managed identity
-    VolumeResourceUpdate:
-      type: object
-      description: Radius Volume resource.
-      allOf:
-      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
-    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
-      type: object
-      title: Tracked Resource
-      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-      properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
-            type: string
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
-    VolumeResourceListResult:
-      type: object
-      description: The response of a VolumeResource list operation.
-      properties:
-        value:
-          type: array
-          description: The VolumeResource items on this page
-          items:
-            $ref: '#/components/schemas/VolumeResource'
-        nextLink:
-          type: string
-          format: uri
-          description: The link to the next page of items
-      required:
-      - value
     RecipeStatus:
       type: object
       description: Recipe status at deployment time for a resource.
@@ -387,86 +455,18 @@ components:
       required:
       - templateKind
       - templatePath
-    EnvironmentCompute:
+    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
       type: object
-      description: Represents backing compute resource
+      title: Tracked Resource
+      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
       properties:
-        kind:
-          type: string
-          description: Discriminator property for EnvironmentCompute.
-        resourceId:
-          type: string
-          description: The resource id of the compute resource for application environment.
-        identity:
-          $ref: '#/components/schemas/IdentitySettings'
-          description: Configuration for supported external identity providers
-      discriminator:
-        propertyName: kind
-      required:
-      - kind
-    ResourceStatus:
-      type: object
-      description: Status of a resource.
-      properties:
-        compute:
-          $ref: '#/components/schemas/EnvironmentCompute'
-          description: The compute resource associated with the resource.
-        recipe:
-          $ref: '#/components/schemas/RecipeStatus'
-          description: The recipe data at the time of deployment
-          readOnly: true
-        outputResources:
-          type: array
-          description: Properties of an output resource
-          items:
-            $ref: '#/components/schemas/OutputResource'
-          x-ms-identifiers: []
-    VolumeProperties:
-      type: object
-      description: Volume properties
-      properties:
-        kind:
-          type: string
-          description: Discriminator property for VolumeProperties.
-        environment:
-          type: string
-          description: Fully qualified resource ID for the environment that the application is linked to
-        application:
-          type: string
-          description: Fully qualified resource ID for the application
-        provisioningState:
-          $ref: '#/components/schemas/ProvisioningState'
-          description: The status of the asynchronous operation.
-          readOnly: true
-        status:
-          $ref: '#/components/schemas/ResourceStatus'
-          description: Status of a resource.
-          readOnly: true
-      discriminator:
-        propertyName: kind
-      required:
-      - kind
-      - application
-    IdentitySettings:
-      type: object
-      description: IdentitySettings is the external identity setting.
-      properties:
-        kind:
-          $ref: '#/components/schemas/IdentitySettingKind'
-          description: kind of identity setting
-        oidcIssuer:
-          type: string
-          description: The URI for your compute platform's OIDC issuer
-        resource:
-          type: string
-          description: The resource ID of the provisioned identity
-        managedIdentity:
-          type: array
-          description: The list of user assigned managed identities
-          items:
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
             type: string
-      required:
-      - kind
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
   parameters:
     RootScopeParameter:
       name: rootScope

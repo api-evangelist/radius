@@ -45,7 +45,7 @@ paths:
     - url: https://management.azure.com
   /providers/Applications.Dapr/operations:
     get:
-      operationId: Operations_List
+      operationId: getProvidersApplicationsDaprOperations
       tags:
       - Operations
       description: List the operations for the provider
@@ -68,11 +68,13 @@ paths:
         nextLinkName: nextLink
       summary: Operations list
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Operations_List
     servers:
     - url: https://management.azure.com
   /providers/Applications.Datastores/operations:
     get:
-      operationId: Operations_List
+      operationId: getProvidersApplicationsDatastoresOperations
       tags:
       - Operations
       description: List the operations for the provider
@@ -95,11 +97,13 @@ paths:
         nextLinkName: nextLink
       summary: Operations list
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Operations_List
     servers:
     - url: https://management.azure.com
   /providers/Applications.Messaging/operations:
     get:
-      operationId: Operations_List
+      operationId: getProvidersApplicationsMessagingOperations
       tags:
       - Operations
       description: List the operations for the provider
@@ -122,6 +126,8 @@ paths:
         nextLinkName: nextLink
       summary: Operations list
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Operations_List
     servers:
     - url: https://management.azure.com
 components:

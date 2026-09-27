@@ -218,6 +218,45 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    AzurePlaneResourceListResult:
+      type: object
+      description: The response of a AzurePlaneResource list operation.
+      properties:
+        value:
+          type: array
+          description: The AzurePlaneResource items on this page
+          items:
+            $ref: '#/components/schemas/AzurePlaneResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
+    AzurePlaneResource:
+      type: object
+      description: The Azure plane resource.
+      properties:
+        properties:
+          $ref: '#/components/schemas/AzurePlaneResourceProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+    AzurePlaneResourceTagsUpdate:
+      type: object
+      description: The type used for updating tags in AzurePlaneResource resources.
+      properties:
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
+            type: string
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -272,45 +311,6 @@ components:
           description: The URL used to proxy requests.
       required:
       - url
-    AzurePlaneResourceTagsUpdate:
-      type: object
-      description: The type used for updating tags in AzurePlaneResource resources.
-      properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
-            type: string
-    AzurePlaneResourceListResult:
-      type: object
-      description: The response of a AzurePlaneResource list operation.
-      properties:
-        value:
-          type: array
-          description: The AzurePlaneResource items on this page
-          items:
-            $ref: '#/components/schemas/AzurePlaneResource'
-        nextLink:
-          type: string
-          format: uri
-          description: The link to the next page of items
-      required:
-      - value
-    AzurePlaneResource:
-      type: object
-      description: The Azure plane resource.
-      properties:
-        properties:
-          $ref: '#/components/schemas/AzurePlaneResourceProperties'
-          description: The resource-specific properties for this resource.
-          x-ms-client-flatten: true
-          x-ms-mutability:
-          - read
-          - create
-      required:
-      - properties
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
   securitySchemes:
     azure_auth:
       type: oauth2

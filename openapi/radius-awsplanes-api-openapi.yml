@@ -218,6 +218,14 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    AwsPlaneResourceProperties:
+      type: object
+      description: The Plane properties.
+      properties:
+        provisioningState:
+          $ref: '#/components/schemas/ProvisioningState'
+          description: The status of the asynchronous operation.
+          readOnly: true
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -259,6 +267,21 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
+    AwsPlaneResource:
+      type: object
+      description: The AWS plane resource
+      properties:
+        properties:
+          $ref: '#/components/schemas/AwsPlaneResourceProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
     AwsPlaneResourceListResult:
       type: object
       description: The response of a AwsPlaneResource list operation.
@@ -283,29 +306,6 @@ components:
           description: Resource tags.
           additionalProperties:
             type: string
-    AwsPlaneResourceProperties:
-      type: object
-      description: The Plane properties.
-      properties:
-        provisioningState:
-          $ref: '#/components/schemas/ProvisioningState'
-          description: The status of the asynchronous operation.
-          readOnly: true
-    AwsPlaneResource:
-      type: object
-      description: The AWS plane resource
-      properties:
-        properties:
-          $ref: '#/components/schemas/AwsPlaneResourceProperties'
-          description: The resource-specific properties for this resource.
-          x-ms-client-flatten: true
-          x-ms-mutability:
-          - read
-          - create
-      required:
-      - properties
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
   securitySchemes:
     azure_auth:
       type: oauth2

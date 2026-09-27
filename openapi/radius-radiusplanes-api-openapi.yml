@@ -218,6 +218,30 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    RadiusPlaneResourceListResult:
+      type: object
+      description: The response of a RadiusPlaneResource list operation.
+      properties:
+        value:
+          type: array
+          description: The RadiusPlaneResource items on this page
+          items:
+            $ref: '#/components/schemas/RadiusPlaneResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
+    RadiusPlaneResourceTagsUpdate:
+      type: object
+      description: The type used for updating tags in RadiusPlaneResource resources.
+      properties:
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
+            type: string
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -259,21 +283,6 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
-    RadiusPlaneResourceListResult:
-      type: object
-      description: The response of a RadiusPlaneResource list operation.
-      properties:
-        value:
-          type: array
-          description: The RadiusPlaneResource items on this page
-          items:
-            $ref: '#/components/schemas/RadiusPlaneResource'
-        nextLink:
-          type: string
-          format: uri
-          description: The link to the next page of items
-      required:
-      - value
     RadiusPlaneResource:
       type: object
       description: The Radius plane resource.
@@ -289,15 +298,6 @@ components:
       - properties
       allOf:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
-    RadiusPlaneResourceTagsUpdate:
-      type: object
-      description: The type used for updating tags in RadiusPlaneResource resources.
-      properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
-            type: string
     RadiusPlaneResourceProperties:
       type: object
       description: The Plane properties.

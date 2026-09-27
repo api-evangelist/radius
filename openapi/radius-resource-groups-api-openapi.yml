@@ -234,6 +234,32 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ResourceGroupResource:
+      type: object
+      description: The resource group resource
+      properties:
+        properties:
+          $ref: '#/components/schemas/ResourceGroupProperties'
+          description: The resource-specific properties for this resource.
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+    ResourceGroupResourceTagsUpdate:
+      type: object
+      description: The type used for updating tags in ResourceGroupResource resources.
+      properties:
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
+            type: string
+    ResourceGroupProperties:
+      type: object
+      description: The resource group resource properties
+      properties:
+        provisioningState:
+          $ref: '#/components/schemas/ProvisioningState'
+          description: The status of the asynchronous operation.
+          readOnly: true
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -275,14 +301,6 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
-    ResourceGroupProperties:
-      type: object
-      description: The resource group resource properties
-      properties:
-        provisioningState:
-          $ref: '#/components/schemas/ProvisioningState'
-          description: The status of the asynchronous operation.
-          readOnly: true
     ResourceGroupResourceListResult:
       type: object
       description: The response of a ResourceGroupResource list operation.
@@ -298,24 +316,6 @@ components:
           description: The link to the next page of items
       required:
       - value
-    ResourceGroupResource:
-      type: object
-      description: The resource group resource
-      properties:
-        properties:
-          $ref: '#/components/schemas/ResourceGroupProperties'
-          description: The resource-specific properties for this resource.
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
-    ResourceGroupResourceTagsUpdate:
-      type: object
-      description: The type used for updating tags in ResourceGroupResource resources.
-      properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
-            type: string
   securitySchemes:
     azure_auth:
       type: oauth2

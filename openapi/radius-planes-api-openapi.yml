@@ -92,21 +92,6 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
-    GenericPlaneResourceListResult:
-      type: object
-      description: The response of a GenericPlaneResource list operation.
-      properties:
-        value:
-          type: array
-          description: The GenericPlaneResource items on this page
-          items:
-            $ref: '#/components/schemas/GenericPlaneResource'
-        nextLink:
-          type: string
-          format: uri
-          description: The link to the next page of items
-      required:
-      - value
     GenericPlaneResource:
       type: object
       description: The generic representation of a plane resource
@@ -122,6 +107,21 @@ components:
       - properties
       allOf:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+    GenericPlaneResourceListResult:
+      type: object
+      description: The response of a GenericPlaneResource list operation.
+      properties:
+        value:
+          type: array
+          description: The GenericPlaneResource items on this page
+          items:
+            $ref: '#/components/schemas/GenericPlaneResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
   securitySchemes:
     azure_auth:
       type: oauth2

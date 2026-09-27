@@ -64,6 +64,21 @@ components:
       description: The resource name
       maxLength: 63
       pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+    GenericResourceListResult:
+      type: object
+      description: The response of a GenericResource list operation.
+      properties:
+        value:
+          type: array
+          description: The GenericResource items on this page
+          items:
+            $ref: '#/components/schemas/GenericResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
     ResourceProperties:
       type: object
       description: The resource properties
@@ -86,21 +101,6 @@ components:
             description: The resource-specific properties for this resource.
         allOf:
         - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ProxyResource
-    GenericResourceListResult:
-      type: object
-      description: The response of a GenericResource list operation.
-      properties:
-        value:
-          type: array
-          description: The GenericResource items on this page
-          items:
-            $ref: '#/components/schemas/GenericResource'
-        nextLink:
-          type: string
-          format: uri
-          description: The link to the next page of items
-      required:
-      - value
   securitySchemes:
     azure_auth:
       type: oauth2
