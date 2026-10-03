@@ -242,97 +242,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    VolumeResourceUpdate:
-      type: object
-      description: Radius Volume resource.
-      allOf:
-      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
-    EnvironmentCompute:
-      type: object
-      description: Represents backing compute resource
-      properties:
-        kind:
-          type: string
-          description: Discriminator property for EnvironmentCompute.
-        resourceId:
-          type: string
-          description: The resource id of the compute resource for application environment.
-        identity:
-          $ref: '#/components/schemas/IdentitySettings'
-          description: Configuration for supported external identity providers
-      discriminator:
-        propertyName: kind
-      required:
-      - kind
-    VolumeProperties:
-      type: object
-      description: Volume properties
-      properties:
-        kind:
-          type: string
-          description: Discriminator property for VolumeProperties.
-        environment:
-          type: string
-          description: Fully qualified resource ID for the environment that the application is linked to
-        application:
-          type: string
-          description: Fully qualified resource ID for the application
-        provisioningState:
-          $ref: '#/components/schemas/ProvisioningState'
-          description: The status of the asynchronous operation.
-          readOnly: true
-        status:
-          $ref: '#/components/schemas/ResourceStatus'
-          description: Status of a resource.
-          readOnly: true
-      discriminator:
-        propertyName: kind
-      required:
-      - kind
-      - application
-    OutputResource:
-      type: object
-      description: Properties of an output resource.
-      properties:
-        localId:
-          type: string
-          description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
-        id:
-          type: string
-          description: The UCP resource ID of the underlying resource.
-        radiusManaged:
-          type: boolean
-          description: Determines whether Radius manages the lifecycle of the underlying resource.
-    VolumeResourceListResult:
-      type: object
-      description: The response of a VolumeResource list operation.
-      properties:
-        value:
-          type: array
-          description: The VolumeResource items on this page
-          items:
-            $ref: '#/components/schemas/VolumeResource'
-        nextLink:
-          type: string
-          format: uri
-          description: The link to the next page of items
-      required:
-      - value
-    VolumeResource:
-      type: object
-      description: Radius Volume resource.
-      properties:
-        properties:
-          $ref: '#/components/schemas/VolumeProperties'
-          description: The resource-specific properties for this resource.
-          x-ms-client-flatten: true
-          x-ms-mutability:
-          - read
-          - create
-      required:
-      - properties
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
     IdentitySettings:
       type: object
       description: IdentitySettings is the external identity setting.
@@ -353,6 +262,101 @@ components:
             type: string
       required:
       - kind
+    EnvironmentCompute:
+      type: object
+      description: Represents backing compute resource
+      properties:
+        kind:
+          type: string
+          description: Discriminator property for EnvironmentCompute.
+        resourceId:
+          type: string
+          description: The resource id of the compute resource for application environment.
+        identity:
+          $ref: '#/components/schemas/IdentitySettings'
+          description: Configuration for supported external identity providers
+      discriminator:
+        propertyName: kind
+      required:
+      - kind
+    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
+      type: object
+      title: Tracked Resource
+      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+      properties:
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
+            type: string
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
+    VolumeResourceUpdate:
+      type: object
+      description: Radius Volume resource.
+      allOf:
+      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
+    VolumeResourceListResult:
+      type: object
+      description: The response of a VolumeResource list operation.
+      properties:
+        value:
+          type: array
+          description: The VolumeResource items on this page
+          items:
+            $ref: '#/components/schemas/VolumeResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
+    ResourceStatus:
+      type: object
+      description: Status of a resource.
+      properties:
+        compute:
+          $ref: '#/components/schemas/EnvironmentCompute'
+          description: The compute resource associated with the resource.
+        recipe:
+          $ref: '#/components/schemas/RecipeStatus'
+          description: The recipe data at the time of deployment
+          readOnly: true
+        outputResources:
+          type: array
+          description: Properties of an output resource
+          items:
+            $ref: '#/components/schemas/OutputResource'
+          x-ms-identifiers: []
+    OutputResource:
+      type: object
+      description: Properties of an output resource.
+      properties:
+        localId:
+          type: string
+          description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
+        id:
+          type: string
+          description: The UCP resource ID of the underlying resource.
+        radiusManaged:
+          type: boolean
+          description: Determines whether Radius manages the lifecycle of the underlying resource.
+    RecipeStatus:
+      type: object
+      description: Recipe status at deployment time for a resource.
+      properties:
+        templateKind:
+          type: string
+          description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
+        templatePath:
+          type: string
+          description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
+        templateVersion:
+          type: string
+          description: TemplateVersion is the version number of the template.
+      required:
+      - templateKind
+      - templatePath
     IdentitySettingKind:
       type: string
       description: IdentitySettingKind is the kind of supported external identity setting
@@ -381,23 +385,21 @@ components:
         - name: systemAssignedUserAssigned
           value: systemAssignedUserAssigned
           description: System assigned and user assigned managed identity
-    ResourceStatus:
+    VolumeResource:
       type: object
-      description: Status of a resource.
+      description: Radius Volume resource.
       properties:
-        compute:
-          $ref: '#/components/schemas/EnvironmentCompute'
-          description: The compute resource associated with the resource.
-        recipe:
-          $ref: '#/components/schemas/RecipeStatus'
-          description: The recipe data at the time of deployment
-          readOnly: true
-        outputResources:
-          type: array
-          description: Properties of an output resource
-          items:
-            $ref: '#/components/schemas/OutputResource'
-          x-ms-identifiers: []
+        properties:
+          $ref: '#/components/schemas/VolumeProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -439,34 +441,32 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
-    RecipeStatus:
+    VolumeProperties:
       type: object
-      description: Recipe status at deployment time for a resource.
+      description: Volume properties
       properties:
-        templateKind:
+        kind:
           type: string
-          description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
-        templatePath:
+          description: Discriminator property for VolumeProperties.
+        environment:
           type: string
-          description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
-        templateVersion:
+          description: Fully qualified resource ID for the environment that the application is linked to
+        application:
           type: string
-          description: TemplateVersion is the version number of the template.
+          description: Fully qualified resource ID for the application
+        provisioningState:
+          $ref: '#/components/schemas/ProvisioningState'
+          description: The status of the asynchronous operation.
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/ResourceStatus'
+          description: Status of a resource.
+          readOnly: true
+      discriminator:
+        propertyName: kind
       required:
-      - templateKind
-      - templatePath
-    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
-      type: object
-      title: Tracked Resource
-      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-      properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
-            type: string
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
+      - kind
+      - application
   parameters:
     RootScopeParameter:
       name: rootScope

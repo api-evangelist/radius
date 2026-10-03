@@ -218,6 +218,21 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    RadiusPlaneResourceProperties:
+      type: object
+      description: The Plane properties.
+      properties:
+        provisioningState:
+          $ref: '#/components/schemas/ProvisioningState'
+          description: The status of the asynchronous operation.
+          readOnly: true
+        resourceProviders:
+          type: object
+          description: Resource Providers for UCP Native Plane
+          additionalProperties:
+            type: string
+      required:
+      - resourceProviders
     RadiusPlaneResourceListResult:
       type: object
       description: The response of a RadiusPlaneResource list operation.
@@ -242,6 +257,21 @@ components:
           description: Resource tags.
           additionalProperties:
             type: string
+    RadiusPlaneResource:
+      type: object
+      description: The Radius plane resource.
+      properties:
+        properties:
+          $ref: '#/components/schemas/RadiusPlaneResourceProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -283,36 +313,6 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
-    RadiusPlaneResource:
-      type: object
-      description: The Radius plane resource.
-      properties:
-        properties:
-          $ref: '#/components/schemas/RadiusPlaneResourceProperties'
-          description: The resource-specific properties for this resource.
-          x-ms-client-flatten: true
-          x-ms-mutability:
-          - read
-          - create
-      required:
-      - properties
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
-    RadiusPlaneResourceProperties:
-      type: object
-      description: The Plane properties.
-      properties:
-        provisioningState:
-          $ref: '#/components/schemas/ProvisioningState'
-          description: The status of the asynchronous operation.
-          readOnly: true
-        resourceProviders:
-          type: object
-          description: Resource Providers for UCP Native Plane
-          additionalProperties:
-            type: string
-      required:
-      - resourceProviders
   securitySchemes:
     azure_auth:
       type: oauth2

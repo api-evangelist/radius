@@ -241,26 +241,82 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    IdentitySettings:
+    RuntimesProperties:
       type: object
-      description: IdentitySettings is the external identity setting.
+      description: The properties for runtime configuration
+      properties:
+        kubernetes:
+          $ref: '#/components/schemas/KubernetesRuntimeProperties'
+          description: The runtime configuration properties for Kubernetes
+        aci:
+          $ref: '#/components/schemas/ACIRuntimeProperties'
+          description: The runtime configuration properties for ACI
+    ACIRuntimeProperties:
+      type: object
+      description: The runtime configuration properties for Kubernetes
+      properties:
+        gatewayID:
+          type: string
+          description: The ID of the gateway that is providing L7 traffic for the container
+    KubernetesPodSpec:
+      type: object
+      description: A strategic merge patch that will be applied to the PodSpec object when this container is being deployed.
+      additionalProperties: {}
+    Volume:
+      type: object
+      description: Specifies a volume for a container
       properties:
         kind:
-          $ref: '#/components/schemas/IdentitySettingKind'
-          description: kind of identity setting
-        oidcIssuer:
           type: string
-          description: The URI for your compute platform's OIDC issuer
-        resource:
+          description: Discriminator property for Volume.
+        mountPath:
           type: string
-          description: The resource ID of the provisioned identity
-        managedIdentity:
-          type: array
-          description: The list of user assigned managed identities
-          items:
-            type: string
+          description: The path where the volume is mounted
+      discriminator:
+        propertyName: kind
       required:
       - kind
+    ContainerResourceProvisioning:
+      type: string
+      description: Specifies how the underlying service/resource is provisioned and managed. Available values are 'internal', where Radius manages the lifecycle of the resource internally, and 'manual', where a user manages the resource.
+      enum:
+      - internal
+      - manual
+      x-ms-enum:
+        name: ContainerResourceProvisioning
+        modelAsString: false
+        values:
+        - name: internal
+          value: internal
+          description: The resource lifecycle will be managed internally by Radius
+        - name: manual
+          value: manual
+          description: The resource lifecycle will be managed by the user
+    ContainerResource:
+      type: object
+      description: Concrete tracked resource types can be created by aliasing this type using a specific property type.
+      properties:
+        properties:
+          $ref: '#/components/schemas/ContainerProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+    KubernetesRuntimeProperties:
+      type: object
+      description: The runtime configuration properties for Kubernetes
+      properties:
+        base:
+          type: string
+          description: The serialized YAML manifest which represents the base Kubernetes resources to deploy, such as Deployment, Service, ServiceAccount, Secrets, and ConfigMaps.
+        pod:
+          $ref: '#/components/schemas/KubernetesPodSpec'
+          description: A strategic merge patch that will be applied to the PodSpec object when this container is being deployed.
     Extension:
       type: object
       description: Extension of a environment/application resource.
@@ -272,101 +328,76 @@ components:
         propertyName: kind
       required:
       - kind
-    ProvisioningState:
-      type: string
-      description: Provisioning state of the resource at the time the operation was called
-      enum:
-      - Creating
-      - Updating
-      - Deleting
-      - Accepted
-      - Provisioning
-      - Succeeded
-      - Failed
-      - Canceled
-      x-ms-enum:
-        name: ProvisioningState
-        modelAsString: false
-        values:
-        - name: Creating
-          value: Creating
-          description: The resource is being created
-        - name: Updating
-          value: Updating
-          description: The resource is being updated
-        - name: Deleting
-          value: Deleting
-          description: The resource is being deleted
-        - name: Accepted
-          value: Accepted
-          description: The resource create request has been accepted
-        - name: Provisioning
-          value: Provisioning
-          description: The resource is being provisioned
-        - name: Succeeded
-          value: Succeeded
-          description: The resource has been successfully provisioned
-        - name: Failed
-          value: Failed
-          description: The resource provisioning has failed
-        - name: Canceled
-          value: Canceled
-          description: The resource provisioning has been canceled
-      readOnly: true
-    SecretReference:
+    Container:
       type: object
-      description: This secret is used within a recipe. Secrets are encrypted, often have fine-grained access control, auditing and are recommended to be used to hold sensitive data.
+      description: Definition of a container
       properties:
-        source:
+        image:
           type: string
-          description: The ID of an Applications.Core/SecretStore resource containing sensitive data required for recipe execution.
-        key:
-          type: string
-          description: The key for the secret in the secret store.
-      required:
-      - source
-      - key
-    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
-      type: object
-      title: Tracked Resource
-      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-      properties:
-        tags:
+          description: The registry and image to download and run in your container
+        imagePullPolicy:
+          $ref: '#/components/schemas/ImagePullPolicy'
+          description: The pull policy for the container image
+        env:
           type: object
-          description: Resource tags.
+          description: environment
           additionalProperties:
-            type: string
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
-    ConnectionProperties:
-      type: object
-      description: Connection Properties
-      properties:
-        source:
-          type: string
-          description: The source of the connection
-        disableDefaultEnvVars:
-          type: boolean
-          description: default environment variable override
-        iam:
-          $ref: '#/components/schemas/IamProperties'
-          description: iam properties
-      required:
-      - source
-    IamProperties:
-      type: object
-      description: IAM properties
-      properties:
-        kind:
-          $ref: '#/components/schemas/IAMKind'
-          description: The kind of IAM provider to configure
-        roles:
+            $ref: '#/components/schemas/EnvironmentVariable'
+        ports:
+          type: object
+          description: container ports
+          additionalProperties:
+            $ref: '#/components/schemas/ContainerPortProperties'
+        readinessProbe:
+          $ref: '#/components/schemas/HealthProbeProperties'
+          description: readiness probe properties
+        livenessProbe:
+          $ref: '#/components/schemas/HealthProbeProperties'
+          description: liveness probe properties
+        volumes:
+          type: object
+          description: container volumes
+          additionalProperties:
+            $ref: '#/components/schemas/Volume'
+        command:
           type: array
-          description: RBAC permissions to be assigned on the source resource
+          description: Entrypoint array. Overrides the container image's ENTRYPOINT
           items:
             type: string
+        args:
+          type: array
+          description: Arguments to the entrypoint. Overrides the container image's CMD
+          items:
+            type: string
+        workingDir:
+          type: string
+          description: Working directory for the container
       required:
-      - kind
+      - image
+    ResourceReference:
+      type: object
+      description: Describes a reference to an existing resource
+      properties:
+        id:
+          type: string
+          description: Resource id of an existing resource
+      required:
+      - id
+    IAMKind:
+      type: string
+      description: The kind of IAM provider to configure
+      enum:
+      - azure
+      - string
+      x-ms-enum:
+        name: IAMKind
+        modelAsString: false
+        values:
+        - name: azure
+          value: azure
+          description: Azure Active Directory
+        - name: string
+          value: string
     ContainerProperties:
       type: object
       description: Container properties
@@ -419,262 +450,6 @@ components:
       required:
       - application
       - container
-    ImagePullPolicy:
-      type: string
-      description: The image pull policy for the container
-      enum:
-      - Always
-      - IfNotPresent
-      - Never
-      x-ms-enum:
-        name: ImagePullPolicy
-        modelAsString: false
-        values:
-        - name: Always
-          value: Always
-          description: Always
-        - name: IfNotPresent
-          value: IfNotPresent
-          description: IfNotPresent
-        - name: Never
-          value: Never
-          description: Never
-    KubernetesRuntimeProperties:
-      type: object
-      description: The runtime configuration properties for Kubernetes
-      properties:
-        base:
-          type: string
-          description: The serialized YAML manifest which represents the base Kubernetes resources to deploy, such as Deployment, Service, ServiceAccount, Secrets, and ConfigMaps.
-        pod:
-          $ref: '#/components/schemas/KubernetesPodSpec'
-          description: A strategic merge patch that will be applied to the PodSpec object when this container is being deployed.
-    EnvironmentVariableReference:
-      type: object
-      description: The reference to the variable
-      properties:
-        secretRef:
-          $ref: '#/components/schemas/SecretReference'
-          description: The secret reference
-      required:
-      - secretRef
-    Container:
-      type: object
-      description: Definition of a container
-      properties:
-        image:
-          type: string
-          description: The registry and image to download and run in your container
-        imagePullPolicy:
-          $ref: '#/components/schemas/ImagePullPolicy'
-          description: The pull policy for the container image
-        env:
-          type: object
-          description: environment
-          additionalProperties:
-            $ref: '#/components/schemas/EnvironmentVariable'
-        ports:
-          type: object
-          description: container ports
-          additionalProperties:
-            $ref: '#/components/schemas/ContainerPortProperties'
-        readinessProbe:
-          $ref: '#/components/schemas/HealthProbeProperties'
-          description: readiness probe properties
-        livenessProbe:
-          $ref: '#/components/schemas/HealthProbeProperties'
-          description: liveness probe properties
-        volumes:
-          type: object
-          description: container volumes
-          additionalProperties:
-            $ref: '#/components/schemas/Volume'
-        command:
-          type: array
-          description: Entrypoint array. Overrides the container image's ENTRYPOINT
-          items:
-            type: string
-        args:
-          type: array
-          description: Arguments to the entrypoint. Overrides the container image's CMD
-          items:
-            type: string
-        workingDir:
-          type: string
-          description: Working directory for the container
-      required:
-      - image
-    IAMKind:
-      type: string
-      description: The kind of IAM provider to configure
-      enum:
-      - azure
-      - string
-      x-ms-enum:
-        name: IAMKind
-        modelAsString: false
-        values:
-        - name: azure
-          value: azure
-          description: Azure Active Directory
-        - name: string
-          value: string
-    ContainerResource:
-      type: object
-      description: Concrete tracked resource types can be created by aliasing this type using a specific property type.
-      properties:
-        properties:
-          $ref: '#/components/schemas/ContainerProperties'
-          description: The resource-specific properties for this resource.
-          x-ms-client-flatten: true
-          x-ms-mutability:
-          - read
-          - create
-      required:
-      - properties
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
-    OutputResource:
-      type: object
-      description: Properties of an output resource.
-      properties:
-        localId:
-          type: string
-          description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
-        id:
-          type: string
-          description: The UCP resource ID of the underlying resource.
-        radiusManaged:
-          type: boolean
-          description: Determines whether Radius manages the lifecycle of the underlying resource.
-    RestartPolicy:
-      type: string
-      description: Restart policy for the container
-      enum:
-      - Always
-      - OnFailure
-      - Never
-      x-ms-enum:
-        name: RestartPolicy
-        modelAsString: false
-        values:
-        - name: Always
-          value: Always
-          description: Always
-        - name: OnFailure
-          value: OnFailure
-          description: OnFailure
-        - name: Never
-          value: Never
-          description: Never
-    ContainerPortProperties:
-      type: object
-      description: Specifies a listening port for the container
-      properties:
-        containerPort:
-          type: integer
-          format: int32
-          description: The listening port number
-        protocol:
-          $ref: '#/components/schemas/PortProtocol'
-          description: Protocol in use by the port
-        scheme:
-          type: string
-          description: Specifies the URL scheme of the communication protocol. Consumers can use the scheme to construct a URL. The value defaults to 'http' or 'https' depending on the port value
-        port:
-          type: integer
-          format: int32
-          description: Specifies the port that will be exposed by this container. Must be set when value different from containerPort is desired
-      required:
-      - containerPort
-    KubernetesPodSpec:
-      type: object
-      description: A strategic merge patch that will be applied to the PodSpec object when this container is being deployed.
-      additionalProperties: {}
-    IdentitySettingKind:
-      type: string
-      description: IdentitySettingKind is the kind of supported external identity setting
-      enum:
-      - undefined
-      - azure.com.workload
-      - userAssigned
-      - systemAssigned
-      - systemAssignedUserAssigned
-      x-ms-enum:
-        name: IdentitySettingKind
-        modelAsString: false
-        values:
-        - name: undefined
-          value: undefined
-          description: undefined identity
-        - name: azure.com.workload
-          value: azure.com.workload
-          description: azure ad workload identity
-        - name: userAssigned
-          value: userAssigned
-          description: User assigned managed identity
-        - name: systemAssigned
-          value: systemAssigned
-          description: System assigned managed identity
-        - name: systemAssignedUserAssigned
-          value: systemAssignedUserAssigned
-          description: System assigned and user assigned managed identity
-    ResourceReference:
-      type: object
-      description: Describes a reference to an existing resource
-      properties:
-        id:
-          type: string
-          description: Resource id of an existing resource
-      required:
-      - id
-    ContainerResourceUpdate:
-      type: object
-      description: Concrete tracked resource types can be created by aliasing this type using a specific property type.
-      allOf:
-      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
-    ContainerResourceProvisioning:
-      type: string
-      description: Specifies how the underlying service/resource is provisioned and managed. Available values are 'internal', where Radius manages the lifecycle of the resource internally, and 'manual', where a user manages the resource.
-      enum:
-      - internal
-      - manual
-      x-ms-enum:
-        name: ContainerResourceProvisioning
-        modelAsString: false
-        values:
-        - name: internal
-          value: internal
-          description: The resource lifecycle will be managed internally by Radius
-        - name: manual
-          value: manual
-          description: The resource lifecycle will be managed by the user
-    RecipeStatus:
-      type: object
-      description: Recipe status at deployment time for a resource.
-      properties:
-        templateKind:
-          type: string
-          description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
-        templatePath:
-          type: string
-          description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
-        templateVersion:
-          type: string
-          description: TemplateVersion is the version number of the template.
-      required:
-      - templateKind
-      - templatePath
-    EnvironmentVariable:
-      type: object
-      description: Environment variables type
-      properties:
-        value:
-          type: string
-          description: The value of the environment variable
-        valueFrom:
-          $ref: '#/components/schemas/EnvironmentVariableReference'
-          description: The reference to the variable
     HealthProbeProperties:
       type: object
       description: Properties for readiness/liveness probe
@@ -703,23 +478,192 @@ components:
         propertyName: kind
       required:
       - kind
-    ACIRuntimeProperties:
+    IamProperties:
       type: object
-      description: The runtime configuration properties for Kubernetes
+      description: IAM properties
       properties:
-        gatewayID:
+        kind:
+          $ref: '#/components/schemas/IAMKind'
+          description: The kind of IAM provider to configure
+        roles:
+          type: array
+          description: RBAC permissions to be assigned on the source resource
+          items:
+            type: string
+      required:
+      - kind
+    ContainerResourceUpdate:
+      type: object
+      description: Concrete tracked resource types can be created by aliasing this type using a specific property type.
+      allOf:
+      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
+    ImagePullPolicy:
+      type: string
+      description: The image pull policy for the container
+      enum:
+      - Always
+      - IfNotPresent
+      - Never
+      x-ms-enum:
+        name: ImagePullPolicy
+        modelAsString: false
+        values:
+        - name: Always
+          value: Always
+          description: Always
+        - name: IfNotPresent
+          value: IfNotPresent
+          description: IfNotPresent
+        - name: Never
+          value: Never
+          description: Never
+    RecipeStatus:
+      type: object
+      description: Recipe status at deployment time for a resource.
+      properties:
+        templateKind:
           type: string
-          description: The ID of the gateway that is providing L7 traffic for the container
-    RuntimesProperties:
+          description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
+        templatePath:
+          type: string
+          description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
+        templateVersion:
+          type: string
+          description: TemplateVersion is the version number of the template.
+      required:
+      - templateKind
+      - templatePath
+    RestartPolicy:
+      type: string
+      description: Restart policy for the container
+      enum:
+      - Always
+      - OnFailure
+      - Never
+      x-ms-enum:
+        name: RestartPolicy
+        modelAsString: false
+        values:
+        - name: Always
+          value: Always
+          description: Always
+        - name: OnFailure
+          value: OnFailure
+          description: OnFailure
+        - name: Never
+          value: Never
+          description: Never
+    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
       type: object
-      description: The properties for runtime configuration
+      title: Tracked Resource
+      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
       properties:
-        kubernetes:
-          $ref: '#/components/schemas/KubernetesRuntimeProperties'
-          description: The runtime configuration properties for Kubernetes
-        aci:
-          $ref: '#/components/schemas/ACIRuntimeProperties'
-          description: The runtime configuration properties for ACI
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
+            type: string
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
+    EnvironmentVariable:
+      type: object
+      description: Environment variables type
+      properties:
+        value:
+          type: string
+          description: The value of the environment variable
+        valueFrom:
+          $ref: '#/components/schemas/EnvironmentVariableReference'
+          description: The reference to the variable
+    IdentitySettingKind:
+      type: string
+      description: IdentitySettingKind is the kind of supported external identity setting
+      enum:
+      - undefined
+      - azure.com.workload
+      - userAssigned
+      - systemAssigned
+      - systemAssignedUserAssigned
+      x-ms-enum:
+        name: IdentitySettingKind
+        modelAsString: false
+        values:
+        - name: undefined
+          value: undefined
+          description: undefined identity
+        - name: azure.com.workload
+          value: azure.com.workload
+          description: azure ad workload identity
+        - name: userAssigned
+          value: userAssigned
+          description: User assigned managed identity
+        - name: systemAssigned
+          value: systemAssigned
+          description: System assigned managed identity
+        - name: systemAssignedUserAssigned
+          value: systemAssignedUserAssigned
+          description: System assigned and user assigned managed identity
+    ProvisioningState:
+      type: string
+      description: Provisioning state of the resource at the time the operation was called
+      enum:
+      - Creating
+      - Updating
+      - Deleting
+      - Accepted
+      - Provisioning
+      - Succeeded
+      - Failed
+      - Canceled
+      x-ms-enum:
+        name: ProvisioningState
+        modelAsString: false
+        values:
+        - name: Creating
+          value: Creating
+          description: The resource is being created
+        - name: Updating
+          value: Updating
+          description: The resource is being updated
+        - name: Deleting
+          value: Deleting
+          description: The resource is being deleted
+        - name: Accepted
+          value: Accepted
+          description: The resource create request has been accepted
+        - name: Provisioning
+          value: Provisioning
+          description: The resource is being provisioned
+        - name: Succeeded
+          value: Succeeded
+          description: The resource has been successfully provisioned
+        - name: Failed
+          value: Failed
+          description: The resource provisioning has failed
+        - name: Canceled
+          value: Canceled
+          description: The resource provisioning has been canceled
+      readOnly: true
+    IdentitySettings:
+      type: object
+      description: IdentitySettings is the external identity setting.
+      properties:
+        kind:
+          $ref: '#/components/schemas/IdentitySettingKind'
+          description: kind of identity setting
+        oidcIssuer:
+          type: string
+          description: The URI for your compute platform's OIDC issuer
+        resource:
+          type: string
+          description: The resource ID of the provisioned identity
+        managedIdentity:
+          type: array
+          description: The list of user assigned managed identities
+          items:
+            type: string
+      required:
+      - kind
     EnvironmentCompute:
       type: object
       description: Represents backing compute resource
@@ -737,20 +681,66 @@ components:
         propertyName: kind
       required:
       - kind
-    Volume:
+    ContainerPortProperties:
       type: object
-      description: Specifies a volume for a container
+      description: Specifies a listening port for the container
       properties:
-        kind:
+        containerPort:
+          type: integer
+          format: int32
+          description: The listening port number
+        protocol:
+          $ref: '#/components/schemas/PortProtocol'
+          description: Protocol in use by the port
+        scheme:
           type: string
-          description: Discriminator property for Volume.
-        mountPath:
-          type: string
-          description: The path where the volume is mounted
-      discriminator:
-        propertyName: kind
+          description: Specifies the URL scheme of the communication protocol. Consumers can use the scheme to construct a URL. The value defaults to 'http' or 'https' depending on the port value
+        port:
+          type: integer
+          format: int32
+          description: Specifies the port that will be exposed by this container. Must be set when value different from containerPort is desired
       required:
-      - kind
+      - containerPort
+    ConnectionProperties:
+      type: object
+      description: Connection Properties
+      properties:
+        source:
+          type: string
+          description: The source of the connection
+        disableDefaultEnvVars:
+          type: boolean
+          description: default environment variable override
+        iam:
+          $ref: '#/components/schemas/IamProperties'
+          description: iam properties
+      required:
+      - source
+    EnvironmentVariableReference:
+      type: object
+      description: The reference to the variable
+      properties:
+        secretRef:
+          $ref: '#/components/schemas/SecretReference'
+          description: The secret reference
+      required:
+      - secretRef
+    PortProtocol:
+      type: string
+      description: The protocol in use by the port
+      enum:
+      - TCP
+      - UDP
+      x-ms-enum:
+        name: PortProtocol
+        modelAsString: false
+        values:
+        - name: TCP
+          value: TCP
+          description: TCP protocol
+        - name: UDP
+          value: UDP
+          description: UDP protocol
     ContainerResourceListResult:
       type: object
       description: The response of a ContainerResource list operation.
@@ -783,22 +773,32 @@ components:
           items:
             $ref: '#/components/schemas/OutputResource'
           x-ms-identifiers: []
-    PortProtocol:
-      type: string
-      description: The protocol in use by the port
-      enum:
-      - TCP
-      - UDP
-      x-ms-enum:
-        name: PortProtocol
-        modelAsString: false
-        values:
-        - name: TCP
-          value: TCP
-          description: TCP protocol
-        - name: UDP
-          value: UDP
-          description: UDP protocol
+    SecretReference:
+      type: object
+      description: This secret is used within a recipe. Secrets are encrypted, often have fine-grained access control, auditing and are recommended to be used to hold sensitive data.
+      properties:
+        source:
+          type: string
+          description: The ID of an Applications.Core/SecretStore resource containing sensitive data required for recipe execution.
+        key:
+          type: string
+          description: The key for the secret in the secret store.
+      required:
+      - source
+      - key
+    OutputResource:
+      type: object
+      description: Properties of an output resource.
+      properties:
+        localId:
+          type: string
+          description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
+        id:
+          type: string
+          description: The UCP resource ID of the underlying resource.
+        radiusManaged:
+          type: boolean
+          description: Determines whether Radius manages the lifecycle of the underlying resource.
   parameters:
     RootScopeParameter:
       name: rootScope

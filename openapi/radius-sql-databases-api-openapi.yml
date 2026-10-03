@@ -281,21 +281,26 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SqlDatabaseResourceListResult:
+    IdentitySettings:
       type: object
-      description: The response of a SqlDatabaseResource list operation.
+      description: IdentitySettings is the external identity setting.
       properties:
-        value:
-          type: array
-          description: The SqlDatabaseResource items on this page
-          items:
-            $ref: '#/components/schemas/SqlDatabaseResource'
-        nextLink:
+        kind:
+          $ref: '#/components/schemas/IdentitySettingKind'
+          description: kind of identity setting
+        oidcIssuer:
           type: string
-          format: uri
-          description: The link to the next page of items
+          description: The URI for your compute platform's OIDC issuer
+        resource:
+          type: string
+          description: The resource ID of the provisioned identity
+        managedIdentity:
+          type: array
+          description: The list of user assigned managed identities
+          items:
+            type: string
       required:
-      - value
+      - kind
     EnvironmentCompute:
       type: object
       description: Represents backing compute resource
@@ -313,6 +318,183 @@ components:
         propertyName: kind
       required:
       - kind
+    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
+      type: object
+      title: Tracked Resource
+      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+      properties:
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
+            type: string
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
+    SqlDatabaseProperties:
+      type: object
+      description: SqlDatabase properties
+      properties:
+        environment:
+          type: string
+          description: Fully qualified resource ID for the environment that the portable resource is linked to
+        application:
+          type: string
+          description: Fully qualified resource ID for the application that the portable resource is consumed by (if applicable)
+        provisioningState:
+          $ref: '#/components/schemas/ProvisioningState'
+          description: The status of the asynchronous operation.
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/ResourceStatus'
+          description: Status of a resource.
+          readOnly: true
+        database:
+          type: string
+          description: The name of the Sql database.
+        server:
+          type: string
+          description: The fully qualified domain name of the Sql database.
+        port:
+          type: integer
+          format: int32
+          description: Port value of the target Sql database
+        username:
+          type: string
+          description: Username to use when connecting to the target Sql database
+        resources:
+          type: array
+          description: List of the resource IDs that support the SqlDatabase resource
+          items:
+            $ref: '#/components/schemas/ResourceReference'
+        secrets:
+          $ref: '#/components/schemas/SqlDatabaseSecrets'
+          description: Secret values provided for the resource
+        recipe:
+          $ref: '#/components/schemas/Recipe'
+          description: The recipe used to automatically deploy underlying infrastructure for the resource
+        resourceProvisioning:
+          $ref: '#/components/schemas/ResourceProvisioning'
+          description: Specifies how the underlying service/resource is provisioned and managed.
+      required:
+      - environment
+    SqlDatabaseSecrets:
+      type: object
+      description: The secret values for the given SqlDatabase resource
+      properties:
+        password:
+          type: string
+          description: Password to use when connecting to the target Sql database
+        connectionString:
+          type: string
+          description: Connection string used to connect to the target Sql database
+    Recipe:
+      type: object
+      description: The recipe used to automatically deploy underlying infrastructure for a portable resource
+      properties:
+        name:
+          type: string
+          description: The name of the recipe within the environment to use
+        parameters:
+          type: object
+          description: Key/value parameters to pass into the recipe at deployment
+      required:
+      - name
+    SqlDatabaseResource:
+      type: object
+      description: SqlDatabase portable resource
+      properties:
+        properties:
+          $ref: '#/components/schemas/SqlDatabaseProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+    SqlDatabaseResourceUpdate:
+      type: object
+      description: SqlDatabase portable resource
+      allOf:
+      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
+    SqlDatabaseResourceListResult:
+      type: object
+      description: The response of a SqlDatabaseResource list operation.
+      properties:
+        value:
+          type: array
+          description: The SqlDatabaseResource items on this page
+          items:
+            $ref: '#/components/schemas/SqlDatabaseResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
+    ResourceStatus:
+      type: object
+      description: Status of a resource.
+      properties:
+        compute:
+          $ref: '#/components/schemas/EnvironmentCompute'
+          description: The compute resource associated with the resource.
+        recipe:
+          $ref: '#/components/schemas/RecipeStatus'
+          description: The recipe data at the time of deployment
+          readOnly: true
+        outputResources:
+          type: array
+          description: Properties of an output resource
+          items:
+            $ref: '#/components/schemas/OutputResource'
+          x-ms-identifiers: []
+    IdentitySettingKind:
+      type: string
+      description: IdentitySettingKind is the kind of supported external identity setting
+      enum:
+      - undefined
+      - azure.com.workload
+      - userAssigned
+      - systemAssigned
+      - systemAssignedUserAssigned
+      x-ms-enum:
+        name: IdentitySettingKind
+        modelAsString: false
+        values:
+        - name: undefined
+          value: undefined
+          description: undefined identity
+        - name: azure.com.workload
+          value: azure.com.workload
+          description: azure ad workload identity
+        - name: userAssigned
+          value: userAssigned
+          description: User assigned managed identity
+        - name: systemAssigned
+          value: systemAssigned
+          description: System assigned managed identity
+        - name: systemAssignedUserAssigned
+          value: systemAssignedUserAssigned
+          description: System assigned and user assigned managed identity
+    ResourceProvisioning:
+      type: string
+      description: Specifies how the underlying service/resource is provisioned and managed. Available values are 'recipe', where Radius manages the lifecycle of the resource through a Recipe, and 'manual', where a user manages the resource and provides the values.
+      enum:
+      - recipe
+      - manual
+      x-ms-enum:
+        name: ResourceProvisioning
+        modelAsString: false
+        values:
+        - name: recipe
+          value: recipe
+          description: The resource lifecycle will be managed by Radius
+        - name: manual
+          value: manual
+          description: The resource lifecycle will be managed by the user
     OutputResource:
       type: object
       description: Properties of an output resource.
@@ -342,7 +524,7 @@ components:
       required:
       - templateKind
       - templatePath
-    SqlDatabaseSecrets:
+    SqlDatabaseListSecretsResult:
       type: object
       description: The secret values for the given SqlDatabase resource
       properties:
@@ -352,66 +534,6 @@ components:
         connectionString:
           type: string
           description: Connection string used to connect to the target Sql database
-    IdentitySettings:
-      type: object
-      description: IdentitySettings is the external identity setting.
-      properties:
-        kind:
-          $ref: '#/components/schemas/IdentitySettingKind'
-          description: kind of identity setting
-        oidcIssuer:
-          type: string
-          description: The URI for your compute platform's OIDC issuer
-        resource:
-          type: string
-          description: The resource ID of the provisioned identity
-        managedIdentity:
-          type: array
-          description: The list of user assigned managed identities
-          items:
-            type: string
-      required:
-      - kind
-    IdentitySettingKind:
-      type: string
-      description: IdentitySettingKind is the kind of supported external identity setting
-      enum:
-      - undefined
-      - azure.com.workload
-      - userAssigned
-      - systemAssigned
-      - systemAssignedUserAssigned
-      x-ms-enum:
-        name: IdentitySettingKind
-        modelAsString: false
-        values:
-        - name: undefined
-          value: undefined
-          description: undefined identity
-        - name: azure.com.workload
-          value: azure.com.workload
-          description: azure ad workload identity
-        - name: userAssigned
-          value: userAssigned
-          description: User assigned managed identity
-        - name: systemAssigned
-          value: systemAssigned
-          description: System assigned managed identity
-        - name: systemAssignedUserAssigned
-          value: systemAssignedUserAssigned
-          description: System assigned and user assigned managed identity
-    Recipe:
-      type: object
-      description: The recipe used to automatically deploy underlying infrastructure for a portable resource
-      properties:
-        name:
-          type: string
-          description: The name of the recipe within the environment to use
-        parameters:
-          type: object
-          description: Key/value parameters to pass into the recipe at deployment
-      required:
-      - name
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -462,128 +584,6 @@ components:
           description: Resource id of an existing resource
       required:
       - id
-    ResourceStatus:
-      type: object
-      description: Status of a resource.
-      properties:
-        compute:
-          $ref: '#/components/schemas/EnvironmentCompute'
-          description: The compute resource associated with the resource.
-        recipe:
-          $ref: '#/components/schemas/RecipeStatus'
-          description: The recipe data at the time of deployment
-          readOnly: true
-        outputResources:
-          type: array
-          description: Properties of an output resource
-          items:
-            $ref: '#/components/schemas/OutputResource'
-          x-ms-identifiers: []
-    SqlDatabaseListSecretsResult:
-      type: object
-      description: The secret values for the given SqlDatabase resource
-      properties:
-        password:
-          type: string
-          description: Password to use when connecting to the target Sql database
-        connectionString:
-          type: string
-          description: Connection string used to connect to the target Sql database
-    SqlDatabaseResource:
-      type: object
-      description: SqlDatabase portable resource
-      properties:
-        properties:
-          $ref: '#/components/schemas/SqlDatabaseProperties'
-          description: The resource-specific properties for this resource.
-          x-ms-client-flatten: true
-          x-ms-mutability:
-          - read
-          - create
-      required:
-      - properties
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
-    ResourceProvisioning:
-      type: string
-      description: Specifies how the underlying service/resource is provisioned and managed. Available values are 'recipe', where Radius manages the lifecycle of the resource through a Recipe, and 'manual', where a user manages the resource and provides the values.
-      enum:
-      - recipe
-      - manual
-      x-ms-enum:
-        name: ResourceProvisioning
-        modelAsString: false
-        values:
-        - name: recipe
-          value: recipe
-          description: The resource lifecycle will be managed by Radius
-        - name: manual
-          value: manual
-          description: The resource lifecycle will be managed by the user
-    SqlDatabaseResourceUpdate:
-      type: object
-      description: SqlDatabase portable resource
-      allOf:
-      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
-    SqlDatabaseProperties:
-      type: object
-      description: SqlDatabase properties
-      properties:
-        environment:
-          type: string
-          description: Fully qualified resource ID for the environment that the portable resource is linked to
-        application:
-          type: string
-          description: Fully qualified resource ID for the application that the portable resource is consumed by (if applicable)
-        provisioningState:
-          $ref: '#/components/schemas/ProvisioningState'
-          description: The status of the asynchronous operation.
-          readOnly: true
-        status:
-          $ref: '#/components/schemas/ResourceStatus'
-          description: Status of a resource.
-          readOnly: true
-        database:
-          type: string
-          description: The name of the Sql database.
-        server:
-          type: string
-          description: The fully qualified domain name of the Sql database.
-        port:
-          type: integer
-          format: int32
-          description: Port value of the target Sql database
-        username:
-          type: string
-          description: Username to use when connecting to the target Sql database
-        resources:
-          type: array
-          description: List of the resource IDs that support the SqlDatabase resource
-          items:
-            $ref: '#/components/schemas/ResourceReference'
-        secrets:
-          $ref: '#/components/schemas/SqlDatabaseSecrets'
-          description: Secret values provided for the resource
-        recipe:
-          $ref: '#/components/schemas/Recipe'
-          description: The recipe used to automatically deploy underlying infrastructure for the resource
-        resourceProvisioning:
-          $ref: '#/components/schemas/ResourceProvisioning'
-          description: Specifies how the underlying service/resource is provisioned and managed.
-      required:
-      - environment
-    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
-      type: object
-      title: Tracked Resource
-      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-      properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
-            type: string
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
   parameters:
     RootScopeParameter:
       name: rootScope

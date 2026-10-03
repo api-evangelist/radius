@@ -240,6 +240,19 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ApplicationGraphResponse:
+      type: object
+      description: Describes the application architecture and its dependencies.
+      properties:
+        resources:
+          type: array
+          description: The resources in the application graph.
+          items:
+            $ref: '#/components/schemas/ApplicationGraphResource'
+          x-ms-identifiers:
+          - id
+      required:
+      - resources
     ApplicationGraphResource:
       type: object
       description: Describes a resource in the application graph.
@@ -276,22 +289,61 @@ components:
       - outputResources
       - connections
       - provisioningState
-    Direction:
-      type: string
-      description: The direction of a connection.
-      enum:
-      - Outbound
-      - Inbound
-      x-ms-enum:
-        name: Direction
-        modelAsString: false
-        values:
-        - name: Outbound
-          value: Outbound
-          description: The resource defining this connection makes an outbound connection resource specified by this id.
-        - name: Inbound
-          value: Inbound
-          description: The resource defining this connection accepts inbound connections from the resource specified by this id.
+    Extension:
+      type: object
+      description: Extension of a environment/application resource.
+      properties:
+        kind:
+          type: string
+          description: Discriminator property for Extension.
+      discriminator:
+        propertyName: kind
+      required:
+      - kind
+    RecipeStatus:
+      type: object
+      description: Recipe status at deployment time for a resource.
+      properties:
+        templateKind:
+          type: string
+          description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
+        templatePath:
+          type: string
+          description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
+        templateVersion:
+          type: string
+          description: TemplateVersion is the version number of the template.
+      required:
+      - templateKind
+      - templatePath
+    ApplicationProperties:
+      type: object
+      description: Application properties
+      properties:
+        provisioningState:
+          $ref: '#/components/schemas/ProvisioningState'
+          description: The status of the asynchronous operation.
+          readOnly: true
+        environment:
+          type: string
+          description: Fully qualified resource ID for the environment that the application is linked to
+        extensions:
+          type: array
+          description: The application extension.
+          items:
+            $ref: '#/components/schemas/Extension'
+          x-ms-identifiers: []
+        status:
+          $ref: '#/components/schemas/ResourceStatus'
+          description: Status of a resource.
+          readOnly: true
+      required:
+      - environment
+    ApplicationResourceUpdate:
+      type: object
+      description: Radius Application resource
+      allOf:
+      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
     ApplicationGraphConnection:
       type: object
       description: Describes the connection between two resources.
@@ -305,42 +357,78 @@ components:
       required:
       - id
       - direction
-    ApplicationResourceUpdate:
+    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
       type: object
-      description: Radius Application resource
-      allOf:
-      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
-    IdentitySettings:
-      type: object
-      description: IdentitySettings is the external identity setting.
+      title: Tracked Resource
+      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
       properties:
-        kind:
-          $ref: '#/components/schemas/IdentitySettingKind'
-          description: kind of identity setting
-        oidcIssuer:
-          type: string
-          description: The URI for your compute platform's OIDC issuer
-        resource:
-          type: string
-          description: The resource ID of the provisioned identity
-        managedIdentity:
-          type: array
-          description: The list of user assigned managed identities
-          items:
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
             type: string
-      required:
-      - kind
-    Extension:
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
+    ApplicationResourceListResult:
       type: object
-      description: Extension of a environment/application resource.
+      description: The response of a ApplicationResource list operation.
       properties:
-        kind:
+        value:
+          type: array
+          description: The ApplicationResource items on this page
+          items:
+            $ref: '#/components/schemas/ApplicationResource'
+        nextLink:
           type: string
-          description: Discriminator property for Extension.
-      discriminator:
-        propertyName: kind
+          format: uri
+          description: The link to the next page of items
       required:
-      - kind
+      - value
+    ApplicationGraphOutputResource:
+      type: object
+      description: Describes an output resource that comprises an application graph resource.
+      properties:
+        id:
+          type: string
+          description: The resource ID.
+        type:
+          type: string
+          description: The resource type.
+        name:
+          type: string
+          description: The resource name.
+      required:
+      - id
+      - type
+      - name
+    IdentitySettingKind:
+      type: string
+      description: IdentitySettingKind is the kind of supported external identity setting
+      enum:
+      - undefined
+      - azure.com.workload
+      - userAssigned
+      - systemAssigned
+      - systemAssignedUserAssigned
+      x-ms-enum:
+        name: IdentitySettingKind
+        modelAsString: false
+        values:
+        - name: undefined
+          value: undefined
+          description: undefined identity
+        - name: azure.com.workload
+          value: azure.com.workload
+          description: azure ad workload identity
+        - name: userAssigned
+          value: userAssigned
+          description: User assigned managed identity
+        - name: systemAssigned
+          value: systemAssigned
+          description: System assigned managed identity
+        - name: systemAssignedUserAssigned
+          value: systemAssignedUserAssigned
+          description: System assigned and user assigned managed identity
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -382,158 +470,26 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
-    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
+    IdentitySettings:
       type: object
-      title: Tracked Resource
-      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+      description: IdentitySettings is the external identity setting.
       properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
+        kind:
+          $ref: '#/components/schemas/IdentitySettingKind'
+          description: kind of identity setting
+        oidcIssuer:
+          type: string
+          description: The URI for your compute platform's OIDC issuer
+        resource:
+          type: string
+          description: The resource ID of the provisioned identity
+        managedIdentity:
+          type: array
+          description: The list of user assigned managed identities
+          items:
             type: string
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
-    ApplicationGraphOutputResource:
-      type: object
-      description: Describes an output resource that comprises an application graph resource.
-      properties:
-        id:
-          type: string
-          description: The resource ID.
-        type:
-          type: string
-          description: The resource type.
-        name:
-          type: string
-          description: The resource name.
       required:
-      - id
-      - type
-      - name
-    ApplicationResource:
-      type: object
-      description: Radius Application resource
-      properties:
-        properties:
-          $ref: '#/components/schemas/ApplicationProperties'
-          description: The resource-specific properties for this resource.
-          x-ms-client-flatten: true
-          x-ms-mutability:
-          - read
-          - create
-      required:
-      - properties
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
-    ApplicationGraphResponse:
-      type: object
-      description: Describes the application architecture and its dependencies.
-      properties:
-        resources:
-          type: array
-          description: The resources in the application graph.
-          items:
-            $ref: '#/components/schemas/ApplicationGraphResource'
-          x-ms-identifiers:
-          - id
-      required:
-      - resources
-    OutputResource:
-      type: object
-      description: Properties of an output resource.
-      properties:
-        localId:
-          type: string
-          description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
-        id:
-          type: string
-          description: The UCP resource ID of the underlying resource.
-        radiusManaged:
-          type: boolean
-          description: Determines whether Radius manages the lifecycle of the underlying resource.
-    ApplicationResourceListResult:
-      type: object
-      description: The response of a ApplicationResource list operation.
-      properties:
-        value:
-          type: array
-          description: The ApplicationResource items on this page
-          items:
-            $ref: '#/components/schemas/ApplicationResource'
-        nextLink:
-          type: string
-          format: uri
-          description: The link to the next page of items
-      required:
-      - value
-    IdentitySettingKind:
-      type: string
-      description: IdentitySettingKind is the kind of supported external identity setting
-      enum:
-      - undefined
-      - azure.com.workload
-      - userAssigned
-      - systemAssigned
-      - systemAssignedUserAssigned
-      x-ms-enum:
-        name: IdentitySettingKind
-        modelAsString: false
-        values:
-        - name: undefined
-          value: undefined
-          description: undefined identity
-        - name: azure.com.workload
-          value: azure.com.workload
-          description: azure ad workload identity
-        - name: userAssigned
-          value: userAssigned
-          description: User assigned managed identity
-        - name: systemAssigned
-          value: systemAssigned
-          description: System assigned managed identity
-        - name: systemAssignedUserAssigned
-          value: systemAssignedUserAssigned
-          description: System assigned and user assigned managed identity
-    RecipeStatus:
-      type: object
-      description: Recipe status at deployment time for a resource.
-      properties:
-        templateKind:
-          type: string
-          description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
-        templatePath:
-          type: string
-          description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
-        templateVersion:
-          type: string
-          description: TemplateVersion is the version number of the template.
-      required:
-      - templateKind
-      - templatePath
-    ApplicationProperties:
-      type: object
-      description: Application properties
-      properties:
-        provisioningState:
-          $ref: '#/components/schemas/ProvisioningState'
-          description: The status of the asynchronous operation.
-          readOnly: true
-        environment:
-          type: string
-          description: Fully qualified resource ID for the environment that the application is linked to
-        extensions:
-          type: array
-          description: The application extension.
-          items:
-            $ref: '#/components/schemas/Extension'
-          x-ms-identifiers: []
-        status:
-          $ref: '#/components/schemas/ResourceStatus'
-          description: Status of a resource.
-          readOnly: true
-      required:
-      - environment
+      - kind
     EnvironmentCompute:
       type: object
       description: Represents backing compute resource
@@ -551,6 +507,37 @@ components:
         propertyName: kind
       required:
       - kind
+    ApplicationResource:
+      type: object
+      description: Radius Application resource
+      properties:
+        properties:
+          $ref: '#/components/schemas/ApplicationProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+    Direction:
+      type: string
+      description: The direction of a connection.
+      enum:
+      - Outbound
+      - Inbound
+      x-ms-enum:
+        name: Direction
+        modelAsString: false
+        values:
+        - name: Outbound
+          value: Outbound
+          description: The resource defining this connection makes an outbound connection resource specified by this id.
+        - name: Inbound
+          value: Inbound
+          description: The resource defining this connection accepts inbound connections from the resource specified by this id.
     ResourceStatus:
       type: object
       description: Status of a resource.
@@ -568,6 +555,19 @@ components:
           items:
             $ref: '#/components/schemas/OutputResource'
           x-ms-identifiers: []
+    OutputResource:
+      type: object
+      description: Properties of an output resource.
+      properties:
+        localId:
+          type: string
+          description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
+        id:
+          type: string
+          description: The UCP resource ID of the underlying resource.
+        radiusManaged:
+          type: boolean
+          description: Determines whether Radius manages the lifecycle of the underlying resource.
   parameters:
     RootScopeParameter:
       name: rootScope

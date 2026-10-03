@@ -218,6 +218,19 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    AzurePlaneResourceProperties:
+      type: object
+      description: The Plane properties.
+      properties:
+        provisioningState:
+          $ref: '#/components/schemas/ProvisioningState'
+          description: The status of the asynchronous operation.
+          readOnly: true
+        url:
+          type: string
+          description: The URL used to proxy requests.
+      required:
+      - url
     AzurePlaneResourceListResult:
       type: object
       description: The response of a AzurePlaneResource list operation.
@@ -233,6 +246,15 @@ components:
           description: The link to the next page of items
       required:
       - value
+    AzurePlaneResourceTagsUpdate:
+      type: object
+      description: The type used for updating tags in AzurePlaneResource resources.
+      properties:
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
+            type: string
     AzurePlaneResource:
       type: object
       description: The Azure plane resource.
@@ -248,15 +270,6 @@ components:
       - properties
       allOf:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
-    AzurePlaneResourceTagsUpdate:
-      type: object
-      description: The type used for updating tags in AzurePlaneResource resources.
-      properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
-            type: string
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -298,19 +311,6 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
-    AzurePlaneResourceProperties:
-      type: object
-      description: The Plane properties.
-      properties:
-        provisioningState:
-          $ref: '#/components/schemas/ProvisioningState'
-          description: The status of the asynchronous operation.
-          readOnly: true
-        url:
-          type: string
-          description: The URL used to proxy requests.
-      required:
-      - url
   securitySchemes:
     azure_auth:
       type: oauth2

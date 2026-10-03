@@ -218,6 +218,15 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    AwsPlaneResourceTagsUpdate:
+      type: object
+      description: The type used for updating tags in AwsPlaneResource resources.
+      properties:
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
+            type: string
     AwsPlaneResourceProperties:
       type: object
       description: The Plane properties.
@@ -226,6 +235,36 @@ components:
           $ref: '#/components/schemas/ProvisioningState'
           description: The status of the asynchronous operation.
           readOnly: true
+    AwsPlaneResourceListResult:
+      type: object
+      description: The response of a AwsPlaneResource list operation.
+      properties:
+        value:
+          type: array
+          description: The AwsPlaneResource items on this page
+          items:
+            $ref: '#/components/schemas/AwsPlaneResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
+    AwsPlaneResource:
+      type: object
+      description: The AWS plane resource
+      properties:
+        properties:
+          $ref: '#/components/schemas/AwsPlaneResourceProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -267,45 +306,6 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
-    AwsPlaneResource:
-      type: object
-      description: The AWS plane resource
-      properties:
-        properties:
-          $ref: '#/components/schemas/AwsPlaneResourceProperties'
-          description: The resource-specific properties for this resource.
-          x-ms-client-flatten: true
-          x-ms-mutability:
-          - read
-          - create
-      required:
-      - properties
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
-    AwsPlaneResourceListResult:
-      type: object
-      description: The response of a AwsPlaneResource list operation.
-      properties:
-        value:
-          type: array
-          description: The AwsPlaneResource items on this page
-          items:
-            $ref: '#/components/schemas/AwsPlaneResource'
-        nextLink:
-          type: string
-          format: uri
-          description: The link to the next page of items
-      required:
-      - value
-    AwsPlaneResourceTagsUpdate:
-      type: object
-      description: The type used for updating tags in AwsPlaneResource resources.
-      properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
-            type: string
   securitySchemes:
     azure_auth:
       type: oauth2

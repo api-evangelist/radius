@@ -234,15 +234,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ResourceGroupResource:
-      type: object
-      description: The resource group resource
-      properties:
-        properties:
-          $ref: '#/components/schemas/ResourceGroupProperties'
-          description: The resource-specific properties for this resource.
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
     ResourceGroupResourceTagsUpdate:
       type: object
       description: The type used for updating tags in ResourceGroupResource resources.
@@ -252,6 +243,30 @@ components:
           description: Resource tags.
           additionalProperties:
             type: string
+    ResourceGroupResource:
+      type: object
+      description: The resource group resource
+      properties:
+        properties:
+          $ref: '#/components/schemas/ResourceGroupProperties'
+          description: The resource-specific properties for this resource.
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+    ResourceGroupResourceListResult:
+      type: object
+      description: The response of a ResourceGroupResource list operation.
+      properties:
+        value:
+          type: array
+          description: The ResourceGroupResource items on this page
+          items:
+            $ref: '#/components/schemas/ResourceGroupResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
     ResourceGroupProperties:
       type: object
       description: The resource group resource properties
@@ -301,21 +316,6 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
-    ResourceGroupResourceListResult:
-      type: object
-      description: The response of a ResourceGroupResource list operation.
-      properties:
-        value:
-          type: array
-          description: The ResourceGroupResource items on this page
-          items:
-            $ref: '#/components/schemas/ResourceGroupResource'
-        nextLink:
-          type: string
-          format: uri
-          description: The link to the next page of items
-      required:
-      - value
   securitySchemes:
     azure_auth:
       type: oauth2

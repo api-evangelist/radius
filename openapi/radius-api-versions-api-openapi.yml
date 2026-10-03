@@ -274,42 +274,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ApiVersionProperties:
-      type: object
-      description: The properties of an API version.
-      properties:
-        provisioningState:
-          $ref: '#/components/schemas/ProvisioningState'
-          description: The status of the asynchronous operation.
-          readOnly: true
-        schema:
-          type: object
-          description: Schema is the schema for the resource type.
-          additionalProperties: {}
-    ApiVersionResource:
-      type: object
-      description: The resource type for defining an API version of a resource type supported by the containing resource provider.
-      properties:
-        properties:
-          $ref: '#/components/schemas/ApiVersionProperties'
-          description: The resource-specific properties for this resource.
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ProxyResource
-    ApiVersionResourceListResult:
-      type: object
-      description: The response of a ApiVersionResource list operation.
-      properties:
-        value:
-          type: array
-          description: The ApiVersionResource items on this page
-          items:
-            $ref: '#/components/schemas/ApiVersionResource'
-        nextLink:
-          type: string
-          format: uri
-          description: The link to the next page of items
-      required:
-      - value
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -351,6 +315,42 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
+    ApiVersionProperties:
+      type: object
+      description: The properties of an API version.
+      properties:
+        provisioningState:
+          $ref: '#/components/schemas/ProvisioningState'
+          description: The status of the asynchronous operation.
+          readOnly: true
+        schema:
+          type: object
+          description: Schema is the schema for the resource type.
+          additionalProperties: {}
+    ApiVersionResourceListResult:
+      type: object
+      description: The response of a ApiVersionResource list operation.
+      properties:
+        value:
+          type: array
+          description: The ApiVersionResource items on this page
+          items:
+            $ref: '#/components/schemas/ApiVersionResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
+    ApiVersionResource:
+      type: object
+      description: The resource type for defining an API version of a resource type supported by the containing resource provider.
+      properties:
+        properties:
+          $ref: '#/components/schemas/ApiVersionProperties'
+          description: The resource-specific properties for this resource.
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ProxyResource
   securitySchemes:
     azure_auth:
       type: oauth2

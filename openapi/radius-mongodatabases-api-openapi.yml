@@ -283,21 +283,38 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    MongoDatabaseResourceListResult:
+    IdentitySettings:
       type: object
-      description: The response of a MongoDatabaseResource list operation.
+      description: IdentitySettings is the external identity setting.
       properties:
-        value:
-          type: array
-          description: The MongoDatabaseResource items on this page
-          items:
-            $ref: '#/components/schemas/MongoDatabaseResource'
-        nextLink:
+        kind:
+          $ref: '#/components/schemas/IdentitySettingKind'
+          description: kind of identity setting
+        oidcIssuer:
           type: string
-          format: uri
-          description: The link to the next page of items
+          description: The URI for your compute platform's OIDC issuer
+        resource:
+          type: string
+          description: The resource ID of the provisioned identity
+        managedIdentity:
+          type: array
+          description: The list of user assigned managed identities
+          items:
+            type: string
       required:
-      - value
+      - kind
+    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
+      type: object
+      title: Tracked Resource
+      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+      properties:
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
+            type: string
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
     EnvironmentCompute:
       type: object
       description: Represents backing compute resource
@@ -315,6 +332,96 @@ components:
         propertyName: kind
       required:
       - kind
+    MongoDatabaseResourceListResult:
+      type: object
+      description: The response of a MongoDatabaseResource list operation.
+      properties:
+        value:
+          type: array
+          description: The MongoDatabaseResource items on this page
+          items:
+            $ref: '#/components/schemas/MongoDatabaseResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
+    MongoDatabaseResource:
+      type: object
+      description: MongoDatabase portable resource
+      properties:
+        properties:
+          $ref: '#/components/schemas/MongoDatabaseProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+    MongoDatabaseListSecretsResult:
+      type: object
+      description: The secret values for the given MongoDatabase resource
+      properties:
+        password:
+          type: string
+          description: Password to use when connecting to the target Mongo database
+        connectionString:
+          type: string
+          description: Connection string used to connect to the target Mongo database
+    MongoDatabaseResourceUpdate:
+      type: object
+      description: MongoDatabase portable resource
+      allOf:
+      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
+    Recipe:
+      type: object
+      description: The recipe used to automatically deploy underlying infrastructure for a portable resource
+      properties:
+        name:
+          type: string
+          description: The name of the recipe within the environment to use
+        parameters:
+          type: object
+          description: Key/value parameters to pass into the recipe at deployment
+      required:
+      - name
+    ResourceStatus:
+      type: object
+      description: Status of a resource.
+      properties:
+        compute:
+          $ref: '#/components/schemas/EnvironmentCompute'
+          description: The compute resource associated with the resource.
+        recipe:
+          $ref: '#/components/schemas/RecipeStatus'
+          description: The recipe data at the time of deployment
+          readOnly: true
+        outputResources:
+          type: array
+          description: Properties of an output resource
+          items:
+            $ref: '#/components/schemas/OutputResource'
+          x-ms-identifiers: []
+    ResourceProvisioning:
+      type: string
+      description: Specifies how the underlying service/resource is provisioned and managed. Available values are 'recipe', where Radius manages the lifecycle of the resource through a Recipe, and 'manual', where a user manages the resource and provides the values.
+      enum:
+      - recipe
+      - manual
+      x-ms-enum:
+        name: ResourceProvisioning
+        modelAsString: false
+        values:
+        - name: recipe
+          value: recipe
+          description: The resource lifecycle will be managed by Radius
+        - name: manual
+          value: manual
+          description: The resource lifecycle will be managed by the user
     MongoDatabaseProperties:
       type: object
       description: MongoDatabase portable resource properties
@@ -362,6 +469,19 @@ components:
           description: Specifies how the underlying service/resource is provisioned and managed.
       required:
       - environment
+    OutputResource:
+      type: object
+      description: Properties of an output resource.
+      properties:
+        localId:
+          type: string
+          description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
+        id:
+          type: string
+          description: The UCP resource ID of the underlying resource.
+        radiusManaged:
+          type: boolean
+          description: Determines whether Radius manages the lifecycle of the underlying resource.
     RecipeStatus:
       type: object
       description: Recipe status at deployment time for a resource.
@@ -378,48 +498,6 @@ components:
       required:
       - templateKind
       - templatePath
-    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
-      type: object
-      title: Tracked Resource
-      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-      properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
-            type: string
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
-    MongoDatabaseSecrets:
-      type: object
-      description: The secret values for the given MongoDatabase resource
-      properties:
-        password:
-          type: string
-          description: Password to use when connecting to the target Mongo database
-        connectionString:
-          type: string
-          description: Connection string used to connect to the target Mongo database
-    IdentitySettings:
-      type: object
-      description: IdentitySettings is the external identity setting.
-      properties:
-        kind:
-          $ref: '#/components/schemas/IdentitySettingKind'
-          description: kind of identity setting
-        oidcIssuer:
-          type: string
-          description: The URI for your compute platform's OIDC issuer
-        resource:
-          type: string
-          description: The resource ID of the provisioned identity
-        managedIdentity:
-          type: array
-          description: The list of user assigned managed identities
-          items:
-            type: string
-      required:
-      - kind
     IdentitySettingKind:
       type: string
       description: IdentitySettingKind is the kind of supported external identity setting
@@ -448,21 +526,16 @@ components:
         - name: systemAssignedUserAssigned
           value: systemAssignedUserAssigned
           description: System assigned and user assigned managed identity
-    MongoDatabaseResource:
+    MongoDatabaseSecrets:
       type: object
-      description: MongoDatabase portable resource
+      description: The secret values for the given MongoDatabase resource
       properties:
-        properties:
-          $ref: '#/components/schemas/MongoDatabaseProperties'
-          description: The resource-specific properties for this resource.
-          x-ms-client-flatten: true
-          x-ms-mutability:
-          - read
-          - create
-      required:
-      - properties
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+        password:
+          type: string
+          description: Password to use when connecting to the target Mongo database
+        connectionString:
+          type: string
+          description: Connection string used to connect to the target Mongo database
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -504,18 +577,6 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
-    Recipe:
-      type: object
-      description: The recipe used to automatically deploy underlying infrastructure for a portable resource
-      properties:
-        name:
-          type: string
-          description: The name of the recipe within the environment to use
-        parameters:
-          type: object
-          description: Key/value parameters to pass into the recipe at deployment
-      required:
-      - name
     ResourceReference:
       type: object
       description: Describes a reference to an existing resource
@@ -525,67 +586,6 @@ components:
           description: Resource id of an existing resource
       required:
       - id
-    ResourceStatus:
-      type: object
-      description: Status of a resource.
-      properties:
-        compute:
-          $ref: '#/components/schemas/EnvironmentCompute'
-          description: The compute resource associated with the resource.
-        recipe:
-          $ref: '#/components/schemas/RecipeStatus'
-          description: The recipe data at the time of deployment
-          readOnly: true
-        outputResources:
-          type: array
-          description: Properties of an output resource
-          items:
-            $ref: '#/components/schemas/OutputResource'
-          x-ms-identifiers: []
-    ResourceProvisioning:
-      type: string
-      description: Specifies how the underlying service/resource is provisioned and managed. Available values are 'recipe', where Radius manages the lifecycle of the resource through a Recipe, and 'manual', where a user manages the resource and provides the values.
-      enum:
-      - recipe
-      - manual
-      x-ms-enum:
-        name: ResourceProvisioning
-        modelAsString: false
-        values:
-        - name: recipe
-          value: recipe
-          description: The resource lifecycle will be managed by Radius
-        - name: manual
-          value: manual
-          description: The resource lifecycle will be managed by the user
-    MongoDatabaseResourceUpdate:
-      type: object
-      description: MongoDatabase portable resource
-      allOf:
-      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
-    MongoDatabaseListSecretsResult:
-      type: object
-      description: The secret values for the given MongoDatabase resource
-      properties:
-        password:
-          type: string
-          description: Password to use when connecting to the target Mongo database
-        connectionString:
-          type: string
-          description: Connection string used to connect to the target Mongo database
-    OutputResource:
-      type: object
-      description: Properties of an output resource.
-      properties:
-        localId:
-          type: string
-          description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
-        id:
-          type: string
-          description: The UCP resource ID of the underlying resource.
-        radiusManaged:
-          type: boolean
-          description: Determines whether Radius manages the lifecycle of the underlying resource.
   parameters:
     RootScopeParameter:
       name: rootScope
