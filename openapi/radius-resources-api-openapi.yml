@@ -59,11 +59,9 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ResourceNameString:
-      type: string
-      description: The resource name
-      maxLength: 63
-      pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
+    ResourceProperties:
+      type: object
+      description: The resource properties
     GenericResourceListResult:
       type: object
       description: The response of a GenericResource list operation.
@@ -79,9 +77,6 @@ components:
           description: The link to the next page of items
       required:
       - value
-    ResourceProperties:
-      type: object
-      description: The resource properties
     GenericResource:
       type: object
       description: Represents resource data.
@@ -101,6 +96,11 @@ components:
             description: The resource-specific properties for this resource.
         allOf:
         - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ProxyResource
+    ResourceNameString:
+      type: string
+      description: The resource name
+      maxLength: 63
+      pattern: ^[A-Za-z]([-A-Za-z0-9]*[A-Za-z0-9])?$
   securitySchemes:
     azure_auth:
       type: oauth2

@@ -218,43 +218,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    AzurePlaneResourceProperties:
-      type: object
-      description: The Plane properties.
-      properties:
-        provisioningState:
-          $ref: '#/components/schemas/ProvisioningState'
-          description: The status of the asynchronous operation.
-          readOnly: true
-        url:
-          type: string
-          description: The URL used to proxy requests.
-      required:
-      - url
-    AzurePlaneResourceListResult:
-      type: object
-      description: The response of a AzurePlaneResource list operation.
-      properties:
-        value:
-          type: array
-          description: The AzurePlaneResource items on this page
-          items:
-            $ref: '#/components/schemas/AzurePlaneResource'
-        nextLink:
-          type: string
-          format: uri
-          description: The link to the next page of items
-      required:
-      - value
-    AzurePlaneResourceTagsUpdate:
-      type: object
-      description: The type used for updating tags in AzurePlaneResource resources.
-      properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
-            type: string
     AzurePlaneResource:
       type: object
       description: The Azure plane resource.
@@ -311,6 +274,43 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
+    AzurePlaneResourceTagsUpdate:
+      type: object
+      description: The type used for updating tags in AzurePlaneResource resources.
+      properties:
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
+            type: string
+    AzurePlaneResourceProperties:
+      type: object
+      description: The Plane properties.
+      properties:
+        provisioningState:
+          $ref: '#/components/schemas/ProvisioningState'
+          description: The status of the asynchronous operation.
+          readOnly: true
+        url:
+          type: string
+          description: The URL used to proxy requests.
+      required:
+      - url
+    AzurePlaneResourceListResult:
+      type: object
+      description: The response of a AzurePlaneResource list operation.
+      properties:
+        value:
+          type: array
+          description: The AzurePlaneResource items on this page
+          items:
+            $ref: '#/components/schemas/AzurePlaneResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
   securitySchemes:
     azure_auth:
       type: oauth2

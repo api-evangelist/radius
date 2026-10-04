@@ -315,6 +315,15 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
+    ApiVersionResource:
+      type: object
+      description: The resource type for defining an API version of a resource type supported by the containing resource provider.
+      properties:
+        properties:
+          $ref: '#/components/schemas/ApiVersionProperties'
+          description: The resource-specific properties for this resource.
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ProxyResource
     ApiVersionProperties:
       type: object
       description: The properties of an API version.
@@ -342,15 +351,6 @@ components:
           description: The link to the next page of items
       required:
       - value
-    ApiVersionResource:
-      type: object
-      description: The resource type for defining an API version of a resource type supported by the containing resource provider.
-      properties:
-        properties:
-          $ref: '#/components/schemas/ApiVersionProperties'
-          description: The resource-specific properties for this resource.
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/ProxyResource
   securitySchemes:
     azure_auth:
       type: oauth2

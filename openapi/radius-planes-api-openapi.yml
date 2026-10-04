@@ -51,6 +51,21 @@ components:
           $ref: '#/components/schemas/ProvisioningState'
           description: The status of the asynchronous operation.
           readOnly: true
+    GenericPlaneResource:
+      type: object
+      description: The generic representation of a plane resource
+      properties:
+        properties:
+          $ref: '#/components/schemas/GenericPlaneResourceProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
     GenericPlaneResourceListResult:
       type: object
       description: The response of a GenericPlaneResource list operation.
@@ -107,21 +122,6 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
-    GenericPlaneResource:
-      type: object
-      description: The generic representation of a plane resource
-      properties:
-        properties:
-          $ref: '#/components/schemas/GenericPlaneResourceProperties'
-          description: The resource-specific properties for this resource.
-          x-ms-client-flatten: true
-          x-ms-mutability:
-          - read
-          - create
-      required:
-      - properties
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
   securitySchemes:
     azure_auth:
       type: oauth2

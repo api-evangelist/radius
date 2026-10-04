@@ -288,6 +288,148 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ProvisioningState:
+      type: string
+      description: Provisioning state of the resource at the time the operation was called
+      enum:
+      - Creating
+      - Updating
+      - Deleting
+      - Accepted
+      - Provisioning
+      - Succeeded
+      - Failed
+      - Canceled
+      x-ms-enum:
+        name: ProvisioningState
+        modelAsString: false
+        values:
+        - name: Creating
+          value: Creating
+          description: The resource is being created
+        - name: Updating
+          value: Updating
+          description: The resource is being updated
+        - name: Deleting
+          value: Deleting
+          description: The resource is being deleted
+        - name: Accepted
+          value: Accepted
+          description: The resource create request has been accepted
+        - name: Provisioning
+          value: Provisioning
+          description: The resource is being provisioned
+        - name: Succeeded
+          value: Succeeded
+          description: The resource has been successfully provisioned
+        - name: Failed
+          value: Failed
+          description: The resource provisioning has failed
+        - name: Canceled
+          value: Canceled
+          description: The resource provisioning has been canceled
+      readOnly: true
+    EnvironmentCompute:
+      type: object
+      description: Represents backing compute resource
+      properties:
+        kind:
+          type: string
+          description: Discriminator property for EnvironmentCompute.
+        resourceId:
+          type: string
+          description: The resource id of the compute resource for application environment.
+        identity:
+          $ref: '#/components/schemas/IdentitySettings'
+          description: Configuration for supported external identity providers
+      discriminator:
+        propertyName: kind
+      required:
+      - kind
+    ResourceProvisioning:
+      type: string
+      description: Specifies how the underlying service/resource is provisioned and managed. Available values are 'recipe', where Radius manages the lifecycle of the resource through a Recipe, and 'manual', where a user manages the resource and provides the values.
+      enum:
+      - recipe
+      - manual
+      x-ms-enum:
+        name: ResourceProvisioning
+        modelAsString: false
+        values:
+        - name: recipe
+          value: recipe
+          description: The resource lifecycle will be managed by Radius
+        - name: manual
+          value: manual
+          description: The resource lifecycle will be managed by the user
+    RedisCacheResource:
+      type: object
+      description: RedisCache portable resource
+      properties:
+        properties:
+          $ref: '#/components/schemas/RedisCacheProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+    IdentitySettingKind:
+      type: string
+      description: IdentitySettingKind is the kind of supported external identity setting
+      enum:
+      - undefined
+      - azure.com.workload
+      - userAssigned
+      - systemAssigned
+      - systemAssignedUserAssigned
+      x-ms-enum:
+        name: IdentitySettingKind
+        modelAsString: false
+        values:
+        - name: undefined
+          value: undefined
+          description: undefined identity
+        - name: azure.com.workload
+          value: azure.com.workload
+          description: azure ad workload identity
+        - name: userAssigned
+          value: userAssigned
+          description: User assigned managed identity
+        - name: systemAssigned
+          value: systemAssigned
+          description: System assigned managed identity
+        - name: systemAssignedUserAssigned
+          value: systemAssignedUserAssigned
+          description: System assigned and user assigned managed identity
+    RedisCacheSecrets:
+      type: object
+      description: The secret values for the given RedisCache resource
+      properties:
+        connectionString:
+          type: string
+          description: The connection string used to connect to the Redis cache
+        password:
+          type: string
+          description: The password for this Redis cache instance
+        url:
+          type: string
+          description: The URL used to connect to the Redis cache
+    Recipe:
+      type: object
+      description: The recipe used to automatically deploy underlying infrastructure for a portable resource
+      properties:
+        name:
+          type: string
+          description: The name of the recipe within the environment to use
+        parameters:
+          type: object
+          description: Key/value parameters to pass into the recipe at deployment
+      required:
+      - name
     IdentitySettings:
       type: object
       description: IdentitySettings is the external identity setting.
@@ -308,35 +450,11 @@ components:
             type: string
       required:
       - kind
-    EnvironmentCompute:
+    RedisCacheResourceUpdate:
       type: object
-      description: Represents backing compute resource
-      properties:
-        kind:
-          type: string
-          description: Discriminator property for EnvironmentCompute.
-        resourceId:
-          type: string
-          description: The resource id of the compute resource for application environment.
-        identity:
-          $ref: '#/components/schemas/IdentitySettings'
-          description: Configuration for supported external identity providers
-      discriminator:
-        propertyName: kind
-      required:
-      - kind
-    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
-      type: object
-      title: Tracked Resource
-      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-      properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
-            type: string
+      description: RedisCache portable resource
       allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
+      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
     RedisCacheProperties:
       type: object
       description: RedisCache portable resource properties
@@ -384,19 +502,18 @@ components:
           description: Specifies how the underlying service/resource is provisioned and managed.
       required:
       - environment
-    OutputResource:
+    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
       type: object
-      description: Properties of an output resource.
+      title: Tracked Resource
+      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
       properties:
-        localId:
-          type: string
-          description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
-        id:
-          type: string
-          description: The UCP resource ID of the underlying resource.
-        radiusManaged:
-          type: boolean
-          description: Determines whether Radius manages the lifecycle of the underlying resource.
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
+            type: string
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
     RedisCacheResourceListResult:
       type: object
       description: The response of a RedisCacheResource list operation.
@@ -412,18 +529,44 @@ components:
           description: The link to the next page of items
       required:
       - value
-    Recipe:
+    RecipeStatus:
       type: object
-      description: The recipe used to automatically deploy underlying infrastructure for a portable resource
+      description: Recipe status at deployment time for a resource.
       properties:
-        name:
+        templateKind:
           type: string
-          description: The name of the recipe within the environment to use
-        parameters:
-          type: object
-          description: Key/value parameters to pass into the recipe at deployment
+          description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
+        templatePath:
+          type: string
+          description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
+        templateVersion:
+          type: string
+          description: TemplateVersion is the version number of the template.
       required:
-      - name
+      - templateKind
+      - templatePath
+    ResourceReference:
+      type: object
+      description: Describes a reference to an existing resource
+      properties:
+        id:
+          type: string
+          description: Resource id of an existing resource
+      required:
+      - id
+    OutputResource:
+      type: object
+      description: Properties of an output resource.
+      properties:
+        localId:
+          type: string
+          description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
+        id:
+          type: string
+          description: The UCP resource ID of the underlying resource.
+        radiusManaged:
+          type: boolean
+          description: Determines whether Radius manages the lifecycle of the underlying resource.
     RedisCacheListSecretsResult:
       type: object
       description: The secret values for the given RedisCache resource
@@ -454,149 +597,6 @@ components:
           items:
             $ref: '#/components/schemas/OutputResource'
           x-ms-identifiers: []
-    ResourceProvisioning:
-      type: string
-      description: Specifies how the underlying service/resource is provisioned and managed. Available values are 'recipe', where Radius manages the lifecycle of the resource through a Recipe, and 'manual', where a user manages the resource and provides the values.
-      enum:
-      - recipe
-      - manual
-      x-ms-enum:
-        name: ResourceProvisioning
-        modelAsString: false
-        values:
-        - name: recipe
-          value: recipe
-          description: The resource lifecycle will be managed by Radius
-        - name: manual
-          value: manual
-          description: The resource lifecycle will be managed by the user
-    RedisCacheSecrets:
-      type: object
-      description: The secret values for the given RedisCache resource
-      properties:
-        connectionString:
-          type: string
-          description: The connection string used to connect to the Redis cache
-        password:
-          type: string
-          description: The password for this Redis cache instance
-        url:
-          type: string
-          description: The URL used to connect to the Redis cache
-    RedisCacheResource:
-      type: object
-      description: RedisCache portable resource
-      properties:
-        properties:
-          $ref: '#/components/schemas/RedisCacheProperties'
-          description: The resource-specific properties for this resource.
-          x-ms-client-flatten: true
-          x-ms-mutability:
-          - read
-          - create
-      required:
-      - properties
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
-    RecipeStatus:
-      type: object
-      description: Recipe status at deployment time for a resource.
-      properties:
-        templateKind:
-          type: string
-          description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
-        templatePath:
-          type: string
-          description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
-        templateVersion:
-          type: string
-          description: TemplateVersion is the version number of the template.
-      required:
-      - templateKind
-      - templatePath
-    IdentitySettingKind:
-      type: string
-      description: IdentitySettingKind is the kind of supported external identity setting
-      enum:
-      - undefined
-      - azure.com.workload
-      - userAssigned
-      - systemAssigned
-      - systemAssignedUserAssigned
-      x-ms-enum:
-        name: IdentitySettingKind
-        modelAsString: false
-        values:
-        - name: undefined
-          value: undefined
-          description: undefined identity
-        - name: azure.com.workload
-          value: azure.com.workload
-          description: azure ad workload identity
-        - name: userAssigned
-          value: userAssigned
-          description: User assigned managed identity
-        - name: systemAssigned
-          value: systemAssigned
-          description: System assigned managed identity
-        - name: systemAssignedUserAssigned
-          value: systemAssignedUserAssigned
-          description: System assigned and user assigned managed identity
-    RedisCacheResourceUpdate:
-      type: object
-      description: RedisCache portable resource
-      allOf:
-      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
-    ProvisioningState:
-      type: string
-      description: Provisioning state of the resource at the time the operation was called
-      enum:
-      - Creating
-      - Updating
-      - Deleting
-      - Accepted
-      - Provisioning
-      - Succeeded
-      - Failed
-      - Canceled
-      x-ms-enum:
-        name: ProvisioningState
-        modelAsString: false
-        values:
-        - name: Creating
-          value: Creating
-          description: The resource is being created
-        - name: Updating
-          value: Updating
-          description: The resource is being updated
-        - name: Deleting
-          value: Deleting
-          description: The resource is being deleted
-        - name: Accepted
-          value: Accepted
-          description: The resource create request has been accepted
-        - name: Provisioning
-          value: Provisioning
-          description: The resource is being provisioned
-        - name: Succeeded
-          value: Succeeded
-          description: The resource has been successfully provisioned
-        - name: Failed
-          value: Failed
-          description: The resource provisioning has failed
-        - name: Canceled
-          value: Canceled
-          description: The resource provisioning has been canceled
-      readOnly: true
-    ResourceReference:
-      type: object
-      description: Describes a reference to an existing resource
-      properties:
-        id:
-          type: string
-          description: Resource id of an existing resource
-      required:
-      - id
   parameters:
     RootScopeParameter:
       name: rootScope

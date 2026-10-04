@@ -286,228 +286,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    IdentitySettings:
-      type: object
-      description: IdentitySettings is the external identity setting.
-      properties:
-        kind:
-          $ref: '#/components/schemas/IdentitySettingKind'
-          description: kind of identity setting
-        oidcIssuer:
-          type: string
-          description: The URI for your compute platform's OIDC issuer
-        resource:
-          type: string
-          description: The resource ID of the provisioned identity
-        managedIdentity:
-          type: array
-          description: The list of user assigned managed identities
-          items:
-            type: string
-      required:
-      - kind
-    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
-      type: object
-      title: Tracked Resource
-      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-      properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
-            type: string
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
-    ExtenderProperties:
-      type: object
-      description: ExtenderResource portable resource properties
-      properties:
-        environment:
-          type: string
-          description: Fully qualified resource ID for the environment that the portable resource is linked to
-        application:
-          type: string
-          description: Fully qualified resource ID for the application that the portable resource is consumed by (if applicable)
-        provisioningState:
-          $ref: '#/components/schemas/ProvisioningState'
-          description: The status of the asynchronous operation.
-          readOnly: true
-        status:
-          $ref: '#/components/schemas/ResourceStatus'
-          description: Status of a resource.
-          readOnly: true
-        secrets:
-          type: object
-          description: The secrets for referenced resource
-        recipe:
-          $ref: '#/components/schemas/Recipe'
-          description: The recipe used to automatically deploy underlying infrastructure for the extender portable resource
-        resourceProvisioning:
-          $ref: '#/components/schemas/ResourceProvisioning'
-          description: Specifies how the underlying service/resource is provisioned and managed.
-      required:
-      - environment
-      allOf:
-      - type: object
-        additionalProperties: {}
-    EnvironmentCompute:
-      type: object
-      description: Represents backing compute resource
-      properties:
-        kind:
-          type: string
-          description: Discriminator property for EnvironmentCompute.
-        resourceId:
-          type: string
-          description: The resource id of the compute resource for application environment.
-        identity:
-          $ref: '#/components/schemas/IdentitySettings'
-          description: Configuration for supported external identity providers
-      discriminator:
-        propertyName: kind
-      required:
-      - kind
-    ExtenderResourceListResult:
-      type: object
-      description: The response of a ExtenderResource list operation.
-      properties:
-        value:
-          type: array
-          description: The ExtenderResource items on this page
-          items:
-            $ref: '#/components/schemas/ExtenderResource'
-        nextLink:
-          type: string
-          format: uri
-          description: The link to the next page of items
-      required:
-      - value
-    Recipe:
-      type: object
-      description: The recipe used to automatically deploy underlying infrastructure for a portable resource
-      properties:
-        name:
-          type: string
-          description: The name of the recipe within the environment to use
-        parameters:
-          type: object
-          description: Key/value parameters to pass into the recipe at deployment
-      required:
-      - name
-    ExtenderResource:
-      type: object
-      description: ExtenderResource portable resource
-      properties:
-        properties:
-          $ref: '#/components/schemas/ExtenderProperties'
-          description: The resource-specific properties for this resource.
-          x-ms-client-flatten: true
-          x-ms-mutability:
-          - read
-          - create
-      required:
-      - properties
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
-    ExtenderResourceUpdate:
-      type: object
-      description: ExtenderResource portable resource
-      allOf:
-      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
-    ExtenderListSecretResponse:
-      type: object
-      description: Response for list secrets API call
-      additionalProperties: {}
-    ResourceStatus:
-      type: object
-      description: Status of a resource.
-      properties:
-        compute:
-          $ref: '#/components/schemas/EnvironmentCompute'
-          description: The compute resource associated with the resource.
-        recipe:
-          $ref: '#/components/schemas/RecipeStatus'
-          description: The recipe data at the time of deployment
-          readOnly: true
-        outputResources:
-          type: array
-          description: Properties of an output resource
-          items:
-            $ref: '#/components/schemas/OutputResource'
-          x-ms-identifiers: []
-    ResourceProvisioning:
-      type: string
-      description: Specifies how the underlying service/resource is provisioned and managed. Available values are 'recipe', where Radius manages the lifecycle of the resource through a Recipe, and 'manual', where a user manages the resource and provides the values.
-      enum:
-      - recipe
-      - manual
-      x-ms-enum:
-        name: ResourceProvisioning
-        modelAsString: false
-        values:
-        - name: recipe
-          value: recipe
-          description: The resource lifecycle will be managed by Radius
-        - name: manual
-          value: manual
-          description: The resource lifecycle will be managed by the user
-    OutputResource:
-      type: object
-      description: Properties of an output resource.
-      properties:
-        localId:
-          type: string
-          description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
-        id:
-          type: string
-          description: The UCP resource ID of the underlying resource.
-        radiusManaged:
-          type: boolean
-          description: Determines whether Radius manages the lifecycle of the underlying resource.
-    RecipeStatus:
-      type: object
-      description: Recipe status at deployment time for a resource.
-      properties:
-        templateKind:
-          type: string
-          description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
-        templatePath:
-          type: string
-          description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
-        templateVersion:
-          type: string
-          description: TemplateVersion is the version number of the template.
-      required:
-      - templateKind
-      - templatePath
-    IdentitySettingKind:
-      type: string
-      description: IdentitySettingKind is the kind of supported external identity setting
-      enum:
-      - undefined
-      - azure.com.workload
-      - userAssigned
-      - systemAssigned
-      - systemAssignedUserAssigned
-      x-ms-enum:
-        name: IdentitySettingKind
-        modelAsString: false
-        values:
-        - name: undefined
-          value: undefined
-          description: undefined identity
-        - name: azure.com.workload
-          value: azure.com.workload
-          description: azure ad workload identity
-        - name: userAssigned
-          value: userAssigned
-          description: User assigned managed identity
-        - name: systemAssigned
-          value: systemAssigned
-          description: System assigned managed identity
-        - name: systemAssignedUserAssigned
-          value: systemAssignedUserAssigned
-          description: System assigned and user assigned managed identity
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -549,6 +327,228 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
+    ResourceProvisioning:
+      type: string
+      description: Specifies how the underlying service/resource is provisioned and managed. Available values are 'recipe', where Radius manages the lifecycle of the resource through a Recipe, and 'manual', where a user manages the resource and provides the values.
+      enum:
+      - recipe
+      - manual
+      x-ms-enum:
+        name: ResourceProvisioning
+        modelAsString: false
+        values:
+        - name: recipe
+          value: recipe
+          description: The resource lifecycle will be managed by Radius
+        - name: manual
+          value: manual
+          description: The resource lifecycle will be managed by the user
+    EnvironmentCompute:
+      type: object
+      description: Represents backing compute resource
+      properties:
+        kind:
+          type: string
+          description: Discriminator property for EnvironmentCompute.
+        resourceId:
+          type: string
+          description: The resource id of the compute resource for application environment.
+        identity:
+          $ref: '#/components/schemas/IdentitySettings'
+          description: Configuration for supported external identity providers
+      discriminator:
+        propertyName: kind
+      required:
+      - kind
+    ExtenderResourceListResult:
+      type: object
+      description: The response of a ExtenderResource list operation.
+      properties:
+        value:
+          type: array
+          description: The ExtenderResource items on this page
+          items:
+            $ref: '#/components/schemas/ExtenderResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
+    IdentitySettingKind:
+      type: string
+      description: IdentitySettingKind is the kind of supported external identity setting
+      enum:
+      - undefined
+      - azure.com.workload
+      - userAssigned
+      - systemAssigned
+      - systemAssignedUserAssigned
+      x-ms-enum:
+        name: IdentitySettingKind
+        modelAsString: false
+        values:
+        - name: undefined
+          value: undefined
+          description: undefined identity
+        - name: azure.com.workload
+          value: azure.com.workload
+          description: azure ad workload identity
+        - name: userAssigned
+          value: userAssigned
+          description: User assigned managed identity
+        - name: systemAssigned
+          value: systemAssigned
+          description: System assigned managed identity
+        - name: systemAssignedUserAssigned
+          value: systemAssignedUserAssigned
+          description: System assigned and user assigned managed identity
+    ExtenderListSecretResponse:
+      type: object
+      description: Response for list secrets API call
+      additionalProperties: {}
+    Recipe:
+      type: object
+      description: The recipe used to automatically deploy underlying infrastructure for a portable resource
+      properties:
+        name:
+          type: string
+          description: The name of the recipe within the environment to use
+        parameters:
+          type: object
+          description: Key/value parameters to pass into the recipe at deployment
+      required:
+      - name
+    ExtenderResource:
+      type: object
+      description: ExtenderResource portable resource
+      properties:
+        properties:
+          $ref: '#/components/schemas/ExtenderProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
+      type: object
+      title: Tracked Resource
+      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+      properties:
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
+            type: string
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
+    RecipeStatus:
+      type: object
+      description: Recipe status at deployment time for a resource.
+      properties:
+        templateKind:
+          type: string
+          description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
+        templatePath:
+          type: string
+          description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
+        templateVersion:
+          type: string
+          description: TemplateVersion is the version number of the template.
+      required:
+      - templateKind
+      - templatePath
+    ExtenderProperties:
+      type: object
+      description: ExtenderResource portable resource properties
+      properties:
+        environment:
+          type: string
+          description: Fully qualified resource ID for the environment that the portable resource is linked to
+        application:
+          type: string
+          description: Fully qualified resource ID for the application that the portable resource is consumed by (if applicable)
+        provisioningState:
+          $ref: '#/components/schemas/ProvisioningState'
+          description: The status of the asynchronous operation.
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/ResourceStatus'
+          description: Status of a resource.
+          readOnly: true
+        secrets:
+          type: object
+          description: The secrets for referenced resource
+        recipe:
+          $ref: '#/components/schemas/Recipe'
+          description: The recipe used to automatically deploy underlying infrastructure for the extender portable resource
+        resourceProvisioning:
+          $ref: '#/components/schemas/ResourceProvisioning'
+          description: Specifies how the underlying service/resource is provisioned and managed.
+      required:
+      - environment
+      allOf:
+      - type: object
+        additionalProperties: {}
+    OutputResource:
+      type: object
+      description: Properties of an output resource.
+      properties:
+        localId:
+          type: string
+          description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
+        id:
+          type: string
+          description: The UCP resource ID of the underlying resource.
+        radiusManaged:
+          type: boolean
+          description: Determines whether Radius manages the lifecycle of the underlying resource.
+    ExtenderResourceUpdate:
+      type: object
+      description: ExtenderResource portable resource
+      allOf:
+      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
+    IdentitySettings:
+      type: object
+      description: IdentitySettings is the external identity setting.
+      properties:
+        kind:
+          $ref: '#/components/schemas/IdentitySettingKind'
+          description: kind of identity setting
+        oidcIssuer:
+          type: string
+          description: The URI for your compute platform's OIDC issuer
+        resource:
+          type: string
+          description: The resource ID of the provisioned identity
+        managedIdentity:
+          type: array
+          description: The list of user assigned managed identities
+          items:
+            type: string
+      required:
+      - kind
+    ResourceStatus:
+      type: object
+      description: Status of a resource.
+      properties:
+        compute:
+          $ref: '#/components/schemas/EnvironmentCompute'
+          description: The compute resource associated with the resource.
+        recipe:
+          $ref: '#/components/schemas/RecipeStatus'
+          description: The recipe data at the time of deployment
+          readOnly: true
+        outputResources:
+          type: array
+          description: Properties of an output resource
+          items:
+            $ref: '#/components/schemas/OutputResource'
+          x-ms-identifiers: []
   parameters:
     RootScopeParameter:
       name: rootScope
