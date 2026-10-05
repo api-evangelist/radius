@@ -1,0 +1,25 @@
+slug: radius
+provider: Radius
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: RabbitMQQueues
+  spec_file: radius-rabbitmqqueues-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: 'PUT /{rootScope}/providers/Applications.Messaging/rabbitMQQueues/{rabbitMQQueueName} RabbitMQQueues_CreateOrUpdate;
+    schemas: RabbitMQQueueResource, EnvironmentCompute, ProvisioningState'
+  reason: Resource-manager style provisioning lifecycle for RabbitMQ messaging queues used by cloud-native
+    applications — infrastructure/middleware resource management rather than any business process.
