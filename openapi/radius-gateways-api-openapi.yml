@@ -239,18 +239,71 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    GatewayRouteTimeoutPolicy:
+    EnvironmentCompute:
       type: object
-      description: Gateway route timeout policy
+      description: Represents backing compute resource
       properties:
-        request:
+        kind:
           type: string
-          description: The request timeout in duration for the route. Defaults to 15 seconds.
-          pattern: ^(\d+(\.\d+)?(ns|us|µs|ms|s|m|h))+$
-        backendRequest:
+          description: Discriminator property for EnvironmentCompute.
+        resourceId:
           type: string
-          description: The backend request timeout in duration for the route. Cannot be greater than the request timeout.
-          pattern: ^(\d+(\.\d+)?(ns|us|µs|ms|s|m|h))+$
+          description: The resource id of the compute resource for application environment.
+        identity:
+          $ref: '#/components/schemas/IdentitySettings'
+          description: Configuration for supported external identity providers
+      discriminator:
+        propertyName: kind
+      required:
+      - kind
+    IdentitySettings:
+      type: object
+      description: IdentitySettings is the external identity setting.
+      properties:
+        kind:
+          $ref: '#/components/schemas/IdentitySettingKind'
+          description: kind of identity setting
+        oidcIssuer:
+          type: string
+          description: The URI for your compute platform's OIDC issuer
+        resource:
+          type: string
+          description: The resource ID of the provisioned identity
+        managedIdentity:
+          type: array
+          description: The list of user assigned managed identities
+          items:
+            type: string
+      required:
+      - kind
+    IdentitySettingKind:
+      type: string
+      description: IdentitySettingKind is the kind of supported external identity setting
+      enum:
+      - undefined
+      - azure.com.workload
+      - userAssigned
+      - systemAssigned
+      - systemAssignedUserAssigned
+      x-ms-enum:
+        name: IdentitySettingKind
+        modelAsString: false
+        values:
+        - name: undefined
+          value: undefined
+          description: undefined identity
+        - name: azure.com.workload
+          value: azure.com.workload
+          description: azure ad workload identity
+        - name: userAssigned
+          value: userAssigned
+          description: User assigned managed identity
+        - name: systemAssigned
+          value: systemAssigned
+          description: System assigned managed identity
+        - name: systemAssignedUserAssigned
+          value: systemAssignedUserAssigned
+          description: System assigned and user assigned managed identity
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -292,66 +345,37 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
-    EnvironmentCompute:
+    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
       type: object
-      description: Represents backing compute resource
+      title: Tracked Resource
+      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
       properties:
-        kind:
-          type: string
-          description: Discriminator property for EnvironmentCompute.
-        resourceId:
-          type: string
-          description: The resource id of the compute resource for application environment.
-        identity:
-          $ref: '#/components/schemas/IdentitySettings'
-          description: Configuration for supported external identity providers
-      discriminator:
-        propertyName: kind
-      required:
-      - kind
-    GatewayHostname:
-      type: object
-      description: 'Declare hostname information for the Gateway. Leaving the hostname empty auto-assigns one: mygateway.myapp.PUBLICHOSTNAMEORIP.nip.io.'
-      properties:
-        prefix:
-          type: string
-          description: 'Specify a prefix for the hostname: myhostname.myapp.PUBLICHOSTNAMEORIP.nip.io. Mutually exclusive with ''fullyQualifiedHostname'' and will be overridden if both are defined.'
-        fullyQualifiedHostname:
-          type: string
-          description: 'Specify a fully-qualified domain name: myapp.mydomain.com. Mutually exclusive with ''prefix'' and will take priority if both are defined.'
-    IdentitySettingKind:
-      type: string
-      description: IdentitySettingKind is the kind of supported external identity setting
-      enum:
-      - undefined
-      - azure.com.workload
-      - userAssigned
-      - systemAssigned
-      - systemAssignedUserAssigned
-      x-ms-enum:
-        name: IdentitySettingKind
-        modelAsString: false
-        values:
-        - name: undefined
-          value: undefined
-          description: undefined identity
-        - name: azure.com.workload
-          value: azure.com.workload
-          description: azure ad workload identity
-        - name: userAssigned
-          value: userAssigned
-          description: User assigned managed identity
-        - name: systemAssigned
-          value: systemAssigned
-          description: System assigned managed identity
-        - name: systemAssignedUserAssigned
-          value: systemAssignedUserAssigned
-          description: System assigned and user assigned managed identity
-    GatewayResourceUpdate:
-      type: object
-      description: Concrete tracked resource types can be created by aliasing this type using a specific property type.
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
+            type: string
       allOf:
-      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
+    GatewayRoute:
+      type: object
+      description: Route attached to Gateway
+      properties:
+        path:
+          type: string
+          description: The path to match the incoming request path on. Ex - /myservice.
+        destination:
+          type: string
+          description: The URL or id of the service to route to. Ex - 'http://myservice'.
+        replacePrefix:
+          type: string
+          description: 'Optionally update the prefix when sending the request to the service. Ex - replacePrefix: ''/'' and path: ''/myservice'' will transform ''/myservice/myroute'' to ''/myroute'''
+        enableWebsockets:
+          type: boolean
+          description: Enables websocket support for the route. Defaults to false.
+        timeoutPolicy:
+          $ref: '#/components/schemas/GatewayRouteTimeoutPolicy'
+          description: The timeout policy for the route.
     GatewayTls:
       type: object
       description: TLS configuration definition for Gateway resource.
@@ -379,18 +403,23 @@ components:
         certificateFrom:
           type: string
           description: The resource id for the secret containing the TLS certificate and key for the gateway.
-    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
+    ResourceStatus:
       type: object
-      title: Tracked Resource
-      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+      description: Status of a resource.
       properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
-            type: string
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
+        compute:
+          $ref: '#/components/schemas/EnvironmentCompute'
+          description: The compute resource associated with the resource.
+        recipe:
+          $ref: '#/components/schemas/RecipeStatus'
+          description: The recipe data at the time of deployment
+          readOnly: true
+        outputResources:
+          type: array
+          description: Properties of an output resource
+          items:
+            $ref: '#/components/schemas/OutputResource'
+          x-ms-identifiers: []
     RecipeStatus:
       type: object
       description: Recipe status at deployment time for a resource.
@@ -407,40 +436,6 @@ components:
       required:
       - templateKind
       - templatePath
-    GatewayRoute:
-      type: object
-      description: Route attached to Gateway
-      properties:
-        path:
-          type: string
-          description: The path to match the incoming request path on. Ex - /myservice.
-        destination:
-          type: string
-          description: The URL or id of the service to route to. Ex - 'http://myservice'.
-        replacePrefix:
-          type: string
-          description: 'Optionally update the prefix when sending the request to the service. Ex - replacePrefix: ''/'' and path: ''/myservice'' will transform ''/myservice/myroute'' to ''/myroute'''
-        enableWebsockets:
-          type: boolean
-          description: Enables websocket support for the route. Defaults to false.
-        timeoutPolicy:
-          $ref: '#/components/schemas/GatewayRouteTimeoutPolicy'
-          description: The timeout policy for the route.
-    GatewayResourceListResult:
-      type: object
-      description: The response of a GatewayResource list operation.
-      properties:
-        value:
-          type: array
-          description: The GatewayResource items on this page
-          items:
-            $ref: '#/components/schemas/GatewayResource'
-        nextLink:
-          type: string
-          format: uri
-          description: The link to the next page of items
-      required:
-      - value
     GatewayProperties:
       type: object
       description: Gateway properties
@@ -481,6 +476,21 @@ components:
       required:
       - application
       - routes
+    GatewayResourceListResult:
+      type: object
+      description: The response of a GatewayResource list operation.
+      properties:
+        value:
+          type: array
+          description: The GatewayResource items on this page
+          items:
+            $ref: '#/components/schemas/GatewayResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
     OutputResource:
       type: object
       description: Properties of an output resource.
@@ -494,26 +504,21 @@ components:
         radiusManaged:
           type: boolean
           description: Determines whether Radius manages the lifecycle of the underlying resource.
-    IdentitySettings:
+    GatewayHostname:
       type: object
-      description: IdentitySettings is the external identity setting.
+      description: 'Declare hostname information for the Gateway. Leaving the hostname empty auto-assigns one: mygateway.myapp.PUBLICHOSTNAMEORIP.nip.io.'
       properties:
-        kind:
-          $ref: '#/components/schemas/IdentitySettingKind'
-          description: kind of identity setting
-        oidcIssuer:
+        prefix:
           type: string
-          description: The URI for your compute platform's OIDC issuer
-        resource:
+          description: 'Specify a prefix for the hostname: myhostname.myapp.PUBLICHOSTNAMEORIP.nip.io. Mutually exclusive with ''fullyQualifiedHostname'' and will be overridden if both are defined.'
+        fullyQualifiedHostname:
           type: string
-          description: The resource ID of the provisioned identity
-        managedIdentity:
-          type: array
-          description: The list of user assigned managed identities
-          items:
-            type: string
-      required:
-      - kind
+          description: 'Specify a fully-qualified domain name: myapp.mydomain.com. Mutually exclusive with ''prefix'' and will take priority if both are defined.'
+    GatewayResourceUpdate:
+      type: object
+      description: Concrete tracked resource types can be created by aliasing this type using a specific property type.
+      allOf:
+      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
     GatewayResource:
       type: object
       description: Concrete tracked resource types can be created by aliasing this type using a specific property type.
@@ -529,23 +534,18 @@ components:
       - properties
       allOf:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
-    ResourceStatus:
+    GatewayRouteTimeoutPolicy:
       type: object
-      description: Status of a resource.
+      description: Gateway route timeout policy
       properties:
-        compute:
-          $ref: '#/components/schemas/EnvironmentCompute'
-          description: The compute resource associated with the resource.
-        recipe:
-          $ref: '#/components/schemas/RecipeStatus'
-          description: The recipe data at the time of deployment
-          readOnly: true
-        outputResources:
-          type: array
-          description: Properties of an output resource
-          items:
-            $ref: '#/components/schemas/OutputResource'
-          x-ms-identifiers: []
+        request:
+          type: string
+          description: The request timeout in duration for the route. Defaults to 15 seconds.
+          pattern: ^(\d+(\.\d+)?(ns|us|µs|ms|s|m|h))+$
+        backendRequest:
+          type: string
+          description: The backend request timeout in duration for the route. Cannot be greater than the request timeout.
+          pattern: ^(\d+(\.\d+)?(ns|us|µs|ms|s|m|h))+$
   parameters:
     RootScopeParameter:
       name: rootScope

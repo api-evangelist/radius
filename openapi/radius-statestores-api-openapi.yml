@@ -244,6 +244,121 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    RecipeStatus:
+      type: object
+      description: Recipe status at deployment time for a resource.
+      properties:
+        templateKind:
+          type: string
+          description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
+        templatePath:
+          type: string
+          description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
+        templateVersion:
+          type: string
+          description: TemplateVersion is the version number of the template.
+      required:
+      - templateKind
+      - templatePath
+    EnvironmentCompute:
+      type: object
+      description: Represents backing compute resource
+      properties:
+        kind:
+          type: string
+          description: Discriminator property for EnvironmentCompute.
+        resourceId:
+          type: string
+          description: The resource id of the compute resource for application environment.
+        identity:
+          $ref: '#/components/schemas/IdentitySettings'
+          description: Configuration for supported external identity providers
+      discriminator:
+        propertyName: kind
+      required:
+      - kind
+    IdentitySettings:
+      type: object
+      description: IdentitySettings is the external identity setting.
+      properties:
+        kind:
+          $ref: '#/components/schemas/IdentitySettingKind'
+          description: kind of identity setting
+        oidcIssuer:
+          type: string
+          description: The URI for your compute platform's OIDC issuer
+        resource:
+          type: string
+          description: The resource ID of the provisioned identity
+        managedIdentity:
+          type: array
+          description: The list of user assigned managed identities
+          items:
+            type: string
+      required:
+      - kind
+    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
+      type: object
+      title: Tracked Resource
+      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+      properties:
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
+            type: string
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
+    DaprStateStoreResourceUpdate:
+      type: object
+      description: Dapr StateStore portable resource
+      allOf:
+      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
+    MetadataValue:
+      type: object
+      description: A single metadata for a Dapr component object
+      properties:
+        value:
+          type: string
+          description: The plain text value of the metadata
+        secretKeyRef:
+          $ref: '#/components/schemas/MetadataValueFromSecret'
+          description: A reference of a value in a secret store component
+    DaprResourceAuth:
+      type: object
+      description: Authentication properties for a Dapr component object
+      properties:
+        secretStore:
+          type: string
+          description: Secret store to fetch secrets from
+    OutputResource:
+      type: object
+      description: Properties of an output resource.
+      properties:
+        localId:
+          type: string
+          description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
+        id:
+          type: string
+          description: The UCP resource ID of the underlying resource.
+        radiusManaged:
+          type: boolean
+          description: Determines whether Radius manages the lifecycle of the underlying resource.
+    DaprStateStoreResourceListResult:
+      type: object
+      description: The response of a DaprStateStoreResource list operation.
+      properties:
+        value:
+          type: array
+          description: The DaprStateStoreResource items on this page
+          items:
+            $ref: '#/components/schemas/DaprStateStoreResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
     IdentitySettingKind:
       type: string
       description: IdentitySettingKind is the kind of supported external identity setting
@@ -272,56 +387,6 @@ components:
         - name: systemAssignedUserAssigned
           value: systemAssignedUserAssigned
           description: System assigned and user assigned managed identity
-    MetadataValue:
-      type: object
-      description: A single metadata for a Dapr component object
-      properties:
-        value:
-          type: string
-          description: The plain text value of the metadata
-        secretKeyRef:
-          $ref: '#/components/schemas/MetadataValueFromSecret'
-          description: A reference of a value in a secret store component
-    DaprStateStoreResource:
-      type: object
-      description: Dapr StateStore portable resource
-      properties:
-        properties:
-          $ref: '#/components/schemas/DaprStateStoreProperties'
-          description: The resource-specific properties for this resource.
-          x-ms-client-flatten: true
-          x-ms-mutability:
-          - read
-          - create
-      required:
-      - properties
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
-    IdentitySettings:
-      type: object
-      description: IdentitySettings is the external identity setting.
-      properties:
-        kind:
-          $ref: '#/components/schemas/IdentitySettingKind'
-          description: kind of identity setting
-        oidcIssuer:
-          type: string
-          description: The URI for your compute platform's OIDC issuer
-        resource:
-          type: string
-          description: The resource ID of the provisioned identity
-        managedIdentity:
-          type: array
-          description: The list of user assigned managed identities
-          items:
-            type: string
-      required:
-      - kind
-    DaprStateStoreResourceUpdate:
-      type: object
-      description: Dapr StateStore portable resource
-      allOf:
-      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -363,51 +428,18 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
-    EnvironmentCompute:
+    Recipe:
       type: object
-      description: Represents backing compute resource
-      properties:
-        kind:
-          type: string
-          description: Discriminator property for EnvironmentCompute.
-        resourceId:
-          type: string
-          description: The resource id of the compute resource for application environment.
-        identity:
-          $ref: '#/components/schemas/IdentitySettings'
-          description: Configuration for supported external identity providers
-      discriminator:
-        propertyName: kind
-      required:
-      - kind
-    DaprStateStoreResourceListResult:
-      type: object
-      description: The response of a DaprStateStoreResource list operation.
-      properties:
-        value:
-          type: array
-          description: The DaprStateStoreResource items on this page
-          items:
-            $ref: '#/components/schemas/DaprStateStoreResource'
-        nextLink:
-          type: string
-          format: uri
-          description: The link to the next page of items
-      required:
-      - value
-    MetadataValueFromSecret:
-      type: object
-      description: A reference of a value in a secret store component.
+      description: The recipe used to automatically deploy underlying infrastructure for a portable resource
       properties:
         name:
           type: string
-          description: Secret name in the secret store component
-        key:
-          type: string
-          description: The field to select in the secret value. If the secret value is a string, it should be equal to the secret name
+          description: The name of the recipe within the environment to use
+        parameters:
+          type: object
+          description: Key/value parameters to pass into the recipe at deployment
       required:
       - name
-      - key
     ResourceProvisioning:
       type: string
       description: Specifies how the underlying service/resource is provisioned and managed. Available values are 'recipe', where Radius manages the lifecycle of the resource through a Recipe, and 'manual', where a user manages the resource and provides the values.
@@ -424,13 +456,6 @@ components:
         - name: manual
           value: manual
           description: The resource lifecycle will be managed by the user
-    DaprResourceAuth:
-      type: object
-      description: Authentication properties for a Dapr component object
-      properties:
-        secretStore:
-          type: string
-          description: Secret store to fetch secrets from
     ResourceReference:
       type: object
       description: Describes a reference to an existing resource
@@ -440,63 +465,6 @@ components:
           description: Resource id of an existing resource
       required:
       - id
-    ResourceStatus:
-      type: object
-      description: Status of a resource.
-      properties:
-        compute:
-          $ref: '#/components/schemas/EnvironmentCompute'
-          description: The compute resource associated with the resource.
-        recipe:
-          $ref: '#/components/schemas/RecipeStatus'
-          description: The recipe data at the time of deployment
-          readOnly: true
-        outputResources:
-          type: array
-          description: Properties of an output resource
-          items:
-            $ref: '#/components/schemas/OutputResource'
-          x-ms-identifiers: []
-    Recipe:
-      type: object
-      description: The recipe used to automatically deploy underlying infrastructure for a portable resource
-      properties:
-        name:
-          type: string
-          description: The name of the recipe within the environment to use
-        parameters:
-          type: object
-          description: Key/value parameters to pass into the recipe at deployment
-      required:
-      - name
-    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
-      type: object
-      title: Tracked Resource
-      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-      properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
-            type: string
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
-    RecipeStatus:
-      type: object
-      description: Recipe status at deployment time for a resource.
-      properties:
-        templateKind:
-          type: string
-          description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
-        templatePath:
-          type: string
-          description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
-        templateVersion:
-          type: string
-          description: TemplateVersion is the version number of the template.
-      required:
-      - templateKind
-      - templatePath
     DaprStateStoreProperties:
       type: object
       description: Dapr StateStore portable resource properties
@@ -546,19 +514,51 @@ components:
           description: Specifies how the underlying service/resource is provisioned and managed.
       required:
       - environment
-    OutputResource:
+    ResourceStatus:
       type: object
-      description: Properties of an output resource.
+      description: Status of a resource.
       properties:
-        localId:
+        compute:
+          $ref: '#/components/schemas/EnvironmentCompute'
+          description: The compute resource associated with the resource.
+        recipe:
+          $ref: '#/components/schemas/RecipeStatus'
+          description: The recipe data at the time of deployment
+          readOnly: true
+        outputResources:
+          type: array
+          description: Properties of an output resource
+          items:
+            $ref: '#/components/schemas/OutputResource'
+          x-ms-identifiers: []
+    DaprStateStoreResource:
+      type: object
+      description: Dapr StateStore portable resource
+      properties:
+        properties:
+          $ref: '#/components/schemas/DaprStateStoreProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+    MetadataValueFromSecret:
+      type: object
+      description: A reference of a value in a secret store component.
+      properties:
+        name:
           type: string
-          description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
-        id:
+          description: Secret name in the secret store component
+        key:
           type: string
-          description: The UCP resource ID of the underlying resource.
-        radiusManaged:
-          type: boolean
-          description: Determines whether Radius manages the lifecycle of the underlying resource.
+          description: The field to select in the secret value. If the secret value is a string, it should be equal to the secret name
+      required:
+      - name
+      - key
   parameters:
     RootScopeParameter:
       name: rootScope

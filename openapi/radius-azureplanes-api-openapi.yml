@@ -218,21 +218,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    AzurePlaneResource:
-      type: object
-      description: The Azure plane resource.
-      properties:
-        properties:
-          $ref: '#/components/schemas/AzurePlaneResourceProperties'
-          description: The resource-specific properties for this resource.
-          x-ms-client-flatten: true
-          x-ms-mutability:
-          - read
-          - create
-      required:
-      - properties
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -283,6 +268,21 @@ components:
           description: Resource tags.
           additionalProperties:
             type: string
+    AzurePlaneResource:
+      type: object
+      description: The Azure plane resource.
+      properties:
+        properties:
+          $ref: '#/components/schemas/AzurePlaneResourceProperties'
+          description: The resource-specific properties for this resource.
+          x-ms-client-flatten: true
+          x-ms-mutability:
+          - read
+          - create
+      required:
+      - properties
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
     AzurePlaneResourceProperties:
       type: object
       description: The Plane properties.

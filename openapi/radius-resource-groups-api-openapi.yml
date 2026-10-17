@@ -234,6 +234,14 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ResourceGroupProperties:
+      type: object
+      description: The resource group resource properties
+      properties:
+        provisioningState:
+          $ref: '#/components/schemas/ProvisioningState'
+          description: The status of the asynchronous operation.
+          readOnly: true
     ProvisioningState:
       type: string
       description: Provisioning state of the resource at the time the operation was called
@@ -275,6 +283,21 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
+    ResourceGroupResourceListResult:
+      type: object
+      description: The response of a ResourceGroupResource list operation.
+      properties:
+        value:
+          type: array
+          description: The ResourceGroupResource items on this page
+          items:
+            $ref: '#/components/schemas/ResourceGroupResource'
+        nextLink:
+          type: string
+          format: uri
+          description: The link to the next page of items
+      required:
+      - value
     ResourceGroupResourceTagsUpdate:
       type: object
       description: The type used for updating tags in ResourceGroupResource resources.
@@ -293,29 +316,6 @@ components:
           description: The resource-specific properties for this resource.
       allOf:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
-    ResourceGroupResourceListResult:
-      type: object
-      description: The response of a ResourceGroupResource list operation.
-      properties:
-        value:
-          type: array
-          description: The ResourceGroupResource items on this page
-          items:
-            $ref: '#/components/schemas/ResourceGroupResource'
-        nextLink:
-          type: string
-          format: uri
-          description: The link to the next page of items
-      required:
-      - value
-    ResourceGroupProperties:
-      type: object
-      description: The resource group resource properties
-      properties:
-        provisioningState:
-          $ref: '#/components/schemas/ProvisioningState'
-          description: The status of the asynchronous operation.
-          readOnly: true
   securitySchemes:
     azure_auth:
       type: oauth2

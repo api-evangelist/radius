@@ -259,14 +259,6 @@ components:
           value: Canceled
           description: The resource provisioning has been canceled
       readOnly: true
-    AwsPlaneResourceProperties:
-      type: object
-      description: The Plane properties.
-      properties:
-        provisioningState:
-          $ref: '#/components/schemas/ProvisioningState'
-          description: The status of the asynchronous operation.
-          readOnly: true
     AwsPlaneResource:
       type: object
       description: The AWS plane resource
@@ -282,6 +274,14 @@ components:
       - properties
       allOf:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+    AwsPlaneResourceProperties:
+      type: object
+      description: The Plane properties.
+      properties:
+        provisioningState:
+          $ref: '#/components/schemas/ProvisioningState'
+          description: The status of the asynchronous operation.
+          readOnly: true
     AwsPlaneResourceTagsUpdate:
       type: object
       description: The type used for updating tags in AwsPlaneResource resources.

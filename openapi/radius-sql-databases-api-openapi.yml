@@ -281,57 +281,19 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SqlDatabaseListSecretsResult:
+    OutputResource:
       type: object
-      description: The secret values for the given SqlDatabase resource
+      description: Properties of an output resource.
       properties:
-        password:
+        localId:
           type: string
-          description: Password to use when connecting to the target Sql database
-        connectionString:
+          description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
+        id:
           type: string
-          description: Connection string used to connect to the target Sql database
-    ProvisioningState:
-      type: string
-      description: Provisioning state of the resource at the time the operation was called
-      enum:
-      - Creating
-      - Updating
-      - Deleting
-      - Accepted
-      - Provisioning
-      - Succeeded
-      - Failed
-      - Canceled
-      x-ms-enum:
-        name: ProvisioningState
-        modelAsString: false
-        values:
-        - name: Creating
-          value: Creating
-          description: The resource is being created
-        - name: Updating
-          value: Updating
-          description: The resource is being updated
-        - name: Deleting
-          value: Deleting
-          description: The resource is being deleted
-        - name: Accepted
-          value: Accepted
-          description: The resource create request has been accepted
-        - name: Provisioning
-          value: Provisioning
-          description: The resource is being provisioned
-        - name: Succeeded
-          value: Succeeded
-          description: The resource has been successfully provisioned
-        - name: Failed
-          value: Failed
-          description: The resource provisioning has failed
-        - name: Canceled
-          value: Canceled
-          description: The resource provisioning has been canceled
-      readOnly: true
+          description: The UCP resource ID of the underlying resource.
+        radiusManaged:
+          type: boolean
+          description: Determines whether Radius manages the lifecycle of the underlying resource.
     EnvironmentCompute:
       type: object
       description: Represents backing compute resource
@@ -349,22 +311,26 @@ components:
         propertyName: kind
       required:
       - kind
-    ResourceProvisioning:
-      type: string
-      description: Specifies how the underlying service/resource is provisioned and managed. Available values are 'recipe', where Radius manages the lifecycle of the resource through a Recipe, and 'manual', where a user manages the resource and provides the values.
-      enum:
-      - recipe
-      - manual
-      x-ms-enum:
-        name: ResourceProvisioning
-        modelAsString: false
-        values:
-        - name: recipe
-          value: recipe
-          description: The resource lifecycle will be managed by Radius
-        - name: manual
-          value: manual
-          description: The resource lifecycle will be managed by the user
+    IdentitySettings:
+      type: object
+      description: IdentitySettings is the external identity setting.
+      properties:
+        kind:
+          $ref: '#/components/schemas/IdentitySettingKind'
+          description: kind of identity setting
+        oidcIssuer:
+          type: string
+          description: The URI for your compute platform's OIDC issuer
+        resource:
+          type: string
+          description: The resource ID of the provisioned identity
+        managedIdentity:
+          type: array
+          description: The list of user assigned managed identities
+          items:
+            type: string
+      required:
+      - kind
     IdentitySettingKind:
       type: string
       description: IdentitySettingKind is the kind of supported external identity setting
@@ -408,6 +374,107 @@ components:
       - properties
       allOf:
       - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/TrackedResource
+    ProvisioningState:
+      type: string
+      description: Provisioning state of the resource at the time the operation was called
+      enum:
+      - Creating
+      - Updating
+      - Deleting
+      - Accepted
+      - Provisioning
+      - Succeeded
+      - Failed
+      - Canceled
+      x-ms-enum:
+        name: ProvisioningState
+        modelAsString: false
+        values:
+        - name: Creating
+          value: Creating
+          description: The resource is being created
+        - name: Updating
+          value: Updating
+          description: The resource is being updated
+        - name: Deleting
+          value: Deleting
+          description: The resource is being deleted
+        - name: Accepted
+          value: Accepted
+          description: The resource create request has been accepted
+        - name: Provisioning
+          value: Provisioning
+          description: The resource is being provisioned
+        - name: Succeeded
+          value: Succeeded
+          description: The resource has been successfully provisioned
+        - name: Failed
+          value: Failed
+          description: The resource provisioning has failed
+        - name: Canceled
+          value: Canceled
+          description: The resource provisioning has been canceled
+      readOnly: true
+    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
+      type: object
+      title: Tracked Resource
+      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+      properties:
+        tags:
+          type: object
+          description: Resource tags.
+          additionalProperties:
+            type: string
+      allOf:
+      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
+    SqlDatabaseListSecretsResult:
+      type: object
+      description: The secret values for the given SqlDatabase resource
+      properties:
+        password:
+          type: string
+          description: Password to use when connecting to the target Sql database
+        connectionString:
+          type: string
+          description: Connection string used to connect to the target Sql database
+    ResourceStatus:
+      type: object
+      description: Status of a resource.
+      properties:
+        compute:
+          $ref: '#/components/schemas/EnvironmentCompute'
+          description: The compute resource associated with the resource.
+        recipe:
+          $ref: '#/components/schemas/RecipeStatus'
+          description: The recipe data at the time of deployment
+          readOnly: true
+        outputResources:
+          type: array
+          description: Properties of an output resource
+          items:
+            $ref: '#/components/schemas/OutputResource'
+          x-ms-identifiers: []
+    RecipeStatus:
+      type: object
+      description: Recipe status at deployment time for a resource.
+      properties:
+        templateKind:
+          type: string
+          description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
+        templatePath:
+          type: string
+          description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
+        templateVersion:
+          type: string
+          description: TemplateVersion is the version number of the template.
+      required:
+      - templateKind
+      - templatePath
+    SqlDatabaseResourceUpdate:
+      type: object
+      description: SqlDatabase portable resource
+      allOf:
+      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
     Recipe:
       type: object
       description: The recipe used to automatically deploy underlying infrastructure for a portable resource
@@ -420,6 +487,22 @@ components:
           description: Key/value parameters to pass into the recipe at deployment
       required:
       - name
+    ResourceProvisioning:
+      type: string
+      description: Specifies how the underlying service/resource is provisioned and managed. Available values are 'recipe', where Radius manages the lifecycle of the resource through a Recipe, and 'manual', where a user manages the resource and provides the values.
+      enum:
+      - recipe
+      - manual
+      x-ms-enum:
+        name: ResourceProvisioning
+        modelAsString: false
+        values:
+        - name: recipe
+          value: recipe
+          description: The resource lifecycle will be managed by Radius
+        - name: manual
+          value: manual
+          description: The resource lifecycle will be managed by the user
     SqlDatabaseProperties:
       type: object
       description: SqlDatabase properties
@@ -467,81 +550,6 @@ components:
           description: Specifies how the underlying service/resource is provisioned and managed.
       required:
       - environment
-    RecipeStatus:
-      type: object
-      description: Recipe status at deployment time for a resource.
-      properties:
-        templateKind:
-          type: string
-          description: TemplateKind is the kind of the recipe template used by the portable resource upon deployment.
-        templatePath:
-          type: string
-          description: TemplatePath is the path of the recipe consumed by the portable resource upon deployment.
-        templateVersion:
-          type: string
-          description: TemplateVersion is the version number of the template.
-      required:
-      - templateKind
-      - templatePath
-    Azure.ResourceManager.CommonTypes.TrackedResourceUpdate:
-      type: object
-      title: Tracked Resource
-      description: The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-      properties:
-        tags:
-          type: object
-          description: Resource tags.
-          additionalProperties:
-            type: string
-      allOf:
-      - $ref: ../../../../../common-types/resource-management/v3/types.json#/definitions/Resource
-    ResourceReference:
-      type: object
-      description: Describes a reference to an existing resource
-      properties:
-        id:
-          type: string
-          description: Resource id of an existing resource
-      required:
-      - id
-    OutputResource:
-      type: object
-      description: Properties of an output resource.
-      properties:
-        localId:
-          type: string
-          description: The logical identifier scoped to the owning Radius resource. This is only needed or used when a resource has a dependency relationship. LocalIDs do not have any particular format or meaning beyond being compared to determine dependency relationships.
-        id:
-          type: string
-          description: The UCP resource ID of the underlying resource.
-        radiusManaged:
-          type: boolean
-          description: Determines whether Radius manages the lifecycle of the underlying resource.
-    SqlDatabaseResourceUpdate:
-      type: object
-      description: SqlDatabase portable resource
-      allOf:
-      - $ref: '#/components/schemas/Azure.ResourceManager.CommonTypes.TrackedResourceUpdate'
-    IdentitySettings:
-      type: object
-      description: IdentitySettings is the external identity setting.
-      properties:
-        kind:
-          $ref: '#/components/schemas/IdentitySettingKind'
-          description: kind of identity setting
-        oidcIssuer:
-          type: string
-          description: The URI for your compute platform's OIDC issuer
-        resource:
-          type: string
-          description: The resource ID of the provisioned identity
-        managedIdentity:
-          type: array
-          description: The list of user assigned managed identities
-          items:
-            type: string
-      required:
-      - kind
     SqlDatabaseResourceListResult:
       type: object
       description: The response of a SqlDatabaseResource list operation.
@@ -567,23 +575,15 @@ components:
         connectionString:
           type: string
           description: Connection string used to connect to the target Sql database
-    ResourceStatus:
+    ResourceReference:
       type: object
-      description: Status of a resource.
+      description: Describes a reference to an existing resource
       properties:
-        compute:
-          $ref: '#/components/schemas/EnvironmentCompute'
-          description: The compute resource associated with the resource.
-        recipe:
-          $ref: '#/components/schemas/RecipeStatus'
-          description: The recipe data at the time of deployment
-          readOnly: true
-        outputResources:
-          type: array
-          description: Properties of an output resource
-          items:
-            $ref: '#/components/schemas/OutputResource'
-          x-ms-identifiers: []
+        id:
+          type: string
+          description: Resource id of an existing resource
+      required:
+      - id
   parameters:
     RootScopeParameter:
       name: rootScope
