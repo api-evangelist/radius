@@ -580,6 +580,8 @@ apis:
   humanURL: https://docs.radapp.io/reference/api/applications.core/
   baseURL: https://management.azure.com
   tags:
+  - SqlDatabases
+  tags_raw:
   - Sql Databases
   properties:
   - type: OpenAPI
